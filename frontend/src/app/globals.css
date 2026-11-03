@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-scripture: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+
+  --color-sacred-parchment: #fbf9f5;
+  --color-sacred-card: #fcfbf8;
+  --color-royal-indigo: #312e81;
+  --color-royal-indigo-hover: #3730a3;
+  --color-covenant-gold: #b45309;
+  --color-covenant-gold-hover: #d97706;
+  --color-living-olive: #15803d;
+  --color-sacrificial-crimson: #991b1b;
+}
+
+:root {
+  --font-be-vietnam-pro: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-cinzel: 'Cinzel', Georgia, serif;
+  --background: #fbf9f5;
+  --foreground: #0f172a;
+  --royal-indigo: #312e81;
+  --royal-indigo-hover: #3730a3;
+  --covenant-gold: #b45309;
+  --covenant-gold-hover: #d97706;
+  --living-olive: #15803d;
+  --sacrificial-crimson: #991b1b;
+  --border-gold: rgba(217, 119, 6, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-be-vietnam-pro);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sacred Typography Hierarchy */
+h1, h2, h3, h4, .font-serif, .font-scripture {
+  font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', Georgia, serif;
+  letter-spacing: 0.05em;
+}
+
+button, input, select, textarea, .font-sans {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Custom Sacred Smooth Scrollbars (Windows & macOS) */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f2ea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4c8b0;
+  border-radius: 9999px;
+  border: 1.5px solid #f5f2ea;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bfa886;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4c8b0 #f5f2ea;
+}
