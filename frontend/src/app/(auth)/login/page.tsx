@@ -9,7 +9,7 @@ import { SAM_LOGO_DATA_URL } from "@/lib/sam-logo";
 import { TactileInput } from "@/components/ui/tactile-input";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { ApiError } from "@/lib/api/client";
-import { Church, ShieldCheck, ArrowRight, ArrowLeft, Globe } from "lucide-react";
+import { Church, ShieldCheck, ArrowRight, ArrowLeft, Globe, Users, BookOpen } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -53,10 +53,28 @@ export default function LoginPage() {
     }
   };
 
-  const fillPastorDemo = () => {
-    setEmail("admin@teacher.local");
-    setPassword("AdminTeacher@2026");
+  const handleQuickLogin = async (demoEmail: string, demoPass: string) => {
+    setEmail(demoEmail);
+    setPassword(demoPass);
     setErrorMsg(null);
+    setLoading(true);
+    try {
+      await login(demoEmail, demoPass);
+      router.push("/dashboard");
+    } catch (err) {
+      if (err instanceof ApiError) {
+        setErrorMsg(err.message);
+      } else {
+        setErrorMsg(
+          bilingual(
+            "Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin",
+            "Login failed. Please check your credentials and try again"
+          )
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -162,24 +180,57 @@ export default function LoginPage() {
             </TactileButton>
           </form>
 
-          {/* Quick Demo Fill */}
-          <div className="pt-4 border-t border-amber-100 space-y-2.5">
+          {/* Quick Demo Login */}
+          <div className="pt-4 border-t border-amber-100 space-y-2">
             <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 text-center">
-              {bilingual("Tài Khoản Thử Nghiệm Nhanh", "Quick Demo Accounts")}
+              {bilingual("1-Click Đăng Nhập Tài Khoản Demo", "1-Click Demo Accounts")}
             </div>
-            <button
-              type="button"
-              onClick={fillPastorDemo}
-              className="w-full py-2.5 px-3 text-xs font-semibold rounded-xl bg-amber-50/80 text-amber-900 border border-amber-200 hover:bg-amber-100/70 transition-all flex items-center justify-between gap-2 cursor-pointer"
-            >
-              <span className="flex items-center gap-1.5 min-w-0 truncate">
-                <Church className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-                <span className="truncate">Senior Pastor (admin)</span>
-              </span>
-              <span className="text-[10px] bg-amber-200/80 px-2 py-0.5 rounded text-amber-900 font-mono shrink-0">
-                {bilingual("1-Click Điền", "1-Click Demo")}
-              </span>
-            </button>
+            <div className="grid grid-cols-1 gap-2">
+              <button
+                type="button"
+                disabled={loading}
+                onClick={() => handleQuickLogin("admin@teacher.local", "AdminTeacher@2026")}
+                className="w-full py-2 px-3 text-xs font-semibold rounded-xl bg-amber-50/80 text-amber-900 border border-amber-200 hover:bg-amber-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <span className="flex items-center gap-1.5 min-w-0 truncate">
+                  <Church className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                  <span className="truncate">Senior Pastor (Admin Quản Nhiệm)</span>
+                </span>
+                <span className="text-[10px] bg-amber-200/80 px-2 py-0.5 rounded text-amber-900 font-mono shrink-0">
+                  {bilingual("Vào Thẳng", "1-Click")}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                disabled={loading}
+                onClick={() => handleQuickLogin("leader@teacher.local", "LeaderTeacher@2026")}
+                className="w-full py-2 px-3 text-xs font-semibold rounded-xl bg-indigo-50/80 text-indigo-900 border border-indigo-200 hover:bg-indigo-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <span className="flex items-center gap-1.5 min-w-0 truncate">
+                  <Users className="w-3.5 h-3.5 text-indigo-700 shrink-0" />
+                  <span className="truncate">Ministry Leader (Trưởng Ban / Giáo Viên)</span>
+                </span>
+                <span className="text-[10px] bg-indigo-200/80 px-2 py-0.5 rounded text-indigo-900 font-mono shrink-0">
+                  {bilingual("Vào Thẳng", "1-Click")}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                disabled={loading}
+                onClick={() => handleQuickLogin("member@teacher.local", "MemberTeacher@2026")}
+                className="w-full py-2 px-3 text-xs font-semibold rounded-xl bg-emerald-50/80 text-emerald-900 border border-emerald-200 hover:bg-emerald-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <span className="flex items-center gap-1.5 min-w-0 truncate">
+                  <BookOpen className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                  <span className="truncate">Church Member (Tín Hữu / Môn Đồ)</span>
+                </span>
+                <span className="text-[10px] bg-emerald-200/80 px-2 py-0.5 rounded text-emerald-900 font-mono shrink-0">
+                  {bilingual("Vào Thẳng", "1-Click")}
+                </span>
+              </button>
+            </div>
           </div>
 
           <div className="text-center pt-2 text-xs text-slate-600">

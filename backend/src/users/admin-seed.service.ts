@@ -17,28 +17,47 @@ export class AdminSeedService implements OnApplicationBootstrap {
   ) {}
 
   async onApplicationBootstrap() {
-    const adminEmail = this.config.get<string>('ADMIN_EMAIL');
-    const adminPassword = this.config.get<string>('ADMIN_PASSWORD');
-    const adminName = this.config.get<string>('ADMIN_NAME');
+    const adminEmail = this.config.get<string>('ADMIN_EMAIL') || 'admin@teacher.local';
+    const adminPassword = this.config.get<string>('ADMIN_PASSWORD') || 'AdminTeacher@2026';
+    const adminName = this.config.get<string>('ADMIN_NAME') || 'Senior Pastor / Mục Sư Quản Nhiệm';
 
-    if (!adminEmail || !adminPassword) {
-      return;
-    }
+    const defaultAccounts = [
+      {
+        email: adminEmail,
+        password: adminPassword,
+        fullName: adminName,
+        role: Role.SeniorPastor,
+      },
+      {
+        email: 'leader@teacher.local',
+        password: 'LeaderTeacher@2026',
+        fullName: 'Ministry Leader / Trưởng Ban Mục Vụ',
+        role: Role.MinistryLeader,
+      },
+      {
+        email: 'member@teacher.local',
+        password: 'MemberTeacher@2026',
+        fullName: 'Church Member / Tín Hữu SAM',
+        role: Role.Member,
+      },
+    ];
 
-    try {
-      const exists = await this.usersService.existsByEmail(adminEmail);
-      if (!exists) {
-        const passwordHash = await bcrypt.hash(adminPassword, PASSWORD_SALT_ROUNDS);
-        await this.usersService.create({
-          email: adminEmail,
-          passwordHash,
-          fullName: adminName || 'Senior Pastor / Mục Sư Quản Nhiệm',
-          role: Role.SeniorPastor,
-        });
-        this.logger.log(`Tài khoản Senior Pastor khởi tạo thành công: ${adminEmail}`);
+    for (const acc of defaultAccounts) {
+      try {
+        const exists = await this.usersService.existsByEmail(acc.email);
+        if (!exists) {
+          const passwordHash = await bcrypt.hash(acc.password, PASSWORD_SALT_ROUNDS);
+          await this.usersService.create({
+            email: acc.email,
+            passwordHash,
+            fullName: acc.fullName,
+            role: acc.role,
+          });
+          this.logger.log(`Tài khoản khởi tạo thành công (${acc.role}): ${acc.email}`);
+        }
+      } catch (error) {
+        this.logger.warn(`Không thể khởi tạo tài khoản ${acc.email}: ${(error as Error).message}`);
       }
-    } catch (error) {
-      this.logger.warn(`Không thể khởi tạo tài khoản Admin: ${(error as Error).message}`);
     }
   }
 }
