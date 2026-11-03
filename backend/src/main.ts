@@ -21,22 +21,10 @@ async function bootstrap() {
 
   app.setGlobalPrefix(prefix);
   app.enableCors({
-    origin: (requestOrigin, callback) => {
-      if (!requestOrigin) return callback(null, true);
-      if (origins.includes(requestOrigin)) {
-        return callback(null, true);
-      }
-      try {
-        const hostname = new URL(requestOrigin).hostname;
-        if (/^(localhost|127\.0\.0\.1)$/i.test(hostname)) {
-          return callback(null, true);
-        }
-      } catch {
-        // bỏ qua URL không hợp lệ
-      }
-      return callback(null, false);
-    },
+    origin: true, // Cho phép mọi domain (Vercel, localhost, IP, custom domain...) tự động phản hồi đúng Origin của client
     credentials: true,
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Accept', 'Authorization', 'X-Requested-With'],
   });
   app.enableShutdownHooks();
 
