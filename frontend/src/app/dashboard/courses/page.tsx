@@ -296,6 +296,17 @@ export default function CoursesCatalogPage() {
                     src={course.thumbnailUrl}
                     alt={course.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent && !parent.querySelector('.img-fallback')) {
+                        const fallback = document.createElement('div');
+                        fallback.className = 'img-fallback w-full h-full bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-900 flex items-center justify-center';
+                        fallback.innerHTML = '<span class="text-amber-300/40 font-serif text-6xl">†</span>';
+                        parent.prepend(fallback);
+                      }
+                    }}
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-900 flex items-center justify-center">

@@ -668,6 +668,9 @@ export default function BibleReadingPage() {
                         src={plan.thumbnailUrl}
                         alt={plan.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
                       />
                     ) : (
                       <div className="w-full h-full bg-indigo-950 flex items-center justify-center text-amber-300 font-serif text-5xl">

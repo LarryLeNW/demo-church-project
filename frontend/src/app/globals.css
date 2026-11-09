@@ -6,12 +6,29 @@
   --font-cinzel: 'Cinzel', serif;
   --font-scripture: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
 
+  --color-primary: #F17F34;
+  --color-primary-50: #fef5ee;
+  --color-primary-100: #fde8d7;
+  --color-primary-200: #fbd1af;
+  --color-primary-300: #f7b480;
+  --color-primary-400: #f49654;
+  --color-primary-500: #F17F34;
+  --color-primary-600: #de6d22;
+  --color-primary-700: #b9541a;
+  --color-primary-800: #93431c;
+  --color-primary-900: #77381a;
+  --color-primary-950: #401b0b;
+  --color-primary-hover: #de6d22;
+
+  --color-theme: #F17F34;
+  --color-theme-hover: #de6d22;
+
   --color-sacred-parchment: #fbf9f5;
   --color-sacred-card: #fcfbf8;
   --color-royal-indigo: #312e81;
   --color-royal-indigo-hover: #3730a3;
-  --color-covenant-gold: #b45309;
-  --color-covenant-gold-hover: #d97706;
+  --color-covenant-gold: #F17F34;
+  --color-covenant-gold-hover: #de6d22;
   --color-living-olive: #15803d;
   --color-sacrificial-crimson: #991b1b;
 }
@@ -22,13 +39,19 @@
   --font-cinzel: 'Cinzel', Georgia, serif;
   --background: #fbf9f5;
   --foreground: #0f172a;
+  --primary: #F17F34;
+  --primary-hover: #de6d22;
+  --primary-light: #fef5ee;
+  --theme: #F17F34;
+  --theme-primary: #F17F34;
   --royal-indigo: #312e81;
   --royal-indigo-hover: #3730a3;
-  --covenant-gold: #b45309;
-  --covenant-gold-hover: #d97706;
+  --covenant-gold: #F17F34;
+  --covenant-gold-hover: #de6d22;
   --living-olive: #15803d;
   --sacrificial-crimson: #991b1b;
-  --border-gold: rgba(217, 119, 6, 0.25);
+  --border-gold: rgba(241, 127, 52, 0.35);
+  --border-theme: rgba(241, 127, 52, 0.35);
 }
 
 html {

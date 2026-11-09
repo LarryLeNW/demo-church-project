@@ -115,7 +115,7 @@ export class VolunteersSeedService implements OnApplicationBootstrap {
             }),
           );
 
-          if (user.role === Role.SeniorPastor || user.role === Role.MinistryLeader) {
+          if (user.role === Role.Admin) {
             await this.memberRepo.save(
               this.memberRepo.create({
                 teamId: kidsTeam.id,

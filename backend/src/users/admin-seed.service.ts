@@ -19,26 +19,20 @@ export class AdminSeedService implements OnApplicationBootstrap {
   async onApplicationBootstrap() {
     const adminEmail = this.config.get<string>('ADMIN_EMAIL') || 'admin@teacher.local';
     const adminPassword = this.config.get<string>('ADMIN_PASSWORD') || 'AdminTeacher@2026';
-    const adminName = this.config.get<string>('ADMIN_NAME') || 'Senior Pastor / Mục Sư Quản Nhiệm';
+    const adminName = this.config.get<string>('ADMIN_NAME') || 'Quản Trị Viên SAM (Admin)';
 
     const defaultAccounts = [
       {
         email: adminEmail,
         password: adminPassword,
         fullName: adminName,
-        role: Role.SeniorPastor,
+        role: Role.Admin,
       },
       {
-        email: 'leader@teacher.local',
-        password: 'LeaderTeacher@2026',
-        fullName: 'Ministry Leader / Trưởng Ban Mục Vụ',
-        role: Role.MinistryLeader,
-      },
-      {
-        email: 'member@teacher.local',
-        password: 'MemberTeacher@2026',
-        fullName: 'Church Member / Tín Hữu SAM',
-        role: Role.Member,
+        email: 'user@teacher.local',
+        password: 'AdminTeacher@2026',
+        fullName: 'Môn Đồ / Tín Hữu SAM (User)',
+        role: Role.User,
       },
     ];
 

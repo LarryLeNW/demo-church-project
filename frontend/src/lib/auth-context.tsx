@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { apiFetch, ApiError } from "./api/client";
 import { getTokens, setTokens, subscribeToTokenChanges, type StoredTokens } from "./api/token-store";
 
-export type Role = "admin" | "senior_pastor" | "ministry_leader" | "member" | "parent";
+export type Role = "admin" | "user" | "senior_pastor" | "ministry_leader" | "member" | "parent";
 
 export interface User {
   id: string;

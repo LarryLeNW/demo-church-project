@@ -32,7 +32,7 @@ export class PathwaySeedService implements OnApplicationBootstrap {
       if (users.length === 0) return;
 
       for (const u of users) {
-        if (u.role === Role.SeniorPastor || u.role === Role.Admin) {
+        if (u.role === Role.Admin) {
           const profile = this.profileRepo.create({
             userId: u.id,
             currentStage: SpiritualStage.MINISTRY_LEADER,
@@ -67,7 +67,7 @@ export class PathwaySeedService implements OnApplicationBootstrap {
             ],
           });
           await this.profileRepo.save(profile);
-        } else if (u.role === Role.MinistryLeader) {
+        } else if (u.role === Role.User) {
           const profile = this.profileRepo.create({
             userId: u.id,
             currentStage: SpiritualStage.MINISTRY_LEADER,

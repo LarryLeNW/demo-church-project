@@ -40,10 +40,7 @@ export class PrayersService {
     const { page = 1, limit = 20, category, isAnswered, search } = query;
     const skip = (page - 1) * limit;
 
-    const isPastorOrLeader =
-      user?.role === Role.SeniorPastor ||
-      user?.role === Role.Admin ||
-      user?.role === Role.MinistryLeader;
+    const isPastorOrLeader = user?.role === Role.Admin;
 
     const qb = this.prayerRepo
       .createQueryBuilder('prayer')
@@ -116,10 +113,7 @@ export class PrayersService {
       throw new NotFoundException('Không tìm thấy lời cầu thay.');
     }
 
-    const isPastorOrLeader =
-      user?.role === Role.SeniorPastor ||
-      user?.role === Role.Admin ||
-      user?.role === Role.MinistryLeader;
+    const isPastorOrLeader = user?.role === Role.Admin;
 
     if (prayer.isConfidential && !isPastorOrLeader && prayer.userId !== user?.id) {
       throw new ForbiddenException('Lời cầu thay này được giữ kín nhiệm cho Mục sư.');
@@ -206,8 +200,7 @@ export class PrayersService {
       throw new NotFoundException('Không tìm thấy lời cầu thay.');
     }
 
-    const isPastorOrAdmin =
-      user.role === Role.SeniorPastor || user.role === Role.Admin;
+    const isPastorOrAdmin = user.role === Role.Admin;
 
     if (!isPastorOrAdmin && prayer.userId !== user.id) {
       throw new ForbiddenException(

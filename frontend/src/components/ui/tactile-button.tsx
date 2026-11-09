@@ -12,13 +12,13 @@ interface ReverentButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
 
 const variantStyles: Record<ReverentButtonVariant, string> = {
   primary:
-    "bg-indigo-950 text-white hover:bg-indigo-900 border border-amber-400/30 shadow-md shadow-indigo-950/20",
+    "bg-[#F17F34] text-white hover:bg-[#DE6D22] border border-[#F8B383]/40 shadow-md shadow-[#F17F34]/25",
   gold:
-    "bg-amber-700 text-white hover:bg-amber-800 border border-amber-300/60 shadow-md shadow-amber-950/15",
+    "bg-[#F17F34] text-white hover:bg-[#DE6D22] border border-[#F8B383]/50 shadow-md shadow-[#F17F34]/20",
   olive:
     "bg-emerald-800 text-white hover:bg-emerald-700 border border-emerald-400/40 shadow-md shadow-emerald-950/15",
   secondary:
-    "bg-white text-slate-900 hover:bg-[#F8F5EE] border border-amber-200/90 shadow-sm",
+    "bg-white text-slate-900 hover:bg-[#FEF5EE] border border-amber-200/90 shadow-sm",
   crimson:
     "bg-rose-900 text-white hover:bg-rose-800 border border-rose-400/30 shadow-md shadow-rose-950/20",
 };
@@ -43,7 +43,7 @@ export const TactileButton: React.FC<ReverentButtonProps> = ({
       disabled={disabled}
       className={cn(
         "relative inline-flex items-center justify-center font-semibold transition-all duration-200 select-none cursor-pointer",
-        "active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50",
+        "active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F17F34]/40",
         "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none",
         variantStyles[variant],
         sizeStyles[size],
@@ -51,7 +51,7 @@ export const TactileButton: React.FC<ReverentButtonProps> = ({
       )}
       {...props}
     >
-      {withCross && <span className="mr-2 text-amber-300/90 font-serif">†</span>}
+      {withCross && <span className="mr-2 text-white/95 font-serif font-bold">†</span>}
       {children}
     </button>
   );

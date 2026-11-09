@@ -143,44 +143,51 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     Role,
     { titleVi: string; titleEn: string; color: string; badgeVi: string; badgeEn: string }
   > = {
-    senior_pastor: {
-      titleVi: "Mục Sư Quản Nhiệm (Senior Pastor)",
-      titleEn: "Senior Pastor",
-      color: "bg-indigo-950 text-amber-300 border-amber-400/40",
-      badgeVi: "👑 Mục Sư Quản Nhiệm",
-      badgeEn: "👑 Senior Pastor",
-    },
     admin: {
-      titleVi: "Ban Trị Sự (Admin)",
-      titleEn: "Church Admin",
-      color: "bg-indigo-900 text-white border-indigo-700",
-      badgeVi: "⚙️ Ban Trị Sự",
-      badgeEn: "⚙️ Church Admin",
+      titleVi: "Ban Quản Trị (Admin)",
+      titleEn: "System Admin",
+      color: "bg-[#F17F34] text-white border-[#DE6D22]",
+      badgeVi: "⚙️ Ban Quản Trị",
+      badgeEn: "⚙️ Admin",
+    },
+    user: {
+      titleVi: "Thành Viên / Môn Đồ (User)",
+      titleEn: "Member / Disciple",
+      color: "bg-slate-100 text-slate-800 border-slate-300",
+      badgeVi: "🕊️ Thành Viên (User)",
+      badgeEn: "🕊️ Member",
+    },
+    senior_pastor: {
+      titleVi: "Ban Quản Trị (Admin)",
+      titleEn: "System Admin",
+      color: "bg-[#F17F34] text-white border-[#DE6D22]",
+      badgeVi: "⚙️ Ban Quản Trị",
+      badgeEn: "⚙️ Admin",
     },
     ministry_leader: {
-      titleVi: "Trưởng Ban Mục Vụ (Leader)",
-      titleEn: "Ministry Leader",
-      color: "bg-amber-100 text-amber-900 border-amber-300",
-      badgeVi: "🛡️ Trưởng Ban Mục Vụ",
-      badgeEn: "🛡️ Ministry Leader",
+      titleVi: "Ban Quản Trị (Admin)",
+      titleEn: "System Admin",
+      color: "bg-[#F17F34] text-white border-[#DE6D22]",
+      badgeVi: "⚙️ Ban Quản Trị",
+      badgeEn: "⚙️ Admin",
     },
     member: {
-      titleVi: "Tín Hữu (Disciple Member)",
-      titleEn: "Disciple Member",
-      color: "bg-emerald-100 text-emerald-900 border-emerald-300",
-      badgeVi: "🕊️ Tín Hữu Môn Đồ",
-      badgeEn: "🕊️ Disciple Member",
+      titleVi: "Thành Viên / Môn Đồ (User)",
+      titleEn: "Member / Disciple",
+      color: "bg-slate-100 text-slate-800 border-slate-300",
+      badgeVi: "🕊️ Thành Viên (User)",
+      badgeEn: "🕊️ Member",
     },
     parent: {
-      titleVi: "Phụ Huynh Lớp Thiếu Nhi",
-      titleEn: "Kids Ministry Parent",
-      color: "bg-rose-100 text-rose-900 border-rose-300",
-      badgeVi: "👨‍👩‍👧 Phụ Huynh Thiếu Nhi",
-      badgeEn: "👨‍👩‍👧 Kids Parent",
+      titleVi: "Thành Viên / Môn Đồ (User)",
+      titleEn: "Member / Disciple",
+      color: "bg-slate-100 text-slate-800 border-slate-300",
+      badgeVi: "🕊️ Thành Viên (User)",
+      badgeEn: "🕊️ Member",
     },
   };
 
-  // Grouped Navigation Sections
+  // Grouped Navigation Sections (Streamlined according to client requirements)
   const navSections: NavSection[] = [
     {
       titleVi: "Đời Sống Thuộc Linh",
@@ -217,22 +224,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           icon: BookText,
         },
         {
-          href: "/dashboard/pathway",
-          labelVi: "Hành Trình Đức Tin",
-          labelEn: "Discipleship Pathway",
-          icon: Compass,
-        },
-        {
           href: "/dashboard/courses",
-          labelVi: "Môn Đồ Hóa & Bài Giảng",
-          labelEn: "Courses & Sunday School",
+          labelVi: "Các Khóa Học & Đào Tạo",
+          labelEn: "Courses & Training",
           icon: BookOpen,
         },
       ],
     },
     {
-      titleVi: "Cộng Đồng & Thông Công",
-      titleEn: "Community & Fellowship",
+      titleVi: "Thông Công & Dâng Hiến",
+      titleEn: "Fellowship & Giving",
       items: [
         {
           href: "/dashboard/groups",
@@ -241,83 +242,39 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           icon: Users2,
         },
         {
-          href: "/dashboard/events",
-          labelVi: "Lịch Sự Kiện & RSVP",
-          labelEn: "Church Calendar & RSVP",
-          icon: CalendarDays,
-        },
-        {
-          href: "/dashboard/checkin",
-          labelVi: "Điểm Danh Thiếu Nhi",
-          labelEn: "Kids Safe Check-in",
-          icon: ShieldCheck,
-          badgeVi: currentRole === "parent" ? "PIN An Toàn" : undefined,
-          badgeEn: currentRole === "parent" ? "Safety PIN" : undefined,
-          badgeColor: "bg-rose-100 text-rose-800 border-rose-200",
-        },
-        {
-          href: "/dashboard/communications",
-          labelVi: "Bản Tin & SMS Khẩn",
-          labelEn: "Church Bulletin & SMS",
-          icon: Megaphone,
-        },
-      ],
-    },
-    {
-      titleVi: "Phụng Sự & Dâng Hiến",
-      titleEn: "Service & Stewardship",
-      items: [
-        {
           href: "/dashboard/giving",
           labelVi: "Dâng Hiến (Stripe & 501c3)",
           labelEn: "Giving & 501(c)(3) Tax",
           icon: DollarSign,
         },
         {
-          href: "/dashboard/volunteers",
-          labelVi: "Ban Phụng Vụ & Lịch Trực",
-          labelEn: "Volunteer Ministries & Roster",
-          icon: HeartHandshake,
-        },
-        {
-          href: "/dashboard/facilities",
-          labelVi: "Phòng Nhóm & Thiết Bị",
-          labelEn: "Facilities & Equipment",
-          icon: Building,
-          badgeVi:
-            currentRole === "senior_pastor" || currentRole === "admin" ? "Duyệt đơn" : undefined,
-          badgeEn:
-            currentRole === "senior_pastor" || currentRole === "admin" ? "Review" : undefined,
-          badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
+          href: "/dashboard/communications",
+          labelVi: "Bản Tin & Thông Báo",
+          labelEn: "Church Bulletin & Updates",
+          icon: Megaphone,
         },
       ],
     },
     {
-      titleVi: "Chỉ Huy & Mục Vụ Cấp Cao",
-      titleEn: "Pastoral Leadership",
+      titleVi: "Quản Trị Hệ Thống",
+      titleEn: "Administration",
       items: [
         {
           href: "/dashboard/analytics",
           labelVi: "Bảng Chỉ Huy (Analytics)",
           labelEn: "Executive Health Cockpit",
           icon: LineChart,
-          roles: ["senior_pastor", "admin", "ministry_leader"],
+          roles: ["admin", "senior_pastor", "ministry_leader"],
         },
         {
           href: "/dashboard/pastoral",
-          labelVi: "Sổ Chăm Sóc & Gia Đình",
-          labelEn: "Pastoral Care & Households",
+          labelVi: "Sổ Chăm Sóc & Tín Hữu",
+          labelEn: "Pastoral Care & Members",
           icon: HeartPulse,
-          badgeVi:
-            currentRole === "senior_pastor" || currentRole === "admin"
-              ? "! Khẩn cấp"
-              : undefined,
-          badgeEn:
-            currentRole === "senior_pastor" || currentRole === "admin"
-              ? "! Urgent"
-              : undefined,
+          badgeVi: currentRole === "admin" ? "! Cần Chăm Sóc" : undefined,
+          badgeEn: currentRole === "admin" ? "! Urgent" : undefined,
           badgeColor: "bg-red-100 text-red-800 border-red-300 animate-pulse",
-          roles: ["senior_pastor", "admin", "ministry_leader"],
+          roles: ["admin", "senior_pastor", "ministry_leader"],
         },
       ],
     },
@@ -404,11 +361,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 onChange={(e) => setSimulatedRole(e.target.value as Role)}
                 className="w-full text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-amber-50/70 border border-amber-300 text-slate-800 focus:outline-none cursor-pointer"
               >
-                <option value="senior_pastor">{isEn ? "👑 Senior Pastor" : "👑 Mục Sư Quản Nhiệm (Pastor)"}</option>
-                <option value="admin">{isEn ? "⚙️ Church Admin" : "⚙️ Ban Trị Sự (Admin)"}</option>
-                <option value="ministry_leader">{isEn ? "🛡️ Ministry Leader" : "🛡️ Trưởng Ban Mục Vụ (Leader)"}</option>
-                <option value="member">{isEn ? "🕊️ Disciple Member" : "🕊️ Tín Hữu Môn Đồ (Member)"}</option>
-                <option value="parent">{isEn ? "👨‍👩‍👧 Kids Ministry Parent" : "👨‍👩‍👧 Phụ Huynh Thiếu Nhi (Parent)"}</option>
+                <option value="admin">{isEn ? "⚙️ Admin" : "⚙️ Ban Quản Trị (Admin)"}</option>
+                <option value="user">{isEn ? "🕊️ Member (User)" : "🕊️ Thành Viên / Môn Đồ (User)"}</option>
               </select>
             </div>
           </div>
@@ -445,16 +399,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                           href={item.href}
                           className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all group ${
                             isActive
-                              ? "bg-indigo-950 text-white font-semibold shadow-xs"
-                              : "text-slate-700 hover:bg-amber-100/60 hover:text-indigo-950"
+                              ? "bg-[#F17F34] text-white font-semibold shadow-xs shadow-[#F17F34]/25"
+                              : "text-slate-700 hover:bg-[#F17F34]/10 hover:text-[#F17F34]"
                           }`}
                         >
                           <div className="flex items-center gap-2.5 truncate">
                             <Icon
                               className={`w-4 h-4 shrink-0 transition-colors ${
                                 isActive
-                                  ? "text-amber-400"
-                                  : "text-amber-800 group-hover:text-amber-900"
+                                  ? "text-white"
+                                  : "text-amber-800 group-hover:text-[#F17F34]"
                               }`}
                             />
                             <span className="truncate">{label}</span>
@@ -482,7 +436,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="p-3 border-t border-amber-200/70 bg-[#FAF8F3] space-y-2">
             <div className="flex items-center justify-between gap-2 p-2 rounded-xl bg-white border border-amber-200/60 shadow-2xs">
               <div className="flex items-center gap-2 truncate">
-                <div className="w-8 h-8 rounded-full bg-indigo-950 text-amber-300 font-serif font-bold flex items-center justify-center shrink-0 text-xs">
+                <div className="w-8 h-8 rounded-full bg-[#F17F34] text-white font-serif font-bold flex items-center justify-center shrink-0 text-xs shadow-xs">
                   {user.fullName.charAt(0)}
                 </div>
                 <div className="flex flex-col truncate">
@@ -547,7 +501,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 onClick={() => handleFontScaleChange("normal")}
                 className={`px-2 py-1 rounded-lg text-[11px] font-semibold transition-all ${
                   fontScale === "normal"
-                    ? "bg-white text-indigo-950 shadow-2xs font-bold"
+                    ? "bg-white text-[#F17F34] shadow-2xs font-bold"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -557,7 +511,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 onClick={() => handleFontScaleChange("large")}
                 className={`px-2 py-1 rounded-lg text-xs font-semibold transition-all ${
                   fontScale === "large"
-                    ? "bg-white text-indigo-950 shadow-2xs font-bold"
+                    ? "bg-white text-[#F17F34] shadow-2xs font-bold"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -567,7 +521,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 onClick={() => handleFontScaleChange("xlarge")}
                 className={`px-2 py-1 rounded-lg text-sm font-semibold transition-all ${
                   fontScale === "xlarge"
-                    ? "bg-white text-indigo-950 shadow-2xs font-bold"
+                    ? "bg-white text-[#F17F34] shadow-2xs font-bold"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -597,7 +551,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               className="px-2.5 py-1 rounded-xl border border-amber-200/80 bg-white hover:bg-amber-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs"
             >
               <Languages className="w-3.5 h-3.5 text-amber-800" />
-              <span className="font-bold text-indigo-950">{lang}</span>
+              <span className="font-bold text-[#F17F34]">{lang}</span>
               <span className="hidden sm:inline text-[10px] text-slate-500 font-normal">
                 ({isEn ? "English" : "Tiếng Việt"})
               </span>

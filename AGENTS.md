@@ -19,12 +19,10 @@ Lộ trình Sprint kỹ thuật chi tiết: [MASTER_DEVELOPMENT_PLAN.md](file://
 
 ---
 
-## 2. Các Vai Trò Người Dùng (User Roles & RBAC)
+## 2. Các Vai Trò Người Dùng Tối Giản (User Roles & RBAC: Admin & User)
 
-- **Senior Pastor / Church Admin (Mục sư / Ban Trị sự):** Toàn quyền cấu hình hệ thống, quản lý tín hữu, các mục vụ, báo cáo tài chính dâng hiến và xuất chứng từ thuế 501(c)(3).
-- **Ministry Leader / Sunday School Teacher (Trưởng ban / Giáo viên):** Quản lý lớp học, nhóm nhỏ tế bào, điểm danh, nhận xét bài học, duyệt lời cầu thay. Tuyệt đối **không xem** dữ liệu dâng hiến cá nhân của tín hữu.
-- **Member / Disciple (Tín hữu / Môn đồ):** Xem bài học, đọc Kinh Thánh hằng ngày, ôn câu gốc ghi nhớ Lời Chúa, gửi lời cầu thay, dâng hiến và tải biên nhận thuế.
-- **Parent (Phụ huynh):** Điểm danh an toàn cho con tại lớp Thiếu nhi, nhận bài học gia đình hàng tuần.
+- **Admin (Ban Quản Trị / Mục Sư):** Toàn quyền cấu hình hệ thống, quản lý tài liệu thư viện, kiểm duyệt lời cầu thay/liên hệ, báo cáo tài chính dâng hiến và quản trị người dùng.
+- **User (Môn Đồ / Tín Hữu):** Xem sách & tài liệu bồi linh, xem video bài giảng, gửi yêu cầu cầu thay, dâng hiến trực tuyến và theo dõi lịch sử đóng góp.
 
 ---
 
@@ -44,7 +42,7 @@ Lộ trình Sprint kỹ thuật chi tiết: [MASTER_DEVELOPMENT_PLAN.md](file://
 Giao diện được thiết kế theo phong cách tôn giáo trang nghiêm, thánh khiết, thanh tao và tôn vinh Chúa Cứu Thế Jesus Christ (**Soli Deo Gloria**):
 - Đọc chi tiết tại [UI_UX_SPECIFICATION.md](file:///C:/dev/products/teacher/UI_UX_SPECIFICATION.md) và kích hoạt skill `teacher-ux-ui`.
 - **Tuyệt đối không dùng** hoạt họa nhí nhảnh, sticker cợt nhả hay nút bấm game thô kệch.
-- **Tông màu Thánh Kinh:** **Sacred Parchment (`#FBF9F5`)** nền giấy ngà, **Royal Majesty Indigo (`#312E81`)** hoàng gia thánh khiết, **Covenant Gold (`#B45309`, `#D97706`)** ánh vinh hiển và mão triều thiên, **Living Vine Olive (`#15803D`)** sự sống tâm linh, và **Sacrificial Crimson (`#991B1B`)** tình yêu hy sinh trên thập tự giá.
+- **Tông màu Thánh Kinh & Thương Hiệu:** **SAM Brand Primary (`#F17F34`)** màu cam thương hiệu chủ đạo của Spiritual Advance Ministry (`saministry.org`), **Sacred Parchment (`#FBF9F5`)** nền giấy ngà, **Royal Majesty Indigo (`#312E81`)** hoàng gia thánh khiết, **Covenant Gold (`#B45309`, `#D97706`)** ánh vinh hiển và mão triều thiên, **Living Vine Olive (`#15803D`)** sự sống tâm linh, và **Sacrificial Crimson (`#991B1B`)** tình yêu hy sinh trên thập tự giá.
 - **Font chữ:** Font Serif cổ điển uy nghi (`Playfair Display` / `Cinzel`) cho tiêu đề và Lời Chúa; font Sans-serif trang nhã (`Be Vietnam Pro` / `Inter`) cho giao diện.
 - **Công thái học tôn giáo:** Chuẩn WCAG 2.1 AA, nút chạm lớn $\ge 48\text{px}$, hỗ trợ phóng to cỡ chữ cho Mục sư, Chấp sự và Tín hữu cao niên, chế độ Tĩnh nguyện toàn màn hình (Sanctuary Reading Mode).
 

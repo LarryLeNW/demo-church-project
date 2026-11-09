@@ -23,10 +23,11 @@ Hệ màu được xây dựng dựa trên các biểu tượng thuộc linh tro
 
 | Vai trò | Tên màu | Mã Hex | Tailwind Class | Ý nghĩa Kinh Thánh & Ứng dụng thực tế |
 | :--- | :--- | :--- | :--- | :--- |
+| **Theme Chính (Primary)** | SAM Brand Primary | `#F17F34` / `#DE6D22` | `bg-[#F17F34]`, `text-[#F17F34]`, `bg-primary` | Màu cam/amber chủ đạo thương hiệu Spiritual Advance Ministry (`saministry.org`). Dùng cho nút hành động chính, active navigation, focus ring và điểm nhấn trung tâm. |
 | **Nền Tảng (60%)** | Sacred Parchment | `#FBF9F5` & `#FFFFFF` | `bg-[#FBF9F5]`, `bg-white` | Màu giấy da cuộn chép Kinh Thánh. Tạo cảm giác bình an, dịu mắt khi suy ngẫm Lời Chúa sáng sớm. |
 | **Văn Bản & Viền** | Sanctuary Midnight | `#0F172A` | `text-slate-900`, `border-slate-800` | Chiều sâu thánh khiết, màu mực đen ánh xanh của các bản thảo Kinh Thánh cổ. Tương phản sắc nét tuyệt đối. |
-| **Màu Chủ Đạo (30%)** | Royal Majesty Indigo | `#312E81` / `#3730A3` | `bg-indigo-900`, `text-indigo-900` | Sắc áo hoàng gia của Vua muôn vua (Jesus King of kings), thẩm quyền Lời Chúa. Dùng cho Header, Tabs chính. |
-| **Điểm Nhấn 1 (10%)** | Covenant Gold | `#B45309` / `#D97706` | `bg-amber-600`, `text-amber-600` | Ánh sáng vinh hiển, ngọn lửa Đức Thánh Linh, mão triều thiên sự sống. Dùng cho Thập tự giá, nút Dâng hiến, chuỗi Tĩnh nguyện. |
+| **Tông Phụ (Secondary)** | Royal Majesty Indigo | `#312E81` / `#3730A3` | `bg-indigo-900`, `text-indigo-900` | Sắc áo hoàng gia của Vua muôn vua (Jesus King of kings), thẩm quyền Lời Chúa. Dùng cho Header phụ, thẻ quản trị. |
+| **Điểm Nhấn 1** | Covenant Gold | `#B45309` / `#D97706` | `bg-amber-600`, `text-amber-600` | Ánh sáng vinh hiển, ngọn lửa Đức Thánh Linh, mão triều thiên sự sống. Dùng cho chuỗi Tĩnh nguyện, biểu tượng vinh quang. |
 | **Điểm Nhấn 2** | Living Vine Olive | `#15803D` / `#047857` | `bg-emerald-700`, `text-emerald-700` | Nhành nho sự sống (*Giăng 15:5*), sự tăng trưởng đức tin. Dùng cho trạng thái "Đã nhậm lời cầu nguyện", hoàn thành khóa học. |
 | **Điểm Nhấn 3** | Sacrificial Crimson | `#991B1B` | `bg-rose-800`, `text-rose-800` | Dấu huyết chuộc tội của Chúa Jesus trên Thập tự giá. Dùng trang nghiêm cho Lễ Tiệc Thánh và lời cầu thay khẩn thiết. |
 

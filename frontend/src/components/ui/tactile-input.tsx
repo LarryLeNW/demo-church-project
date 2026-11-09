@@ -34,7 +34,7 @@ export const TactileInput: React.FC<TactileInputProps> = ({
           "w-full px-4 py-3 min-h-[48px] text-base sm:text-sm bg-white text-slate-900 rounded-xl",
           "border border-amber-200/90 shadow-xs",
           "placeholder:text-slate-400",
-          "focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20",
+          "focus:outline-none focus:border-[#F17F34] focus:ring-2 focus:ring-[#F17F34]/20",
           "transition-all duration-200",
           error && "border-rose-400 focus:border-rose-500 focus:ring-rose-400/20",
           className,

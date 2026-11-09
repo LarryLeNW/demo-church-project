@@ -107,12 +107,11 @@ export class DonationsController {
     @Param('id') id: string,
     @CurrentUser() user: User,
   ) {
-    const isAdmin =
-      user.role === Role.SeniorPastor || user.role === Role.Admin;
+    const isAdmin = user.role === Role.Admin;
     return this.donationsService.getTaxReceipt(id, user.id, isAdmin);
   }
 
-  @Roles(Role.SeniorPastor, Role.Admin)
+  @Roles(Role.Admin)
   @Get('admin/summary')
   @ApiOperation({ summary: 'Báo cáo tổng hợp tài chính dâng hiến (Chỉ Mục sư & Ban Trị Sự)' })
   @ApiResponse({ status: 200, description: 'Thống kê tổng dâng hiến theo từng quỹ' })
@@ -120,7 +119,7 @@ export class DonationsController {
     return this.donationsService.getAdminSummary(year);
   }
 
-  @Roles(Role.SeniorPastor, Role.Admin)
+  @Roles(Role.Admin)
   @Get('admin/annual-statement')
   @ApiOperation({ summary: 'Tra cứu báo cáo thuế 501(c)(3) của bất kỳ tín hữu nào (Dành cho Quản Trị)' })
   @ApiResponse({ status: 200, description: 'Chứng từ thuế năm của tín hữu được chọn' })
@@ -132,7 +131,7 @@ export class DonationsController {
     return this.donationsService.getAnnualTaxStatement(null, email, targetYear);
   }
 
-  @Roles(Role.SeniorPastor, Role.Admin)
+  @Roles(Role.Admin)
   @Get('admin/annual-statement/print')
   @ApiOperation({ summary: 'In chứng từ thuế 501(c)(3) cho tín hữu bất kỳ (Dành cho Quản Trị)' })
   @ApiResponse({ status: 200, description: 'Giao diện HTML in ấn chứng từ thuế' })
@@ -148,7 +147,7 @@ export class DonationsController {
     res.send(html);
   }
 
-  @Roles(Role.SeniorPastor, Role.Admin)
+  @Roles(Role.Admin)
   @Post('admin/record-manual')
   @ApiOperation({ summary: 'Ghi nhận dâng hiến tiền mặt hoặc séc (Check) tại buổi nhóm Chúa Nhật' })
   @ApiResponse({ status: 201, description: 'Đã ghi sổ quỹ và cấp mã biên nhận thuế' })

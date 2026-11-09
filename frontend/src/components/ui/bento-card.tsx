@@ -23,7 +23,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       className={cn(
         "relative p-6 bg-white rounded-2xl border border-amber-200/80 shadow-md shadow-amber-950/5 transition-all duration-200",
         isInteractive &&
-          "hover:border-amber-400 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-950/10 cursor-pointer",
+          "hover:border-[#F17F34] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#F17F34]/10 cursor-pointer",
         className,
       )}
       {...props}

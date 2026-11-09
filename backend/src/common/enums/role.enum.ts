@@ -1,7 +1,9 @@
 export enum Role {
   Admin = 'admin',
-  SeniorPastor = 'senior_pastor',
-  MinistryLeader = 'ministry_leader',
-  Member = 'member',
-  Parent = 'parent',
+  User = 'user',
+  // Tương thích ngược:
+  SeniorPastor = 'admin',
+  MinistryLeader = 'admin',
+  Member = 'user',
+  Parent = 'user',
 }

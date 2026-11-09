@@ -536,6 +536,9 @@ export default function EventsPage() {
                     src={ev.bannerUrl}
                     alt={ev.title}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                   <div className="absolute top-3 left-3 flex items-center gap-2">
                     <span

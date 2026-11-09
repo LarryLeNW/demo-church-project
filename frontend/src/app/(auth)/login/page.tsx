@@ -159,7 +159,7 @@ export default function LoginPage() {
                 />
                 <span>{bilingual("Ghi nhớ đăng nhập", "Remember me")}</span>
               </label>
-              <a href="#" className="font-medium text-indigo-900 hover:underline">
+              <a href="#" className="font-medium text-[#F17F34] hover:underline">
                 {bilingual("Quên mật khẩu?", "Forgot password?")}
               </a>
             </div>
@@ -185,49 +185,34 @@ export default function LoginPage() {
             <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 text-center">
               {bilingual("1-Click Đăng Nhập Tài Khoản Demo", "1-Click Demo Accounts")}
             </div>
-            <div className="grid grid-cols-1 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <button
                 type="button"
                 disabled={loading}
                 onClick={() => handleQuickLogin("admin@teacher.local", "AdminTeacher@2026")}
-                className="w-full py-2 px-3 text-xs font-semibold rounded-xl bg-amber-50/80 text-amber-900 border border-amber-200 hover:bg-amber-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full py-2.5 px-3 text-xs font-semibold rounded-xl bg-[#FEF5EE] text-[#DE6D22] border border-[#F17F34]/30 hover:bg-[#FDE8D7] transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
               >
                 <span className="flex items-center gap-1.5 min-w-0 truncate">
-                  <Church className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-                  <span className="truncate">Senior Pastor (Admin Quản Nhiệm)</span>
+                  <ShieldCheck className="w-4 h-4 text-[#F17F34] shrink-0" />
+                  <span className="truncate">Admin (Quản Trị)</span>
                 </span>
-                <span className="text-[10px] bg-amber-200/80 px-2 py-0.5 rounded text-amber-900 font-mono shrink-0">
-                  {bilingual("Vào Thẳng", "1-Click")}
+                <span className="text-[10px] bg-[#F17F34] text-white px-2 py-0.5 rounded font-mono shrink-0">
+                  {bilingual("1-Click", "1-Click")}
                 </span>
               </button>
 
               <button
                 type="button"
                 disabled={loading}
-                onClick={() => handleQuickLogin("leader@teacher.local", "LeaderTeacher@2026")}
-                className="w-full py-2 px-3 text-xs font-semibold rounded-xl bg-indigo-50/80 text-indigo-900 border border-indigo-200 hover:bg-indigo-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
+                onClick={() => handleQuickLogin("user@teacher.local", "AdminTeacher@2026")}
+                className="w-full py-2.5 px-3 text-xs font-semibold rounded-xl bg-slate-50 text-slate-800 border border-slate-200 hover:bg-slate-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
               >
                 <span className="flex items-center gap-1.5 min-w-0 truncate">
-                  <Users className="w-3.5 h-3.5 text-indigo-700 shrink-0" />
-                  <span className="truncate">Ministry Leader (Trưởng Ban / Giáo Viên)</span>
+                  <Users className="w-4 h-4 text-slate-600 shrink-0" />
+                  <span className="truncate">User (Thành Viên)</span>
                 </span>
-                <span className="text-[10px] bg-indigo-200/80 px-2 py-0.5 rounded text-indigo-900 font-mono shrink-0">
-                  {bilingual("Vào Thẳng", "1-Click")}
-                </span>
-              </button>
-
-              <button
-                type="button"
-                disabled={loading}
-                onClick={() => handleQuickLogin("member@teacher.local", "MemberTeacher@2026")}
-                className="w-full py-2 px-3 text-xs font-semibold rounded-xl bg-emerald-50/80 text-emerald-900 border border-emerald-200 hover:bg-emerald-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
-              >
-                <span className="flex items-center gap-1.5 min-w-0 truncate">
-                  <BookOpen className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-                  <span className="truncate">Church Member (Tín Hữu / Môn Đồ)</span>
-                </span>
-                <span className="text-[10px] bg-emerald-200/80 px-2 py-0.5 rounded text-emerald-900 font-mono shrink-0">
-                  {bilingual("Vào Thẳng", "1-Click")}
+                <span className="text-[10px] bg-slate-200 text-slate-800 px-2 py-0.5 rounded font-mono shrink-0">
+                  {bilingual("1-Click", "1-Click")}
                 </span>
               </button>
             </div>
@@ -239,7 +224,7 @@ export default function LoginPage() {
             </span>
             <Link
               href="/register"
-              className="font-bold text-indigo-950 hover:underline inline-flex items-center gap-1"
+              className="font-bold text-[#F17F34] hover:underline inline-flex items-center gap-1"
             >
               <span>{bilingual("Đăng ký tham gia", "Register now")}</span>
               <ArrowRight className="w-3 h-3" />

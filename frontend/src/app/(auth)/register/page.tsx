@@ -184,7 +184,7 @@ export default function RegisterPage() {
             <span>{bilingual("Đã có tài khoản? ", "Already have an account? ")}</span>
             <Link
               href="/login"
-              className="font-bold text-indigo-950 hover:underline inline-flex items-center gap-1"
+              className="font-bold text-[#F17F34] hover:underline inline-flex items-center gap-1"
             >
               <ArrowLeft className="w-3 h-3" />
               <span>{bilingual("Quay lại đăng nhập", "Back to sign in")}</span>
