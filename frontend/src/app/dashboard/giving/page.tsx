@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect } from "@/components/ui/tactile-select";
 import { AnnualTaxStatementModal } from "@/components/annual-tax-statement-modal";
 import {
   DollarSign,
@@ -311,7 +312,7 @@ export default function GivingPage() {
             )}
           </p>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-900/80 border border-amber-300/30 text-[11px] text-amber-200 backdrop-blur-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-900/80 border border-amber-300/30 text-xs text-amber-200 backdrop-blur-xs">
             <ShieldCheck className="w-4 h-4 text-amber-300" />
             <span>{bilingual("Quy chuẩn khấu trừ thuế IRS 501(c)(3) • Mã EIN: 75-3928174", "IRS 501(c)(3) Tax Deductible Compliance • EIN: 75-3928174")}</span>
           </div>
@@ -350,7 +351,7 @@ export default function GivingPage() {
               <div className="text-2xl sm:text-3xl font-scripture font-bold text-slate-900 mt-2">
                 {formatCurrency(adminSummary.totalAmount)}
               </div>
-              <p className="text-[11px] text-emerald-700 font-medium mt-1">
+              <p className="text-xs text-emerald-800 font-medium mt-1">
                 {bilingual(`${adminSummary.totalDonationsCount} lượt dâng hiến`, `${adminSummary.totalDonationsCount} donations`)}
               </p>
             </BentoCard>
@@ -362,7 +363,7 @@ export default function GivingPage() {
               <div className="text-2xl sm:text-3xl font-scripture font-bold text-indigo-950 mt-2">
                 {formatCurrency(adminSummary.fundBreakdown?.tithes || 0)}
               </div>
-              <p className="text-[11px] text-slate-500 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 {bilingual("Nền tảng mục vụ chung", "General church ministry")}
               </p>
             </BentoCard>
@@ -374,7 +375,7 @@ export default function GivingPage() {
               <div className="text-2xl sm:text-3xl font-scripture font-bold text-amber-900 mt-2">
                 {formatCurrency(adminSummary.fundBreakdown?.missions || 0)}
               </div>
-              <p className="text-[11px] text-slate-500 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 {bilingual("Hỗ trợ các giáo sĩ", "Supporting gospel workers")}
               </p>
             </BentoCard>
@@ -386,7 +387,7 @@ export default function GivingPage() {
               <div className="text-2xl sm:text-3xl font-scripture font-bold text-emerald-900 mt-2">
                 {formatCurrency(adminSummary.fundBreakdown?.building || 0)}
               </div>
-              <p className="text-[11px] text-slate-500 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 {bilingual("Bảo dưỡng phòng học", "Facilities maintenance")}
               </p>
             </BentoCard>
@@ -557,11 +558,11 @@ export default function GivingPage() {
                         <div className="font-bold text-xs text-slate-900">
                           {isEn ? f.titleEn : f.titleVi}
                         </div>
-                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        <p className="text-xs text-slate-600 mt-0.5 leading-snug">
                           {isEn ? f.descEn : f.descVi}
                         </p>
                       </div>
-                      <span className="text-[10px] text-amber-800 font-serif font-semibold mt-2">
+                      <span className="text-xs text-amber-900 font-serif font-semibold mt-2">
                         📖 {f.scripture}
                       </span>
                     </button>
@@ -689,7 +690,7 @@ export default function GivingPage() {
                   </span>
                 </TactileButton>
 
-                <p className="text-[11px] text-center text-slate-400 mt-2 flex items-center justify-center gap-1">
+                <p className="text-xs text-center text-slate-500 mt-2 flex items-center justify-center gap-1">
                   <Lock className="w-3 h-3 text-emerald-600" />
                   <span>
                     {bilingual(
@@ -766,11 +767,11 @@ export default function GivingPage() {
                         <span className="text-xs font-bold text-slate-900">
                           {formatCurrency(item.amount)}
                         </span>
-                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-950 border border-indigo-200">
+                        <span className="text-xs font-bold uppercase px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-950 border border-indigo-200">
                           {item.fundType}
                         </span>
                       </div>
-                      <div className="text-[11px] text-slate-500">
+                      <div className="text-xs text-slate-500">
                         {new Date(item.createdAt).toLocaleDateString(isEn ? "en-US" : "vi-VN")} •{" "}
                         <span className="font-serif">{item.receiptNumber}</span>
                       </div>
@@ -854,12 +855,12 @@ export default function GivingPage() {
               </div>
 
               {/* Legal IRS Statement */}
-              <div className="p-4 bg-white rounded-xl border border-amber-200/80 space-y-1.5 font-serif text-[11px] text-slate-600 leading-relaxed italic">
+              <div className="p-4 bg-white rounded-xl border border-amber-200/80 space-y-1.5 font-serif text-xs text-slate-700 leading-relaxed italic">
                 <p className="font-bold text-slate-800 not-italic">
                   {bilingual("Tuyên Bố Pháp Lý Khấu Trừ Thuế:", "IRS Charitable Tax Disclosure:")}
                 </p>
                 <p>"{activeReceipt.statementClause}"</p>
-                <p className="text-[10px] text-slate-500 not-italic pt-1">
+                <p className="text-xs text-slate-600 not-italic pt-1">
                   {bilingual(
                     "Biên nhận này hợp lệ để nộp kèm hồ sơ khai thuế liên bang Hoa Kỳ (Form 1040, Schedule A).",
                     "This official receipt satisfies IRS requirements for substantiating charitable deductions (Form 1040, Schedule A)."
@@ -869,7 +870,7 @@ export default function GivingPage() {
             </div>
 
             <div className="flex items-center justify-between pt-2">
-              <div className="text-[11px] text-slate-500 font-serif">
+              <div className="text-xs text-slate-500 font-serif">
                 {bilingual("Ban Thư Ký & Thủ Quỹ Hội Thánh", "Church Secretary & Treasurer")}
               </div>
               <div className="flex gap-2">
@@ -936,37 +937,31 @@ export default function GivingPage() {
                   />
                 </div>
 
-                <div>
-                  <label className="block font-semibold text-slate-800 mb-1">
-                    {bilingual("Hình Thức Dâng", "Payment Type")}
-                  </label>
-                  <select
-                    value={manualMethod}
-                    onChange={(e) => setManualMethod(e.target.value as "cash" | "check")}
-                    className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  >
-                    <option value="cash">{bilingual("Tiền Mặt (Cash)", "Cash")}</option>
-                    <option value="check">{bilingual("Séc Ngân Hàng (Check)", "Bank Check")}</option>
-                  </select>
-                </div>
+                <TactileSelect
+                  label={bilingual("Hình Thức Dâng", "Payment Type")}
+                  value={manualMethod}
+                  onChange={(e) => setManualMethod(e.target.value as "cash" | "check")}
+                  selectSize="sm"
+                  variant="default"
+                >
+                  <option value="cash">{bilingual("Tiền Mặt (Cash)", "Cash")}</option>
+                  <option value="check">{bilingual("Séc Ngân Hàng (Check)", "Bank Check")}</option>
+                </TactileSelect>
               </div>
 
-              <div>
-                <label className="block font-semibold text-slate-800 mb-1">
-                  {bilingual("Quỹ Dâng", "Giving Fund")}
-                </label>
-                <select
-                  value={manualFund}
-                  onChange={(e) => setManualFund(e.target.value)}
-                  className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                >
-                  <option value="tithes">{bilingual("Quỹ Thập Phân (Tithes)", "Tithes")}</option>
-                  <option value="missions">{bilingual("Quỹ Truyền Giáo (Missions)", "Missions")}</option>
-                  <option value="building">{bilingual("Quỹ Xây Dựng Đền Thánh (Building)", "Building Fund")}</option>
-                  <option value="benevolence">{bilingual("Quỹ Bác Ái & Thăm Viếng", "Benevolence")}</option>
-                  <option value="general">{bilingual("Quỹ Chung", "General Fund")}</option>
-                </select>
-              </div>
+              <TactileSelect
+                label={bilingual("Quỹ Dâng", "Giving Fund")}
+                value={manualFund}
+                onChange={(e) => setManualFund(e.target.value)}
+                selectSize="sm"
+                variant="default"
+              >
+                <option value="tithes">{bilingual("Quỹ Thập Phân (Tithes)", "Tithes")}</option>
+                <option value="missions">{bilingual("Quỹ Truyền Giáo (Missions)", "Missions")}</option>
+                <option value="building">{bilingual("Quỹ Xây Dựng Đền Thánh (Building)", "Building Fund")}</option>
+                <option value="benevolence">{bilingual("Quỹ Bác Ái & Thăm Viếng", "Benevolence")}</option>
+                <option value="general">{bilingual("Quỹ Chung", "General Fund")}</option>
+              </TactileSelect>
 
               <div>
                 <label className="block font-semibold text-slate-800 mb-1">

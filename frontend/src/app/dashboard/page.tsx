@@ -146,7 +146,7 @@ export default function DashboardPage() {
               <div className="text-3xl font-serif font-bold text-indigo-950 mt-2">
                 82<span className="text-lg text-slate-400 font-sans">/100</span>
               </div>
-              <p className="text-[11px] text-emerald-700 font-medium mt-1">
+              <p className="text-xs text-emerald-800 font-medium mt-1">
                 {bilingual("✓ Hội Thánh Phát Triển Ổn Định", "✓ Growing & Spiritually Healthy")}
               </p>
             </BentoCard>
@@ -161,7 +161,7 @@ export default function DashboardPage() {
               }
             >
               <div className="text-3xl font-serif font-bold text-rose-700 mt-2">3</div>
-              <p className="text-[11px] text-rose-600 font-medium mt-1">
+              <p className="text-xs text-rose-700 font-medium mt-1">
                 {bilingual("Vắng mặt ≥ 2 tuần liên tiếp", "Absent for ≥ 2 consecutive weeks")}
               </p>
             </BentoCard>
@@ -171,7 +171,7 @@ export default function DashboardPage() {
               subtitle={bilingual("Chuẩn khấu trừ thuế 501(c)(3)", "IRS 501(c)(3) Tax Deductible")}
             >
               <div className="text-3xl font-serif font-bold text-amber-900 mt-2">$20,850</div>
-              <p className="text-[11px] text-slate-600 font-medium mt-1">
+              <p className="text-xs text-slate-700 font-medium mt-1">
                 {bilingual("Quỹ Tổng hội & Truyền giáo", "Tithes & Missions Funds")}
               </p>
             </BentoCard>
@@ -183,7 +183,7 @@ export default function DashboardPage() {
               <div className="text-3xl font-serif font-bold text-slate-900 mt-2">
                 {bilingual("2 Đơn", "2 Requests")}
               </div>
-              <p className="text-[11px] text-amber-800 font-medium mt-1">
+              <p className="text-xs text-amber-900 font-medium mt-1">
                 {bilingual("Cần Ban Trị Sự xác nhận", "Action required by church leadership")}
               </p>
             </BentoCard>
@@ -208,15 +208,15 @@ export default function DashboardPage() {
               <div className="p-4 rounded-xl bg-red-50/60 border border-red-200 flex flex-col justify-between space-y-3">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-100 text-red-800 border border-red-300 animate-pulse">
+                    <span className="text-xs font-bold px-2 py-0.5 rounded bg-red-100 text-red-800 border border-red-300">
                       {bilingual("🚨 CẤP CỨU BỆNH VIỆN (GIA-CƠ 5:14)", "🚨 URGENT HOSPITAL VISIT (JAMES 5:14)")}
                     </span>
-                    <span className="text-xs text-slate-500">{bilingual("Phòng 304", "Room 304")}</span>
+                    <span className="text-xs text-slate-600">{bilingual("Phòng 304", "Room 304")}</span>
                   </div>
                   <h4 className="font-serif font-bold text-slate-900 text-sm mt-2">
                     {bilingual("Bác Trương Minh Hải (Baylor Scott & White Health)", "Brother Hai Truong (Baylor Scott & White Health)")}
                   </h4>
-                  <p className="text-xs text-slate-600 mt-1 italic">
+                  <p className="text-xs text-slate-700 mt-1 italic">
                     {bilingual(
                       '"Gia đình xin Mục sư đến cầu nguyện đặt tay xức dầu ban bình an."',
                       '"Family requests pastoral prayer and anointing with oil for peace."',
@@ -224,7 +224,7 @@ export default function DashboardPage() {
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-red-100">
-                  <span className="text-xs text-slate-500 font-mono">(469) 555-0199</span>
+                  <span className="text-xs text-slate-600 font-mono">(469) 555-0199</span>
                   {pastorAssigned ? (
                     <span className="text-xs font-bold text-emerald-800 flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5" /> {bilingual("Đã phân công thăm", "Assigned Pastoral Team")}
@@ -246,20 +246,20 @@ export default function DashboardPage() {
               <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200 flex flex-col justify-between space-y-3">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">
+                    <span className="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">
                       {bilingual("ĐƠN ĐẶT PHÒNG NHÓM", "ROOM RESERVATION REQUEST")}
                     </span>
-                    <span className="text-xs text-slate-500">{bilingual("Nhà Thông Công", "Fellowship Hall")}</span>
+                    <span className="text-xs text-slate-600">{bilingual("Nhà Thông Công", "Fellowship Hall")}</span>
                   </div>
                   <h4 className="font-serif font-bold text-slate-900 text-sm mt-2">
                     {bilingual("Tiệc Thông Công & Mừng Tân Tín Hữu (Ban Ẩm Thực)", "New Believer Banquet (Hospitality Ministry)")}
                   </h4>
-                  <p className="text-xs text-slate-600 mt-1">
+                  <p className="text-xs text-slate-700 mt-1">
                     {bilingual("Chúa Nhật 08/11 • 12:30 PM — 15:00 PM (12 bàn tròn, mở bếp)", "Sunday Nov 8 • 12:30 PM — 3:00 PM (12 round tables, kitchen open)")}
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-amber-100">
-                  <span className="text-xs text-slate-500">{bilingual("Người đặt: Chấp Sự Minh", "Requested by: Deacon Minh")}</span>
+                  <span className="text-xs text-slate-600">{bilingual("Người đặt: Chấp Sự Minh", "Requested by: Deacon Minh")}</span>
                   {roomApproved ? (
                     <span className="text-xs font-bold text-emerald-800 flex items-center gap-1">
                       <CheckCircle2 className="w-3.5 h-3.5" /> {bilingual("Đã Duyệt & Khóa Lịch", "Approved & Scheduled")}
@@ -422,13 +422,13 @@ export default function DashboardPage() {
               </div>
 
               <div className="p-4 rounded-xl bg-white border border-rose-200 shadow-2xs text-center space-y-1">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-slate-500 block">
+                <span className="text-xs font-mono uppercase tracking-widest text-slate-600 block">
                   {bilingual("MÃ BẢO MẬT ĐÓN TRẺ (PARENT PICKUP PIN)", "SECURE PICKUP PIN CODE")}
                 </span>
                 <div className="text-4xl font-mono font-bold text-indigo-950 tracking-widest">
                   #4821
                 </div>
-                <span className="text-[11px] text-rose-700 italic block mt-1">
+                <span className="text-xs text-rose-800 italic block mt-1">
                   {bilingual("Xuất trình mã này cho giáo viên khi đón bé sau giờ thờ phượng", "Present this security code to teachers when picking up your child")}
                 </span>
               </div>
@@ -562,7 +562,7 @@ export default function DashboardPage() {
               >
                 <span>🙏</span>
                 <span>{hasPrayed ? bilingual("Đã Hiệp Nguyện", "Prayed Together") : bilingual("Tôi Hiệp Nguyện", "I Will Pray")}</span>
-                <span className="text-[10px] bg-amber-200/70 px-1.5 py-0.5 rounded-full font-bold">
+                <span className="text-xs bg-amber-200/80 text-amber-950 px-2 py-0.5 rounded-full font-bold">
                   {prayedCount}
                 </span>
               </button>

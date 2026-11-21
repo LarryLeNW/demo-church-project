@@ -439,7 +439,7 @@ export default function BibleReadingPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {activeDayReading.passageOldTestament && (
                         <div className="p-4 rounded-2xl bg-[#FCFBF8] border border-amber-200/80 space-y-1">
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-amber-800">
+                          <span className="text-xs font-bold uppercase tracking-widest text-amber-900">
                             {bilingual("Cựu Ước", "Old Testament")}
                           </span>
                           <h4 className="font-scripture text-base font-bold text-slate-900">
@@ -450,7 +450,7 @@ export default function BibleReadingPage() {
 
                       {activeDayReading.passageNewTestament && (
                         <div className="p-4 rounded-2xl bg-[#FCFBF8] border border-amber-200/80 space-y-1">
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-900">
+                          <span className="text-xs font-bold uppercase tracking-widest text-indigo-900">
                             {bilingual("Tân Ước", "New Testament")}
                           </span>
                           <h4 className="font-scripture text-base font-bold text-slate-900">
@@ -461,7 +461,7 @@ export default function BibleReadingPage() {
 
                       {activeDayReading.passagePsalmProverbs && (
                         <div className="p-4 rounded-2xl bg-[#FCFBF8] border border-amber-200/80 space-y-1">
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-800">
+                          <span className="text-xs font-bold uppercase tracking-widest text-emerald-900">
                             {bilingual("Thi Thiên / Châm Ngôn", "Psalms & Proverbs")}
                           </span>
                           <h4 className="font-scripture text-base font-bold text-slate-900">
@@ -474,7 +474,7 @@ export default function BibleReadingPage() {
                     {/* Key Verse Highlight */}
                     {activeDayReading.keyVerseText && (
                       <div className="p-5 rounded-2xl bg-[#FCFBF8] border-2 border-amber-200 space-y-2 relative overflow-hidden">
-                        <div className="text-[10px] font-bold uppercase tracking-wider text-amber-900 font-serif flex items-center gap-1.5">
+                        <div className="text-xs font-bold uppercase tracking-wider text-amber-950 font-serif flex items-center gap-1.5">
                           <BookOpen className="w-3.5 h-3.5 text-amber-800" />
                           <span>{bilingual("Câu Gốc Trọng Tâm Hôm Nay", "Today's Key Scripture Verse")}</span>
                         </div>
@@ -538,7 +538,7 @@ export default function BibleReadingPage() {
                   <h3 className="font-scripture text-base font-bold text-slate-900">
                     {bilingual("Nhật Ký Tĩnh Nguyện (SOAP Method)", "Devotional Journal (SOAP Method)")}
                   </h3>
-                  <p className="text-[11px] text-slate-500 font-serif">
+                  <p className="text-xs text-slate-600 font-serif">
                     {bilingual("Ghi lại điều Chúa dạy bạn trong thì giờ tĩnh nguyện", "Record what God is speaking to your heart")}
                   </p>
                 </div>
@@ -679,7 +679,7 @@ export default function BibleReadingPage() {
                     )}
 
                     <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-950/90 text-amber-300 border border-amber-400/30 backdrop-blur-xs">
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-950/90 text-amber-300 border border-amber-400/30 backdrop-blur-xs">
                         {catLabel}
                       </span>
                     </div>
@@ -779,7 +779,7 @@ export default function BibleReadingPage() {
                       <span className="text-xs font-bold text-amber-900 font-serif bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
                         📖 {j.passage}
                       </span>
-                      <span className="text-[11px] text-slate-400 font-serif">
+                      <span className="text-xs text-slate-500 font-serif">
                         {new Date(j.createdAt).toLocaleDateString(isEn ? "en-US" : "vi-VN")}
                       </span>
                     </div>

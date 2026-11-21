@@ -6,6 +6,7 @@ import { useLanguage } from "@/lib/i18n/language-context";
 import { apiFetch, ApiError } from "@/lib/api/client";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect } from "@/components/ui/tactile-select";
 import {
   Building,
   Church,
@@ -624,19 +625,21 @@ export default function FacilitiesPage() {
         </div>
 
         {/* Global Campus Selector */}
-        <div className="hidden sm:flex items-center gap-2 pb-2">
-          <MapPin className="w-4 h-4 text-amber-800" />
-          <select
+        <div className="hidden sm:flex items-center gap-2 pb-2 min-w-[170px]">
+          <TactileSelect
             value={selectedCampus}
             onChange={(e) => setSelectedCampus(e.target.value)}
-            className="text-xs bg-amber-50 border border-amber-300/80 rounded-lg px-2.5 py-1 text-slate-800 focus:outline-none"
+            selectSize="sm"
+            variant="subtle"
+            leftIcon={<MapPin className="w-3.5 h-3.5 text-amber-800" />}
+            aria-label={isEn ? "Select Campus" : "Chọn Điểm Nhóm"}
           >
             {CAMPUSES.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.name}
               </option>
             ))}
-          </select>
+          </TactileSelect>
         </div>
       </div>
 
@@ -646,16 +649,19 @@ export default function FacilitiesPage() {
           {/* Filter Bar */}
           <div className="bg-amber-50/60 p-4 rounded-xl border border-amber-200/70 flex flex-wrap items-center gap-3 justify-between">
             <div className="flex flex-wrap items-center gap-3">
-              <select
+              <TactileSelect
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="text-xs bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-slate-700 cursor-pointer"
+                selectSize="sm"
+                variant="default"
+                containerClassName="w-auto min-w-[160px]"
+                aria-label={bilingual("Lọc trạng thái", "Filter status")}
               >
                 <option value="all">{bilingual("Tất cả trạng thái", "All Statuses")}</option>
                 <option value="pending">{bilingual("Chờ phê duyệt", "Pending Approval")}</option>
                 <option value="approved">{bilingual("Đã phê duyệt", "Approved")}</option>
                 <option value="rejected">{bilingual("Bị từ chối", "Rejected")}</option>
-              </select>
+              </TactileSelect>
 
               <input
                 type="date"
@@ -706,7 +712,7 @@ export default function FacilitiesPage() {
                   <div>
                     <div className="flex items-start justify-between gap-2 mb-2">
                       <div>
-                        <span className="text-[11px] font-semibold text-amber-800 uppercase tracking-wider block">
+                        <span className="text-xs font-semibold text-amber-800 uppercase tracking-wider block">
                           {res.ministryName}
                         </span>
                         <h3 className="font-serif font-bold text-base text-slate-900 mt-0.5">
@@ -723,7 +729,7 @@ export default function FacilitiesPage() {
                         <span className="font-semibold text-slate-800">
                           {res.room?.name || bilingual("Phòng Nhóm Hội Thánh", "Church Sanctuary / Room")}
                         </span>
-                        <span className="text-[11px] text-slate-400">({res.campusId})</span>
+                        <span className="text-xs text-slate-400">({res.campusId})</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
@@ -832,7 +838,7 @@ export default function FacilitiesPage() {
 
                   {/* Amenities */}
                   <div className="mb-3">
-                    <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">
+                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">
                       {bilingual("Tiện nghi & Trang thiết bị:", "Amenities & Equipment:")}
                     </span>
                     <div className="flex flex-wrap gap-1.5">
@@ -840,7 +846,7 @@ export default function FacilitiesPage() {
                         room.amenities.map((item, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-0.5 rounded bg-slate-100 text-[11px] text-slate-700 border border-slate-200"
+                            className="px-2 py-0.5 rounded bg-slate-100 text-xs text-slate-700 border border-slate-200"
                           >
                             ✓ {item}
                           </span>
@@ -917,7 +923,7 @@ export default function FacilitiesPage() {
                   className="bg-white rounded-xl border border-amber-200/80 p-4 shadow-xs space-y-2.5"
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-50 text-amber-900 border border-amber-200">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
                       <Icon className="w-3.5 h-3.5" />
                       {isEn ? meta.labelEn : meta.labelVi}
                     </span>
@@ -935,7 +941,7 @@ export default function FacilitiesPage() {
                       <MapPin className="w-3.5 h-3.5 text-amber-700" />
                       <span>{eq.location}</span>
                     </p>
-                    <p className="text-[11px]">
+                    <p className="text-xs">
                       {bilingual("Tình trạng: ", "Condition: ")}
                       <span className="font-semibold text-emerald-700">
                         {eq.condition === "excellent"
@@ -946,7 +952,7 @@ export default function FacilitiesPage() {
                   </div>
 
                   {eq.notes && (
-                    <p className="text-[11px] text-slate-500 italic bg-[#FCFBF8] p-2 rounded border border-amber-100">
+                    <p className="text-xs text-slate-500 italic bg-[#FCFBF8] p-2 rounded border border-amber-100">
                       {eq.notes}
                     </p>
                   )}
@@ -1059,24 +1065,21 @@ export default function FacilitiesPage() {
             </div>
 
             <form onSubmit={handleCreateReservation} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  {bilingual("Chọn Phòng Nhóm Cần Đặt:", "Select Room / Space:")}
-                </label>
-                <select
-                  required
-                  value={resRoomId}
-                  onChange={(e) => setResRoomId(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-amber-600"
-                >
-                  <option value="">{bilingual("-- Chọn phòng --", "-- Select Room --")}</option>
-                  {rooms.map((r) => (
-                    <option key={r.id} value={r.id}>
-                      {r.name} ({bilingual("Sức chứa: ", "Capacity: ")}{r.capacity} {bilingual("người", "seats")} - {r.campusId})
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <TactileSelect
+                label={bilingual("Chọn Phòng Nhóm Cần Đặt:", "Select Room / Space:")}
+                required
+                value={resRoomId}
+                onChange={(e) => setResRoomId(e.target.value)}
+                selectSize="sm"
+                variant="default"
+              >
+                <option value="">{bilingual("-- Chọn phòng --", "-- Select Room --")}</option>
+                {rooms.map((r) => (
+                  <option key={r.id} value={r.id}>
+                    {r.name} ({bilingual("Sức chứa: ", "Capacity: ")}{r.capacity} {bilingual("người", "seats")} - {r.campusId})
+                  </option>
+                ))}
+              </TactileSelect>
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
@@ -1277,25 +1280,22 @@ export default function FacilitiesPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    {bilingual("Loại Phòng:", "Room Type:")}
-                  </label>
-                  <select
-                    value={newRoomType}
-                    onChange={(e) => setNewRoomType(e.target.value as FacilityType)}
-                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300"
-                  >
-                    <option value="sanctuary">{bilingual("Thánh Đường Chính", "Main Sanctuary")}</option>
-                    <option value="fellowship_hall">{bilingual("Nhà Thông Công & Hội Trường", "Fellowship Hall")}</option>
-                    <option value="chapel">{bilingual("Nhà Nguyện Tĩnh Nguyện", "Prayer Chapel")}</option>
-                    <option value="classroom">{bilingual("Phòng Học Trường Chúa Nhật", "Sunday School Classroom")}</option>
-                    <option value="youth_center">{bilingual("Phòng Thanh Thiếu Niên", "Youth Center")}</option>
-                    <option value="conference_room">{bilingual("Phòng Họp Ban Trị Sự", "Board Conference Room")}</option>
-                    <option value="pastor_office">{bilingual("Văn Phòng Tư Vấn Mục Vụ", "Pastoral Counseling Office")}</option>
-                  </select>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <TactileSelect
+                  label={bilingual("Loại Phòng:", "Room Type:")}
+                  value={newRoomType}
+                  onChange={(e) => setNewRoomType(e.target.value as FacilityType)}
+                  selectSize="sm"
+                  variant="default"
+                >
+                  <option value="sanctuary">{bilingual("Thánh Đường Chính", "Main Sanctuary")}</option>
+                  <option value="fellowship_hall">{bilingual("Nhà Thông Công & Hội Trường", "Fellowship Hall")}</option>
+                  <option value="chapel">{bilingual("Nhà Nguyện Tĩnh Nguyện", "Prayer Chapel")}</option>
+                  <option value="classroom">{bilingual("Phòng Học Trường Chúa Nhật", "Sunday School Classroom")}</option>
+                  <option value="youth_center">{bilingual("Phòng Thanh Thiếu Niên", "Youth Center")}</option>
+                  <option value="conference_room">{bilingual("Phòng Họp Ban Trị Sự", "Board Conference Room")}</option>
+                  <option value="pastor_office">{bilingual("Văn Phòng Tư Vấn Mục Vụ", "Pastoral Counseling Office")}</option>
+                </TactileSelect>
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">

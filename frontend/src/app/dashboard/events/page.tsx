@@ -7,6 +7,7 @@ import { apiFetch, ApiError } from "@/lib/api/client";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { TactileInput } from "@/components/ui/tactile-input";
+import { TactileSelect } from "@/components/ui/tactile-select";
 import {
   CalendarDays,
   Clock,
@@ -410,7 +411,7 @@ export default function EventsPage() {
                 >
                   <div className="space-y-2">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                         {isConfirmed
                           ? bilingual("✓ Đã Xác Nhận Vé", "✓ Confirmed Ticket")
                           : bilingual("⏳ Danh Sách Chờ", "⏳ Waitlist")}
@@ -441,12 +442,12 @@ export default function EventsPage() {
                   </div>
 
                   <div className="flex items-center justify-between pt-2 border-t border-amber-100 text-xs">
-                    <span className="text-[11px] text-slate-500">
+                    <span className="text-xs text-slate-500">
                       {bilingual("Người đặt:", "Ticket for:")} <strong>{registration.attendeeName}</strong>
                     </span>
                     <button
                       onClick={() => handleCancelRegistration(registration.id)}
-                      className="text-rose-700 hover:text-rose-900 font-medium underline cursor-pointer text-[11px]"
+                      className="text-rose-700 hover:text-rose-900 font-medium underline cursor-pointer text-xs"
                     >
                       {bilingual("Hủy Phiếu", "Cancel RSVP")}
                     </button>
@@ -489,17 +490,20 @@ export default function EventsPage() {
 
         {/* Campus & Search */}
         <div className="flex items-center gap-2">
-          <select
+          <TactileSelect
             value={selectedCampus}
             onChange={(e) => setSelectedCampus(e.target.value)}
-            className="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 focus:outline-none"
+            selectSize="sm"
+            variant="default"
+            containerClassName="w-auto min-w-[150px]"
+            aria-label={isEn ? "Select Campus" : "Chọn Điểm Nhóm"}
           >
             {CAMPUSES.map((c) => (
               <option key={c.id} value={c.id}>
                 {isEn ? c.en : c.vi}
               </option>
             ))}
-          </select>
+          </TactileSelect>
 
           <div className="relative w-48 shrink-0">
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
@@ -542,7 +546,7 @@ export default function EventsPage() {
                   />
                   <div className="absolute top-3 left-3 flex items-center gap-2">
                     <span
-                      className={`text-[11px] font-bold px-3 py-1 rounded-full border shadow-xs backdrop-blur-md bg-white/95 ${meta.color}`}
+                      className={`text-xs font-bold px-3 py-1 rounded-full border shadow-xs backdrop-blur-md bg-white/95 ${meta.color}`}
                     >
                       {isEn ? meta.labelEn : meta.labelVi}
                     </span>
@@ -559,7 +563,7 @@ export default function EventsPage() {
               {/* Event Body */}
               <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-[11px] text-amber-800 font-serif font-bold uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-xs text-amber-800 font-serif font-bold uppercase tracking-wider">
                     <span>{ev.campusId}</span>
                   </div>
 
@@ -598,7 +602,7 @@ export default function EventsPage() {
                   {/* Capacity Bar */}
                   {ev.maxAttendees && (
                     <div className="space-y-1">
-                      <div className="flex items-center justify-between text-[11px] text-slate-500">
+                      <div className="flex items-center justify-between text-xs text-slate-500">
                         <span>
                           {bilingual("Đã đăng ký:", "Registered:")}{" "}
                           <strong>{ev.registeredCount}</strong> / {ev.maxAttendees}{" "}
@@ -866,7 +870,7 @@ export default function EventsPage() {
                         <td className="py-2.5 text-slate-600">
                           {a.attendeeEmail}
                           {a.attendeePhone && (
-                            <span className="block text-[10px] text-slate-400">{a.attendeePhone}</span>
+                            <span className="block text-xs text-slate-400">{a.attendeePhone}</span>
                           )}
                         </td>
                         <td className="py-2.5 text-indigo-950 font-medium">
@@ -875,7 +879,7 @@ export default function EventsPage() {
                         </td>
                         <td className="py-2.5">
                           <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                            className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                               a.status === "confirmed"
                                 ? "bg-emerald-100 text-emerald-800"
                                 : "bg-amber-100 text-amber-800"
@@ -956,22 +960,19 @@ export default function EventsPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-serif font-bold text-slate-800 mb-1">
-                    {bilingual("Phân Loại:", "Category:")}
-                  </label>
-                  <select
-                    value={newCategory}
-                    onChange={(e) => setNewCategory(e.target.value as EventCategory)}
-                    className="w-full p-2.5 rounded-xl border border-amber-300 text-xs text-slate-800 focus:outline-none"
-                  >
-                    {Object.entries(CATEGORY_META).map(([k, meta]) => (
-                      <option key={k} value={k}>
-                        {isEn ? meta.labelEn : meta.labelVi}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <TactileSelect
+                  label={bilingual("Phân Loại:", "Category:")}
+                  value={newCategory}
+                  onChange={(e) => setNewCategory(e.target.value as EventCategory)}
+                  selectSize="sm"
+                  variant="default"
+                >
+                  {Object.entries(CATEGORY_META).map(([k, meta]) => (
+                    <option key={k} value={k}>
+                      {isEn ? meta.labelEn : meta.labelVi}
+                    </option>
+                  ))}
+                </TactileSelect>
 
                 <div>
                   <label className="block text-xs font-serif font-bold text-slate-800 mb-1">

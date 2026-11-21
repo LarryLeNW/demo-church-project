@@ -296,7 +296,7 @@ export default function GroupsPage() {
               subtitle={`${bilingual("Trưởng nhóm:", "Leader:")} ${group.leader?.fullName || bilingual("Chưa gán", "Unassigned")}`}
               badge={
                 group.zipcode ? (
-                  <span className="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[11px] font-bold border border-amber-200">
+                  <span className="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-900 text-xs font-bold border border-amber-200">
                     Zip {group.zipcode}
                   </span>
                 ) : null
@@ -310,7 +310,7 @@ export default function GroupsPage() {
                   )}
                 </p>
 
-                <div className="space-y-1.5 pt-2 border-t border-amber-100/70 text-[11px]">
+                <div className="space-y-1.5 pt-2 border-t border-amber-100/70 text-xs">
                   <div className="flex items-center gap-2 text-slate-700">
                     <Clock className="w-3.5 h-3.5 text-amber-700" />
                     <span>{group.scheduleRule}</span>
@@ -339,7 +339,7 @@ export default function GroupsPage() {
                 </div>
 
                 <div className="pt-2 flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-emerald-800">
+                  <span className="text-xs font-semibold text-emerald-800">
                     {group.members?.length || 1} {bilingual("Tín Hữu", "Members")}
                   </span>
 
@@ -365,7 +365,7 @@ export default function GroupsPage() {
           <div className="bg-white max-w-lg w-full rounded-2xl border border-amber-200 shadow-2xl p-6 space-y-5 animate-in fade-in duration-200">
             <div className="flex items-start justify-between border-b border-amber-100 pb-3">
               <div>
-                <span className="text-[10px] font-serif uppercase tracking-widest text-amber-800">
+                <span className="text-xs font-serif uppercase tracking-widest text-amber-900">
                   {bilingual("† ĐIỂM DANH BUỔI SINH HOẠT NHÓM", "† LIFE GROUP ATTENDANCE ROSTER")}
                 </span>
                 <h3 className="font-scripture text-lg font-bold text-slate-900 mt-0.5">
@@ -412,7 +412,7 @@ export default function GroupsPage() {
                           <div className="font-bold text-slate-900">
                             {member.user?.fullName}
                           </div>
-                          <div className="text-[11px] text-slate-500">
+                          <div className="text-xs text-slate-500">
                             {member.user?.phone || member.user?.email}
                           </div>
                         </div>
@@ -426,10 +426,10 @@ export default function GroupsPage() {
                                 [member.userId]: "present",
                               }))
                             }
-                            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                               status === "present"
                                 ? "bg-emerald-700 text-white shadow-xs"
-                                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                             }`}
                           >
                             {bilingual("Có mặt", "Present")}
@@ -442,10 +442,10 @@ export default function GroupsPage() {
                                 [member.userId]: "excused",
                               }))
                             }
-                            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                               status === "excused"
                                 ? "bg-amber-600 text-white shadow-xs"
-                                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                             }`}
                           >
                             {bilingual("Có phép", "Excused")}
@@ -458,10 +458,10 @@ export default function GroupsPage() {
                                 [member.userId]: "absent",
                               }))
                             }
-                            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                               status === "absent"
                                 ? "bg-rose-700 text-white shadow-xs"
-                                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                             }`}
                           >
                             {bilingual("Vắng", "Absent")}

@@ -7,6 +7,7 @@ import { useLanguage } from "@/lib/i18n/language-context";
 import { apiFetch, ApiError } from "@/lib/api/client";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect } from "@/components/ui/tactile-select";
 import {
   LineChart,
   Sparkles,
@@ -254,20 +255,22 @@ export default function AnalyticsExecutivePage() {
               {data.biblicalVerdict}
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <div className="flex items-center gap-2 bg-indigo-900/60 border border-amber-400/30 rounded-lg px-3 py-1.5 text-xs text-amber-200">
-                <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                <span>{bilingual("Khu vực quan sát:", "Observed Campus:")}</span>
-                <select
+              <div className="flex items-center min-w-[240px]">
+                <TactileSelect
                   value={selectedCampus}
                   onChange={(e) => setSelectedCampus(e.target.value)}
-                  className="bg-transparent font-semibold text-amber-100 focus:outline-none cursor-pointer"
+                  selectSize="sm"
+                  variant="dark"
+                  leftIcon={<MapPin className="w-3.5 h-3.5 text-amber-400" />}
+                  aria-label={bilingual("Khu vực quan sát", "Observed Campus")}
+                  className="font-semibold text-xs"
                 >
                   {CAMPUSES.map((c) => (
-                    <option key={c.id} value={c.id} className="text-slate-900">
-                      {c.name}
+                    <option key={c.id} value={c.id} className="bg-slate-900 text-amber-100">
+                      {bilingual("Khu vực quan sát: ", "Observed: ")}{c.name}
                     </option>
                   ))}
-                </select>
+                </TactileSelect>
               </div>
 
               <TactileButton
@@ -286,7 +289,7 @@ export default function AnalyticsExecutivePage() {
 
           {/* Spiritual Health Score Dial */}
           <div className="shrink-0 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-amber-400/40 text-center flex flex-col items-center justify-center min-w-[220px]">
-            <span className="text-[11px] font-mono tracking-widest text-amber-300 uppercase">
+            <span className="text-xs font-mono tracking-widest text-amber-300 uppercase">
               {bilingual("CHỈ SỐ SỨC KHỎE TỔNG THỂ", "OVERALL HEALTH SCORE")}
             </span>
             <div className="text-5xl font-serif font-bold text-amber-200 mt-1 mb-1">
@@ -296,7 +299,7 @@ export default function AnalyticsExecutivePage() {
             <span className="inline-block px-3 py-1 rounded-full text-xs font-serif font-bold bg-amber-400/20 text-amber-200 border border-amber-400/40">
               {pick(data, "healthTierLabelVi", "healthTierLabelEn")}
             </span>
-            <span className="text-[10px] text-slate-300 mt-2 font-mono">
+            <span className="text-xs text-slate-300 mt-2 font-mono">
               {bilingual("Tổng hợp từ 5 trụ cột mục vụ", "Aggregated from 5 ministry pillars")}
             </span>
           </div>
@@ -428,7 +431,7 @@ export default function AnalyticsExecutivePage() {
                   <span className="text-xs text-slate-500 font-serif italic">
                     ({isEn ? p.labelVi : p.labelEn})
                   </span>
-                  <span className="text-[11px] px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-600 font-mono">
+                  <span className="text-xs px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-600 font-mono">
                     {bilingual("Trọng số: ", "Weight: ")}{Math.round(p.weight * 100)}%
                   </span>
                 </div>
@@ -510,7 +513,7 @@ export default function AnalyticsExecutivePage() {
                         {m.email} • {m.phone || bilingual("Chưa có SĐT", "No phone")} ({m.campusId})
                       </p>
                     </div>
-                    <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-red-200 text-red-900">
+                    <span className="px-2.5 py-0.5 rounded text-xs font-bold bg-red-200 text-red-900">
                       {bilingual("Rủi ro: ", "Risk: ")}{m.riskScore}%
                     </span>
                   </div>
@@ -525,7 +528,7 @@ export default function AnalyticsExecutivePage() {
                   </div>
 
                   <div className="pt-2 border-t border-red-100 flex items-center justify-between gap-2 text-xs">
-                    <span className="italic text-slate-600 text-[11px]">
+                    <span className="italic text-slate-700 text-xs">
                       {bilingual("Kiến nghị: ", "Action: ")}<strong>{m.suggestedAction}</strong>
                     </span>
                     <Link href="/dashboard/pastoral">
@@ -576,7 +579,7 @@ export default function AnalyticsExecutivePage() {
                 <div key={step.stage} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-semibold text-slate-800 flex items-center gap-1.5">
-                      <span className="w-4 h-4 rounded-full bg-indigo-950 text-amber-300 inline-flex items-center justify-center text-[10px] font-mono">
+                      <span className="w-4 h-4 rounded-full bg-indigo-950 text-amber-300 inline-flex items-center justify-center text-xs font-mono">
                         {idx + 1}
                       </span>
                       {pick(step, "titleVi", "titleEn")}
@@ -626,7 +629,7 @@ export default function AnalyticsExecutivePage() {
 
           <div className="grid grid-cols-2 gap-3 text-center">
             <div className="p-3 rounded-xl bg-amber-50/60 border border-amber-200/70">
-              <span className="text-[11px] text-slate-500 uppercase tracking-wider block">
+              <span className="text-xs text-slate-600 uppercase tracking-wider block">
                 {bilingual("Tổng Thu Nhận YTD", "Total Received YTD")}
               </span>
               <span className="text-xl font-serif font-bold text-amber-900">
@@ -634,7 +637,7 @@ export default function AnalyticsExecutivePage() {
               </span>
             </div>
             <div className="p-3 rounded-xl bg-indigo-50/60 border border-indigo-200/70">
-              <span className="text-[11px] text-slate-500 uppercase tracking-wider block">
+              <span className="text-xs text-slate-600 uppercase tracking-wider block">
                 {bilingual("Mức Dâng Trung Bình", "Average Donation")}
               </span>
               <span className="text-xl font-serif font-bold text-indigo-950">
@@ -748,7 +751,7 @@ export default function AnalyticsExecutivePage() {
                     <h4 className="font-serif font-bold text-slate-900 text-sm">
                       {annualReport.churchName}
                     </h4>
-                    <p className="text-slate-500 text-[11px]">
+                    <p className="text-slate-500 text-xs">
                       {bilingual("Thời gian lập: ", "Generated at: ")}
                       {new Date(annualReport.generatedAt).toLocaleString(isEn ? "en-US" : "vi-VN")}
                     </p>
@@ -757,7 +760,7 @@ export default function AnalyticsExecutivePage() {
                     <span className="text-2xl font-serif font-bold text-amber-900">
                       {annualReport.executiveSummary.overallHealthScore}/100
                     </span>
-                    <span className="block text-[11px] font-serif text-emerald-800 font-semibold">
+                    <span className="block text-xs font-serif text-emerald-800 font-semibold">
                       {pick(annualReport.executiveSummary, "healthTierLabelVi", "healthTierLabelEn")}
                     </span>
                   </div>
@@ -776,7 +779,7 @@ export default function AnalyticsExecutivePage() {
                       <span className="text-lg font-bold text-slate-900">
                         {annualReport.discipleshipProgress.salvationsCount}
                       </span>
-                      <span className="block text-[11px] text-slate-600">
+                      <span className="block text-xs text-slate-600">
                         {bilingual("Linh Hồn Tiếp Nhận Chúa", "Salvations / Decisions")}
                       </span>
                     </div>
@@ -784,7 +787,7 @@ export default function AnalyticsExecutivePage() {
                       <span className="text-lg font-bold text-slate-900">
                         {annualReport.discipleshipProgress.baptismsCount}
                       </span>
-                      <span className="block text-[11px] text-slate-600">
+                      <span className="block text-xs text-slate-600">
                         {bilingual("Báp-têm Nhân Danh Chúa", "Water Baptisms")}
                       </span>
                     </div>
@@ -792,7 +795,7 @@ export default function AnalyticsExecutivePage() {
                       <span className="text-lg font-bold text-slate-900">
                         {annualReport.discipleshipProgress.graduatedDisciplesCount}
                       </span>
-                      <span className="block text-[11px] text-slate-600">
+                      <span className="block text-xs text-slate-600">
                         {bilingual("Tốt Nghiệp Khóa Môn Đồ", "Graduated Disciples")}
                       </span>
                     </div>
@@ -800,7 +803,7 @@ export default function AnalyticsExecutivePage() {
                       <span className="text-lg font-bold text-slate-900">
                         {annualReport.discipleshipProgress.ordainedLeadersCount}
                       </span>
-                      <span className="block text-[11px] text-slate-600">
+                      <span className="block text-xs text-slate-600">
                         {bilingual("Nhân Sự Bổ Nhiệm Mới", "Ordained Leaders")}
                       </span>
                     </div>
@@ -832,7 +835,7 @@ export default function AnalyticsExecutivePage() {
                   </div>
                   <div className="text-center">
                     <p className="font-serif font-bold text-slate-900">{user?.fullName}</p>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-xs text-slate-500">
                       {bilingual("Mục Sư Quản Nhiệm (Senior Pastor)", "Senior Pastor")}
                     </p>
                   </div>

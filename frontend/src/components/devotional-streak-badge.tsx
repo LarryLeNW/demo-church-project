@@ -64,7 +64,7 @@ export function DevotionalStreakBadge({
         />
         <span>{streak}</span>
         {showText && (
-          <span className="font-serif font-normal text-[11px]">
+          <span className="font-serif font-normal text-xs">
             {bilingual("ngày", "days")}
           </span>
         )}

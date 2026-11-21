@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect, type TactileSelectOption } from "@/components/ui/tactile-select";
 import {
   BookmarkCheck,
   BookOpen,
@@ -104,6 +105,74 @@ export default function ScriptureMemoryPage() {
   const [customTrans, setCustomTrans] = useState("rvv11");
   const [addingCustom, setAddingCustom] = useState(false);
   const [addError, setAddError] = useState("");
+
+  const translationOptions: TactileSelectOption[] = [
+    {
+      value: "rvv11",
+      label: bilingual("Bản Truyền Thống RVV11 (Tiếng Việt)", "Vietnamese RVV11 (Traditional)"),
+      description: bilingual("Bản Dịch Truyền Thống Hiệu Đính 2011 được các Hội Thánh Việt Nam tin cậy.", "Vietnamese 2011 Revised Traditional standard translation."),
+      badge: "Tiêu Chuẩn",
+      tooltip: bilingual("Văn phong trang trọng, chuẩn xác theo nguyên bản Hy Lạp & Hê-bơ-rơ.", "Formal, reverent translation for Vietnamese churches worldwide."),
+    },
+    {
+      value: "esv",
+      label: "ESV (English Standard Version)",
+      description: bilingual("Dịch chuẩn xác từng chữ theo nguyên bản, phù hợp học tập sâu.", "Word-for-word essentially literal translation for deep study."),
+      badge: "Word-for-Word",
+      tooltip: bilingual("Dịch thuật chuẩn xác theo từng từ ngữ nguyên bản của Kinh Thánh.", "Preserves original biblical structure and verbal nuances."),
+    },
+    {
+      value: "niv",
+      label: "NIV (New International Version)",
+      description: bilingual("Diễn đạt ý nghĩa mạch lạc, từ ngữ hiện đại gần gũi cho giới trẻ.", "Contemporary, readable thought-for-thought English."),
+      badge: "Thought-for-Thought",
+    },
+    {
+      value: "kjv",
+      label: "KJV (King James Version 1611)",
+      description: bilingual("Bản dịch danh tiếng 1611 với âm hưởng thi ca cổ điển bất hủ.", "Historical Authorized Version with majestic poetic cadence."),
+      badge: "1611 Classic",
+    },
+  ];
+
+  const topicOptions: TactileSelectOption[] = [
+    {
+      value: "salvation",
+      label: bilingual("Sự Cứu Rỗi", "Salvation"),
+      description: bilingual("Các câu gốc về ân điển, sự cứu chuộc qua Thập Tự Giá.", "Grace, redemption, and eternal salvation through the Cross."),
+      badge: "Ân Điển",
+    },
+    {
+      value: "faith",
+      label: bilingual("Đức Tin", "Faith"),
+      description: bilingual("Vững lòng trông cậy và tin cậy Lời hứa của Chúa.", "Trusting God's promises and walking by faith."),
+      badge: "Hy Vọng",
+    },
+    {
+      value: "peace_hope",
+      label: bilingual("Bình An & Hy Vọng", "Peace & Hope"),
+      description: bilingual("Sự an ủi tâm linh trong nghịch cảnh và thử thách.", "Divine comfort in storms, grief, and trials."),
+      badge: "Bình An",
+    },
+    {
+      value: "prayer",
+      label: bilingual("Cầu Nguyện", "Prayer"),
+      description: bilingual("Tương giao mật thiết cùng Cha Thiên Thượng mỗi ngày.", "Intimate communion with the Heavenly Father."),
+      badge: "Tương Giao",
+    },
+    {
+      value: "discipleship",
+      label: bilingual("Đời Sống Môn Đồ", "Discipleship"),
+      description: bilingual("Vác thập tự giá, môn đồ hóa muôn dân và sống thánh khiết.", "Taking up the cross, making disciples, and holy living."),
+      badge: "Môn Đồ",
+    },
+    {
+      value: "family",
+      label: bilingual("Gia Đình Cơ Đốc", "Christian Family"),
+      description: bilingual("Hôn nhân chung thủy, nuôi dạy con cái kính sợ Chúa.", "Faithful covenant marriage and godly parenting."),
+      badge: "Hôn Nhân",
+    },
+  ];
 
   const loadMemories = async () => {
     setLoading(true);
@@ -441,7 +510,7 @@ export default function ScriptureMemoryPage() {
                   <button
                     type="button"
                     onClick={() => setMaskMode(!maskMode)}
-                    className={`px-2.5 py-1 rounded-lg border text-[11px] font-semibold flex items-center gap-1 transition-all cursor-pointer ${
+                    className={`px-3 py-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1 transition-all cursor-pointer ${
                       maskMode
                         ? "bg-amber-100 text-amber-900 border-amber-300"
                         : "bg-white text-slate-600 border-amber-200 hover:bg-amber-50"
@@ -473,7 +542,7 @@ export default function ScriptureMemoryPage() {
                     <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100/80 text-amber-900 border border-amber-300">
                       {TOPIC_LABELS[activeCard.topic]?.[isEn ? "en" : "vi"] || activeCard.topic}
                     </span>
-                    <span className="text-[11px] font-bold uppercase text-slate-400 font-serif">
+                    <span className="text-xs font-bold uppercase text-slate-500 font-serif">
                       {bilingual("Bản Dịch:", "Translation:")} {activeCard.translation.toUpperCase()}
                     </span>
                   </div>
@@ -509,7 +578,7 @@ export default function ScriptureMemoryPage() {
                         : bilingual("Bấm thẻ để lật xem câu gốc", "Tap card to flip and verify")}
                     </span>
                   </span>
-                  <span className="text-slate-400 text-[11px]">
+                  <span className="text-slate-500 text-xs">
                     {bilingual(
                       `Chu kỳ: ${activeCard.intervalDays} ngày`,
                       `Interval: ${activeCard.intervalDays} days`
@@ -536,10 +605,10 @@ export default function ScriptureMemoryPage() {
                       type="button"
                       disabled={isSubmittingReview}
                       onClick={() => handleSM2Review(1)}
-                      className="p-3 rounded-xl border border-rose-300 bg-rose-50/70 hover:bg-rose-100/80 text-rose-900 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs"
+                      className="p-3 rounded-xl border border-rose-300 bg-rose-50/70 hover:bg-rose-100/80 text-rose-900 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs min-h-[56px] justify-center"
                     >
                       <span>{bilingual("🔴 Quên / Khó", "🔴 Again")}</span>
-                      <span className="text-[10px] font-normal text-rose-700">
+                      <span className="text-xs font-normal text-rose-800">
                         {bilingual("Ôn lại ngày mai", "Repeat tomorrow")}
                       </span>
                     </button>
@@ -549,10 +618,10 @@ export default function ScriptureMemoryPage() {
                       type="button"
                       disabled={isSubmittingReview}
                       onClick={() => handleSM2Review(3)}
-                      className="p-3 rounded-xl border border-amber-300 bg-amber-50/70 hover:bg-amber-100/80 text-amber-950 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs"
+                      className="p-3 rounded-xl border border-amber-300 bg-amber-50/70 hover:bg-amber-100/80 text-amber-950 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs min-h-[56px] justify-center"
                     >
                       <span>{bilingual("🟠 Ngập Ngừng", "🟠 Hard")}</span>
-                      <span className="text-[10px] font-normal text-amber-800">
+                      <span className="text-xs font-normal text-amber-900">
                         {bilingual("Ôn sau 2-3 ngày", "Review in 2-3 days")}
                       </span>
                     </button>
@@ -562,10 +631,10 @@ export default function ScriptureMemoryPage() {
                       type="button"
                       disabled={isSubmittingReview}
                       onClick={() => handleSM2Review(4)}
-                      className="p-3 rounded-xl border border-indigo-300 bg-indigo-50/70 hover:bg-indigo-100/80 text-indigo-950 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs"
+                      className="p-3 rounded-xl border border-indigo-300 bg-indigo-50/70 hover:bg-indigo-100/80 text-indigo-950 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs min-h-[56px] justify-center"
                     >
                       <span>{bilingual("🟢 Nhớ Tốt", "🟢 Good")}</span>
-                      <span className="text-[10px] font-normal text-indigo-800">
+                      <span className="text-xs font-normal text-indigo-900">
                         {bilingual("Ôn sau 6 ngày", "Review in 6 days")}
                       </span>
                     </button>
@@ -575,10 +644,10 @@ export default function ScriptureMemoryPage() {
                       type="button"
                       disabled={isSubmittingReview}
                       onClick={() => handleSM2Review(5)}
-                      className="p-3 rounded-xl border border-emerald-400 bg-emerald-50/90 hover:bg-emerald-100 text-emerald-950 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs"
+                      className="p-3 rounded-xl border border-emerald-400 bg-emerald-50/90 hover:bg-emerald-100 text-emerald-950 text-xs font-bold flex flex-col items-center gap-1 transition-all cursor-pointer shadow-xs min-h-[56px] justify-center"
                     >
                       <span>{bilingual("🔵 Nhuần Nhuyễn", "🔵 Easy")}</span>
-                      <span className="text-[10px] font-normal text-emerald-800">
+                      <span className="text-xs font-normal text-emerald-900">
                         {bilingual("Ôn sau 14+ ngày", "Review in 14+ days")}
                       </span>
                     </button>
@@ -645,11 +714,11 @@ export default function ScriptureMemoryPage() {
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200">
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200">
                         {TOPIC_LABELS[verse.topic]?.[isEn ? "en" : "vi"] || verse.topic}
                       </span>
                       {alreadyAdded && (
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                        <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                           {bilingual("✓ Đang Học", "✓ In Practice")}
                         </span>
                       )}
@@ -660,7 +729,7 @@ export default function ScriptureMemoryPage() {
                         {displayRef}
                       </h3>
                       {secondaryRef && (
-                        <span className="text-xs text-slate-400 font-serif">
+                        <span className="text-xs text-slate-500 font-serif">
                           {secondaryRef}
                         </span>
                       )}
@@ -671,7 +740,7 @@ export default function ScriptureMemoryPage() {
                     </p>
 
                     {secondaryText && (
-                      <p className="text-[11px] text-slate-500 italic font-serif">
+                      <p className="text-xs text-slate-600 italic font-serif">
                         "{secondaryText}"
                       </p>
                     )}
@@ -750,11 +819,11 @@ export default function ScriptureMemoryPage() {
                         <span className="font-scripture font-bold text-sm text-slate-900">
                           {m.reference}
                         </span>
-                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
+                        <span className="text-xs font-bold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
                           {m.translation}
                         </span>
                         <span
-                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                          className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${
                             m.status === "mastered"
                               ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                               : "bg-indigo-50 text-indigo-950 border-indigo-200"
@@ -781,7 +850,7 @@ export default function ScriptureMemoryPage() {
                             ? bilingual("⚡ Đến hạn ôn hôm nay", "⚡ Due for review today")
                             : bilingual(`Ôn sau ${m.intervalDays} ngày`, `Review in ${m.intervalDays} days`)}
                         </div>
-                        <div className="text-[11px] text-slate-400">
+                        <div className="text-xs text-slate-500">
                           {bilingual(
                             `Đã ôn ${m.repetitionCount} lần`,
                             `Reviewed ${m.repetitionCount} times`
@@ -853,42 +922,34 @@ export default function ScriptureMemoryPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-slate-800 mb-1">
-                    {bilingual("Chủ Đề", "Topic")}
-                  </label>
-                  <select
-                    value={customTopic}
-                    onChange={(e) => setCustomTopic(e.target.value)}
-                    className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  >
-                    <option value="salvation">{bilingual("Sự Cứu Rỗi", "Salvation")}</option>
-                    <option value="faith">{bilingual("Đức Tin", "Faith")}</option>
-                    <option value="peace_hope">{bilingual("Bình An & Hy Vọng", "Peace & Hope")}</option>
-                    <option value="prayer">{bilingual("Cầu Nguyện", "Prayer")}</option>
-                    <option value="discipleship">{bilingual("Đời Sống Môn Đồ", "Discipleship")}</option>
-                    <option value="family">{bilingual("Gia Đình Cơ Đốc", "Christian Family")}</option>
-                  </select>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <TactileSelect
+                  label={bilingual("Chủ Đề", "Topic")}
+                  tooltip={bilingual(
+                    "Phân loại chủ đề giúp thuật toán SRS ngắt quãng ôn tập đúng mục tiêu thuộc linh",
+                    "Category helps SRS spaced repetition algorithm optimize spiritual review schedule"
+                  )}
+                  value={customTopic}
+                  onValueChange={(val) => setCustomTopic(val)}
+                  onChange={(e) => setCustomTopic(e.target.value)}
+                  options={topicOptions}
+                  selectSize="sm"
+                  variant="default"
+                />
 
-                <div>
-                  <label className="block font-semibold text-slate-800 mb-1">
-                    {bilingual("Bản Dịch", "Translation")}
-                  </label>
-                  <select
-                    value={customTrans}
-                    onChange={(e) => setCustomTrans(e.target.value)}
-                    className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  >
-                    <option value="rvv11">
-                      {bilingual("Bản Truyền Thống RVV11 (Tiếng Việt)", "Vietnamese RVV11 (Traditional)")}
-                    </option>
-                    <option value="niv">NIV (English)</option>
-                    <option value="esv">ESV (English)</option>
-                    <option value="kjv">KJV (English)</option>
-                  </select>
-                </div>
+                <TactileSelect
+                  label={bilingual("Bản Dịch", "Translation")}
+                  tooltip={bilingual(
+                    "Chọn bản dịch đối chiếu để học thuộc lòng đúng theo bản văn hội thánh bạn đang sử dụng",
+                    "Choose translation matching your church fellowship preference"
+                  )}
+                  value={customTrans}
+                  onValueChange={(val) => setCustomTrans(val)}
+                  onChange={(e) => setCustomTrans(e.target.value)}
+                  options={translationOptions}
+                  selectSize="sm"
+                  variant="default"
+                />
               </div>
 
               <div>

@@ -7,6 +7,7 @@ import { apiFetch, ApiError } from "@/lib/api/client";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { TactileInput } from "@/components/ui/tactile-input";
+import { TactileSelect, type TactileSelectOption } from "@/components/ui/tactile-select";
 import {
   Compass,
   CheckCircle2,
@@ -155,6 +156,60 @@ export default function PathwayPage() {
   const [verifyCommunionEligible, setVerifyCommunionEligible] = useState(true);
   const [verifyNotes, setVerifyNotes] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
+
+  const stageOptions: TactileSelectOption[] = [
+    {
+      value: "new_believer",
+      label: bilingual("Tân Tín Hữu (New Believer)", "New Believer"),
+      description: bilingual("Vừa tiếp nhận Chúa Jêsus, cần được kèm cặp và học giáo lý tân tín hữu.", "Recently accepted Christ; needs mentoring and foundational discipleship."),
+      badge: "Bước 1",
+    },
+    {
+      value: "baptism_candidate",
+      label: bilingual("Đang Học Lớp Báp-têm (Baptism Candidate)", "Baptism Candidate"),
+      description: bilingual("Ghi danh lớp học giáo lý báp-têm, tìm hiểu ý nghĩa Thánh lễ và đời sống mới.", "Enrolled in baptism class, preparing for public confession of faith."),
+      badge: "Bước 2",
+    },
+    {
+      value: "baptized",
+      label: bilingual("Đã Báp-têm & Dự Tiệc Thánh (Baptized Member)", "Baptized Member"),
+      description: bilingual("Đã nhận Thánh lễ Báp-têm bằng nước, chính thức được dự Tiệc Thánh và gia nhập Hội Thánh.", "Water baptized, eligible for the Lord's Supper and active church membership."),
+      badge: "Bước 3",
+    },
+    {
+      value: "disciple",
+      label: bilingual("Môn Đồ Trưởng Thành (Devoted Disciple)", "Devoted Disciple"),
+      description: bilingual("Đọc Kinh Thánh hằng ngày, duy trì nếp sống cầu nguyện và tích cực thông công nhóm nhỏ.", "Daily scripture habits, devoted prayer life, and active in small groups."),
+      badge: "Bước 4",
+    },
+    {
+      value: "ministry_leader",
+      label: bilingual("Nhân Sự & Lãnh Đạo Mục Vụ (Ministry Leader)", "Ministry Leader"),
+      description: bilingual("Tham gia ban ngành phụng vụ, giảng dạy Trường Chúa Nhật hoặc dẫn dắt nhóm nhỏ.", "Serving in ministry teams, Sunday School teaching, or life group leadership."),
+      badge: "Bước 5",
+    },
+  ];
+
+  const baptismStatusOptions: TactileSelectOption[] = [
+    {
+      value: "enrolled_class",
+      label: bilingual("Đang học lớp Báp-têm", "Enrolled in Class"),
+      description: bilingual("Đang tham gia khóa học giáo lý căn bản trước lễ báp-têm.", "Currently attending preparatory baptism classes."),
+      badge: "Đang Học",
+    },
+    {
+      value: "completed_class",
+      label: bilingual("Đã hoàn thành lớp học", "Completed Class"),
+      description: bilingual("Đã vượt qua kỳ vấn đáp đức tin, sẵn sàng nhận Thánh lễ.", "Passed faith interview, ready for water baptism."),
+      badge: "Đủ Điều Kiện",
+    },
+    {
+      value: "baptized",
+      label: bilingual("Đã nhận Thánh lễ Báp-têm", "Water Baptized"),
+      description: bilingual("Đã nhận phép báp-têm dìm mình dưới nước trong danh Ba Ngôi Đức Chúa Trời.", "Formally immersed in water in the name of the Father, Son, and Holy Spirit."),
+      badge: "Đã Báp-têm",
+    },
+  ];
 
   const fetchMyProfile = async () => {
     try {
@@ -390,7 +445,7 @@ export default function PathwayPage() {
               }`}
             />
             <div className="flex flex-col">
-              <span className="text-[11px] font-bold uppercase tracking-wider">
+              <span className="text-xs font-bold uppercase tracking-wider">
                 {bilingual("Thánh Lễ Tiệc Thánh", "Holy Communion")}
               </span>
               <span className="text-xs font-medium">
@@ -449,7 +504,7 @@ export default function PathwayPage() {
                       {isPast ? <Check className="w-3.5 h-3.5" /> : idx + 1}
                     </span>
                     <span
-                      className={`text-[10px] font-semibold uppercase tracking-wider ${
+                      className={`text-xs font-semibold uppercase tracking-wider ${
                         isCurrent
                           ? "text-amber-300"
                           : isPast
@@ -474,7 +529,7 @@ export default function PathwayPage() {
                       {isEn ? (meta?.titleEn || meta?.titleVi) : meta?.titleVi}
                     </h3>
                     <p
-                      className={`text-[10px] mt-1 ${
+                      className={`text-xs mt-1 ${
                         isCurrent ? "text-slate-300" : "text-slate-600"
                       }`}
                     >
@@ -558,7 +613,7 @@ export default function PathwayPage() {
               </div>
 
               <div className="flex items-center justify-between pt-2">
-                <span className="text-[11px] font-serif italic text-slate-500">
+                <span className="text-xs font-serif italic text-slate-500">
                   {bilingual(
                     "* Lời chứng của bạn là nguồn khích lệ lớn cho các anh chị em trong Hội Thánh.",
                     "* Your testimony is a powerful encouragement to brothers and sisters in Christ.",
@@ -600,7 +655,7 @@ export default function PathwayPage() {
                         <h4 className="font-scripture text-sm font-bold text-slate-900">
                           {m.title}
                         </h4>
-                        <span className="text-[11px] text-slate-500 font-mono">
+                        <span className="text-xs text-slate-500 font-mono">
                           {new Date(m.achievedAt).toLocaleDateString(isEn ? "en-US" : "vi-VN")}
                         </span>
                       </div>
@@ -608,7 +663,7 @@ export default function PathwayPage() {
                         <p className="text-xs text-slate-600 mt-1">{m.notes}</p>
                       )}
                       {m.verifiedBy && (
-                        <span className="inline-block mt-1 text-[10px] text-indigo-950 font-serif font-bold">
+                        <span className="inline-block mt-1 text-xs text-indigo-950 font-serif font-bold">
                           {bilingual("Chứng nhận bởi:", "Verified by:")} {m.verifiedBy}
                         </span>
                       )}
@@ -630,7 +685,7 @@ export default function PathwayPage() {
         {/* Right 1 Col: Baptism Class Callout Card */}
         <div className="space-y-6">
           <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-950 text-white border border-amber-400/40 shadow-md space-y-4">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-[10px] font-bold tracking-widest uppercase border border-amber-400/30">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-xs font-bold tracking-widest uppercase border border-amber-400/30">
               <span>†</span>
               <span>{bilingual("Lễ Báp-têm Mùa Phục Sinh & Giáng Sinh", "Easter & Christmas Water Baptism")}</span>
             </div>
@@ -661,7 +716,7 @@ export default function PathwayPage() {
               </div>
               <div className="flex items-center justify-between text-slate-300">
                 <span>{bilingual("Trạng thái của bạn:", "Your status:")}</span>
-                <span className="font-bold text-amber-300 uppercase text-[10px]">
+                <span className="font-bold text-amber-300 uppercase text-xs">
                   {currentProfile?.baptismStatus === "enrolled_class"
                     ? bilingual("Đã Ghi Danh Lớp Học", "Enrolled in Class")
                     : currentProfile?.baptismStatus === "baptized"
@@ -700,7 +755,7 @@ export default function PathwayPage() {
                   {bilingual("Đã Báp-têm ngày:", "Baptized on:")} {currentProfile.baptismDate}
                 </p>
                 {currentProfile.baptizedBy && (
-                  <p className="text-[11px] text-slate-300">
+                  <p className="text-xs text-slate-300">
                     {bilingual("Người thực hiện:", "Officiated by:")} {currentProfile.baptizedBy}
                   </p>
                 )}
@@ -722,7 +777,7 @@ export default function PathwayPage() {
                 '"This is my body, which is for you; do this in remembrance of me... This cup is the new covenant in my blood..." — 1 Corinthians 11:24-25',
               )}
             </p>
-            <div className="text-[11px] text-slate-500 bg-amber-50/60 p-2.5 rounded-lg border border-amber-200/50">
+            <div className="text-xs text-slate-500 bg-amber-50/60 p-2.5 rounded-lg border border-amber-200/50">
               {bilingual(
                 "Thánh lễ Tiệc Thánh được cử hành vào mỗi Chúa Nhật đầu tháng tại tất cả các điểm nhóm của Hội Thánh.",
                 "Holy Communion is celebrated on the first Sunday of every month across all church campuses.",
@@ -751,17 +806,20 @@ export default function PathwayPage() {
               <span className="text-xs font-serif font-bold text-slate-700 whitespace-nowrap">
                 {bilingual("Điểm Nhóm:", "Campus:")}
               </span>
-              <select
+              <TactileSelect
                 value={selectedCampus}
                 onChange={(e) => setSelectedCampus(e.target.value)}
-                className="px-3 py-2 rounded-xl bg-white border border-amber-300 text-xs font-medium text-slate-800 focus:outline-none focus:border-indigo-950"
+                selectSize="sm"
+                variant="default"
+                containerClassName="w-auto min-w-[150px]"
+                aria-label={isEn ? "Select Campus" : "Chọn Điểm Nhóm"}
               >
                 {CAMPUSES.map((c) => (
                   <option key={c.id} value={c.id}>
                     {isEn ? c.en : c.vi}
                   </option>
                 ))}
-              </select>
+              </TactileSelect>
             </div>
           </div>
 
@@ -775,7 +833,7 @@ export default function PathwayPage() {
                 <p className="font-scripture text-2xl font-bold text-slate-900 mt-1">
                   {overview.total}
                 </p>
-                <span className="text-[10px] text-slate-400">
+                <span className="text-xs text-slate-400">
                   {bilingual("Đã đăng ký sinh hoạt", "Active discipleship records")}
                 </span>
               </div>
@@ -787,7 +845,7 @@ export default function PathwayPage() {
                 <p className="font-scripture text-2xl font-bold text-amber-800 mt-1">
                   {overview.newBelieverCount}
                 </p>
-                <span className="text-[10px] text-slate-400">
+                <span className="text-xs text-slate-400">
                   {bilingual("Mới tiếp nhận Chúa", "Recently accepted Christ")}
                 </span>
               </div>
@@ -799,7 +857,7 @@ export default function PathwayPage() {
                 <p className="font-scripture text-2xl font-bold text-indigo-950 mt-1">
                   {overview.inBaptismClassCount}
                 </p>
-                <span className="text-[10px] text-indigo-900 font-semibold">
+                <span className="text-xs text-indigo-900 font-semibold">
                   {bilingual("Chuẩn bị nhận Thánh lễ", "Preparing for baptism")}
                 </span>
               </div>
@@ -811,7 +869,7 @@ export default function PathwayPage() {
                 <p className="font-scripture text-2xl font-bold text-emerald-700 mt-1">
                   {overview.baptizedCount + overview.discipleCount}
                 </p>
-                <span className="text-[10px] text-emerald-600 font-medium">
+                <span className="text-xs text-emerald-600 font-medium">
                   {overview.communionEligibleCount} {bilingual("được dự Tiệc Thánh", "communion eligible")}
                 </span>
               </div>
@@ -823,7 +881,7 @@ export default function PathwayPage() {
                 <p className="font-scripture text-2xl font-bold text-purple-900 mt-1">
                   {overview.ministryLeaderCount}
                 </p>
-                <span className="text-[10px] text-purple-800 font-medium">
+                <span className="text-xs text-purple-800 font-medium">
                   {bilingual("Trưởng ban / Giáo viên", "Department leaders / teachers")}
                 </span>
               </div>
@@ -885,9 +943,9 @@ export default function PathwayPage() {
                       <td className="py-3.5 pr-4">
                         <div className="flex flex-col">
                           <span className="font-bold text-slate-900">{cand.user.fullName}</span>
-                          <span className="text-[11px] text-slate-500">{cand.user.email}</span>
+                          <span className="text-xs text-slate-500">{cand.user.email}</span>
                           {cand.user.phone && (
-                            <span className="text-[10px] text-slate-400 font-mono">
+                            <span className="text-xs text-slate-400 font-mono">
                               {cand.user.phone}
                             </span>
                           )}
@@ -897,20 +955,20 @@ export default function PathwayPage() {
                         {cand.profile.campusId || "Dallas Main Campus"}
                       </td>
                       <td className="py-3.5 pr-4">
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-900 border border-amber-200">
+                        <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 border border-amber-200">
                           {isEn ? (cand.stageMeta.titleEn || cand.stageMeta.titleVi) : cand.stageMeta.titleVi}
                         </span>
                       </td>
                       <td className="py-3.5 pr-4">
                         <div className="flex flex-col gap-0.5">
-                          <span className="text-[11px] font-medium text-slate-800">
+                          <span className="text-xs font-medium text-slate-800">
                             {cand.profile.baptismStatus === "baptized"
                               ? bilingual("✓ Đã Báp-têm", "✓ Baptized")
                               : cand.profile.baptismStatus === "enrolled_class"
                               ? bilingual("⏳ Đang học lớp Báp-têm", "⏳ In Baptism Class")
                               : bilingual("Chưa học", "Not Enrolled")}
                           </span>
-                          <span className="text-[10px] text-slate-500">
+                          <span className="text-xs text-slate-500">
                             {cand.profile.communionEligible
                               ? bilingual("Được dự Tiệc Thánh", "Communion Eligible")
                               : bilingual("Chưa dự Tiệc Thánh", "Not Eligible")}
@@ -974,38 +1032,34 @@ export default function PathwayPage() {
             </div>
 
             <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-serif font-bold text-slate-800 mb-1">
-                  {bilingual("Chuyển Sang Giai Đoạn Thuộc Linh:", "Advance to Spiritual Stage:")}
-                </label>
-                <select
-                  value={verifyStage}
-                  onChange={(e) => setVerifyStage(e.target.value as SpiritualStage)}
-                  className="w-full p-2.5 rounded-xl border border-amber-300 text-xs text-slate-800 focus:outline-none focus:border-indigo-950"
-                >
-                  <option value="new_believer">{bilingual("Tân Tín Hữu (New Believer)", "New Believer")}</option>
-                  <option value="baptism_candidate">{bilingual("Đang Học Lớp Báp-têm (Baptism Candidate)", "Baptism Candidate")}</option>
-                  <option value="baptized">{bilingual("Đã Báp-têm & Dự Tiệc Thánh (Baptized Member)", "Baptized Member")}</option>
-                  <option value="disciple">{bilingual("Môn Đồ Trưởng Thành (Devoted Disciple)", "Devoted Disciple")}</option>
-                  <option value="ministry_leader">{bilingual("Nhân Sự & Lãnh Đạo Mục Vụ (Ministry Leader)", "Ministry Leader")}</option>
-                </select>
-              </div>
+              <TactileSelect
+                label={bilingual("Chuyển Sang Giai Đoạn Thuộc Linh:", "Advance to Spiritual Stage:")}
+                tooltip={bilingual(
+                  "Cột mốc thuộc linh giúp Mục sư và Ban Chăm sóc theo sát hành trình môn đồ hóa của từng tín hữu",
+                  "Spiritual milestones guide pastoral care and intentional discipleship progression"
+                )}
+                value={verifyStage}
+                onValueChange={(val) => setVerifyStage(val as SpiritualStage)}
+                onChange={(e) => setVerifyStage(e.target.value as SpiritualStage)}
+                options={stageOptions}
+                selectSize="sm"
+                variant="default"
+              />
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-serif font-bold text-slate-800 mb-1">
-                    {bilingual("Trạng Thái Báp-têm:", "Baptism Status:")}
-                  </label>
-                  <select
-                    value={verifyBaptismStatus}
-                    onChange={(e) => setVerifyBaptismStatus(e.target.value as BaptismStatus)}
-                    className="w-full p-2.5 rounded-xl border border-amber-300 text-xs text-slate-800 focus:outline-none focus:border-indigo-950"
-                  >
-                    <option value="enrolled_class">{bilingual("Đang học lớp Báp-têm", "Enrolled in class")}</option>
-                    <option value="completed_class">{bilingual("Đã hoàn thành lớp học", "Completed class")}</option>
-                    <option value="baptized">{bilingual("Đã nhận Thánh lễ Báp-têm", "Water baptized")}</option>
-                  </select>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <TactileSelect
+                  label={bilingual("Trạng Thái Báp-têm:", "Baptism Status:")}
+                  tooltip={bilingual(
+                    "Xác nhận tín hữu đã hoàn tất khóa học giáo lý và nhận Thánh lễ Báp-têm",
+                    "Confirms completion of discipleship catechism and water baptism"
+                  )}
+                  value={verifyBaptismStatus}
+                  onValueChange={(val) => setVerifyBaptismStatus(val as BaptismStatus)}
+                  onChange={(e) => setVerifyBaptismStatus(e.target.value as BaptismStatus)}
+                  options={baptismStatusOptions}
+                  selectSize="sm"
+                  variant="default"
+                />
 
                 <div>
                   <label className="block text-xs font-serif font-bold text-slate-800 mb-1">

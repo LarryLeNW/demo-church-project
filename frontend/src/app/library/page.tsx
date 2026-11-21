@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
@@ -14,8 +15,11 @@ import {
   FileText,
   Filter,
   Sparkles,
-  ExternalLink,
   X,
+  Clock,
+  CheckCircle2,
+  Bookmark,
+  Share2,
 } from "lucide-react";
 
 export default function LibraryPage() {
@@ -23,13 +27,14 @@ export default function LibraryPage() {
   const [activeTab, setActiveTab] = useState<"books" | "videos">("books");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [playingVideo, setPlayingVideo] = useState<{ title: string; youtubeId: string } | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<{ title: string; speaker: string; duration: string } | null>(null);
+  const [readingBook, setReadingBook] = useState<{ title: string; author: string; pages: number } | null>(null);
 
   const categories = [
     { id: "all", labelVi: "Tất Cả Chủ Đề", labelEn: "All Topics" },
-    { id: "theology", labelVi: "Thần Học Cơ Bản", labelEn: "Biblical Theology" },
-    { id: "discipleship", labelVi: "Đời Sống Môn Đồ", labelEn: "Discipleship Life" },
-    { id: "family", labelVi: "Hôn Nhân & Gia Đình", labelEn: "Marriage & Family" },
+    { id: "theology", labelVi: "Giải Kinh & Thần Học", labelEn: "Biblical Exegesis" },
+    { id: "discipleship", labelVi: "Môn Đồ Hóa Căn Bản", labelEn: "Discipleship Life" },
+    { id: "habits", labelVi: "Thói Quen Thuộc Linh", labelEn: "Spiritual Disciplines" },
     { id: "leadership", labelVi: "Lãnh Đạo Mục Vụ", labelEn: "Pastoral Leadership" },
   ];
 
@@ -38,10 +43,13 @@ export default function LibraryPage() {
       id: "b1",
       titleVi: "Nguyên Tắc Môn Đồ Hóa Vững Vàng",
       titleEn: "Foundations of Solid Discipleship",
-      author: "Tabitha Nguyen",
+      author: "Chấp sự Tabitha Nguyen",
+      authorRoleVi: "Chủ tịch SAM • Giảng viên Môn đồ hóa",
+      authorRoleEn: "SAM President • Discipleship Faculty",
       category: "discipleship",
       pages: 148,
-      descVi: "Cẩm nang hướng dẫn từng bước đồng hành cùng tân tín hữu từ khi tin Chúa đến khi trở thành người phục sự trung tín.",
+      cover: "/covers/discipleship-101.svg",
+      descVi: "Cẩm nang hướng dẫn từng bước đồng hành cùng tân tín hữu từ khi tin Chúa đến khi trở thành người phục sự trung tín của Đấng Christ.",
       descEn: "Step-by-step guidebook walking new believers from salvation to fruitful, lifelong Christian discipleship.",
       fileSize: "3.4 MB",
       format: "PDF",
@@ -50,48 +58,45 @@ export default function LibraryPage() {
       id: "b2",
       titleVi: "Giải Kinh Học Thực Hành Cho Tôi Tớ Chúa",
       titleEn: "Practical Hermeneutics for Servants of God",
-      author: "Jack Lee",
+      author: "Mục sư Jack Lee",
+      authorRoleVi: "Học giả Kinh Thánh • Dallas Fellowship",
+      authorRoleEn: "Biblical Scholar • Dallas Fellowship",
       category: "theology",
       pages: 210,
-      descVi: "Phương pháp đọc hiểu Kinh Thánh theo văn cảnh lịch sử - ngữ pháp và ứng dụng sứ điệp vào đời sống đương đại.",
-      descEn: "Sound principles of biblical interpretation in grammatical-historical context with modern application.",
+      cover: "/covers/leadership-foundations.svg",
+      descVi: "Phương pháp đọc hiểu Kinh Thánh theo văn cảnh lịch sử - ngữ pháp và bố cục bài dạy Trường Chúa Nhật chuẩn mực.",
+      descEn: "Sound principles of biblical interpretation in grammatical-historical context with modern preaching application.",
       fileSize: "4.8 MB",
       format: "PDF",
     },
     {
       id: "b3",
-      titleVi: "Gia Đình Đặt Nền Tảng Trên Bàn Thờ Lời Chúa",
-      titleEn: "Families Built Upon the Family Altar",
-      author: "Zoya Hank",
-      category: "family",
+      titleVi: "Kỷ Luật Tĩnh Nguyện & Lửa Thiêng Cầu Nguyện",
+      titleEn: "Spiritual Habits & Persistent Devotional Life",
+      author: "Ban Giảng Huấn SAM",
+      authorRoleVi: "Đội ngũ Mục vụ Đào tạo SAM",
+      authorRoleEn: "SAM Pastoral Equipping Team",
+      category: "habits",
       pages: 120,
-      descVi: "Xây dựng thì giờ tĩnh nguyện gia đình mỗi ngày, gắn kết vợ chồng và truyền trao đức tin sống động cho con cái.",
-      descEn: "Cultivating daily family quiet times, strengthening marital bonds, and passing living faith to children.",
+      cover: "/covers/bible-habit.svg",
+      descVi: "Phương pháp SOAP đọc Kinh Thánh hằng ngày, kỹ thuật ngắt quãng ghi nhớ Lời Chúa và phá tan khô hạn thuộc linh.",
+      descEn: "SOAP Bible study method, spaced-repetition Scripture memory, and breaking spiritual dryness.",
       fileSize: "2.9 MB",
       format: "PDF",
     },
     {
       id: "b4",
-      titleVi: "Lãnh Đạo Đầy Ơn & Tinh Thần Đầy Tớ",
-      titleEn: "Anointed Leadership & Servant Heart",
-      author: "Spiritual Advance Ministry",
+      titleVi: "Lãnh Đạo Nhóm Nhỏ Với Trái Tim Người Đầy Tớ",
+      titleEn: "Small Group Leadership with a Servant Heart",
+      author: "Chấp sự Tabitha Nguyen & Zoya Hank",
+      authorRoleVi: "Cố vấn Trường Chúa Nhật & Chăm sóc",
+      authorRoleEn: "Sunday School & Pastoral Care",
       category: "leadership",
       pages: 180,
-      descVi: "Phẩm chất và kỹ năng cần có của người hướng dẫn nhóm nhỏ, chấp sự và trưởng ban mục vụ trong Hội Thánh.",
+      cover: "/covers/leadership-foundations.svg",
+      descVi: "Phẩm chất và kỹ năng cần có của người hướng dẫn nhóm tế bào, chấp sự và ban điều hành mục vụ Hội Thánh.",
       descEn: "Essential character traits and practical skills for small group leaders, deacons, and ministry directors.",
       fileSize: "4.1 MB",
-      format: "PDF",
-    },
-    {
-      id: "b5",
-      titleVi: "Tổng Luận 66 Sách Kinh Thánh",
-      titleEn: "Survey of the 66 Books of the Bible",
-      author: "Jack Lee",
-      category: "theology",
-      pages: 320,
-      descVi: "Bản đồ toàn cảnh Cựu Ước và Tân Ước, chủ đề trung tâm của từng sách và sợi chỉ đỏ cứu chuộc xuyên suốt lịch sử.",
-      descEn: "A panoramic survey of the Old and New Testaments, central themes, and the scarlet thread of redemption.",
-      fileSize: "6.5 MB",
       format: "PDF",
     },
   ];
@@ -99,43 +104,45 @@ export default function LibraryPage() {
   const videos = [
     {
       id: "v1",
-      titleVi: "Bí Quyết Giữ Lửa Tĩnh Nguyện & Cầu Thay Mỗi Ngày",
+      titleVi: "Bí Quyết Giữ Lửa Tĩnh Nguyện & Tương Giao Với Chúa",
       titleEn: "Keys to Maintaining a Persistent Devotional Fire",
-      speaker: "Tabitha Nguyen",
-      category: "discipleship",
+      speaker: "Chấp sự Tabitha Nguyen",
+      speakerRoleVi: "Chủ tịch SAM",
+      speakerRoleEn: "SAM President",
+      category: "habits",
       duration: "42:15",
-      youtubeId: "dQw4w9WgXcQ", // demo placeholder
       thumbnail: "/covers/bible-habit.svg",
-      descVi: "Bài giảng bồi linh thực tế giúp vượt qua sự khô hạn tâm linh và xây dựng thói quen tương giao mật thiết với Chúa.",
+      descVi: "Bài giảng bồi linh thực tế giúp tín hữu thiết lập thì giờ tĩnh nguyện buổi sáng và nuôi dưỡng đời sống cầu nguyện bền bỉ.",
       descEn: "Practical sermon on breaking spiritual dryness and establishing an intimate daily communion with God.",
     },
     {
       id: "v2",
-      titleVi: "Giải Kinh Ma-thi-ơ: Bài Giảng Trên Núi & Đạo Nước Trời",
+      titleVi: "Giải Kinh Ma-thi-ơ: Bài Giảng Trên Núi & Tiêu Chuẩn Nước Trời",
       titleEn: "Exposition of Matthew: Sermon on the Mount",
-      speaker: "Jack Lee",
+      speaker: "Mục sư Jack Lee",
+      speakerRoleVi: "Dallas Theological Fellowship",
+      speakerRoleEn: "Dallas Theological Fellowship",
       category: "theology",
       duration: "58:30",
-      youtubeId: "dQw4w9WgXcQ",
       thumbnail: "/covers/discipleship-101.svg",
-      descVi: "Khám phá các phước lành và tiêu chuẩn công chính của vương quốc Đấng Christ trong thế giới hiện đại.",
+      descVi: "Khám phá các phước lành và tiêu chuẩn công chính của vương quốc Đấng Christ được áp dụng trong đời sống đương đại.",
       descEn: "Exploring the Beatitudes and the kingdom righteousness of Christ lived out in our modern context.",
     },
     {
       id: "v3",
-      titleVi: "Hôn Nhân Trong Ý Muốn Chúa & Chữa Lành Mối Quan Hệ",
-      titleEn: "God-Honoring Marriage & Relationship Healing",
-      speaker: "Zoya Hank",
-      category: "family",
+      titleVi: "Kỹ Năng Thăm Viếng & Nâng Đỡ Tín Hữu Ngã Lòng",
+      titleEn: "Pastoral Visitation & Restoring Weary Souls",
+      speaker: "Ban Giảng Huấn SAM",
+      speakerRoleVi: "Đội ngũ Chăm sóc Mục vụ",
+      speakerRoleEn: "Pastoral Care Team",
+      category: "leadership",
       duration: "45:00",
-      youtubeId: "dQw4w9WgXcQ",
       thumbnail: "/covers/leadership-foundations.svg",
-      descVi: "Nguyên tắc giải quyết bất đồng trong tình yêu thương agape và lời khuyên thuộc linh cho các cặp vợ chồng trẻ.",
-      descEn: "Principles for resolving conflict through Agape love and practical spiritual counsel for couples.",
+      descVi: "Nguyên tắc lắng nghe mục vụ, giải quyết xung đột trong yêu thương và khích lệ các gia đình tín hữu vắng mặt dài ngày.",
+      descEn: "Principles for pastoral listening, conflict resolution in love, and comforting absentee families.",
     },
   ];
 
-  // Filtering
   const filteredBooks = books.filter((item) => {
     const matchCat = selectedCategory === "all" || item.category === selectedCategory;
     const matchSearch =
@@ -157,258 +164,387 @@ export default function LibraryPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FBF9F5]">
+    <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 space-y-10">
-        {/* Header Title */}
-        <section className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FEF5EE] border border-[#F17F34]/40 text-[#DE6D22] text-xs font-semibold tracking-wider uppercase shadow-xs">
-            <BookOpen className="w-3.5 h-3.5 text-[#F17F34]" />
-            <span>{bilingual("Thư Viện Thuộc Linh", "Spiritual Library")}</span>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
+        {/* ============================================================== */}
+        {/* 1. HERO SECTION: Lời Chúa & Thư Viện Thánh */}
+        {/* ============================================================== */}
+        <section className="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-800 text-xs font-semibold uppercase tracking-wider shadow-xs">
+            <BookOpen className="w-3.5 h-3.5 text-primary-800 shrink-0" />
+            <span>{bilingual("Kho Tư Liệu Bồi Linh SAM", "SAM Theological & Devotional Vault")}</span>
           </div>
-          <h1 className="font-scripture text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            {bilingual("Kho Tài Liệu & Video Bài Giảng SAM", "SAM Resource Vault & Sermons")}
+
+          <h1 className="font-scripture text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight [text-wrap:balance]">
+            {bilingual("Thư Viện Sách & Video Bài Giảng", "Spiritual Literature & Sermon Archive")}
           </h1>
-          <p className="text-xs sm:text-base text-slate-700 font-serif italic leading-relaxed">
-            {bilingual(
-              "Nguồn tư liệu thần học, sách bồi linh bồi dưỡng tâm linh và video bài giảng trang bị người hầu việc Chúa.",
-              "Comprehensive biblical books, spiritual formation materials, and expository sermons equipping the saints."
-            )}
-          </p>
+
+          <div className="border-y border-amber-200/80 py-3 my-2 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed [text-wrap:pretty]">
+              {bilingual(
+                '"Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi." — Thi Thiên 119:105',
+                '"Your word is a lamp for my feet, a light on my path." — Psalm 119:105'
+              )}
+            </p>
+          </div>
         </section>
 
-        {/* Tab Switcher & Search Bar */}
-        <section className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 bg-white rounded-2xl border border-amber-200/80 shadow-xs">
+        {/* ============================================================== */}
+        {/* 2. TAB SWITCHER & THANH TÌM KIẾM (Search & Controls) */}
+        {/* ============================================================== */}
+        <section className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 sm:p-4 bg-white rounded-3xl border border-amber-200/90 shadow-sm">
+          <h2 className="sr-only">
+            {bilingual("Danh Mục Sách & Video Bài Giảng", "Curated Spiritual Books & Sermons")}
+          </h2>
+
           {/* Tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-amber-50/70 rounded-xl border border-amber-200/60 w-full sm:w-auto">
+          <div className="flex items-center gap-2 p-1.5 bg-sacred-card rounded-2xl border border-amber-200 w-full sm:w-auto">
             <button
               onClick={() => setActiveTab("books")}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[44px] ${
                 activeTab === "books"
-                  ? "bg-[#F17F34] text-white shadow-xs font-bold"
-                  : "text-slate-700 hover:text-slate-900"
+                  ? "bg-primary-700 text-white shadow-xs"
+                  : "text-slate-700 hover:text-slate-900 hover:bg-white"
               }`}
             >
-              <FileText className="w-3.5 h-3.5" />
-              <span>{bilingual("Sách & Tài Liệu", "Books & Documents")}</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-black/10">
+              <FileText className="w-4 h-4" />
+              <span>{bilingual("Sách Bồi Linh & Giáo Trình", "Books & Syllabi")}</span>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-mono ${
+                activeTab === "books" ? "bg-primary-950/40 text-white" : "bg-slate-200 text-slate-800"
+              }`}>
                 {books.length}
               </span>
             </button>
 
             <button
               onClick={() => setActiveTab("videos")}
-              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[44px] ${
                 activeTab === "videos"
-                  ? "bg-[#F17F34] text-white shadow-xs font-bold"
-                  : "text-slate-700 hover:text-slate-900"
+                  ? "bg-primary-700 text-white shadow-xs"
+                  : "text-slate-700 hover:text-slate-900 hover:bg-white"
               }`}
             >
-              <Video className="w-3.5 h-3.5" />
-              <span>{bilingual("Video Bài Giảng", "Video Sermons")}</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-black/10">
+              <Video className="w-4 h-4" />
+              <span>{bilingual("Video Bài Giảng Bồi Linh", "Video Sermons")}</span>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-mono ${
+                activeTab === "videos" ? "bg-primary-950/40 text-white" : "bg-slate-200 text-slate-800"
+              }`}>
                 {videos.length}
               </span>
             </button>
           </div>
 
           {/* Search Box */}
-          <div className="relative w-full sm:w-72">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <div className="relative w-full sm:w-80">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder={bilingual("Tìm kiếm tài liệu, diễn giả...", "Search books, topics, speakers...")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-[#FAF8F3] border border-amber-200/80 rounded-xl text-slate-900 focus:outline-none focus:border-[#F17F34] focus:ring-1 focus:ring-[#F17F34]/30"
+              className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-sacred-card border border-amber-200 rounded-xl text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary-700 focus:ring-1 focus:ring-primary-700 min-h-[44px]"
             />
           </div>
         </section>
 
         {/* Categories Pill Filter */}
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold text-slate-500 flex items-center gap-1 mr-1">
-            <Filter className="w-3.5 h-3.5 text-amber-800" />
-            <span>{bilingual("Chủ đề:", "Filter:")}</span>
+        <div className="flex flex-wrap items-center gap-2 text-left">
+          <span className="text-xs font-bold text-slate-600 flex items-center gap-1.5 mr-2 font-serif">
+            <Filter className="w-4 h-4 text-primary-700" />
+            <span>{bilingual("Phân Loại:", "Topics:")}</span>
           </span>
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-                selectedCategory === cat.id
-                  ? "bg-[#F17F34] text-white shadow-2xs"
-                  : "bg-white border border-amber-200/80 text-slate-700 hover:bg-amber-50"
-              }`}
-            >
-              {isEn ? cat.labelEn : cat.labelVi}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const isSelected = selectedCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer min-h-[38px] ${
+                  isSelected
+                    ? "bg-primary-700 text-white shadow-xs"
+                    : "bg-white border border-amber-200/90 text-slate-700 hover:bg-primary-50 hover:text-primary-700"
+                }`}
+              >
+                {isEn ? cat.labelEn : cat.labelVi}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Tab 1: Books Content */}
+        {/* ============================================================== */}
+        {/* TAB 1: SÁCH & TÀI LIỆU BỒI LINH (Editorial Book Showcase) */}
+        {/* ============================================================== */}
         {activeTab === "books" && (
-          <section className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <section className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
               {filteredBooks.map((book) => (
                 <div
                   key={book.id}
-                  className="p-5 sm:p-6 bg-white rounded-2xl border border-amber-200/80 shadow-2xs hover:border-[#F17F34] transition-all flex flex-col justify-between space-y-4"
+                  className="p-6 bg-white rounded-3xl border border-amber-200/90 shadow-sm hover:border-primary-600 transition-all flex flex-col sm:flex-row gap-6 justify-between group"
                 >
-                  <div className="space-y-2.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FEF5EE] text-[#F17F34] border border-[#F17F34]/20">
-                        {book.category}
-                      </span>
-                      <span className="text-[11px] font-mono text-slate-500">
-                        {book.format} • {book.fileSize}
-                      </span>
-                    </div>
-
-                    <h3 className="font-scripture text-lg font-bold text-slate-900">
-                      {isEn ? book.titleEn : book.titleVi}
-                    </h3>
-                    <p className="text-xs text-amber-900 font-serif">
-                      {bilingual("Tác giả: ", "Author: ")}
-                      <span className="font-bold">{book.author}</span>
-                      <span className="text-slate-500 font-normal"> ({book.pages} {bilingual("trang", "pages")})</span>
-                    </p>
-                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                      {isEn ? book.descEn : book.descVi}
-                    </p>
+                  {/* Bìa sách thật có aspect ratio chuẩn sách in */}
+                  <div className="relative aspect-[3/4] w-full sm:w-36 rounded-2xl bg-amber-50 border border-amber-200 overflow-hidden shrink-0 shadow-2xs">
+                    <Image
+                      src={book.cover}
+                      alt={book.titleVi}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-xs font-bold bg-slate-900/80 text-white font-mono">
+                      {book.format}
+                    </span>
                   </div>
 
-                  <div className="pt-3 border-t border-amber-100 flex items-center justify-between gap-3">
-                    <button
-                      onClick={() => alert(bilingual("Đang chuẩn bị tải về bản PDF mẫu...", "Preparing sample PDF download..."))}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FEF5EE] hover:bg-[#FDE8D7] text-[#DE6D22] text-xs font-semibold transition-colors cursor-pointer"
-                    >
-                      <Download className="w-3.5 h-3.5 text-[#F17F34]" />
-                      <span>{bilingual("Tải PDF Miễn Phí", "Download PDF")}</span>
-                    </button>
-                    <button
-                      onClick={() => alert(bilingual("Đang mở trình đọc sách trực tuyến...", "Opening online reader..."))}
-                      className="text-xs font-semibold text-slate-700 hover:text-[#F17F34] underline cursor-pointer"
-                    >
-                      {bilingual("Đọc Trực Tuyến", "Read Online")}
-                    </button>
+                  {/* Nội dung sách */}
+                  <div className="flex-1 flex flex-col justify-between space-y-4">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-primary-50 text-primary-800 border border-primary-200">
+                          {book.category}
+                        </span>
+                        <span className="text-xs text-slate-500 font-sans">
+                          {book.pages} {bilingual("trang", "pages")} • {book.fileSize}
+                        </span>
+                      </div>
+
+                      <h3 className="font-scripture text-lg sm:text-xl font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug [text-wrap:balance]">
+                        {isEn ? book.titleEn : book.titleVi}
+                      </h3>
+
+                      <p className="text-xs text-primary-700 font-serif font-semibold">
+                        {book.author}
+                      </p>
+
+                      <p className="text-xs text-slate-700 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
+                        {isEn ? book.descEn : book.descVi}
+                      </p>
+                    </div>
+
+                    {/* Nút tải PDF và Đọc trực tuyến */}
+                    <div className="pt-3 border-t border-amber-100 flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          alert(
+                            bilingual(
+                              `Đang chuẩn bị tải về bản PDF '${book.titleVi}'...`,
+                              `Preparing PDF download for '${book.titleEn}'...`
+                            )
+                          )
+                        }
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary-700 hover:bg-primary-800 text-white text-xs font-bold transition-all shadow-xs min-h-[40px] cursor-pointer"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>{bilingual("Tải PDF Miễn Phí", "Download PDF")}</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setReadingBook({
+                            title: isEn ? book.titleEn : book.titleVi,
+                            author: book.author,
+                            pages: book.pages,
+                          })
+                        }
+                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-sacred-card hover:bg-primary-50 text-slate-800 text-xs font-semibold border border-amber-200 transition-colors min-h-[40px] cursor-pointer"
+                      >
+                        <BookOpen className="w-3.5 h-3.5 text-primary-700" />
+                        <span>{bilingual("Đọc Thử Mẫu", "Preview Book")}</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
 
             {filteredBooks.length === 0 && (
-              <div className="p-8 text-center bg-white rounded-2xl border border-amber-200/70 text-slate-500 text-xs">
-                {bilingual("Không tìm thấy tài liệu phù hợp với bộ lọc.", "No documents found matching your search.")}
+              <div className="p-12 text-center bg-white rounded-3xl border border-amber-200/80 text-slate-600 text-sm">
+                {bilingual("Không tìm thấy tài liệu phù hợp với từ khóa.", "No literature found matching your search.")}
               </div>
             )}
           </section>
         )}
 
-        {/* Tab 2: Videos Content */}
+        {/* ============================================================== */}
+        {/* TAB 2: VIDEO BÀI GIẢNG (Sermon Vault Showcase) */}
+        {/* ============================================================== */}
         {activeTab === "videos" && (
-          <section className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <section className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
               {filteredVideos.map((video) => (
                 <div
                   key={video.id}
-                  className="bg-white rounded-2xl border border-amber-200/80 shadow-2xs hover:border-[#F17F34] transition-all overflow-hidden flex flex-col group cursor-pointer"
-                  onClick={() => setPlayingVideo({ title: isEn ? video.titleEn : video.titleVi, youtubeId: video.youtubeId })}
+                  className="bg-white rounded-3xl border border-amber-200/90 shadow-sm hover:border-primary-600 transition-all overflow-hidden flex flex-col justify-between group cursor-pointer"
+                  onClick={() =>
+                    setPlayingVideo({
+                      title: isEn ? video.titleEn : video.titleVi,
+                      speaker: video.speaker,
+                      duration: video.duration,
+                    })
+                  }
                 >
-                  {/* Thumbnail Container */}
+                  {/* Thumbnail Video lồng nút Play */}
                   <div className="relative aspect-video bg-slate-900 overflow-hidden">
-                    <img
+                    <Image
                       src={video.thumbnail}
                       alt={video.titleVi}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-80"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent && !parent.querySelector('.img-fallback')) {
-                          const fallback = document.createElement('div');
-                          fallback.className = 'img-fallback w-full h-full bg-gradient-to-br from-indigo-950 via-slate-900 to-[#F17F34]/30 flex flex-col items-center justify-center text-amber-300';
-                          fallback.innerHTML = '<span class="text-4xl font-serif">†</span>';
-                          parent.prepend(fallback);
-                        }
-                      }}
+                      fill
+                      className="object-cover group-hover:scale-104 transition-transform duration-500 opacity-90"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-[#F17F34] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Play className="w-5 h-5 ml-0.5 fill-white" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-primary-700 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <Play className="w-6 h-6 ml-1 fill-white" />
                       </div>
                     </div>
-                    <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-black/80 text-[10px] text-white font-mono">
-                      {video.duration}
+                    <span className="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-lg bg-black/85 text-xs text-white font-mono flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-amber-300" />
+                      <span>{video.duration}</span>
                     </span>
                   </div>
 
-                  <div className="p-4 flex-1 flex flex-col justify-between space-y-2">
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-[#F17F34] uppercase tracking-wider">
+                  <div className="p-6 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-primary-700 uppercase tracking-wider bg-primary-50 px-2.5 py-0.5 rounded-full border border-primary-200">
                         {video.category}
                       </span>
-                      <h3 className="font-scripture text-base font-bold text-slate-900 group-hover:text-[#F17F34] transition-colors leading-snug">
-                        {isEn ? video.titleEn : video.titleVi}
-                      </h3>
-                      <p className="text-xs text-amber-900 font-serif font-medium">
-                        {video.speaker}
-                      </p>
                     </div>
-                    <p className="text-xs text-slate-600 line-clamp-2 font-sans pt-1">
+
+                    <h3 className="font-scripture text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug [text-wrap:balance]">
+                      {isEn ? video.titleEn : video.titleVi}
+                    </h3>
+
+                    <p className="text-xs text-primary-700 font-serif font-semibold">
+                      {video.speaker}
+                    </p>
+
+                    <p className="text-xs text-slate-700 line-clamp-3 leading-relaxed font-sans [text-wrap:pretty]">
                       {isEn ? video.descEn : video.descVi}
                     </p>
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-700 group-hover:underline">
+                      <span>{bilingual("Xem Bài Giảng Trực Tuyến", "Watch Full Sermon")}</span>
+                      <Play className="w-3 h-3 fill-primary-700" />
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
 
             {filteredVideos.length === 0 && (
-              <div className="p-8 text-center bg-white rounded-2xl border border-amber-200/70 text-slate-500 text-xs">
+              <div className="p-12 text-center bg-white rounded-3xl border border-amber-200/80 text-slate-600 text-sm">
                 {bilingual("Không tìm thấy video bài giảng phù hợp.", "No video sermons found matching your search.")}
               </div>
             )}
           </section>
         )}
 
-        {/* Video Player Modal */}
+        {/* ============================================================== */}
+        {/* MODAL: Video Player */}
+        {/* ============================================================== */}
         {playingVideo && (
-          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-            <div className="bg-slate-950 rounded-2xl border border-amber-400/40 w-full max-w-3xl overflow-hidden shadow-2xl space-y-3 p-4">
-              <div className="flex items-center justify-between text-white pb-2 border-b border-slate-800">
-                <span className="font-scripture font-bold text-sm truncate pr-2">
-                  {playingVideo.title}
-                </span>
+          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
+            <div className="bg-slate-950 rounded-3xl border border-amber-400/40 w-full max-w-3xl overflow-hidden shadow-2xl space-y-4 p-5 sm:p-6 text-left">
+              <div className="flex items-center justify-between text-white pb-3 border-b border-slate-800">
+                <div>
+                  <span className="text-xs font-bold text-amber-300 uppercase font-serif tracking-widest block">
+                    {bilingual("Phát Video Bài Giảng SAM", "Now Playing")}
+                  </span>
+                  <h3 className="font-scripture font-bold text-base sm:text-lg text-white truncate max-w-xl">
+                    {playingVideo.title}
+                  </h3>
+                </div>
                 <button
                   onClick={() => setPlayingVideo(null)}
-                  className="p-1 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white cursor-pointer"
+                  className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Responsive Video Container */}
-              <div className="relative aspect-video bg-black rounded-xl overflow-hidden flex items-center justify-center">
-                <div className="text-center space-y-3 p-6">
-                  <div className="w-14 h-14 rounded-full bg-[#F17F34]/20 border border-[#F17F34] text-[#F17F34] mx-auto flex items-center justify-center animate-pulse">
-                    <Play className="w-6 h-6 ml-0.5 fill-[#F17F34]" />
-                  </div>
-                  <p className="text-sm text-slate-300 font-serif italic">
-                    {bilingual("Đang phát bài giảng mẫu từ thư viện SAM", "Playing sermon stream from SAM Vault")}
-                  </p>
-                  <span className="text-xs text-slate-500 font-mono">
-                    ID: {playingVideo.youtubeId}
-                  </span>
+              {/* Video Streaming Mock Player */}
+              <div className="relative aspect-video bg-black rounded-2xl overflow-hidden flex flex-col items-center justify-center p-6 text-center border border-white/10">
+                <div className="w-16 h-16 rounded-full bg-primary-700/20 border-2 border-primary-700 flex items-center justify-center text-primary-700 mb-3 animate-pulse">
+                  <Play className="w-8 h-8 ml-1 fill-primary-700" />
                 </div>
+                <p className="font-serif text-lg text-white font-bold">
+                  {playingVideo.speaker}
+                </p>
+                <p className="text-xs text-slate-400 font-sans mt-1">
+                  {bilingual("Độ dài:", "Duration:")} {playingVideo.duration} • Full HD 1080p
+                </p>
               </div>
 
-              <div className="text-right pt-1">
+              <div className="flex items-center justify-between pt-2">
+                <span className="text-xs text-slate-400 font-serif">
+                  Spiritual Advance Ministry • Sermon Vault
+                </span>
                 <button
                   onClick={() => setPlayingVideo(null)}
-                  className="px-4 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs text-white cursor-pointer"
+                  className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white cursor-pointer"
                 >
                   {bilingual("Đóng", "Close")}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ============================================================== */}
+        {/* MODAL: Đọc Sách Trực Tuyến (Book Sample Reader) */}
+        {/* ============================================================== */}
+        {readingBook && (
+          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
+            <div className="bg-sacred-parchment rounded-3xl border-2 border-amber-300 w-full max-w-2xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6 text-left">
+              <div className="flex items-center justify-between pb-3 border-b border-amber-200">
+                <div>
+                  <span className="text-xs font-bold text-primary-700 uppercase font-serif tracking-widest block">
+                    {bilingual("Trình Đọc Bản Thảo Trực Tuyến", "Online Reader Preview")}
+                  </span>
+                  <h3 className="font-scripture font-bold text-xl text-slate-900">
+                    {readingBook.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 font-serif mt-0.5">
+                    {bilingual("Tác giả:", "Author:")} {readingBook.author} • {readingBook.pages} {bilingual("trang", "pages")}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setReadingBook(null)}
+                  className="p-2 rounded-xl bg-white border border-amber-200 hover:bg-amber-100 text-slate-700 cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Book Excerpt Page */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-amber-200 shadow-xs space-y-4 font-serif text-slate-800 leading-relaxed text-sm sm:text-base [text-wrap:pretty]">
+                <p className="italic text-primary-700 font-bold border-l-3 border-primary-700 pl-3">
+                  {bilingual(
+                    "Trích đoạn Lời Mở Đầu: 'Môn đồ hóa không chỉ là một chương trình 10 tuần, mà là hành trình suốt một đời đồng đi với Cứu Chúa.'",
+                    "Excerpt from Preface: 'Discipleship is not a ten-week program; it is a lifelong walk in communion with our Savior.'"
+                  )}
+                </p>
+                <p>
+                  {bilingual(
+                    "Khi Chúa Jesus kêu gọi các sứ đồ bên bờ hồ Ga-li-lê, Ngài không trao cho họ một bản hợp đồng, mà là một lời mời gọi bước đi trong mối tương giao sống động: 'Hãy theo Ta, và Ta sẽ khiến các ngươi trở nên tay đánh lưới người.'",
+                    "When Jesus summoned His disciples by the Sea of Galilee, He offered not an employment contract, but an invitation into living relationship: 'Follow me, and I will make you fishers of men.'"
+                  )}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-2">
+                <span className="text-xs text-slate-500 font-serif">
+                  {bilingual("Bản quyền © Spiritual Advance Ministry (SAM)", "Copyright © Spiritual Advance Ministry")}
+                </span>
+                <button
+                  onClick={() => setReadingBook(null)}
+                  className="px-5 py-2.5 rounded-xl bg-primary-700 text-white text-xs font-bold hover:bg-primary-800 cursor-pointer"
+                >
+                  {bilingual("Hoàn Tất Đọc Thử", "Done Previewing")}
                 </button>
               </div>
             </div>

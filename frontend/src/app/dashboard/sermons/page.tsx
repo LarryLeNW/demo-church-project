@@ -7,6 +7,7 @@ import { apiFetch, ApiError } from "@/lib/api/client";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { TactileInput } from "@/components/ui/tactile-input";
+import { TactileSelect } from "@/components/ui/tactile-select";
 import {
   BookText,
   Calendar,
@@ -294,17 +295,20 @@ export default function SermonsPage() {
         {/* Outline Switcher Dropdown */}
         <div className="shrink-0 flex items-center gap-2">
           {allOutlines.length > 1 && (
-            <select
+            <TactileSelect
               value={currentOutline.id}
               onChange={(e) => handleSelectOutline(e.target.value)}
-              className="px-3 py-2 rounded-xl bg-white border border-amber-300 text-xs font-semibold text-slate-800 focus:outline-none"
+              selectSize="sm"
+              variant="default"
+              containerClassName="w-auto min-w-[200px]"
+              aria-label={bilingual("Chọn dàn ý bài giảng", "Select sermon outline")}
             >
               {allOutlines.map((o) => (
                 <option key={o.id} value={o.id}>
                   {o.serviceDate} — {isEn ? (o.titleEn || o.title) : o.title}
                 </option>
               ))}
-            </select>
+            </TactileSelect>
           )}
 
           <TactileButton
@@ -334,7 +338,7 @@ export default function SermonsPage() {
               {currentOutline.mainScriptureRef}
             </span>
           </div>
-          <span className="text-[11px] font-mono text-amber-800 bg-amber-100/60 px-2.5 py-0.5 rounded-full border border-amber-200">
+          <span className="text-xs font-mono text-amber-900 bg-amber-100/60 px-2.5 py-0.5 rounded-full border border-amber-200">
             {bilingual("Kinh Thánh Trọn Bộ", "Complete Scripture")}
           </span>
         </div>

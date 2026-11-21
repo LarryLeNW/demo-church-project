@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect, type TactileSelectOption } from "@/components/ui/tactile-select";
 import {
   Heart,
   Plus,
@@ -108,6 +109,68 @@ export default function PrayerSanctuaryPage() {
   const [visitNotes, setVisitNotes] = useState("");
   const [contactType, setContactType] = useState("phone");
   const [loggingVisit, setLoggingVisit] = useState(false);
+
+  const prayerCategoryOptions: TactileSelectOption[] = [
+    {
+      value: "healing",
+      label: bilingual("Chữa Lành & Sức Khỏe", "Healing & Health"),
+      description: bilingual("Cầu xin Chúa chữa lành bệnh tật và thêm sức cho thân thể.", "Praying for physical healing, surgery recovery, and divine strength."),
+      badge: "Chữa Lành",
+      tooltip: bilingual("Bởi lằn đòn Người, chúng ta được lành bệnh (Ê-sai 53:5).", "By His wounds we are healed (Isaiah 53:5)."),
+    },
+    {
+      value: "family",
+      label: bilingual("Gia Đình & Hôn Nhân", "Family & Marriage"),
+      description: bilingual("Hàn gắn hôn nhân, con cái vâng lời và bình an trong tổ ấm.", "Marital restoration, children walking with God, and peaceful homes."),
+      badge: "Gia Đình",
+    },
+    {
+      value: "ministry",
+      label: bilingual("Mục Vụ & Hội Thánh", "Ministry & Church"),
+      description: bilingual("Cầu thay cho các Mục sư, nhóm nhỏ và công tác mở mang Hội Thánh.", "Upholding pastors, ministry leaders, and church growth."),
+      badge: "Mục Vụ",
+    },
+    {
+      value: "salvation",
+      label: bilingual("Cứu Rỗi Thân Hữu", "Salvation of Loved Ones"),
+      description: bilingual("Cầu nguyện cho người thân, bạn bè mở lòng tiếp nhận Tin Lành.", "Praying for unsaved friends and family to embrace Christ."),
+      badge: "Cứu Rỗi",
+    },
+    {
+      value: "thanksgiving",
+      label: bilingual("Lời Chứng Tạ Ơn", "Praise Report"),
+      description: bilingual("Tôn vinh và làm chứng về ơn phước Chúa đã nhậm lời cầu nguyện.", "Testifying to God's faithfulness and answered prayers."),
+      badge: "Tạ Ơn",
+      tooltip: bilingual("Hãy cảm tạ Đức Giê-hô-va vì Ngài là thiện; sự nhân từ Ngài còn đến đời đời (Thi thiên 107:1).", "Give thanks to the Lord, for He is good; His love endures forever (Psalm 107:1)."),
+    },
+    {
+      value: "general",
+      label: bilingual("Nan Đề Chung", "General Prayer"),
+      description: bilingual("Công việc, học tập, di trú và mọi nhu cầu trong cuộc sống.", "Daily work, studies, immigration, and life guidance."),
+      badge: "Hiệp Nguyện",
+    },
+  ];
+
+  const contactMethodOptions: TactileSelectOption[] = [
+    {
+      value: "phone",
+      label: bilingual("Gọi điện thoại thăm hỏi", "Phone Call"),
+      description: bilingual("Mục sư gọi trực tiếp để lắng nghe và cầu nguyện qua điện thoại.", "Direct phone call to listen and pray together."),
+      badge: "Điện Thoại",
+    },
+    {
+      value: "in_person",
+      label: bilingual("Gặp gỡ trực tiếp", "In-Person Meeting"),
+      description: bilingual("Gặp mặt tại văn phòng mục vụ Hội Thánh hoặc quán cà phê thân mật.", "Meeting at pastoral counseling room or quiet fellowship space."),
+      badge: "Trực Tiếp",
+    },
+    {
+      value: "home_visit",
+      label: bilingual("Thăm viếng tại tư gia", "Home Care Visit"),
+      description: bilingual("Mục sư và Ban Thăm viếng đến nhà cầu thay và thông công cùng gia quyến.", "Pastoral visit directly at home with family fellowship."),
+      badge: "Tư Gia",
+    },
+  ];
 
   // Local intercession tracking
   const [intercedingIds, setIntercedingIds] = useState<Set<string>>(new Set());
@@ -364,7 +427,7 @@ export default function PrayerSanctuaryPage() {
                       "Spiritual Watch: Absent Members Requiring Care Visit"
                     )}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-bold">
+                  <span className="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-xs font-bold">
                     {absentees.length} {bilingual("Tín Hữu", "Members")}
                   </span>
                 </h3>
@@ -390,7 +453,7 @@ export default function PrayerSanctuaryPage() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
                     <h4 className="font-bold text-sm text-slate-900">{item.fullName}</h4>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
+                    <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
                       {bilingual(
                         `Vắng ${item.consecutiveWeeks} Tuần`,
                         `Absent ${item.consecutiveWeeks} Weeks`
@@ -398,7 +461,7 @@ export default function PrayerSanctuaryPage() {
                     </span>
                   </div>
                   <p className="text-xs text-rose-700 font-medium">{item.alertReason}</p>
-                  <p className="text-[11px] text-slate-500 font-serif">
+                  <p className="text-xs text-slate-500 font-serif">
                     {bilingual("Điểm nhóm:", "Campus:")} {item.campusId} •{" "}
                     {bilingual("Lần sinh hoạt cuối:", "Last active:")}{" "}
                     {new Date(item.lastActivityDate).toLocaleDateString(
@@ -407,7 +470,7 @@ export default function PrayerSanctuaryPage() {
                   </p>
 
                   {item.lastContacted && (
-                    <div className="p-2 bg-emerald-50 rounded-lg border border-emerald-100 text-[11px] text-emerald-900">
+                    <div className="p-2 bg-emerald-50 rounded-lg border border-emerald-100 text-xs text-emerald-900">
                       <span className="font-bold">
                         {bilingual("Lần thăm gần nhất:", "Last Care Visit:")}
                       </span>{" "}
@@ -542,24 +605,24 @@ export default function PrayerSanctuaryPage() {
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span
-                        className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${catBadge.color}`}
+                        className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${catBadge.color}`}
                       >
                         {isEn ? catBadge.en : catBadge.vi}
                       </span>
                       {prayer.isConfidential && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-900 text-amber-300 flex items-center gap-1">
-                          <Lock className="w-2.5 h-2.5" />{" "}
+                        <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-900 text-amber-300 flex items-center gap-1">
+                          <Lock className="w-3 h-3" />{" "}
                           {bilingual("Kín nhiệm", "Confidential")}
                         </span>
                       )}
                       {prayer.isAnswered && (
-                        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-amber-400 text-indigo-950 flex items-center gap-1 shadow-xs">
-                          <Sparkles className="w-3 h-3 fill-current" />{" "}
+                        <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-400 text-indigo-950 flex items-center gap-1 shadow-xs">
+                          <Sparkles className="w-3.5 h-3.5 fill-current" />{" "}
                           {bilingual("Chúa Đã Nhậm Lời ✨", "Answered Prayer ✨")}
                         </span>
                       )}
                     </div>
-                    <span className="text-[11px] text-slate-400 font-serif">
+                    <span className="text-xs text-slate-500 font-serif">
                       {new Date(prayer.createdAt).toLocaleDateString(
                         isEn ? "en-US" : "vi-VN"
                       )}
@@ -617,7 +680,7 @@ export default function PrayerSanctuaryPage() {
                         ? bilingual("Đã Hiệp Ý Trong Chúa", "Interceded in Prayer")
                         : bilingual("Tôi Cùng Hiệp Nguyện", "I'm Praying For This")}
                     </span>
-                    <span className="px-2 py-0.5 rounded-full bg-amber-200/80 text-amber-950 text-[10px] font-bold">
+                    <span className="px-2 py-0.5 rounded-full bg-amber-200/80 text-amber-950 text-xs font-bold">
                       {prayer.prayerCount}
                     </span>
                   </button>
@@ -693,23 +756,19 @@ export default function PrayerSanctuaryPage() {
                 />
               </div>
 
-              <div>
-                <label className="block font-semibold text-slate-800 mb-1">
-                  {bilingual("Chuyên Mục", "Category")}
-                </label>
-                <select
-                  value={newCategory}
-                  onChange={(e) => setNewCategory(e.target.value)}
-                  className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                >
-                  <option value="healing">{bilingual("Chữa Lành & Sức Khỏe", "Healing & Health")}</option>
-                  <option value="family">{bilingual("Gia Đình & Hôn Nhân", "Family & Marriage")}</option>
-                  <option value="ministry">{bilingual("Mục Vụ & Hội Thánh", "Ministry & Church")}</option>
-                  <option value="salvation">{bilingual("Cứu Rỗi Thân Hữu", "Salvation of Loved Ones")}</option>
-                  <option value="thanksgiving">{bilingual("Lời Chứng Tạ Ơn", "Praise Report")}</option>
-                  <option value="general">{bilingual("Nan Đề Chung", "General Prayer")}</option>
-                </select>
-              </div>
+              <TactileSelect
+                label={bilingual("Chuyên Mục", "Category")}
+                tooltip={bilingual(
+                  "Phân loại lời cầu thay để Ban Hiệp Nguyện và các nhóm nhỏ dễ dàng theo dõi và chung lời cầu xin",
+                  "Categorize prayer request for pastoral prayer warriors and small group intercession"
+                )}
+                value={newCategory}
+                onValueChange={(val) => setNewCategory(val)}
+                onChange={(e) => setNewCategory(e.target.value)}
+                options={prayerCategoryOptions}
+                selectSize="sm"
+                variant="default"
+              />
 
               <div>
                 <label className="block font-semibold text-slate-800 mb-1">
@@ -886,26 +945,19 @@ export default function PrayerSanctuaryPage() {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-semibold text-slate-800 mb-1">
-                  {bilingual("Hình Thức Liên Hệ", "Contact Method")}
-                </label>
-                <select
-                  value={contactType}
-                  onChange={(e) => setContactType(e.target.value)}
-                  className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                >
-                  <option value="phone">
-                    {bilingual("Gọi điện thoại thăm hỏi", "Phone Call")}
-                  </option>
-                  <option value="in_person">
-                    {bilingual("Gặp gỡ trực tiếp", "In-Person Meeting")}
-                  </option>
-                  <option value="home_visit">
-                    {bilingual("Thăm viếng tại tư gia", "Home Care Visit")}
-                  </option>
-                </select>
-              </div>
+              <TactileSelect
+                label={bilingual("Hình Thức Liên Hệ", "Contact Method")}
+                tooltip={bilingual(
+                  "Chọn hình thức liên lạc phù hợp với hoàn cảnh và mức độ khẩn cấp của tín hữu",
+                  "Choose contact channel appropriate for the member's situation and urgency"
+                )}
+                value={contactType}
+                onValueChange={(val) => setContactType(val)}
+                onChange={(e) => setContactType(e.target.value)}
+                options={contactMethodOptions}
+                selectSize="sm"
+                variant="default"
+              />
 
               <div>
                 <label className="block font-semibold text-slate-800 mb-1">

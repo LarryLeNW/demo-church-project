@@ -27,12 +27,12 @@ export function PublicFooter() {
                 <span className="font-serif font-black text-slate-900 text-base tracking-tight leading-none">
                   SAM
                 </span>
-                <span className="text-[10px] text-slate-500 font-serif leading-none mt-0.5">
+                <span className="text-xs text-slate-600 font-serif leading-none mt-0.5">
                   Spiritual Advance Ministry
                 </span>
               </div>
             </Link>
-            <p className="text-xs text-slate-600 leading-relaxed font-serif italic">
+            <p className="text-xs text-slate-600 leading-relaxed font-serif italic [text-wrap:pretty]">
               {bilingual(
                 '"Tận hiến trang bị người hầu việc Chúa, đem mọi người đến gần Đức Chúa Trời và trở nên những người phục sự trung tín của Ngài."',
                 '"Devoted in equipping people to bring everyone closer to God and raise faithful servants of Christ."'
@@ -47,37 +47,37 @@ export function PublicFooter() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/" className="hover:text-[#F17F34] transition-colors">
+                <Link href="/" className="hover:text-primary-700 transition-colors">
                   {bilingual("Trang Chủ", "Home")}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#F17F34] transition-colors">
+                <Link href="/about" className="hover:text-primary-700 transition-colors">
                   {bilingual("Về Chúng Tôi (About)", "About Ministry")}
                 </Link>
               </li>
               <li>
-                <Link href="/library" className="hover:text-[#F17F34] transition-colors">
+                <Link href="/library" className="hover:text-primary-700 transition-colors">
                   {bilingual("Thư Viện Tài Liệu & Video", "Library & Sermon Vault")}
                 </Link>
               </li>
               <li>
-                <Link href="/give" className="hover:text-[#F17F34] transition-colors">
+                <Link href="/give" className="hover:text-primary-700 transition-colors">
                   {bilingual("Dâng Hiến Trực Tuyến", "Online Giving")}
                 </Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-[#F17F34] transition-colors">
+                <Link href="/courses" className="hover:text-primary-700 transition-colors">
                   {bilingual("Các Khóa Học Bồi Linh", "Discipleship Courses")}
                 </Link>
               </li>
               <li>
-                <Link href="/announcements" className="hover:text-[#F17F34] transition-colors">
+                <Link href="/announcements" className="hover:text-primary-700 transition-colors">
                   {bilingual("Thông Báo & Bản Tin", "News & Bulletins")}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#F17F34] transition-colors">
+                <Link href="/contact" className="hover:text-primary-700 transition-colors">
                   {bilingual("Liên Hệ & Cầu Thay", "Contact & Prayer Requests")}
                 </Link>
               </li>
@@ -96,7 +96,7 @@ export function PublicFooter() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-amber-800 shrink-0" />
-                <a href="mailto:contact@saministry.org" className="hover:text-[#F17F34]">
+                <a href="mailto:contact@saministry.org" className="hover:text-primary-700">
                   contact@saministry.org
                 </a>
               </div>
@@ -112,7 +112,7 @@ export function PublicFooter() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-serif">
               {bilingual("Hiệp Ý & Dâng Hiến", "Fellowship & Giving")}
             </h4>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed [text-wrap:pretty]">
               {bilingual(
                 "Mọi sự dâng hiến của quý con cái Chúa đều được cấp biên nhận minh bạch và đóng góp cho công tác môn đồ hóa toàn cầu.",
                 "Every offering is transparently managed and poured directly into Christian equipping and pastoral development."
@@ -120,9 +120,9 @@ export function PublicFooter() {
             </p>
             <Link
               href="/give"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FEF5EE] border border-[#F17F34]/30 text-xs font-semibold text-[#DE6D22] hover:bg-[#FDE8D7] transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-primary-50 border border-primary-200 text-xs font-semibold text-primary-700 hover:bg-primary-100 transition-all min-h-[44px]"
             >
-              <Heart className="w-3.5 h-3.5 text-[#F17F34]" />
+              <Heart className="w-3.5 h-3.5 text-primary-700" />
               <span>{bilingual("Dâng hiến ngay", "Make an offering")} &rarr;</span>
             </Link>
           </div>
@@ -133,7 +133,7 @@ export function PublicFooter() {
           <div>
             © {new Date().getFullYear()} Spiritual Advance Ministry (SAM). {bilingual("Bảo lưu mọi quyền.", "All rights reserved.")}
           </div>
-          <div className="text-[#DE6D22] font-semibold italic flex items-center gap-1">
+          <div className="text-primary-700 font-semibold italic flex items-center gap-1">
             <span>Soli Deo Gloria</span>
             <span>•</span>
             <span>{isEn ? "Glory to God Alone" : "Vinh Hiển Thuộc Về Chúa"}</span>

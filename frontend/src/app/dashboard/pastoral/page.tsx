@@ -7,6 +7,7 @@ import { apiFetch, ApiError } from "@/lib/api/client";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { TactileInput } from "@/components/ui/tactile-input";
+import { TactileSelect, type TactileSelectOption } from "@/components/ui/tactile-select";
 import {
   HeartPulse,
   AlertCircle,
@@ -207,6 +208,93 @@ export default function PastoralCarePage() {
   const [houseMembersRaw, setHouseMembersRaw] = useState("Trần Minh Long (Trưởng hộ), Nguyễn Thị Mai (Vợ)");
   const [houseNotes, setHouseNotes] = useState("");
   const [submittingHouse, setSubmittingHouse] = useState(false);
+
+  const careTypeOptions: TactileSelectOption[] = [
+    {
+      value: "hospital_visit",
+      label: bilingual("Thăm Viếng Bệnh Viện (Hospital Visit)", "Hospital Care Visit"),
+      description: bilingual(
+        "Mục sư thăm trực tiếp tại phòng bệnh, đặt tay cầu xin sự chữa lành và bình an của Chúa.",
+        "Pastoral visit directly at hospital bedside with healing prayer and ministry care."
+      ),
+      badge: bilingual("Bệnh Viện", "Hospital"),
+      tooltip: bilingual(
+        "Áp dụng cho tín hữu đang nằm viện điều trị nội trú, phẫu thuật hoặc phục hồi chức năng.",
+        "For inpatient recovery, scheduled surgeries, or emergency hospitalizations."
+      ),
+    },
+    {
+      value: "home_visit",
+      label: bilingual("Thăm Viếng Tư Gia (Home Pastoral Visit)", "Home Pastoral Visit"),
+      description: bilingual(
+        "Mục sư thăm viếng gia đình tín hữu, bẻ bánh thông công thuộc linh và gây dựng bàn thờ gia đình.",
+        "Pastoral fellowship at home, family communion, and building home spiritual altars."
+      ),
+      badge: bilingual("Tư Gia", "Home"),
+    },
+    {
+      value: "anointing_prayer",
+      label: bilingual("Cầu Nguyện Xức Dầu Theo Lời Chúa (Gia-cơ 5:14)", "Anointing with Oil Prayer (James 5:14)"),
+      description: bilingual(
+        "Các trưởng lão và mục sư xức dầu nhân danh Chúa để cầu xin sự hồi phục trọn vẹn cho thân thể.",
+        "Elders and pastors anointing with oil in the Lord's name for divine healing according to James 5:14."
+      ),
+      badge: "Gia-cơ 5:14",
+      tooltip: bilingual(
+        "Gia-cơ 5:14: 'Trong anh em có ai đau ốm chăng? Hãy mời các trưởng lão Hội Thánh đến; họ hãy nhân danh Chúa cầu nguyện cho người ấy và xức dầu cho người.'",
+        "James 5:14: 'Is anyone among you sick? Let them call the elders of the church to pray over them and anoint them with oil in the name of the Lord.'"
+      ),
+    },
+    {
+      value: "counseling",
+      label: bilingual("Tư Vấn Hôn Nhân & Thuộc Linh (Counseling)", "Pastoral Counseling"),
+      description: bilingual(
+        "Tư vấn riêng tư về hôn nhân Cơ Đốc, định hướng tuổi trẻ hoặc giải tỏa nan đề cảm xúc.",
+        "Confidential biblical counseling for Christian marriage, youth direction, or emotional crises."
+      ),
+      badge: bilingual("Tư Vấn", "Counseling"),
+    },
+    {
+      value: "baby_dedication",
+      label: bilingual("Cầu Nguyện Dâng Con Cho Chúa (Baby Dedication)", "Baby Dedication"),
+      description: bilingual(
+        "Thánh lễ dâng con trẻ sơ sinh cho Đức Chúa Trời trong sự chúc phước của toàn Hội Thánh.",
+        "Sacred ceremony dedicating newborn children to the Lord with community blessing."
+      ),
+      badge: bilingual("Dâng Con", "Dedication"),
+    },
+    {
+      value: "bereavement",
+      label: bilingual("An Ủi & Tang Lễ Hội Thánh (Bereavement)", "Bereavement & Memorial"),
+      description: bilingual(
+        "Mục sư đồng hành cùng tang quyến, chủ tọa lễ an táng và an ủi gia đình trong hy vọng phục sinh.",
+        "Pastoral care for grieving families, memorial services, and comfort in eternal hope."
+      ),
+      badge: bilingual("Hiếu Sự", "Memorial"),
+    },
+  ];
+
+  const careUrgencyOptions: TactileSelectOption[] = [
+    {
+      value: "routine",
+      label: bilingual("Thường kỳ (Routine)", "Routine Care"),
+      description: bilingual("Xếp lịch thăm viếng đều đặn trong tuần hoặc cuối tuần.", "Scheduled regular visit during the week."),
+      badge: bilingual("Trong Tuần", "Routine"),
+    },
+    {
+      value: "urgent",
+      label: bilingual("Ưu tiên sớm trong tuần (Urgent)", "Urgent (Within 48h)"),
+      description: bilingual("Cần liên hệ và thăm viếng sớm trong vòng 48 giờ tới.", "Needs pastoral contact within 48 hours."),
+      badge: "Trong 48h",
+    },
+    {
+      value: "emergency",
+      label: bilingual("🚨 CẤP CỨU / NGUY KỊCH (Emergency)", "🚨 Critical / Emergency"),
+      description: bilingual("Bệnh nhân trở nặng hoặc phòng cấp cứu ICU. Mục sư túc trực 24/7 đến ngay.", "Critical ICU emergency. On-call pastoral team dispatched immediately 24/7."),
+      badge: "🚨 24/7 ICU",
+      tooltip: bilingual("Hệ thống sẽ gửi cảnh báo khẩn cấp (SMS & Email) trực tiếp đến máy Mục Sư Trưởng và Ban Chăm Sóc.", "System sends emergency SMS/Email alerts immediately to Senior Pastor and Care team."),
+    },
+  ];
 
   const isPastorOrLeader =
     user?.role === "senior_pastor" ||
@@ -762,19 +850,21 @@ export default function PastoralCarePage() {
         </div>
 
         {/* Global Campus Filter */}
-        <div className="hidden sm:flex items-center gap-2 pb-2">
-          <MapPin className="w-4 h-4 text-amber-800" />
-          <select
+        <div className="hidden sm:flex items-center gap-2 pb-2 min-w-[170px]">
+          <TactileSelect
             value={selectedCampus}
             onChange={(e) => setSelectedCampus(e.target.value)}
-            className="text-xs bg-amber-50 border border-amber-300/80 rounded-lg px-2.5 py-1 text-slate-800 focus:outline-none"
+            selectSize="sm"
+            variant="subtle"
+            leftIcon={<MapPin className="w-3.5 h-3.5 text-amber-800" />}
+            aria-label={isEn ? "Select Campus" : "Chọn Điểm Nhóm"}
           >
             {CAMPUSES.map((c) => (
               <option key={c.id} value={c.id}>
                 {isEn ? c.en : c.vi}
               </option>
             ))}
-          </select>
+          </TactileSelect>
         </div>
       </div>
 
@@ -795,14 +885,17 @@ export default function PastoralCarePage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && fetchCareRequests()}
-                  className="w-full pl-9 pr-3 py-1.5 bg-white text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-amber-600"
+                  className="w-full pl-9 pr-3 py-2 bg-white text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-amber-600 min-h-[40px]"
                 />
               </div>
 
-              <select
+              <TactileSelect
                 value={urgencyFilter}
                 onChange={(e) => setUrgencyFilter(e.target.value)}
-                className="text-xs bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-slate-700"
+                selectSize="sm"
+                variant="default"
+                containerClassName="w-auto min-w-[170px]"
+                aria-label={bilingual("Lọc mức độ khẩn cấp", "Filter urgency")}
               >
                 <option value="all">
                   {bilingual("Tất cả mức độ khẩn cấp", "All Urgency Levels")}
@@ -816,12 +909,15 @@ export default function PastoralCarePage() {
                 <option value="routine">
                   {bilingual("Thường kỳ", "Routine Care")}
                 </option>
-              </select>
+              </TactileSelect>
 
-              <select
+              <TactileSelect
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="text-xs bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-slate-700"
+                selectSize="sm"
+                variant="default"
+                containerClassName="w-auto min-w-[150px]"
+                aria-label={bilingual("Lọc trạng thái", "Filter status")}
               >
                 <option value="all">
                   {bilingual("Tất cả trạng thái", "All Statuses")}
@@ -835,7 +931,7 @@ export default function PastoralCarePage() {
                 <option value="completed">
                   {bilingual("Đã hoàn tất", "Completed")}
                 </option>
-              </select>
+              </TactileSelect>
             </div>
 
             <TactileButton
@@ -922,7 +1018,7 @@ export default function PastoralCarePage() {
                           >
                             {item.contactPhone}
                           </a>
-                          <span className="text-[11px] text-slate-400">({item.campusId})</span>
+                          <span className="text-xs text-slate-500">({item.campusId})</span>
                         </div>
                       </div>
 
@@ -1077,7 +1173,7 @@ export default function PastoralCarePage() {
                       <h3 className="font-serif font-bold text-base text-slate-900">
                         {house.name}
                       </h3>
-                      <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 shrink-0">
+                      <span className="text-xs font-medium px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 shrink-0">
                         {house.city}, {house.state}
                       </span>
                     </div>
@@ -1116,7 +1212,7 @@ export default function PastoralCarePage() {
 
                     {/* Family Members */}
                     <div className="mb-3">
-                      <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-1">
+                      <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider block mb-1">
                         {bilingual(
                           `Thành viên gia đình (${house.members?.length || 0}):`,
                           `Family Members (${house.members?.length || 0}):`
@@ -1127,7 +1223,7 @@ export default function PastoralCarePage() {
                           house.members.map((m, idx) => (
                             <span
                               key={idx}
-                              className="px-2 py-0.5 rounded bg-slate-100 text-[11px] text-slate-700 border border-slate-200"
+                              className="px-2 py-0.5 rounded bg-slate-100 text-xs text-slate-700 border border-slate-200"
                             >
                               {m.name}
                               {m.birthYear ? ` (${m.birthYear})` : ""}
@@ -1256,73 +1352,51 @@ export default function PastoralCarePage() {
             </div>
 
             <form onSubmit={handleCreateCareRequest} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  {bilingual(
-                    "Mục Đích Thăm Viếng & Cầu Nguyện:",
-                    "Care Visit & Prayer Type:"
+              <TactileSelect
+                label={bilingual(
+                  "Mục Đích Thăm Viếng & Cầu Nguyện:",
+                  "Care Visit & Prayer Type:"
+                )}
+                tooltip={bilingual(
+                  "Chọn đúng hình thức để hệ thống thông báo đúng mục sư chuyên trách (Bệnh viện, Xức dầu hoặc Tư vấn)",
+                  "Select the appropriate care type to dispatch the right pastoral minister"
+                )}
+                value={newRequestType}
+                onValueChange={(val) => setNewRequestType(val as CareType)}
+                onChange={(e) => setNewRequestType(e.target.value as CareType)}
+                options={careTypeOptions}
+                selectSize="sm"
+                variant="default"
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <TactileSelect
+                  label={bilingual("Mức Độ Khẩn Cấp:", "Urgency Level:")}
+                  tooltip={bilingual(
+                    "Mức Cấp cứu sẽ kích hoạt chuông báo động SMS/Push ngay lập tức cho Ban Mục Sư",
+                    "Emergency level triggers instantaneous SMS/Push notification alerts to pastors"
                   )}
-                </label>
-                <select
-                  value={newRequestType}
-                  onChange={(e) => setNewRequestType(e.target.value as CareType)}
-                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-amber-600"
+                  value={newUrgency}
+                  onValueChange={(val) => setNewUrgency(val as CareUrgency)}
+                  onChange={(e) => setNewUrgency(e.target.value as CareUrgency)}
+                  options={careUrgencyOptions}
+                  selectSize="sm"
+                  variant="default"
+                  className="font-semibold"
+                />
+
+                <TactileSelect
+                  label={bilingual("Điểm Nhóm / Campus:", "Church Campus:")}
+                  value={newCampusId}
+                  onChange={(e) => setNewCampusId(e.target.value)}
+                  selectSize="sm"
+                  variant="default"
                 >
-                  <option value="hospital_visit">
-                    {bilingual("Thăm Viếng Bệnh Viện (Hospital Visit)", "Hospital Care Visit")}
-                  </option>
-                  <option value="home_visit">
-                    {bilingual("Thăm Viếng Tư Gia (Home Pastoral Visit)", "Home Pastoral Visit")}
-                  </option>
-                  <option value="anointing_prayer">
-                    {bilingual(
-                      "Cầu Nguyện Xức Dầu Theo Lời Chúa (Gia-cơ 5:14)",
-                      "Anointing with Oil Prayer (James 5:14)"
-                    )}
-                  </option>
-                  <option value="counseling">
-                    {bilingual("Tư Vấn Hôn Nhân & Thuộc Linh (Counseling)", "Pastoral Counseling")}
-                  </option>
-                  <option value="baby_dedication">
-                    {bilingual("Cầu Nguyện Dâng Con Cho Chúa (Baby Dedication)", "Baby Dedication")}
-                  </option>
-                  <option value="bereavement">
-                    {bilingual("An Ủi & Tang Lễ Hội Thánh (Bereavement)", "Bereavement & Memorial")}
-                  </option>
-                </select>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    {bilingual("Mức Độ Khẩn Cấp:", "Urgency Level:")}
-                  </label>
-                  <select
-                    value={newUrgency}
-                    onChange={(e) => setNewUrgency(e.target.value as CareUrgency)}
-                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300 font-semibold"
-                  >
-                    <option value="routine">{bilingual("Thường kỳ (Routine)", "Routine")}</option>
-                    <option value="urgent">{bilingual("Ưu tiên sớm trong tuần (Urgent)", "Urgent (Within 48h)")}</option>
-                    <option value="emergency">{bilingual("🚨 CẤP CỨU / NGUY KỊCH (Emergency)", "🚨 Critical / Emergency")}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    {bilingual("Điểm Nhóm / Campus:", "Church Campus:")}
-                  </label>
-                  <select
-                    value={newCampusId}
-                    onChange={(e) => setNewCampusId(e.target.value)}
-                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300"
-                  >
-                    <option value="Dallas Main Campus">Dallas Main</option>
-                    <option value="Houston Campus">Houston</option>
-                    <option value="Fort Worth Campus">Fort Worth</option>
-                    <option value="Austin Campus">Austin</option>
-                  </select>
-                </div>
+                  <option value="Dallas Main Campus">Dallas Main</option>
+                  <option value="Houston Campus">Houston</option>
+                  <option value="Fort Worth Campus">Fort Worth</option>
+                  <option value="Austin Campus">Austin</option>
+                </TactileSelect>
               </div>
 
               <div>

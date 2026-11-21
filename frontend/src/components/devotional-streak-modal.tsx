@@ -112,7 +112,7 @@ export function DevotionalStreakModal({
                   "Devotional Habits & Faith Milestones"
                 )}
               </h3>
-              <p className="text-[11px] font-serif text-amber-800">
+              <p className="text-xs font-serif text-amber-800">
                 {bilingual(
                   '"Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi." — Thi Thiên 119:105',
                   '"Your word is a lamp for my feet, a light on my path." — Psalm 119:105'
@@ -133,7 +133,7 @@ export function DevotionalStreakModal({
           <div className="flex items-center gap-4 text-center sm:text-left">
             <div className="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-400/50 flex flex-col items-center justify-center">
               <Flame className="w-7 h-7 text-amber-400 fill-amber-400 animate-bounce" />
-              <span className="text-[10px] uppercase font-bold text-amber-300 tracking-wider">
+              <span className="text-xs uppercase font-bold text-amber-300 tracking-wider">
                 Streak
               </span>
             </div>
@@ -191,7 +191,7 @@ export function DevotionalStreakModal({
                 )}
               </span>
             </h4>
-            <span className="text-[11px] text-slate-500">
+            <span className="text-xs text-slate-500">
               {data?.unlockedMilestones.length || 0} / {data?.allMilestones.length || 5}{" "}
               {bilingual("Cột Mốc", "Milestones")}
             </span>
@@ -231,12 +231,12 @@ export function DevotionalStreakModal({
                           <h5 className="font-bold text-xs text-slate-900">
                             {isEn ? (m.englishTitle || m.title) : m.title}
                           </h5>
-                          <span className="text-[10px] text-slate-500 font-serif">
+                          <span className="text-xs text-slate-500 font-serif">
                             ({isEn ? m.title : m.englishTitle})
                           </span>
                         </div>
-                        <p className="text-[11px] text-slate-600 leading-snug">{m.description}</p>
-                        <p className="text-[10px] font-serif italic text-amber-900 mt-1">
+                        <p className="text-xs text-slate-600 leading-snug">{m.description}</p>
+                        <p className="text-xs font-serif italic text-amber-900 mt-1">
                           "{m.scripture}" — <strong>{m.scriptureRef}</strong>
                         </p>
                       </div>
@@ -244,13 +244,13 @@ export function DevotionalStreakModal({
 
                     <div className="shrink-0 text-right">
                       {isUnlocked ? (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-0.5 rounded-full">
+                        <span className="inline-flex items-center gap-1 text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-0.5 rounded-full">
                           <CheckCircle2 className="w-3 h-3 text-amber-700" />
                           <span>{bilingual("Đã Đạt", "Unlocked")}</span>
                         </span>
                       ) : (
                         <div className="flex flex-col items-end gap-1">
-                          <span className="inline-flex items-center gap-1 text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded-full">
+                          <span className="inline-flex items-center gap-1 text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded-full">
                             <Lock className="w-3 h-3 text-slate-400" />
                             <span>
                               {m.requiredDays} {bilingual("ngày", "days")}
@@ -271,7 +271,7 @@ export function DevotionalStreakModal({
 
         {/* Footer */}
         <div className="flex items-center justify-between border-t border-amber-200/70 pt-4">
-          <span className="text-[11px] font-serif italic text-slate-500">
+          <span className="text-xs font-serif italic text-slate-500">
             {bilingual(
               "Mỗi ngày tương giao cùng Chúa là một bước tiến trên linh trình.",
               "Walking daily with the Lord strengthens every step of your faith journey."

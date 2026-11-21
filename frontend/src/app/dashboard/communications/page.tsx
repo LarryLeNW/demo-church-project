@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect } from "@/components/ui/tactile-select";
 import {
   Megaphone,
   Mail,
@@ -309,7 +310,7 @@ export default function CommunicationsPage() {
               {/* Theme Scripture & Sermon Focus */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-[#FCFBF8] border border-amber-200/80 rounded-xl space-y-1">
-                  <span className="text-[10px] font-bold uppercase text-amber-800 font-serif tracking-wider">
+                  <span className="text-xs font-bold uppercase text-amber-800 font-serif tracking-wider">
                     {bilingual("Câu Gốc Chủ Đề Của Tuần", "Weekly Theme Scripture")}
                   </span>
                   <blockquote className="font-scripture text-sm italic text-slate-900 leading-relaxed pt-1">
@@ -318,7 +319,7 @@ export default function CommunicationsPage() {
                 </div>
 
                 <div className="p-4 bg-indigo-950 text-white rounded-xl space-y-1">
-                  <span className="text-[10px] font-bold uppercase text-amber-300 font-serif tracking-wider">
+                  <span className="text-xs font-bold uppercase text-amber-300 font-serif tracking-wider">
                     {bilingual("Giảng Luận Chúa Nhật", "Sunday Sermon")}
                   </span>
                   <h3 className="font-scripture text-lg font-bold text-amber-200">
@@ -349,12 +350,12 @@ export default function CommunicationsPage() {
                       className="p-3 sm:px-4 flex items-center justify-between gap-4 text-xs hover:bg-[#FCFBF8] transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-[11px] shrink-0">
+                        <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-900 font-bold flex items-center justify-center text-xs shrink-0">
                           {item.order}
                         </span>
                         <span className="font-semibold text-slate-900">{item.segment}</span>
                       </div>
-                      <span className="text-slate-500 font-serif text-right text-[11px]">
+                      <span className="text-slate-500 font-serif text-right text-xs">
                         {item.leaderOrMinister}
                       </span>
                     </div>
@@ -378,13 +379,13 @@ export default function CommunicationsPage() {
                       className="p-4 bg-[#FCFBF8] border border-amber-200 rounded-xl space-y-2 flex flex-col justify-between"
                     >
                       <div className="space-y-1">
-                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-md bg-amber-100 text-amber-900">
+                        <span className="text-xs font-bold uppercase px-2 py-0.5 rounded-md bg-amber-100 text-amber-900">
                           {ann.category}
                         </span>
                         <h5 className="font-bold text-xs text-slate-900 pt-1">{ann.title}</h5>
-                        <p className="text-[11px] text-slate-600 leading-snug">{ann.content}</p>
+                        <p className="text-xs text-slate-600 leading-snug">{ann.content}</p>
                       </div>
-                      <div className="text-[10px] text-slate-500 pt-2 border-t border-amber-100/80 flex justify-between">
+                      <div className="text-xs text-slate-500 pt-2 border-t border-amber-100/80 flex justify-between">
                         <span>{ann.dateOrDeadline}</span>
                         <span className="font-semibold text-indigo-950">{ann.contactPerson}</span>
                       </div>
@@ -469,7 +470,7 @@ export default function CommunicationsPage() {
                         <div className="font-bold">
                           {bilingual("SMS Twilio (Khẩn Cấp)", "Twilio SMS (Urgent)")}
                         </div>
-                        <div className="text-[10px] opacity-80">
+                        <div className="text-xs opacity-80">
                           {bilingual("Gửi trực tiếp vào điện thoại", "Direct mobile text alert")}
                         </div>
                       </div>
@@ -489,7 +490,7 @@ export default function CommunicationsPage() {
                         <div className="font-bold">
                           {bilingual("Email Mục Vụ (Resend)", "Ministry Email (Resend)")}
                         </div>
-                        <div className="text-[10px] opacity-80">
+                        <div className="text-xs opacity-80">
                           {bilingual("Bản tin & thông báo chi tiết", "Full email broadcast with rich text")}
                         </div>
                       </div>
@@ -499,39 +500,33 @@ export default function CommunicationsPage() {
 
                 {/* Target Audience & Type */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block font-semibold text-slate-800 mb-1">
-                      {bilingual("Đối Tượng Nhận Tin", "Target Audience")}
-                    </label>
-                    <select
-                      value={targetAudience}
-                      onChange={(e) => setTargetAudience(e.target.value)}
-                      className="w-full h-10 px-3 bg-[#FCFBF8] border border-amber-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    >
-                      {Object.entries(audienceLabels).map(([key, labelObj]) => (
-                        <option key={key} value={key}>
-                          {isEn ? labelObj.en : labelObj.vi}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  <TactileSelect
+                    label={bilingual("Đối Tượng Nhận Tin", "Target Audience")}
+                    value={targetAudience}
+                    onChange={(e) => setTargetAudience(e.target.value)}
+                    selectSize="sm"
+                    variant="parchment"
+                  >
+                    {Object.entries(audienceLabels).map(([key, labelObj]) => (
+                      <option key={key} value={key}>
+                        {isEn ? labelObj.en : labelObj.vi}
+                      </option>
+                    ))}
+                  </TactileSelect>
 
-                  <div>
-                    <label className="block font-semibold text-slate-800 mb-1">
-                      {bilingual("Loại Thông Báo", "Broadcast Type")}
-                    </label>
-                    <select
-                      value={type}
-                      onChange={(e) => setType(e.target.value)}
-                      className="w-full h-10 px-3 bg-[#FCFBF8] border border-amber-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    >
-                      {Object.entries(typeLabels).map(([key, labelObj]) => (
-                        <option key={key} value={key}>
-                          {isEn ? labelObj.en : labelObj.vi}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  <TactileSelect
+                    label={bilingual("Loại Thông Báo", "Broadcast Type")}
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                    selectSize="sm"
+                    variant="parchment"
+                  >
+                    {Object.entries(typeLabels).map(([key, labelObj]) => (
+                      <option key={key} value={key}>
+                        {isEn ? labelObj.en : labelObj.vi}
+                      </option>
+                    ))}
+                  </TactileSelect>
                 </div>
 
                 {/* Title */}
@@ -559,7 +554,7 @@ export default function CommunicationsPage() {
                       {bilingual("Nội Dung Thông Điệp *", "Message Content *")}
                     </label>
                     {channel === "sms" && (
-                      <span className="text-[10px] text-slate-500">
+                      <span className="text-xs text-slate-500">
                         {content.length} {bilingual("ký tự", "characters")} ({Math.ceil(content.length / 160) || 1} SMS segment)
                       </span>
                     )}
@@ -642,7 +637,7 @@ export default function CommunicationsPage() {
                         <span className="font-bold text-xs text-slate-900">{comm.title}</span>
                       </div>
 
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300">
+                      <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300">
                         {comm.recipientCount} {bilingual("người nhận", "recipients")}
                       </span>
                     </div>
@@ -651,7 +646,7 @@ export default function CommunicationsPage() {
                       {comm.content}
                     </p>
 
-                    <div className="flex items-center justify-between text-[10px] text-slate-500 pt-1 font-serif">
+                    <div className="flex items-center justify-between text-xs text-slate-500 pt-1 font-serif">
                       <span>
                         {bilingual("Đối tượng:", "Audience:")}{" "}
                         {isEn

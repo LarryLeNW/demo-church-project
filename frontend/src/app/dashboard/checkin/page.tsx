@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect, type TactileSelectOption } from "@/components/ui/tactile-select";
 import {
   ShieldCheck,
   Baby,
@@ -100,6 +101,34 @@ export default function CheckinPage() {
   const [newChildEmergencyName, setNewChildEmergencyName] = useState(user?.fullName || "");
   const [newChildEmergencyPhone, setNewChildEmergencyPhone] = useState(user?.phone || "(214) 555-0199");
   const [savingChild, setSavingChild] = useState(false);
+
+  const classroomOptions: TactileSelectOption[] = [
+    {
+      value: "nursery",
+      label: bilingual("Nursery (0 - 2 Tuổi)", "Nursery (0 - 2 Yrs)"),
+      description: bilingual("Phòng êm ái, cách âm, nôi ngủ và các cô bảo mẫu phụ trách.", "Soundproof infant room, baby cribs, and trained caregivers."),
+      badge: "0 - 2 Yrs",
+      tooltip: bilingual("Có phòng riêng yên tĩnh dành cho mẹ cho con bú và thay tã.", "Dedicated private room for nursing mothers and changing station."),
+    },
+    {
+      value: "preschool",
+      label: bilingual("Pre-K (3 - 5 Tuổi)", "Pre-K (3 - 5 Yrs)"),
+      description: bilingual("Kể chuyện Kinh Thánh hoạt hình, tô màu và thủ công sáng tạo.", "Animated Bible stories, coloring activities, and creative crafts."),
+      badge: "3 - 5 Yrs",
+    },
+    {
+      value: "elementary",
+      label: bilingual("Elementary (6 - 11 Tuổi)", "Elementary (6 - 11 Yrs)"),
+      description: bilingual("Lớp Trường Chúa Nhật nền tảng, học câu gốc và đố Kinh Thánh.", "Foundational Sunday School, scripture memory, and Bible games."),
+      badge: "6 - 11 Yrs",
+    },
+    {
+      value: "youth",
+      label: bilingual("Youth (12+ Tuổi)", "Youth (12+ Yrs)"),
+      description: bilingual("Ban Thanh Thiếu Niên, sinh hoạt nhóm nhỏ và thờ phượng năng động.", "Youth ministry, dynamic worship, and peer small groups."),
+      badge: "12+ Yrs",
+    },
+  ];
 
   // Teacher Classroom Roster state
   const [rosterItems, setRosterItems] = useState<ActiveCheckinItem[]>([]);
@@ -377,25 +406,25 @@ export default function CheckinPage() {
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <div className="font-bold text-sm text-slate-900">{child.fullName}</div>
-                          <div className="text-[11px] text-slate-500 font-serif mt-0.5">
+                          <div className="text-xs text-slate-500 font-serif mt-0.5">
                             {bilingual("Ngày sinh: ", "Birthdate: ")}{child.birthDate}
                           </div>
                         </div>
 
                         <span
-                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${room.color}`}
+                          className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${room.color}`}
                         >
                           {room.title} ({room.age})
                         </span>
                       </div>
 
                       {child.allergies ? (
-                        <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-semibold flex items-center gap-1.5">
+                        <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center gap-1.5">
                           <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
                           <span>{bilingual("Dị ứng: ", "Allergies: ")}{child.allergies}</span>
                         </div>
                       ) : (
-                        <div className="text-[11px] text-emerald-700 font-medium flex items-center gap-1">
+                        <div className="text-xs text-emerald-800 font-medium flex items-center gap-1">
                           <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                           <span>{bilingual("Không có tiền sử dị ứng", "No known allergies")}</span>
                         </div>
@@ -471,7 +500,7 @@ export default function CheckinPage() {
                 <div className="bg-white border-2 border-dashed border-indigo-950 p-5 rounded-2xl space-y-4 shadow-xs relative">
                   <div className="flex justify-between items-start border-b border-indigo-900/20 pb-3">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-900 font-serif">
+                      <span className="text-xs font-bold uppercase tracking-wider text-indigo-900 font-serif">
                         {bilingual("Vé Đón Trẻ Em • Guardian Claim Ticket", "Guardian Claim Ticket • Parent Pickup")}
                       </span>
                       <h4 className="font-bold text-sm text-slate-900 mt-0.5">
@@ -479,15 +508,15 @@ export default function CheckinPage() {
                       </h4>
                     </div>
                     <div className="text-right">
-                      <div className="text-[10px] text-slate-500">{checkinResult.sessionDate}</div>
-                      <div className="text-[10px] text-slate-500">
+                      <div className="text-xs text-slate-500">{checkinResult.sessionDate}</div>
+                      <div className="text-xs text-slate-500">
                         {checkinResult.guardianClaimTicket.timestamp}
                       </div>
                     </div>
                   </div>
 
                   <div className="text-center py-3 bg-amber-50/80 rounded-xl border border-amber-300">
-                    <span className="text-[11px] font-bold text-amber-950 uppercase font-serif tracking-widest block">
+                    <span className="text-xs font-bold text-amber-950 uppercase font-serif tracking-widest block">
                       {bilingual("MÃ BẢO MẬT ĐỐI CHIẾU DUY NHẤT", "MATCHING SECURITY CODE")}
                     </span>
                     <span className="text-4xl font-mono font-bold text-amber-900 tracking-wider">
@@ -508,7 +537,7 @@ export default function CheckinPage() {
                     </ul>
                   </div>
 
-                  <p className="text-[10px] text-slate-500 font-serif italic leading-tight pt-2 border-t border-slate-100">
+                  <p className="text-xs text-slate-600 font-serif italic leading-tight pt-2 border-t border-slate-100">
                     {checkinResult.guardianClaimTicket.legalNotice}
                   </p>
                 </div>
@@ -522,7 +551,7 @@ export default function CheckinPage() {
                     >
                       <div className="flex justify-between items-start">
                         <div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 font-serif">
+                          <span className="text-xs font-bold uppercase tracking-wider text-amber-900 font-serif">
                             {bilingual("Lớp Thiếu Nhi Chúa Nhật • Nametag", "Sunday School Child Nametag")}
                           </span>
                           <h4 className="font-bold text-base text-slate-900 mt-0.5">
@@ -537,7 +566,7 @@ export default function CheckinPage() {
                           <span className="text-2xl font-mono font-bold text-amber-900 block">
                             {badge.securityCode}
                           </span>
-                          <span className="text-[10px] text-slate-500">{badge.sessionDate}</span>
+                          <span className="text-xs text-slate-500">{badge.sessionDate}</span>
                         </div>
                       </div>
 
@@ -548,7 +577,7 @@ export default function CheckinPage() {
                         </div>
                       )}
 
-                      <div className="pt-2 border-t border-amber-100 flex justify-between items-center text-[11px] text-slate-600">
+                      <div className="pt-2 border-t border-amber-100 flex justify-between items-center text-xs text-slate-700">
                         <span>
                           {bilingual("Cấp cứu: ", "Emergency: ")}<strong>{badge.emergencyContactName}</strong>
                         </span>
@@ -580,20 +609,23 @@ export default function CheckinPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-slate-600 font-serif">
+              <span className="text-slate-600 font-serif text-xs whitespace-nowrap">
                 {bilingual("Lọc theo phòng:", "Filter by room:")}
               </span>
-              <select
+              <TactileSelect
                 value={selectedClassroom}
                 onChange={(e) => setSelectedClassroom(e.target.value)}
-                className="h-8 px-2.5 bg-white border border-emerald-300 rounded-lg text-xs text-slate-900 cursor-pointer"
+                selectSize="sm"
+                variant="default"
+                containerClassName="w-auto min-w-[160px]"
+                aria-label={bilingual("Lọc theo phòng", "Filter by room")}
               >
                 <option value="">{bilingual(`Tất Cả Các Lớp (${rosterItems.length})`, `All Rooms (${rosterItems.length})`)}</option>
                 <option value="nursery">{bilingual("Nursery (0 - 2 Tuổi)", "Nursery (0 - 2 Yrs)")}</option>
                 <option value="preschool">{bilingual("Pre-K (3 - 5 Tuổi)", "Pre-K (3 - 5 Yrs)")}</option>
                 <option value="elementary">{bilingual("Elementary (6 - 11 Tuổi)", "Elementary (6 - 11 Yrs)")}</option>
                 <option value="youth">{bilingual("Youth (12+ Tuổi)", "Youth (12+ Yrs)")}</option>
-              </select>
+              </TactileSelect>
             </div>
           </div>
 
@@ -630,7 +662,7 @@ export default function CheckinPage() {
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <h4 className="font-bold text-sm text-slate-900">{item.child.fullName}</h4>
-                      <div className="text-[11px] text-slate-500">
+                      <div className="text-xs text-slate-500">
                         {bilingual("Phụ huynh: ", "Parent: ")}{item.parent?.fullName || bilingual("Quý Phụ Huynh", "Parent")}
                       </div>
                     </div>
@@ -641,14 +673,14 @@ export default function CheckinPage() {
                   </div>
 
                   {item.child.allergies && (
-                    <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-bold flex items-center gap-1.5">
+                    <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold flex items-center gap-1.5">
                       <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
                       <span>{item.child.allergies}</span>
                     </div>
                   )}
 
                   <div className="pt-2 border-t border-amber-100 flex items-center justify-between text-xs">
-                    <span className="text-[11px] text-slate-500">
+                    <span className="text-xs text-slate-500">
                       {bilingual("Vào lớp: ", "Check-in: ")}
                       {new Date(item.checkinTime).toLocaleTimeString(isEn ? "en-US" : "vi-VN", { hour: "2-digit", minute: "2-digit" })}
                     </span>
@@ -785,21 +817,19 @@ export default function CheckinPage() {
                   />
                 </div>
 
-                <div>
-                  <label className="block font-semibold text-slate-800 mb-1">
-                    {bilingual("Phòng Học / Độ Tuổi *", "Classroom / Age Group *")}
-                  </label>
-                  <select
-                    value={newChildClassroom}
-                    onChange={(e) => setNewChildClassroom(e.target.value as any)}
-                    className="w-full h-10 px-3 bg-white border border-amber-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                  >
-                    <option value="nursery">{bilingual("Nursery (0 - 2 Tuổi)", "Nursery (0 - 2 Yrs)")}</option>
-                    <option value="preschool">{bilingual("Pre-K (3 - 5 Tuổi)", "Pre-K (3 - 5 Yrs)")}</option>
-                    <option value="elementary">{bilingual("Elementary (6 - 11 Tuổi)", "Elementary (6 - 11 Yrs)")}</option>
-                    <option value="youth">{bilingual("Youth (12+ Tuổi)", "Youth (12+ Yrs)")}</option>
-                  </select>
-                </div>
+                <TactileSelect
+                  label={bilingual("Phòng Học / Độ Tuổi *", "Classroom / Age Group *")}
+                  tooltip={bilingual(
+                    "Mỗi phòng học có giáo trình Lời Chúa và tiêu chuẩn an toàn bảo mẫu tương ứng với từng độ tuổi",
+                    "Each classroom has age-appropriate biblical curriculum and volunteer-to-child safety ratios"
+                  )}
+                  value={newChildClassroom}
+                  onValueChange={(val) => setNewChildClassroom(val as any)}
+                  onChange={(e) => setNewChildClassroom(e.target.value as any)}
+                  options={classroomOptions}
+                  selectSize="sm"
+                  variant="default"
+                />
               </div>
 
               <div>

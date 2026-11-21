@@ -218,7 +218,7 @@ export function AnnualTaxStatementModal({
                     </h3>
                   </div>
                 </div>
-                <div className="text-[11px] text-slate-600 mt-2 space-y-0.5">
+                <div className="text-xs text-slate-600 mt-2 space-y-0.5">
                   <p>{statement.church.address}</p>
                   <p>
                     Tel: {statement.church.phone} • Email: {statement.church.email} • {statement.church.website}
@@ -233,7 +233,7 @@ export function AnnualTaxStatementModal({
                     IRS EIN: <strong>{statement.church.ein}</strong>
                   </div>
                 </div>
-                <div className="text-[10px] text-slate-500 mt-2 font-mono">
+                <div className="text-xs text-slate-500 mt-2 font-mono">
                   Statement #: {statement.statementNumber}
                 </div>
               </div>
@@ -244,7 +244,7 @@ export function AnnualTaxStatementModal({
               <h3 className="font-scripture text-lg font-bold uppercase tracking-wider text-slate-900">
                 Annual Contribution Statement — Tax Year {statement.taxYear}
               </h3>
-              <p className="text-[11px] font-serif italic text-amber-900">
+              <p className="text-xs font-serif italic text-amber-900">
                 {bilingual(
                   "Chứng Từ Dâng Hiến Khấu Trừ Thuế Thường Niên (IRS Form 1040, Schedule A)",
                   "Official IRS 501(c)(3) Charitable Contribution Substantiation (Schedule A)",
@@ -255,7 +255,7 @@ export function AnnualTaxStatementModal({
             {/* Donor & Period Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="bg-white p-3.5 rounded-xl border border-amber-200/70 space-y-1">
-                <div className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">
+                <div className="text-xs uppercase font-bold text-slate-500 tracking-wider">
                   {bilingual("Thông Tin Tín Hữu (Donor Information)", "Donor Information")}
                 </div>
                 <div className="font-bold text-sm text-slate-900">{statement.donor.fullName}</div>
@@ -264,7 +264,7 @@ export function AnnualTaxStatementModal({
               </div>
 
               <div className="bg-white p-3.5 rounded-xl border border-amber-200/70 space-y-1">
-                <div className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">
+                <div className="text-xs uppercase font-bold text-slate-500 tracking-wider">
                   {bilingual("Thời Kỳ Khai Thuế (Tax Filing Period)", "Tax Filing Period")}
                 </div>
                 <div className="font-semibold text-slate-900">
@@ -350,7 +350,7 @@ export function AnnualTaxStatementModal({
                       statement.contributions.map((c, idx) => (
                         <tr key={idx} className="hover:bg-amber-50/30">
                           <td className="py-2 px-3 text-slate-700">{c.date}</td>
-                          <td className="py-2 px-3 font-mono text-[11px] text-slate-500">
+                          <td className="py-2 px-3 font-mono text-xs text-slate-500">
                             {c.receiptNumber || "—"}
                           </td>
                           <td className="py-2 px-3 text-slate-800">
@@ -373,7 +373,7 @@ export function AnnualTaxStatementModal({
             </div>
 
             {/* IRS Written Acknowledgment Notice */}
-            <div className="p-3.5 bg-[#FAF8F5] border-l-4 border-indigo-900 rounded-r-xl text-[11px] text-slate-600 leading-relaxed font-serif">
+            <div className="p-3.5 bg-[#FAF8F5] border-l-4 border-indigo-900 rounded-r-xl text-xs text-slate-600 leading-relaxed font-serif">
               <strong className="text-indigo-950 font-sans block mb-1">
                 IRS Written Acknowledgment & Legal Disclaimer:
               </strong>
@@ -389,7 +389,7 @@ export function AnnualTaxStatementModal({
                 <div className="font-bold text-xs text-slate-900">
                   {statement.signatories.seniorPastor.name}
                 </div>
-                <div className="text-[10px] text-slate-500 font-serif">
+                <div className="text-xs text-slate-500 font-serif">
                   {statement.signatories.seniorPastor.title}
                 </div>
               </div>
@@ -401,7 +401,7 @@ export function AnnualTaxStatementModal({
                 <div className="font-bold text-xs text-slate-900">
                   {statement.signatories.treasurer.name}
                 </div>
-                <div className="text-[10px] text-slate-500 font-serif">
+                <div className="text-xs text-slate-500 font-serif">
                   {statement.signatories.treasurer.title}
                 </div>
               </div>
@@ -411,7 +411,7 @@ export function AnnualTaxStatementModal({
 
         {/* Modal Footer */}
         <div className="flex items-center justify-between border-t border-amber-200/80 pt-4 print:hidden">
-          <span className="text-[11px] font-serif italic text-slate-500">
+          <span className="text-xs font-serif italic text-slate-500">
             {bilingual(
               "Giữ tài liệu này cho hồ sơ khai thuế thu nhập liên bang Hoa Kỳ (IRS Form 1040).",
               "Retain this statement for federal income tax return records (IRS Form 1040).",

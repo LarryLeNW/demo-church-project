@@ -7,6 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { BentoCard } from "@/components/ui/bento-card";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { TactileSelect } from "@/components/ui/tactile-select";
 import {
   BookOpen,
   Play,
@@ -243,16 +244,19 @@ export default function CoursesCatalogPage() {
             />
           </form>
 
-          <select
+          <TactileSelect
             value={selectedLanguage}
             onChange={(e) => setSelectedLanguage(e.target.value)}
-            className="h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
+            selectSize="sm"
+            variant="default"
+            containerClassName="w-auto min-w-[150px]"
+            aria-label={bilingual("Lọc ngôn ngữ", "Filter language")}
           >
             <option value="">{bilingual("Tất cả ngôn ngữ", "All Languages")}</option>
             <option value="vi">{bilingual("Tiếng Việt", "Vietnamese")}</option>
             <option value="en">{bilingual("Tiếng Anh", "English")}</option>
             <option value="bilingual">{bilingual("Song ngữ", "Bilingual")}</option>
-          </select>
+          </TactileSelect>
         </div>
       </div>
 
@@ -316,12 +320,12 @@ export default function CoursesCatalogPage() {
 
                 {/* Category Pill Overlay */}
                 <div className="absolute top-3 left-3 flex gap-1.5">
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-950/90 text-amber-300 border border-amber-400/30 backdrop-blur-xs">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-950/90 text-amber-300 border border-amber-400/30 backdrop-blur-xs">
                     {isEn
                       ? (CATEGORY_NAMES[course.category]?.en || course.category)
                       : (CATEGORY_NAMES[course.category]?.vi || course.category)}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-900/80 text-white uppercase backdrop-blur-xs">
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-900/80 text-white uppercase backdrop-blur-xs">
                     {course.language === "vi" ? "VI" : course.language === "en" ? "EN" : "Bilingual"}
                   </span>
                 </div>
@@ -418,37 +422,31 @@ export default function CoursesCatalogPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-slate-800 mb-1">
-                    {bilingual("Chuyên Mục Mục Vụ", "Ministry Category")}
-                  </label>
-                  <select
-                    value={newCategory}
-                    onChange={(e) => setNewCategory(e.target.value)}
-                    className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  >
-                    <option value="discipleship">{bilingual("Môn Đồ Hóa (Discipleship)", "Discipleship")}</option>
-                    <option value="sermon_archive">{bilingual("Kho Bài Giảng (Sermon Vault)", "Sermon Vault")}</option>
-                    <option value="theology">{bilingual("Thần Học Cơ Đốc (Theology)", "Christian Theology")}</option>
-                    <option value="leadership">{bilingual("Lãnh Đạo Tôi Tớ (Leadership)", "Servant Leadership")}</option>
-                    <option value="marriage_family">{bilingual("Hôn Nhân Gia Đình", "Marriage & Family")}</option>
-                  </select>
-                </div>
+                <TactileSelect
+                  label={bilingual("Chuyên Mục Mục Vụ", "Ministry Category")}
+                  value={newCategory}
+                  onChange={(e) => setNewCategory(e.target.value)}
+                  selectSize="sm"
+                  variant="default"
+                >
+                  <option value="discipleship">{bilingual("Môn Đồ Hóa (Discipleship)", "Discipleship")}</option>
+                  <option value="sermon_archive">{bilingual("Kho Bài Giảng (Sermon Vault)", "Sermon Vault")}</option>
+                  <option value="theology">{bilingual("Thần Học Cơ Đốc (Theology)", "Christian Theology")}</option>
+                  <option value="leadership">{bilingual("Lãnh Đạo Tôi Tớ (Leadership)", "Servant Leadership")}</option>
+                  <option value="marriage_family">{bilingual("Hôn Nhân Gia Đình", "Marriage & Family")}</option>
+                </TactileSelect>
 
-                <div>
-                  <label className="block font-semibold text-slate-800 mb-1">
-                    {bilingual("Ngôn Ngữ", "Language")}
-                  </label>
-                  <select
-                    value={newLanguage}
-                    onChange={(e) => setNewLanguage(e.target.value)}
-                    className="w-full h-10 px-3 bg-white border border-amber-200/80 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  >
-                    <option value="vi">{bilingual("Tiếng Việt", "Vietnamese")}</option>
-                    <option value="en">{bilingual("Tiếng Anh", "English")}</option>
-                    <option value="bilingual">{bilingual("Song ngữ Anh - Việt", "Bilingual EN - VI")}</option>
-                  </select>
-                </div>
+                <TactileSelect
+                  label={bilingual("Ngôn Ngữ", "Language")}
+                  value={newLanguage}
+                  onChange={(e) => setNewLanguage(e.target.value)}
+                  selectSize="sm"
+                  variant="default"
+                >
+                  <option value="vi">{bilingual("Tiếng Việt", "Vietnamese")}</option>
+                  <option value="en">{bilingual("Tiếng Anh", "English")}</option>
+                  <option value="bilingual">{bilingual("Song ngữ Anh - Việt", "Bilingual EN - VI")}</option>
+                </TactileSelect>
               </div>
 
               <div>

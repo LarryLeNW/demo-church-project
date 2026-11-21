@@ -53,7 +53,7 @@ export function PublicHeader() {
                 SAM
               </span>
             </div>
-            <span className="text-[10px] text-slate-500 font-serif leading-none mt-0.5">
+            <span className="text-xs text-slate-600 font-serif leading-none mt-0.5">
               Spiritual Advance Ministry
             </span>
           </div>
@@ -69,8 +69,8 @@ export function PublicHeader() {
                 href={item.href}
                 className={`px-2.5 xl:px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   isActive
-                    ? "text-[#F17F34] bg-[#FEF5EE] border border-[#F17F34]/30"
-                    : "text-slate-700 hover:text-[#F17F34] hover:bg-amber-50/70"
+                    ? "text-primary-800 bg-primary-50 border border-primary-200"
+                    : "text-slate-700 hover:text-primary-800 hover:bg-primary-50"
                 }`}
               >
                 {isEn ? item.labelEn : item.labelVi}
@@ -88,7 +88,7 @@ export function PublicHeader() {
             className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-xl border border-amber-200/80 bg-white hover:bg-amber-50 text-xs font-semibold text-slate-700 cursor-pointer shadow-2xs"
           >
             <Languages className="w-3.5 h-3.5 text-amber-800 shrink-0" />
-            <span className="font-bold text-[#F17F34] text-xs">{lang}</span>
+            <span className="font-bold text-primary-700 text-xs">{lang}</span>
           </button>
 
           {/* Sanctuary Link Button */}
