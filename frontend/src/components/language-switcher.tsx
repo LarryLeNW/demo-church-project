@@ -10,12 +10,14 @@ export interface LanguageSwitcherProps {
   className?: string;
   variant?: "subtle" | "default" | "parchment";
   align?: "left" | "right";
+  size?: "sm" | "md";
 }
 
 export function LanguageSwitcher({
   className,
   variant = "subtle",
   align = "right",
+  size = "sm",
 }: LanguageSwitcherProps) {
   const { lang, setLang, isEn } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
@@ -48,6 +50,8 @@ export function LanguageSwitcher({
       "bg-[#FBF9F5] hover:bg-amber-50/80 text-slate-900 border-amber-200/90 focus:border-primary-600",
   };
 
+  const isSmall = size === "sm";
+
   const options: { value: "VI" | "EN"; label: string; fullLabel: string }[] = [
     { value: "VI", label: "VI", fullLabel: "Tiếng Việt" },
     { value: "EN", label: "EN", fullLabel: "English" },
@@ -73,20 +77,30 @@ export function LanguageSwitcher({
         aria-expanded={isOpen}
         aria-label={isEn ? "Select Language" : "Chọn Ngôn Ngữ"}
         className={cn(
-          "inline-flex items-center justify-between gap-1.5 h-9 px-2.5 rounded-xl border shadow-2xs font-bold text-xs transition-all duration-150 cursor-pointer select-none outline-none focus:ring-2 focus:ring-amber-500/20 active:scale-[0.98]",
+          "inline-flex items-center justify-between border shadow-2xs font-bold transition-all duration-150 cursor-pointer select-none outline-none focus:ring-2 focus:ring-amber-500/20 active:scale-[0.98]",
+          isSmall
+            ? "h-8 px-2 rounded-lg gap-1 text-[11px]"
+            : "h-9 px-2.5 rounded-xl gap-1.5 text-xs",
           variantStyles[variant],
           isOpen && "border-amber-500 ring-2 ring-amber-500/20 bg-amber-100/60"
         )}
       >
-        <div className="flex items-center gap-1.5 shrink-0">
-          <CountryFlag country={lang} className="w-5 h-3.5 shadow-2xs" />
-          <span className="font-bold text-xs text-slate-800 tracking-tight leading-none">
+        <div className="flex items-center gap-1 shrink-0">
+          <CountryFlag
+            country={lang}
+            className={cn(
+              "shadow-2xs",
+              isSmall ? "w-4 h-2.5" : "w-5 h-3.5"
+            )}
+          />
+          <span className={cn("font-bold tracking-tight leading-none text-slate-800", isSmall ? "text-[11px]" : "text-xs")}>
             {lang}
           </span>
         </div>
         <ChevronDown
           className={cn(
-            "w-3.5 h-3.5 text-amber-900/80 shrink-0 transition-transform duration-200",
+            "text-amber-900/80 shrink-0 transition-transform duration-200",
+            isSmall ? "w-3 h-3" : "w-3.5 h-3.5",
             isOpen && "rotate-180"
           )}
         />
@@ -98,7 +112,8 @@ export function LanguageSwitcher({
           role="listbox"
           aria-label="Language selection"
           className={cn(
-            "absolute z-50 mt-1.5 min-w-[145px] p-1 rounded-xl bg-white/98 backdrop-blur-md shadow-xl border border-amber-200/90 space-y-0.5 animate-in fade-in-0 zoom-in-95 duration-150",
+            "absolute z-50 mt-1.5 p-1 rounded-xl bg-white/98 backdrop-blur-md shadow-xl border border-amber-200/90 space-y-0.5 animate-in fade-in-0 zoom-in-95 duration-150",
+            isSmall ? "min-w-[135px]" : "min-w-[145px]",
             align === "right" ? "right-0" : "left-0"
           )}
         >
@@ -115,14 +130,14 @@ export function LanguageSwitcher({
                   setIsOpen(false);
                 }}
                 className={cn(
-                  "w-full flex items-center justify-between gap-2 px-2.5 py-2 rounded-lg text-xs transition-colors cursor-pointer text-left select-none",
+                  "w-full flex items-center justify-between gap-2 px-2 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left select-none",
                   isSelected
                     ? "bg-amber-100/70 text-slate-900 font-bold border border-amber-300/80 shadow-2xs"
                     : "hover:bg-amber-50/80 text-slate-700 border border-transparent font-medium"
                 )}
               >
-                <div className="flex items-center gap-2 truncate">
-                  <CountryFlag country={opt.value} className="w-5 h-3.5 shadow-2xs" />
+                <div className="flex items-center gap-1.5 truncate">
+                  <CountryFlag country={opt.value} className="w-4 h-2.5 shadow-2xs" />
                   <span className="truncate">{opt.fullLabel}</span>
                   <span className="text-[10px] text-slate-400 font-sans font-normal">
                     ({opt.label})

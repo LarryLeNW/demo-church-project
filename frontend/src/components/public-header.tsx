@@ -38,7 +38,7 @@ export function PublicHeader() {
     <header className="sticky top-0 z-40 bg-[#FCFBF8]/95 backdrop-blur-md border-b border-amber-200/70 shadow-xs">
       <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Logo & Brand */}
-        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
           <div className="w-9 h-9 sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl bg-white border border-amber-300/80 p-1 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
             <img
               src={SAM_LOGO_DATA_URL}
@@ -46,14 +46,9 @@ export function PublicHeader() {
               className="w-7 h-7 sm:w-8 sm:h-8 xl:w-9 xl:h-9 object-contain"
             />
           </div>
-          <div className="flex flex-col">
-            <span className="font-serif font-black text-slate-900 text-base sm:text-lg xl:text-xl tracking-tight leading-none">
-              SAM
-            </span>
-            <span className="text-[10px] sm:text-xs text-slate-600 font-serif leading-none mt-0.5 sm:mt-1 hidden xs:inline sm:inline">
-              Spiritual Advance Ministry
-            </span>
-          </div>
+          <span className="font-serif font-black text-slate-900 text-lg sm:text-xl tracking-tight leading-none">
+            SAM
+          </span>
         </Link>
 
         {/* Center: Desktop Nav Links */}
@@ -79,12 +74,12 @@ export function PublicHeader() {
         {/* Right: Actions */}
         <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Language Selector Dropdown with Country Flags */}
-          <LanguageSwitcher />
+          <LanguageSwitcher size="sm" />
 
-          {/* Sanctuary Link Button */}
-          <Link href="/dashboard" className="hidden sm:inline-flex shrink-0">
-            <TactileButton variant="primary" size="sm" withCross className="min-h-[36px] py-1.5 px-2.5 sm:px-3 whitespace-nowrap text-xs">
-              <span>{isEn ? "Sanctuary" : "Bàn Thờ Phượng"}</span>
+          {/* Sign In Link Button */}
+          <Link href="/login" className="hidden sm:inline-flex shrink-0">
+            <TactileButton variant="primary" size="sm" className="min-h-[32px] h-8 py-1 px-3 whitespace-nowrap text-xs">
+              <span>{isEn ? "Sign In" : "Đăng Nhập"}</span>
               <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </TactileButton>
           </Link>
@@ -142,9 +137,9 @@ export function PublicHeader() {
           </div>
 
           <div className="pt-1">
-            <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
-              <TactileButton variant="primary" size="md" withCross className="w-full justify-center">
-                <span>{bilingual("Vào Bàn Thờ Phượng", "Enter Sanctuary Portal")}</span>
+            <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+              <TactileButton variant="primary" size="md" className="w-full justify-center">
+                <span>{bilingual("Đăng Nhập Quản Trị", "Sign In to Admin")}</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </TactileButton>
             </Link>
