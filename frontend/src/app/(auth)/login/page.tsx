@@ -9,7 +9,7 @@ import { SAM_LOGO_DATA_URL } from "@/lib/sam-logo";
 import { TactileInput } from "@/components/ui/tactile-input";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { ApiError } from "@/lib/api/client";
-import { Church, ShieldCheck, ArrowRight, ArrowLeft, Globe, Users, BookOpen } from "lucide-react";
+import { Church, ShieldCheck, ArrowRight, ArrowLeft, Globe, BookOpen } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -183,50 +183,30 @@ export default function LoginPage() {
           {/* Quick Demo Login */}
           <div className="pt-4 border-t border-amber-100 space-y-2">
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-600 text-center">
-              {bilingual("1-Click Đăng Nhập Tài Khoản Demo", "1-Click Demo Accounts")}
+              {bilingual("Tài Khoản Quản Trị Demo", "Demo Admin Account")}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div>
               <button
                 type="button"
                 disabled={loading}
                 onClick={() => handleQuickLogin("admin@teacher.local", "AdminTeacher@2026")}
-                className="w-full py-2.5 px-3 text-xs font-semibold rounded-xl bg-primary-50 text-primary-800 border border-primary-200 hover:bg-primary-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full py-2.5 px-4 text-xs font-semibold rounded-xl bg-primary-50 text-primary-800 border border-primary-200 hover:bg-primary-100 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <span className="flex items-center gap-1.5 min-w-0 truncate">
-                  <ShieldCheck className="w-4 h-4 text-primary-700 shrink-0" />
-                  <span className="truncate">Admin (Quản Trị)</span>
-                </span>
-                <span className="text-xs bg-primary-700 text-white px-2 py-0.5 rounded font-mono shrink-0">
-                  {bilingual("1-Click", "1-Click")}
-                </span>
-              </button>
-
-              <button
-                type="button"
-                disabled={loading}
-                onClick={() => handleQuickLogin("user@teacher.local", "AdminTeacher@2026")}
-                className="w-full py-2.5 px-3 text-xs font-semibold rounded-xl bg-slate-50 text-slate-800 border border-slate-200 hover:bg-slate-100 transition-all flex items-center justify-between gap-2 cursor-pointer disabled:opacity-50"
-              >
-                <span className="flex items-center gap-1.5 min-w-0 truncate">
-                  <Users className="w-4 h-4 text-slate-600 shrink-0" />
-                  <span className="truncate">User (Thành Viên)</span>
-                </span>
-                <span className="text-xs bg-slate-200 text-slate-900 px-2 py-0.5 rounded font-mono shrink-0">
-                  {bilingual("1-Click", "1-Click")}
-                </span>
+                <ShieldCheck className="w-4 h-4 text-primary-700 shrink-0" />
+                <span>Admin (Ban Quản Trị Hệ Thống)</span>
               </button>
             </div>
           </div>
 
           <div className="text-center pt-2 text-xs text-slate-600">
             <span>
-              {bilingual("Chưa có tài khoản tín hữu? ", "Don't have an account yet? ")}
+              {bilingual("Bạn là tín hữu hoặc khách viếng thăm? ", "Are you a visitor or church member? ")}
             </span>
             <Link
-              href="/register"
+              href="/"
               className="font-bold text-primary-700 hover:text-primary-800 hover:underline inline-flex items-center gap-1"
             >
-              <span>{bilingual("Đăng ký tham gia", "Register now")}</span>
+              <span>{bilingual("Về trang chủ website", "Return to Home")}</span>
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
