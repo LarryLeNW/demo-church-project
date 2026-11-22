@@ -6,6 +6,7 @@ import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { TactileInput } from "@/components/ui/tactile-input";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   Mail,
   Phone,
@@ -41,30 +42,21 @@ export default function ContactPage() {
     <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
-        {/* Header Title */}
-        <section className="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-800 text-xs font-semibold uppercase tracking-wider shadow-xs">
-            <Mail className="w-3.5 h-3.5 text-primary-800 shrink-0" />
-            <span>{bilingual("Kết Nối Mục Vụ SAM", "Ministry Fellowship & Contact")}</span>
-          </div>
-
-          <h1 className="font-scripture text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight [text-wrap:balance]">
-            {bilingual("Liên Hệ & Gửi Lời Cầu Thay", "Get in Touch & Prayer Requests")}
-          </h1>
-
-          <div className="border-y border-amber-200/80 py-3 my-2 max-w-2xl mx-auto">
-            <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed [text-wrap:pretty]">
-              {bilingual(
-                '"Hãy trình các sự cầu xin của mình cho Đức Chúa Trời bởi sự cầu nguyện, nài xin, cùng sự tạ ơn." — Phi-líp 4:6',
-                '"In every situation, by prayer and petition, with thanksgiving, present your requests to God." — Philippians 4:6'
-              )}
-            </p>
-          </div>
-        </section>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-10">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Liên Hệ & Gửi Lời Cầu Thay", "Contact & Prayer Requests") },
+            ]}
+          />
+          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
+            {bilingual("Dallas Main Campus (Hoa Kỳ) & Văn phòng Việt Nam", "Dallas Main Campus (USA) & Vietnam Office")}
+          </span>
+        </div>
 
         {/* 2 Columns: Contact Info & Interactive Forms */}
-        <section className="space-y-6">
+        <section className="space-y-6 animate-fade-up delay-75">
           <h2 className="sr-only">
             {bilingual("Thông Tin Liên Hệ & Trụ Sở Mục Vụ", "Ministry Contact & Locations")}
           </h2>
@@ -72,7 +64,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
           {/* Left Column: Official Info & Geolocation */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="p-6 sm:p-7 bg-white rounded-3xl border border-amber-200/90 shadow-sm space-y-5">
+            <div className="p-6 sm:p-7 bg-white rounded-3xl border border-amber-200/90 shadow-sm space-y-5 reverent-card-hover">
               <h3 className="font-scripture text-xl font-bold text-slate-900 border-b border-amber-100 pb-3">
                 {bilingual("Thông Tin Trực Thuộc", "Official Presence")}
               </h3>

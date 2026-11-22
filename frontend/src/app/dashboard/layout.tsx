@@ -524,7 +524,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         {/* Main Content Viewport */}
         <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
-          {children}
+          <div key={pathname} className="animate-fade-in">
+            {children}
+          </div>
         </main>
 
         {/* Sacred Footer */}

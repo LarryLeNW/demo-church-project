@@ -133,8 +133,8 @@ export function AnnualTaxStatementModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-      <div className="bg-[#FCFBF8] border-2 border-amber-400/90 rounded-2xl max-w-3xl w-full p-4 sm:p-8 shadow-2xl space-y-6 relative max-h-[92vh] overflow-y-auto print:max-h-none print:overflow-visible print:border-none print:shadow-none print:p-0">
+    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto animate-fade-in">
+      <div className="bg-[#FCFBF8] border-2 border-amber-400/90 rounded-2xl max-w-3xl w-full p-4 sm:p-8 shadow-2xl space-y-6 relative max-h-[92vh] overflow-y-auto print:max-h-none print:overflow-visible print:border-none print:shadow-none print:p-0 animate-scale-in">
         {/* Controls Bar (Hidden during print) */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-amber-200/80 pb-4 print:hidden">
           <div className="flex items-center gap-3">
@@ -192,7 +192,7 @@ export function AnnualTaxStatementModal({
 
         {loading ? (
           <div className="py-20 text-center space-y-2">
-            <span className="text-amber-800 font-serif text-3xl font-bold animate-spin inline-block">†</span>
+            <span className="text-amber-800 font-serif text-3xl font-bold animate-holy-breathe inline-block">†</span>
             <p className="text-xs font-serif italic text-slate-600">
               {bilingual(
                 "Đang khởi tạo chứng từ thuế Form 1040...",

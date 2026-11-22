@@ -14,8 +14,8 @@ export const translations: Translations = {
     EN: "SAM • Spiritual Advance Ministry",
   },
   "brand.tagline": {
-    VI: "Tận Hiến Trang Bị Môn Đồ Chúa • saministry.org",
-    EN: "We Are Devoted In Equipping People • saministry.org",
+    VI: "Tận Hiến Trang Bị Môn Đồ Chúa",
+    EN: "We Are Devoted In Equipping People",
   },
   "brand.platform": {
     VI: "Mục Vụ Tiến Bước Thuộc Linh (SAM)",

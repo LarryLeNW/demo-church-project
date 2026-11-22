@@ -594,7 +594,7 @@ export default function PrayerSanctuaryPage() {
             return (
               <div
                 key={prayer.id}
-                className={`bg-white rounded-2xl p-6 border shadow-xs hover:shadow-md transition-all flex flex-col justify-between space-y-4 ${
+                className={`bg-white rounded-2xl p-6 border shadow-xs reverent-card-hover flex flex-col justify-between space-y-4 animate-fade-up ${
                   prayer.isAnswered
                     ? "border-amber-400/90 bg-gradient-to-br from-amber-50/40 via-white to-white"
                     : "border-amber-200/80"
@@ -668,9 +668,9 @@ export default function PrayerSanctuaryPage() {
                 <div className="pt-3 border-t border-amber-100 flex items-center justify-between gap-3">
                   <button
                     onClick={() => handleIntercede(prayer.id)}
-                    className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer border ${
+                    className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.985] cursor-pointer border ${
                       prayer.hasInterceded
-                        ? "bg-amber-100 text-amber-950 border-amber-300 font-bold"
+                        ? "bg-amber-100 text-amber-950 border-amber-300 font-bold animate-prayer-pulse"
                         : "bg-white text-indigo-950 border-amber-300/80 hover:bg-amber-50/60 shadow-xs"
                     }`}
                   >

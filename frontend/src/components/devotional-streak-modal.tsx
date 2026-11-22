@@ -97,13 +97,13 @@ export function DevotionalStreakModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-[#FCFBF8] border border-amber-300/80 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-6 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fade-in">
+      <div className="bg-[#FCFBF8] border border-amber-300/80 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-6 animate-scale-in">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-amber-200/70 pb-4">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-400/40 flex items-center justify-center text-amber-600">
-              <Flame className="w-5 h-5 fill-amber-500 text-amber-600 animate-pulse" />
+              <Flame className="w-5 h-5 fill-amber-500 text-amber-600 animate-holy-breathe" />
             </div>
             <div>
               <h3 className="font-scripture text-lg font-bold text-slate-900 leading-tight">
@@ -132,7 +132,7 @@ export function DevotionalStreakModal({
         <div className="bg-gradient-to-r from-amber-950 via-indigo-950 to-indigo-900 rounded-2xl p-5 text-white border border-amber-400/40 shadow-inner flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-center sm:text-left">
             <div className="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-400/50 flex flex-col items-center justify-center">
-              <Flame className="w-7 h-7 text-amber-400 fill-amber-400 animate-bounce" />
+              <Flame className="w-7 h-7 text-amber-400 fill-amber-400 animate-holy-breathe" />
               <span className="text-xs uppercase font-bold text-amber-300 tracking-wider">
                 Streak
               </span>

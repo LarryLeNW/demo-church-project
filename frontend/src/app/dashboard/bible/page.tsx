@@ -660,7 +660,7 @@ export default function BibleReadingPage() {
               return (
                 <div
                   key={plan.id}
-                  className="bg-white rounded-3xl border border-amber-200/80 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+                  className="bg-white rounded-3xl border border-amber-200/80 overflow-hidden shadow-xs reverent-card-hover flex flex-col justify-between group animate-fade-up"
                 >
                   <div className="relative aspect-video w-full bg-slate-900 overflow-hidden">
                     {plan.thumbnailUrl ? (

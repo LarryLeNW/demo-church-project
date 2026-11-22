@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   Bell,
   Calendar,
@@ -57,29 +58,26 @@ export default function AnnouncementsPage() {
     <div className="min-h-screen flex flex-col bg-[#FBF9F5]">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 space-y-10">
-        <section className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FEF5EE] border border-[#F17F34]/40 text-[#DE6D22] text-xs font-semibold tracking-wider uppercase shadow-xs">
-            <Bell className="w-3.5 h-3.5 text-[#F17F34]" />
-            <span>{bilingual("Tin Tức & Thông Báo", "News & Updates")}</span>
-          </div>
-          <h1 className="font-scripture text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            {bilingual("Bản Tin & Thông Báo Mục Vụ", "Ministry Announcements")}
-          </h1>
-          <p className="text-xs sm:text-base text-slate-700 font-serif italic leading-relaxed">
-            {bilingual(
-              "Cập nhật các chương trình mới nhất, thông điệp mục vụ và lịch hiệp nguyện của SAM.",
-              "Stay informed with the latest ministry programs, official messages, and prayer gatherings."
-            )}
-          </p>
-        </section>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-6 sm:space-y-8">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Bản Tin & Thông Báo Mục Vụ", "Ministry Announcements") },
+            ]}
+          />
+          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
+            {bilingual("Cập nhật hoạt động & lịch hiệp nguyện", "Latest ministry programs & prayer gatherings")}
+          </span>
+        </div>
 
         {/* News List */}
         <section className="space-y-4 max-w-4xl mx-auto">
-          {newsList.map((item) => (
+          {newsList.map((item, idx) => (
             <article
               key={item.id}
-              className="p-6 bg-white rounded-2xl border border-amber-200/80 shadow-2xs hover:border-[#F17F34] transition-all space-y-3"
+              className="p-6 bg-white rounded-2xl border border-amber-200/80 shadow-2xs reverent-card-hover space-y-3 animate-fade-up"
+              style={{ animationDelay: `${(idx + 1) * 75}ms` }}
             >
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#FEF5EE] text-[#F17F34] border border-[#F17F34]/30">

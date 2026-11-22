@@ -6,6 +6,7 @@ import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   BookOpen,
   Video,
@@ -167,34 +168,23 @@ export default function LibraryPage() {
     <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
-        {/* ============================================================== */}
-        {/* 1. HERO SECTION: Lời Chúa & Thư Viện Thánh */}
-        {/* ============================================================== */}
-        <section className="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-800 text-xs font-semibold uppercase tracking-wider shadow-xs">
-            <BookOpen className="w-3.5 h-3.5 text-primary-800 shrink-0" />
-            <span>{bilingual("Kho Tư Liệu Bồi Linh SAM", "SAM Theological & Devotional Vault")}</span>
-          </div>
-
-          <h1 className="font-scripture text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight [text-wrap:balance]">
-            {bilingual("Thư Viện Sách & Video Bài Giảng", "Spiritual Literature & Sermon Archive")}
-          </h1>
-
-          <div className="border-y border-amber-200/80 py-3 my-2 max-w-2xl mx-auto">
-            <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed [text-wrap:pretty]">
-              {bilingual(
-                '"Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi." — Thi Thiên 119:105',
-                '"Your word is a lamp for my feet, a light on my path." — Psalm 119:105'
-              )}
-            </p>
-          </div>
-        </section>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-10">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Thư Viện Tài Liệu & Bài Giảng", "Library & Sermon Vault") },
+            ]}
+          />
+          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
+            {bilingual("Kho sách, tài liệu & bài giảng bồi linh", "Spiritual books, documents & sermon media")}
+          </span>
+        </div>
 
         {/* ============================================================== */}
         {/* 2. TAB SWITCHER & THANH TÌM KIẾM (Search & Controls) */}
         {/* ============================================================== */}
-        <section className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 sm:p-4 bg-white rounded-3xl border border-amber-200/90 shadow-sm">
+        <section className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 sm:p-4 bg-white rounded-3xl border border-amber-200/90 shadow-sm animate-fade-up delay-75">
           <h2 className="sr-only">
             {bilingual("Danh Mục Sách & Video Bài Giảng", "Curated Spiritual Books & Sermons")}
           </h2>
@@ -279,10 +269,11 @@ export default function LibraryPage() {
         {activeTab === "books" && (
           <section className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-              {filteredBooks.map((book) => (
+              {filteredBooks.map((book, idx) => (
                 <div
                   key={book.id}
-                  className="p-6 bg-white rounded-3xl border border-amber-200/90 shadow-sm hover:border-primary-600 transition-all flex flex-col sm:flex-row gap-6 justify-between group"
+                  className="p-6 bg-white rounded-3xl border border-amber-200/90 shadow-sm reverent-card-hover flex flex-col sm:flex-row gap-6 justify-between group animate-fade-up"
+                  style={{ animationDelay: `${(idx + 1) * 75}ms` }}
                 >
                   {/* Bìa sách thật có aspect ratio chuẩn sách in */}
                   <div className="relative aspect-[3/4] w-full sm:w-36 rounded-2xl bg-amber-50 border border-amber-200 overflow-hidden shrink-0 shadow-2xs">
@@ -374,10 +365,11 @@ export default function LibraryPage() {
         {activeTab === "videos" && (
           <section className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-              {filteredVideos.map((video) => (
+              {filteredVideos.map((video, idx) => (
                 <div
                   key={video.id}
-                  className="bg-white rounded-3xl border border-amber-200/90 shadow-sm hover:border-primary-600 transition-all overflow-hidden flex flex-col justify-between group cursor-pointer"
+                  className="bg-white rounded-3xl border border-amber-200/90 shadow-sm reverent-card-hover overflow-hidden flex flex-col justify-between group cursor-pointer animate-fade-up"
+                  style={{ animationDelay: `${(idx + 1) * 75}ms` }}
                   onClick={() =>
                     setPlayingVideo({
                       title: isEn ? video.titleEn : video.titleVi,
@@ -447,8 +439,8 @@ export default function LibraryPage() {
         {/* MODAL: Video Player */}
         {/* ============================================================== */}
         {playingVideo && (
-          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-            <div className="bg-slate-950 rounded-3xl border border-amber-400/40 w-full max-w-3xl overflow-hidden shadow-2xl space-y-4 p-5 sm:p-6 text-left">
+          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+            <div className="bg-slate-950 rounded-3xl border border-amber-400/40 w-full max-w-3xl overflow-hidden shadow-2xl space-y-4 p-5 sm:p-6 text-left animate-scale-in">
               <div className="flex items-center justify-between text-white pb-3 border-b border-slate-800">
                 <div>
                   <span className="text-xs font-bold text-amber-300 uppercase font-serif tracking-widest block">
@@ -498,8 +490,8 @@ export default function LibraryPage() {
         {/* MODAL: Đọc Sách Trực Tuyến (Book Sample Reader) */}
         {/* ============================================================== */}
         {readingBook && (
-          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
-            <div className="bg-sacred-parchment rounded-3xl border-2 border-amber-300 w-full max-w-2xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6 text-left">
+          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+            <div className="bg-sacred-parchment rounded-3xl border-2 border-amber-300 w-full max-w-2xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6 text-left animate-scale-in">
               <div className="flex items-center justify-between pb-3 border-b border-amber-200">
                 <div>
                   <span className="text-xs font-bold text-primary-700 uppercase font-serif tracking-widest block">

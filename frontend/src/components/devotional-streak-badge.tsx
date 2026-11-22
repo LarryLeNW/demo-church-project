@@ -58,7 +58,7 @@ export function DevotionalStreakBadge({
         <Flame
           className={`w-4 h-4 ${
             streak > 0
-              ? "text-amber-600 fill-amber-500 animate-pulse"
+              ? "text-amber-600 fill-amber-500 animate-holy-breathe"
               : "text-slate-400"
           }`}
         />

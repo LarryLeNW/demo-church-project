@@ -108,3 +108,180 @@ button, input, select, textarea, .font-sans {
   scrollbar-width: thin;
   scrollbar-color: #d4c8b0 #f5f2ea;
 }
+
+/* ============================================================== */
+/* Sacred & Reverent Animation System (Gentle, Subtle & Professional) */
+/* ============================================================== */
+
+@keyframes reverentFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reverentFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reverentFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reverentScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes holyBreathe {
+  0%, 100% {
+    opacity: 0.92;
+    filter: drop-shadow(0 0 2px rgba(241, 127, 52, 0.25));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(241, 127, 52, 0.5));
+  }
+}
+
+@keyframes sereneAura {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(241, 127, 52, 0);
+  }
+  50% {
+    box-shadow: 0 0 16px 2px rgba(241, 127, 52, 0.18);
+  }
+}
+
+@keyframes prayerPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Reusable Animation Utilities */
+.animate-fade-in {
+  animation: reverentFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-up {
+  animation: reverentFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-down {
+  animation: reverentFadeDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-scale-in {
+  animation: reverentScaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-holy-breathe {
+  animation: holyBreathe 3.5s ease-in-out infinite;
+}
+
+.animate-serene-aura {
+  animation: sereneAura 3s ease-in-out infinite;
+}
+
+.animate-prayer-pulse {
+  animation: prayerPulse 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger Delays for Sequential Fluid Entrances */
+.delay-50 {
+  animation-delay: 50ms;
+}
+
+.delay-75 {
+  animation-delay: 75ms;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-250 {
+  animation-delay: 250ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Smooth Reverent Micro-Interactions */
+.reverent-card-hover {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s ease,
+              background-color 0.28s ease;
+  will-change: transform, box-shadow;
+}
+
+.reverent-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(241, 127, 52, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  border-color: rgba(241, 127, 52, 0.4);
+}
+
+.reverent-img-hover {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.reverent-img-hover:hover {
+  transform: scale(1.03);
+}
+
+/* Respect Accessibility & Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

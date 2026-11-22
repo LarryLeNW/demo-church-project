@@ -7,6 +7,7 @@ import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   Compass,
   Heart,
@@ -86,34 +87,23 @@ export default function AboutPage() {
     <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-16 sm:space-y-24">
-        {/* ============================================================== */}
-        {/* 1. HERO SECTION: Lịch Sử & Tôn Chỉ */}
-        {/* ============================================================== */}
-        <section className="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-800 text-xs font-semibold uppercase tracking-wider shadow-xs">
-            <Compass className="w-3.5 h-3.5 text-primary-800 shrink-0" />
-            <span>{bilingual("Về Spiritual Advance Ministry", "About Spiritual Advance Ministry")}</span>
-          </div>
-
-          <h1 className="font-scripture text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight [text-wrap:balance]">
-            {bilingual("Khải Tượng, Sứ Mạng & Đội Ngũ", "Our Calling, Mandate & Servant Leadership")}
-          </h1>
-
-          <div className="border-y border-amber-200/80 py-3 my-2 max-w-2xl mx-auto">
-            <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed [text-wrap:pretty]">
-              {bilingual(
-                '"Vun trồng, nâng tầm và trang bị cho các tôi tớ Chúa nhằm đem mọi người đến gần Đức Chúa Trời và trở nên những người phục sự trung tín của Ngài."',
-                '"Cultivating, elevating, and equipping the servants of God to bring people closer to God and to be His faithful servants."'
-              )}
-            </p>
-          </div>
-        </section>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-12">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Giới Thiệu Về SAM", "About SAM Ministry") },
+            ]}
+          />
+          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
+            {bilingual("Khải tượng, sứ mạng & ban giảng huấn", "Calling, mandate & servant leadership")}
+          </span>
+        </div>
 
         {/* ============================================================== */}
         {/* 2. CÂU CHUYỆN KHỞI SỰ (Editorial Narrative Story) */}
         {/* ============================================================== */}
-        <section className="p-8 sm:p-12 bg-white rounded-3xl border border-amber-200/90 shadow-sm space-y-8 text-left">
+        <section className="p-8 sm:p-12 bg-white rounded-3xl border border-amber-200/90 shadow-sm space-y-8 text-left animate-fade-up delay-75 reverent-card-hover">
           <div className="border-b border-amber-100 pb-4">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual(
@@ -143,7 +133,7 @@ export default function AboutPage() {
         {/* 3. TẦM NHÌN & SỨ MẠNG (2 Pillars) */}
         {/* ============================================================== */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-          <div className="p-8 rounded-3xl bg-sacred-card border-2 border-amber-300/80 shadow-xs space-y-4">
+          <div className="p-8 rounded-3xl bg-sacred-card border-2 border-amber-300/80 shadow-xs space-y-4 reverent-card-hover animate-fade-up delay-100">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-200 flex items-center justify-center text-primary-700 shrink-0">
                 <Compass className="w-5 h-5" />
@@ -160,7 +150,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-sacred-card border-2 border-amber-300/80 shadow-xs space-y-4">
+          <div className="p-8 rounded-3xl bg-sacred-card border-2 border-amber-300/80 shadow-xs space-y-4 reverent-card-hover animate-fade-up delay-150">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-200 flex items-center justify-center text-primary-700 shrink-0">
                 <Award className="w-5 h-5" />
@@ -181,7 +171,7 @@ export default function AboutPage() {
         {/* ============================================================== */}
         {/* 4. GIÁ TRỊ CỐT LÕI (Core Values với số La Mã chạm khắc) */}
         {/* ============================================================== */}
-        <section className="bg-white rounded-3xl border border-amber-200/90 p-8 sm:p-12 shadow-sm space-y-8 text-left">
+        <section className="bg-white rounded-3xl border border-amber-200/90 p-8 sm:p-12 shadow-sm space-y-8 text-left reverent-card-hover">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual("Bốn Giá Trị Cốt Lõi Của SAM", "The Four Core Values of SAM")}
@@ -192,7 +182,7 @@ export default function AboutPage() {
             {coreValues.map((val, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-sacred-card border border-amber-200/80 space-y-3 shadow-2xs hover:border-primary-600 transition-all"
+                className="p-6 rounded-2xl bg-sacred-card border border-amber-200/80 space-y-3 shadow-2xs reverent-card-hover"
               >
                 <div className="flex items-center gap-3">
                   <span className="font-scripture text-2xl font-black text-primary-700">
@@ -224,7 +214,7 @@ export default function AboutPage() {
             {leadership.map((person, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-7 shadow-xs hover:border-primary-600 hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+                className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-7 shadow-xs reverent-card-hover flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-4">
                   <div className="relative aspect-square w-full rounded-2xl overflow-hidden border-2 border-amber-300 shadow-2xs">
@@ -253,49 +243,52 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 6. HỆ SINH THÁI WEBSITE CHÍNH THỨC (Trang Nhã & Kết Nối) */}
+        {/* 6. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Trang Nhã & Kết Nối) */}
         {/* ============================================================== */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-sacred-card border border-amber-200/90 shadow-sm space-y-6 text-left">
+        <section className="p-8 sm:p-12 rounded-3xl bg-sacred-card border border-amber-200/90 shadow-sm space-y-6 text-left reverent-card-hover animate-fade-up">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-50 text-xs font-semibold text-primary-700 border border-primary-200">
-              <Globe2 className="w-3.5 h-3.5 text-primary-700 shrink-0" />
-              <span>{bilingual("Cổng Thông Tin Mục Vụ Chính Thức", "Official Portal")}</span>
+              <Sparkles className="w-3.5 h-3.5 text-primary-700 shrink-0" />
+              <span>{bilingual("Đồng Hành Mục Vụ", "Ministry Fellowship")}</span>
             </div>
             <h3 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual(
-                "Kết Nối Trực Tiếp Với Website saministry.org & Kênh Truyền Thông",
-                "Connected With Official Portal saministry.org & Media"
+                "Đồng Hành Cùng Hành Trình Môn Đồ Hóa Của SAM",
+                "Join the Discipleship & Equipping Journey With SAM"
               )}
             </h3>
             <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
               {bilingual(
-                "Ghé thăm trang web chính thức saministry.org và Fanpage Facebook của chúng tôi để cập nhật lịch đào tạo, thông điệp mục vụ và nguồn tư liệu thuộc linh mới nhất.",
-                "Visit our official portal saministry.org and our Facebook Fanpage for the latest training schedules, ministerial messages, and spiritual resources."
+                "Khám phá các chương trình đào tạo, thư viện bài giảng bồi linh chuẩn mực và kết nối với mạng lưới các tôi tớ Chúa khắp nơi.",
+                "Explore structured training curricula, sound theological resources, and fellowship with faithful servants of Christ globally."
               )}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 pt-1">
-            <a
-              href="https://saministry.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Truy Cập Website saministry.org (Mở trong tab mới)"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-700 hover:bg-primary-800 text-white text-xs font-bold transition-all shadow-xs min-h-[46px]"
-            >
-              <span>{bilingual("Truy Cập Website saministry.org", "Visit saministry.org")}</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            <Link href="/courses">
+              <TactileButton variant="primary" size="md" withCross>
+                <span>{bilingual("Khám Phá Các Khóa Học", "Explore Courses")}</span>
+                <ArrowRight className="w-4 h-4 ml-1.5" />
+              </TactileButton>
+            </Link>
+
+            <Link href="/library">
+              <TactileButton variant="secondary" size="md">
+                <BookOpen className="w-4 h-4 mr-1.5 text-primary-700" />
+                <span>{bilingual("Kho Tư Liệu Bồi Linh", "Resource Vault")}</span>
+              </TactileButton>
+            </Link>
 
             <a
               href="https://www.facebook.com/saministry.org"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Fanpage Facebook SAM (Mở trong tab mới)"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-primary-50 text-slate-800 text-xs font-bold border border-amber-200/90 transition-all shadow-2xs min-h-[46px]"
+              aria-label="Cộng đồng Facebook SAM (Mở trong tab mới)"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-primary-50 text-slate-800 text-xs font-bold border border-amber-200/90 transition-all shadow-2xs min-h-[48px]"
             >
-              <span>{bilingual("Fanpage Facebook SAM", "SAM Facebook Page")}</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <span>{bilingual("Cộng Đồng Facebook SAM", "SAM Facebook Page")}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
             </a>
           </div>
         </section>

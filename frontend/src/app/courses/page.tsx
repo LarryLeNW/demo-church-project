@@ -7,6 +7,7 @@ import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   BookOpen,
   GraduationCap,
@@ -139,34 +140,23 @@ export default function CoursesPage() {
     <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-16 sm:space-y-24">
-        {/* ============================================================== */}
-        {/* 1. HERO SECTION: Lời Chúa & Sứ Mạng Học Viện */}
-        {/* ============================================================== */}
-        <section className="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-800 text-xs font-semibold uppercase tracking-wider shadow-xs">
-            <GraduationCap className="w-3.5 h-3.5 text-primary-800 shrink-0" />
-            <span>{bilingual("Học Viện Môn Đồ Hóa SAM", "SAM Discipleship Academy")}</span>
-          </div>
-
-          <h1 className="font-scripture text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight [text-wrap:balance]">
-            {bilingual("Chương Trình Đào Tạo & Môn Đồ Hóa", "Equipping Servants Through Sound Curriculum")}
-          </h1>
-
-          <div className="border-y border-amber-200/80 py-3 my-2 max-w-2xl mx-auto">
-            <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed [text-wrap:pretty]">
-              {bilingual(
-                '"Những điều con đã nghe nơi ta ở trước mặt nhiều người chứng, hãy giao phó cho mấy người trung thành, cũng có tài dạy dỗ kẻ khác." — II Ti-mô-thê 2:2',
-                '"And the things you have heard me say in the presence of many witnesses entrust to reliable people who will also be qualified to teach others." — 2 Timothy 2:2'
-              )}
-            </p>
-          </div>
-        </section>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-12">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Khóa Học & Giáo Trình Môn Đồ Hóa", "Discipleship Courses") },
+            ]}
+          />
+          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
+            {bilingual("Chương trình đào tạo tôi tớ Chúa & người phục sự", "Equipping faithful servants through sound curriculum")}
+          </span>
+        </div>
 
         {/* ============================================================== */}
         {/* 2. BỘ LỌC CHỦ ĐỀ KHÓA HỌC (Interactive Category Filter) */}
         {/* ============================================================== */}
-        <section className="space-y-8">
+        <section className="space-y-8 animate-fade-up delay-75">
           <h2 className="sr-only">
             {bilingual("Danh Sách Khóa Học Tuyển Chọn", "Curated Discipleship Courses Catalog")}
           </h2>
@@ -178,7 +168,7 @@ export default function CoursesPage() {
                 <button
                   key={cat.id}
                   onClick={() => setFilter(cat.id)}
-                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer min-h-[44px] ${
+                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer min-h-[44px] active:scale-[0.98] ${
                     isSelected
                       ? "bg-primary-700 text-white shadow-xs"
                       : "bg-white border border-amber-200/90 text-slate-700 hover:bg-primary-50 hover:text-primary-700"
@@ -192,10 +182,11 @@ export default function CoursesPage() {
 
           {/* Lưới danh sách khóa học phong phú */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {filteredCourses.map((course) => (
+            {filteredCourses.map((course, idx) => (
               <div
                 key={course.id}
-                className="bg-white rounded-3xl border border-amber-200/90 shadow-sm hover:border-primary-600 transition-all overflow-hidden flex flex-col justify-between group text-left"
+                className="bg-white rounded-3xl border border-amber-200/90 shadow-sm reverent-card-hover overflow-hidden flex flex-col justify-between group text-left animate-fade-up"
+                style={{ animationDelay: `${(idx + 1) * 75}ms` }}
               >
                 <div>
                   {/* Bìa khóa học chuẩn tỷ lệ */}
@@ -302,7 +293,7 @@ export default function CoursesPage() {
             {pathwayStages.map((st, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-3 flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-3 flex flex-col justify-between reverent-card-hover"
               >
                 <div className="space-y-3">
                   <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-200 flex items-center justify-center font-scripture text-xl font-black text-primary-700">

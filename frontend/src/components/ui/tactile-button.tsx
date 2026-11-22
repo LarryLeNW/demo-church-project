@@ -42,8 +42,8 @@ export const TactileButton: React.FC<ReverentButtonProps> = ({
     <button
       disabled={disabled}
       className={cn(
-        "relative inline-flex items-center justify-center font-semibold transition-all duration-200 select-none cursor-pointer",
-        "active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40",
+        "relative inline-flex items-center justify-center font-semibold transition-all duration-250 ease-out select-none cursor-pointer",
+        "active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40",
         "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none",
         variantStyles[variant],
         sizeStyles[size],

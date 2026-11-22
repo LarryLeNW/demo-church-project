@@ -87,9 +87,9 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       {/* Welcome Banner */}
-      <div className="p-6 sm:p-8 bg-gradient-to-r from-indigo-950 via-indigo-900 to-amber-950 text-white rounded-2xl border border-amber-400/30 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="p-6 sm:p-8 bg-gradient-to-r from-indigo-950 via-indigo-900 to-amber-950 text-white rounded-2xl border border-amber-400/30 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6 animate-fade-up reverent-card-hover">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-1.5 text-xs text-amber-300 font-serif uppercase tracking-widest">
             <span>†</span>

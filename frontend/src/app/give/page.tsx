@@ -6,6 +6,7 @@ import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { TactileInput } from "@/components/ui/tactile-input";
 import { TactileSelect, type TactileSelectOption } from "@/components/ui/tactile-select";
 import {
@@ -211,36 +212,25 @@ export default function GivePage() {
     <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-16 sm:space-y-24">
-        {/* ============================================================== */}
-        {/* 1. HERO SECTION: Trang Trọng & Tôn Nghiêm */}
-        {/* ============================================================== */}
-        <section className="text-center space-y-4 max-w-3xl mx-auto pt-2 sm:pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-800 text-xs font-semibold uppercase tracking-wider shadow-xs">
-            <Heart className="w-3.5 h-3.5 text-primary-800 shrink-0" />
-            <span>{bilingual("Dâng Hiến Thuộc Linh • IRS 501(c)(3)", "Sacred Stewardship • IRS 501(c)(3)")}</span>
-          </div>
-
-          <h1 className="font-scripture text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight [text-wrap:balance]">
-            {bilingual("Cùng Hiệp Lực Mở Mang Nước Chúa", "Honor the Lord with Faithful Stewardship")}
-          </h1>
-
-          <div className="border-y border-amber-200/80 py-3 my-2 max-w-2xl mx-auto">
-            <p className="text-sm sm:text-base text-slate-700 font-serif italic leading-relaxed [text-wrap:pretty]">
-              {bilingual(
-                '"Mỗi người nên quyên tiền tùy theo lòng mình đã định, không phải ngần ngại hay vì miễn cưỡng, vì Đức Chúa Trời yêu kẻ dâng của cách vui lòng." — II Cô-rinh-tô 9:7',
-                '"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." — 2 Corinthians 9:7'
-              )}
-            </p>
-          </div>
-        </section>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-12">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Dâng Hiến Trực Tuyến", "Online Ministry Giving") },
+            ]}
+          />
+          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
+            {bilingual("Khấu trừ thuế theo chuẩn IRS 501(c)(3) tại Hoa Kỳ", "Tax-deductible under US IRS 501(c)(3)")}
+          </span>
+        </div>
 
         {/* ============================================================== */}
         {/* 2. MAIN 2-COLUMN GIVING LAYOUT: Form (7 cols) + Trust/Tax (5 cols) */}
         {/* ============================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* CỘT TRÁI (7 cols): Form Dâng Hiến */}
-          <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/90 shadow-md p-6 sm:p-9 space-y-8 text-left">
+          <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/90 shadow-md p-6 sm:p-9 space-y-8 text-left animate-fade-up delay-75">
             <div>
               <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 [text-wrap:balance]">
                 {bilingual("Tấm Lòng Dâng Cho Chúa", "Online Ministry Offering")}
@@ -254,7 +244,7 @@ export default function GivePage() {
             </div>
 
             {isSuccess ? (
-              <div className="p-8 rounded-2xl bg-primary-50 border border-primary-200 text-center space-y-4 animate-in fade-in">
+              <div className="p-8 rounded-2xl bg-primary-50 border border-primary-200 text-center space-y-4 animate-scale-in">
                 <div className="w-16 h-16 rounded-full bg-primary-700 text-white mx-auto flex items-center justify-center shadow-md">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
@@ -565,9 +555,9 @@ export default function GivePage() {
           </div>
 
           {/* CỘT PHẢI (5 cols): Khung Tín Thác & Xem Trước Biên Nhận Thuế 501(c)(3) (Sticky scroll) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6 text-left">
+          <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6 text-left animate-fade-up delay-150">
             {/* TẤM BIÊN NHẬN THUẾ MẪU (IRS Tax Statement Preview Card) */}
-            <div className="bg-white rounded-3xl border-2 border-amber-300 p-6 sm:p-7 shadow-lg space-y-5 relative overflow-hidden">
+            <div className="bg-white rounded-3xl border-2 border-amber-300 p-6 sm:p-7 shadow-lg space-y-5 relative overflow-hidden reverent-card-hover">
               <div className="border-b border-amber-200 pb-3 flex items-start justify-between gap-3">
                 <div>
                   <span className="text-[11px] font-bold text-primary-700 uppercase tracking-widest font-serif block">
@@ -694,7 +684,7 @@ export default function GivePage() {
                     )}
                   </button>
                   {isOpen && (
-                    <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-700 font-sans leading-relaxed border-t border-amber-100 max-w-[65ch] [text-wrap:pretty]">
+                    <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-700 font-sans leading-relaxed border-t border-amber-100 max-w-[65ch] [text-wrap:pretty] animate-fade-in">
                       {isEn ? faq.aEn : faq.aVi}
                     </div>
                   )}

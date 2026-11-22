@@ -21,9 +21,8 @@ export const BentoCard: React.FC<BentoCardProps> = ({
   return (
     <div
       className={cn(
-        "relative p-6 bg-white rounded-2xl border border-amber-200/80 shadow-md shadow-amber-950/5 transition-all duration-200",
-        isInteractive &&
-          "hover:border-primary-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary-950/10 cursor-pointer",
+        "relative p-6 bg-white rounded-2xl border border-amber-200/80 shadow-md shadow-amber-950/5",
+        isInteractive ? "reverent-card-hover cursor-pointer" : "transition-all duration-200",
         className,
       )}
       {...props}

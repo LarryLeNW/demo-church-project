@@ -132,7 +132,7 @@ export default function HomePage() {
         {/* ============================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-2 sm:pt-4">
           {/* Cột trái: Nội dung tuyên ngôn & Kêu gọi */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="lg:col-span-7 space-y-6 text-left animate-fade-up">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-primary-700 shrink-0" />
               <span>{bilingual("Tận Hiến Trang Bị Môn Đồ Chúa", "Equipping Servants of Christ")}</span>
@@ -163,22 +163,6 @@ export default function HomePage() {
               </span>
             </div>
 
-            {/* Cụm nút CTA dứt khoát */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-              <Link href="/dashboard" className="w-full sm:w-auto">
-                <TactileButton variant="primary" size="lg" withCross className="w-full sm:w-auto justify-center">
-                  <span>{bilingual("Vào Cổng Môn Đồ Hóa", "Enter Discipleship Portal")}</span>
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </TactileButton>
-              </Link>
-
-              <Link href="/courses" className="w-full sm:w-auto">
-                <TactileButton variant="secondary" size="lg" className="w-full sm:w-auto justify-center">
-                  <span>{bilingual("Xem Các Khóa Học", "Explore Courses")}</span>
-                </TactileButton>
-              </Link>
-            </div>
-
             {/* Dấu ấn tín nhiệm & bảo trợ */}
             <div className="pt-4 border-t border-amber-200/60 flex flex-wrap items-center gap-6 text-xs text-slate-600">
               <div className="flex items-center gap-2">
@@ -197,10 +181,10 @@ export default function HomePage() {
           </div>
 
           {/* Cột phải: Khung vòm Thánh đường lồng chân dung người thật */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-up delay-150">
             <div className="relative w-full max-w-sm">
               {/* Cathedral Arch Frame */}
-              <div className="rounded-t-[140px] rounded-b-3xl border-3 border-amber-300/80 bg-white p-3 shadow-xl overflow-hidden">
+              <div className="rounded-t-[140px] rounded-b-3xl border-3 border-amber-300/80 bg-white p-3 shadow-xl overflow-hidden reverent-card-hover">
                 <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-amber-100">
                   <Image
                     src="/people/instructor-1.jpg"
@@ -228,7 +212,7 @@ export default function HomePage() {
               </div>
 
               {/* Huy hiệu dấu ấn vàng bên hông vòm (đặt lệch phải, không che text) */}
-              <div className="hidden sm:flex absolute -bottom-5 -right-5 bg-white border border-amber-300 rounded-2xl p-3.5 shadow-lg items-center gap-3">
+              <div className="hidden sm:flex absolute -bottom-5 -right-5 bg-white border border-amber-300 rounded-2xl p-3.5 shadow-lg items-center gap-3 animate-fade-up delay-250 hover:shadow-xl transition-shadow">
                 <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-200 flex items-center justify-center text-primary-700 font-serif font-black text-sm shrink-0">
                   SAM
                 </div>
@@ -266,10 +250,10 @@ export default function HomePage() {
         {/* ============================================================== */}
         {/* 3. GÓC TĨNH NGUYỆN HÔM NAY (Daily Sanctuary Encounter) */}
         {/* ============================================================== */}
-        <section className="bg-sacred-card rounded-3xl border-2 border-amber-300/80 p-6 sm:p-10 shadow-md space-y-6">
+        <section className="bg-sacred-card rounded-3xl border-2 border-amber-300/80 p-6 sm:p-10 shadow-md space-y-6 reverent-card-hover">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-amber-200 pb-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold">
-              <Flame className="w-4 h-4 text-primary-700 shrink-0" />
+              <Flame className="w-4 h-4 text-primary-700 shrink-0 animate-holy-breathe" />
               <span>{bilingual("Góc Tĩnh Nguyện & Lời Chúa Hôm Nay", "Daily Devotional Sanctuary")}</span>
             </div>
 
@@ -303,12 +287,16 @@ export default function HomePage() {
             </div>
 
             {/* Khối Hiệp Nguyện sống động với avatar thật */}
-            <div className="lg:col-span-5 p-6 rounded-2xl bg-white border border-amber-200/90 shadow-xs space-y-4 text-left">
+            <div className="lg:col-span-5 p-6 rounded-2xl bg-white border border-amber-200/90 shadow-xs space-y-4 text-left reverent-card-hover">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-900 uppercase font-serif tracking-wider">
                   {bilingual("Tường Cầu Nguyện Hiệp Một", "Prayer Fellowship")}
                 </span>
-                <span className="text-xs text-primary-700 font-bold bg-primary-50 px-2.5 py-0.5 rounded-full border border-primary-200">
+                <span
+                  className={`text-xs text-primary-700 font-bold bg-primary-50 px-2.5 py-0.5 rounded-full border border-primary-200 transition-all ${
+                    hasPrayed ? "animate-prayer-pulse bg-amber-100 border-amber-400" : ""
+                  }`}
+                >
                   {prayerCount} {bilingual("lời hiệp nguyện", "prayed")}
                 </span>
               </div>
@@ -382,7 +370,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             {/* Cột lớn (7 cols): Bài luận sứ mạng kèm chân dung giảng viên */}
-            <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-8 flex flex-col justify-between shadow-xs">
+            <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-8 flex flex-col justify-between shadow-xs reverent-card-hover">
               <div className="space-y-4">
                 <span className="text-xs font-bold text-slate-500 font-serif tracking-widest uppercase">
                   {bilingual("Tuyên Ngôn Mục Vụ", "Ministry Statement")}
@@ -424,7 +412,7 @@ export default function HomePage() {
 
             {/* Cột nhỏ (5 cols): Danh mục số La Mã I, II, III chạm khắc */}
             <div className="lg:col-span-5 flex flex-col justify-between gap-4">
-              <div className="p-5 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-2">
+              <div className="p-5 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-2 reverent-card-hover">
                 <div className="flex items-center gap-3">
                   <span className="font-scripture text-2xl font-black text-primary-700">I.</span>
                   <h3 className="font-scripture font-bold text-slate-900 text-base">
@@ -439,7 +427,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-2">
+              <div className="p-5 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-2 reverent-card-hover">
                 <div className="flex items-center gap-3">
                   <span className="font-scripture text-2xl font-black text-primary-700">II.</span>
                   <h3 className="font-scripture font-bold text-slate-900 text-base">
@@ -454,7 +442,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-2">
+              <div className="p-5 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-2 reverent-card-hover">
                 <div className="flex items-center gap-3">
                   <span className="font-scripture text-2xl font-black text-primary-700">III.</span>
                   <h3 className="font-scripture font-bold text-slate-900 text-base">
@@ -498,7 +486,7 @@ export default function HomePage() {
             {featuredCourses.map((c, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl border border-amber-200/90 shadow-xs hover:border-primary-600 transition-all overflow-hidden flex flex-col justify-between group"
+                className="bg-white rounded-3xl border border-amber-200/90 shadow-xs reverent-card-hover overflow-hidden flex flex-col justify-between group"
               >
                 <div>
                   {/* Bìa sách thật có aspect ratio chuẩn sách in */}
@@ -547,7 +535,7 @@ export default function HomePage() {
         {/* ============================================================== */}
         {/* 6. DÂNG HIẾN HOÀNG GIA (Royal Majesty Indigo Accent Section) */}
         {/* ============================================================== */}
-        <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-amber-400/30">
+        <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-amber-400/30 animate-serene-aura">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-7 space-y-4 text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-amber-300 text-xs font-semibold border border-amber-300/30">
@@ -625,7 +613,7 @@ export default function HomePage() {
             {testimonies.map((t, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-6 text-left"
+                className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-6 text-left reverent-card-hover"
               >
                 <div className="space-y-4">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold">
@@ -655,7 +643,7 @@ export default function HomePage() {
         {/* ============================================================== */}
         {/* 8. LIÊN HỆ & THĂM VIẾNG MỤC VỤ (Pastoral Directory) */}
         {/* ============================================================== */}
-        <section className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-10 shadow-sm space-y-6">
+        <section className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-10 shadow-sm space-y-6 reverent-card-hover">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-amber-100 pb-4">
             <div>
               <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 [text-wrap:balance]">
