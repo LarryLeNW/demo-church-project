@@ -36,28 +36,28 @@ export function PublicHeader() {
 
   return (
     <header className="sticky top-0 z-40 bg-[#FCFBF8]/95 backdrop-blur-md border-b border-amber-200/70 shadow-xs">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
-        {/* Left: Logo & Brand (Tên đầy đủ Spiritual Advance Ministry) */}
-        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3 sm:gap-4">
+        {/* Left: Logo & Brand (Tên đầy đủ gọn gàng, tinh tế) */}
+        <Link href="/" className="flex items-center gap-2 group shrink-0">
           <img
             src={SAM_LOGO_DATA_URL}
             alt="Spiritual Advance Ministry"
-            className="w-7 h-7 sm:w-8 sm:h-8 xl:w-9 xl:h-9 object-contain shrink-0 group-hover:scale-105 transition-transform"
+            className="w-6 h-6 sm:w-7 sm:h-7 object-contain shrink-0 group-hover:scale-105 transition-transform"
           />
-          <span className="font-serif font-bold text-slate-900 text-sm sm:text-base xl:text-lg tracking-tight leading-none">
+          <span className="font-serif font-bold text-slate-800 text-xs sm:text-[13px] xl:text-sm tracking-tight leading-none whitespace-nowrap">
             Spiritual Advance Ministry
           </span>
         </Link>
 
         {/* Center: Desktop Nav Links (Sử dụng opacity thay vì đường kẻ) */}
-        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 shrink min-w-0">
+        <nav className="hidden lg:flex items-center gap-3 xl:gap-4.5 shrink min-w-0">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`py-2 text-xs xl:text-sm tracking-wide whitespace-nowrap font-serif transition-all duration-200 ${
+                className={`py-1.5 text-xs xl:text-[13px] tracking-normal whitespace-nowrap font-serif transition-all duration-200 ${
                   isActive
                     ? "text-primary-700 font-bold opacity-100"
                     : "text-slate-800 font-medium opacity-65 hover:opacity-100 hover:text-primary-700"
@@ -70,28 +70,29 @@ export function PublicHeader() {
         </nav>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Language Selector Dropdown with Country Flags */}
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          {/* Language Selector Dropdown with Country Flags (h-8) */}
           <LanguageSwitcher size="sm" />
 
-          {/* Sign In Link Button */}
-          <Link href="/login" className="hidden sm:inline-flex shrink-0">
-            <TactileButton variant="primary" size="sm" className="min-h-[32px] h-8 py-1 px-3 whitespace-nowrap text-xs">
-              <span>{isEn ? "Sign In" : "Đăng Nhập"}</span>
-              <ArrowRight className="w-3.5 h-3.5 ml-1" />
-            </TactileButton>
+          {/* Sign In Link Button (Khớp chính xác height h-8 với LanguageSwitcher) */}
+          <Link
+            href="/login"
+            className="hidden sm:inline-flex items-center justify-center gap-1.5 h-8 px-3 rounded-lg bg-primary-700 hover:bg-primary-800 text-white font-bold text-xs whitespace-nowrap shadow-2xs transition-all active:scale-[0.98]"
+          >
+            <span>{isEn ? "Sign In" : "Đăng Nhập"}</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
 
           {/* Mobile Hamburger Toggle (Phẳng, không hộp vuông) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="lg:hidden p-2 text-slate-700 hover:text-primary-700 transition-colors cursor-pointer shrink-0"
+            className="lg:hidden p-1.5 text-slate-700 hover:text-primary-700 transition-colors cursor-pointer shrink-0"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-slate-900" />
+              <X className="w-5 h-5 text-slate-900" />
             ) : (
-              <Menu className="w-6 h-6 text-slate-900" />
+              <Menu className="w-5 h-5 text-slate-900" />
             )}
           </button>
         </div>
