@@ -18,17 +18,12 @@ export function PublicFooter() {
             <Link href="/" className="flex items-center gap-2.5">
               <img
                 src={SAM_LOGO_DATA_URL}
-                alt="SAM Logo"
+                alt="Spiritual Advance Ministry"
                 className="w-8 h-8 object-contain shrink-0"
               />
-              <div className="flex flex-col">
-                <span className="font-serif font-black text-slate-900 text-base tracking-tight leading-none">
-                  SAM
-                </span>
-                <span className="text-xs text-slate-600 font-serif leading-none mt-0.5">
-                  Spiritual Advance Ministry
-                </span>
-              </div>
+              <span className="font-serif font-bold text-slate-900 text-base tracking-tight leading-none">
+                Spiritual Advance Ministry
+              </span>
             </Link>
             <p className="text-xs text-slate-600 leading-relaxed font-serif italic [text-wrap:pretty]">
               {bilingual(

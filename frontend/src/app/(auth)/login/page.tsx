@@ -102,9 +102,8 @@ export default function LoginPage() {
           href="/"
           className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300/80 text-slate-900 text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
         >
-          <img src={SAM_LOGO_DATA_URL} alt="SAM" className="w-5 h-5 object-contain" />
-          <span className="font-serif font-bold">SAM</span>
-          <span className="text-xs text-amber-900 font-normal">• Spiritual Advance Ministry</span>
+          <img src={SAM_LOGO_DATA_URL} alt="Spiritual Advance Ministry" className="w-5 h-5 object-contain" />
+          <span className="font-serif font-bold">Spiritual Advance Ministry</span>
         </Link>
 
         <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">

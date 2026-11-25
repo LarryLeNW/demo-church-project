@@ -37,20 +37,20 @@ export function PublicHeader() {
   return (
     <header className="sticky top-0 z-40 bg-[#FCFBF8]/95 backdrop-blur-md border-b border-amber-200/70 shadow-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
-        {/* Left: Logo & Brand (Thuần logo, không viền hộp vuông) */}
-        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        {/* Left: Logo & Brand (Tên đầy đủ Spiritual Advance Ministry) */}
+        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
           <img
             src={SAM_LOGO_DATA_URL}
-            alt="SAM Logo"
-            className="w-8 h-8 sm:w-9 sm:h-9 xl:w-10 xl:h-10 object-contain shrink-0 group-hover:scale-105 transition-transform"
+            alt="Spiritual Advance Ministry"
+            className="w-7 h-7 sm:w-8 sm:h-8 xl:w-9 xl:h-9 object-contain shrink-0 group-hover:scale-105 transition-transform"
           />
-          <span className="font-serif font-black text-slate-900 text-lg sm:text-xl tracking-tight leading-none">
-            SAM
+          <span className="font-serif font-bold text-slate-900 text-sm sm:text-base xl:text-lg tracking-tight leading-none">
+            Spiritual Advance Ministry
           </span>
         </Link>
 
         {/* Center: Desktop Nav Links (Sử dụng opacity thay vì đường kẻ) */}
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-7 shrink min-w-0">
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 shrink min-w-0">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
