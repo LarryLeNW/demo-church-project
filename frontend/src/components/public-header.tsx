@@ -49,24 +49,21 @@ export function PublicHeader() {
           </span>
         </Link>
 
-        {/* Center: Desktop Nav Links (Thanh lịch, không khung vuông, gạch chân tinh tế khi active) */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 shrink min-w-0">
+        {/* Center: Desktop Nav Links (Sử dụng opacity thay vì đường kẻ) */}
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7 shrink min-w-0">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative py-2 text-xs xl:text-sm tracking-wide transition-colors whitespace-nowrap font-serif ${
+                className={`py-2 text-xs xl:text-sm tracking-wide whitespace-nowrap font-serif transition-all duration-200 ${
                   isActive
-                    ? "text-primary-700 font-bold"
-                    : "text-slate-700 hover:text-primary-700 font-medium"
+                    ? "text-primary-700 font-bold opacity-100"
+                    : "text-slate-800 font-medium opacity-65 hover:opacity-100 hover:text-primary-700"
                 }`}
               >
                 <span>{isEn ? item.labelEn : item.labelVi}</span>
-                {isActive && (
-                  <span className="absolute bottom-0 inset-x-0 h-0.5 bg-primary-700 rounded-full" />
-                )}
               </Link>
             );
           })}
@@ -116,19 +113,14 @@ export function PublicHeader() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center justify-between py-3 text-sm font-serif transition-colors ${
+                    className={`flex items-center gap-3 py-3 text-sm font-serif transition-all duration-200 ${
                       isActive
-                        ? "text-primary-700 font-bold"
-                        : "text-slate-800 hover:text-primary-700 font-medium"
+                        ? "text-primary-700 font-bold opacity-100"
+                        : "text-slate-800 font-medium opacity-65 hover:opacity-100 hover:text-primary-700"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
-                      <Icon className={`w-4 h-4 ${isActive ? "text-primary-700" : "text-amber-800/70"}`} />
-                      <span>{isEn ? item.labelEn : item.labelVi}</span>
-                    </div>
-                    {isActive && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary-700" />
-                    )}
+                    <Icon className={`w-4 h-4 ${isActive ? "text-primary-700" : "text-amber-800/70"}`} />
+                    <span>{isEn ? item.labelEn : item.labelVi}</span>
                   </Link>
                 );
               })}
