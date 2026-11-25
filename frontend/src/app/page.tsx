@@ -8,7 +8,6 @@ import { PublicFooter } from "@/components/public-footer";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
 import {
-  Heart,
   BookOpen,
   ArrowRight,
   Sparkles,
@@ -449,61 +448,76 @@ export default function HomePage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 6. DÂNG HIẾN HOÀNG GIA (Royal Majesty Indigo Accent Section) */}
+        {/* 6. DÂNG HIẾN MỤC VỤ (Bố Cục Báo Chí Trang Nhã - Tông Giấy Ngà Đồng Nhất) */}
         {/* ============================================================== */}
-        <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-amber-400/30 animate-serene-aura">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+        <section className="border-y border-amber-200/80 py-12 sm:py-16 space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Cột trái (7 cols): Lời kêu gọi hiệp một dâng hiến */}
             <div className="lg:col-span-7 space-y-4 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-amber-300 text-xs font-semibold border border-amber-300/30">
-                <Heart className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-                <span>{bilingual("Sứ Mạng Dâng Hiến Mục Vụ", "Ministry Stewardship")}</span>
-              </div>
+              <span className="text-xs font-bold uppercase tracking-widest text-primary-700 font-serif block">
+                {bilingual("Sứ Mạng Dâng Hiến & Quản Trị Mục Vụ", "Ministry Stewardship & Giving")}
+              </span>
 
-              <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance]">
+              <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
                 {bilingual(
-                  "Đồng Hành Gieo Hạt Giống Nước Trời Cùng SAM",
-                  "Partner with SAM to Sow Seeds for Eternity"
+                  "Đồng Hành Gieo Hạt Giống Nước Trời Cùng Spiritual Advance Ministry",
+                  "Partner with Spiritual Advance Ministry to Sow Seeds for Eternity"
                 )}
               </h2>
 
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-serif [text-wrap:pretty]">
+              <p className="text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
                 {bilingual(
                   "Mọi khoản dâng hiến của quý tôi con Chúa đều được sử dụng minh bạch để tài trợ học bổng môn đồ hóa, in ấn tài liệu Kinh Thánh miễn phí và tổ chức các lớp huấn luyện lãnh đạo. Đầy đủ biên nhận khấu trừ thuế theo quy chuẩn IRS 501(c)(3) tại Hoa Kỳ.",
                   "Your generous contributions are transparently dedicated to discipleship scholarships, theological publications, and ministry workshops. Fully tax-deductible under IRS 501(c)(3) regulations."
                 )}
               </p>
 
-              <div className="pt-2">
-                <Link href="/give">
-                  <TactileButton variant="primary" size="lg" withCross>
-                    <span>{bilingual("Dâng Hiến Trực Tuyến (Give Online)", "Make a Donation Today")}</span>
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </TactileButton>
-                </Link>
+              <div className="pt-1 text-xs text-slate-500 font-serif italic">
+                {bilingual(
+                  "Hệ thống tự động xuất biên nhận thuế cuối năm theo quy chuẩn IRS 501(c)(3).",
+                  "Automated annual tax receipts under IRS 501(c)(3) regulations."
+                )}
               </div>
             </div>
 
-            {/* Cột phải: Danh sách quỹ thanh lịch phân tách bằng đường kẻ, KHÔNG KHUNG VUÔNG */}
-            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-white/15 lg:pl-8 space-y-4 text-xs text-left">
-              <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                <span className="font-bold text-amber-200 uppercase font-serif tracking-wider">
+            {/* Cột phải (5 cols): Danh sách các quỹ mục đích phân tách bằng nét kẻ thanh */}
+            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-amber-200/80 lg:pl-8 space-y-4 text-left">
+              <div className="flex items-center justify-between pb-3 border-b border-amber-200/80">
+                <span className="font-bold text-slate-900 uppercase font-serif text-xs tracking-wider">
                   {bilingual("Các Quỹ Mục Đích Rõ Ràng", "Designated Ministry Funds")}
                 </span>
-                <span className="text-[11px] text-amber-300 font-semibold">100% Khấu Trừ Thuế</span>
+                <span className="text-[11px] text-primary-700 font-semibold font-serif">
+                  100% Khấu Trừ Thuế
+                </span>
               </div>
 
-              <ul className="divide-y divide-white/10 text-sm">
-                <li className="py-3 flex items-center justify-between">
-                  <span className="text-white font-serif">Quỹ Đào Tạo Môn Đồ Hóa</span>
-                  <span className="text-xs font-mono text-amber-300/90 font-semibold">IRS 501(c)(3)</span>
+              <ul className="divide-y divide-amber-200/60 text-sm">
+                <li className="py-3.5 flex items-center justify-between">
+                  <div>
+                    <span className="text-slate-900 font-serif block font-medium">Quỹ Đào Tạo Môn Đồ Hóa</span>
+                    <span className="text-xs text-slate-500">Trang bị thế hệ tôi tớ Chúa</span>
+                  </div>
+                  <span className="text-xs font-mono text-primary-700 font-semibold shrink-0 ml-3">
+                    IRS 501(c)(3)
+                  </span>
                 </li>
-                <li className="py-3 flex items-center justify-between">
-                  <span className="text-white font-serif">Quỹ Học Bổng & Giảng Viên</span>
-                  <span className="text-xs font-mono text-amber-300/90 font-semibold">IRS 501(c)(3)</span>
+                <li className="py-3.5 flex items-center justify-between">
+                  <div>
+                    <span className="text-slate-900 font-serif block font-medium">Quỹ Học Bổng & Giảng Viên</span>
+                    <span className="text-xs text-slate-500">Hỗ trợ học viên Trường Chúa Nhật</span>
+                  </div>
+                  <span className="text-xs font-mono text-primary-700 font-semibold shrink-0 ml-3">
+                    IRS 501(c)(3)
+                  </span>
                 </li>
-                <li className="py-3 flex items-center justify-between">
-                  <span className="text-white font-serif">Quỹ In Ấn & Thư Viện Miễn Phí</span>
-                  <span className="text-xs font-mono text-amber-300/90 font-semibold">IRS 501(c)(3)</span>
+                <li className="py-3.5 flex items-center justify-between">
+                  <div>
+                    <span className="text-slate-900 font-serif block font-medium">Quỹ In Ấn & Thư Viện Miễn Phí</span>
+                    <span className="text-xs text-slate-500">Phát hành sách & tài liệu bồi linh</span>
+                  </div>
+                  <span className="text-xs font-mono text-primary-700 font-semibold shrink-0 ml-3">
+                    IRS 501(c)(3)
+                  </span>
                 </li>
               </ul>
             </div>
