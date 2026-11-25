@@ -184,25 +184,25 @@ export default function LibraryPage() {
         {/* ============================================================== */}
         {/* 2. TAB SWITCHER & THANH TÌM KIẾM (Search & Controls) */}
         {/* ============================================================== */}
-        <section className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 sm:p-4 bg-white rounded-3xl border border-amber-200/90 shadow-sm animate-fade-up delay-75">
+        <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-amber-200/80 pb-4 animate-fade-up">
           <h2 className="sr-only">
             {bilingual("Danh Mục Sách & Video Bài Giảng", "Curated Spiritual Books & Sermons")}
           </h2>
 
-          {/* Tabs */}
-          <div className="flex items-center gap-2 p-1.5 bg-sacred-card rounded-2xl border border-amber-200 w-full sm:w-auto">
+          {/* Tabs (Thanh lịch, phân cách bằng gạch chân, không khung hộp AI) */}
+          <div className="flex items-center gap-6 w-full sm:w-auto">
             <button
               onClick={() => setActiveTab("books")}
-              className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[44px] ${
+              className={`inline-flex items-center gap-2 py-2.5 text-xs sm:text-sm font-serif transition-colors cursor-pointer border-b-2 ${
                 activeTab === "books"
-                  ? "bg-primary-700 text-white shadow-xs"
-                  : "text-slate-700 hover:text-slate-900 hover:bg-white"
+                  ? "border-primary-700 text-primary-700 font-bold"
+                  : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
               }`}
             >
               <FileText className="w-4 h-4" />
               <span>{bilingual("Sách Bồi Linh & Giáo Trình", "Books & Syllabi")}</span>
-              <span className={`text-xs px-2 py-0.5 rounded-full font-mono ${
-                activeTab === "books" ? "bg-primary-950/40 text-white" : "bg-slate-200 text-slate-800"
+              <span className={`text-[11px] px-1.5 py-0.5 rounded-full font-mono ${
+                activeTab === "books" ? "bg-primary-100 text-primary-800" : "bg-slate-200 text-slate-700"
               }`}>
                 {books.length}
               </span>
@@ -210,16 +210,16 @@ export default function LibraryPage() {
 
             <button
               onClick={() => setActiveTab("videos")}
-              className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[44px] ${
+              className={`inline-flex items-center gap-2 py-2.5 text-xs sm:text-sm font-serif transition-colors cursor-pointer border-b-2 ${
                 activeTab === "videos"
-                  ? "bg-primary-700 text-white shadow-xs"
-                  : "text-slate-700 hover:text-slate-900 hover:bg-white"
+                  ? "border-primary-700 text-primary-700 font-bold"
+                  : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
               }`}
             >
               <Video className="w-4 h-4" />
               <span>{bilingual("Video Bài Giảng Bồi Linh", "Video Sermons")}</span>
-              <span className={`text-xs px-2 py-0.5 rounded-full font-mono ${
-                activeTab === "videos" ? "bg-primary-950/40 text-white" : "bg-slate-200 text-slate-800"
+              <span className={`text-[11px] px-1.5 py-0.5 rounded-full font-mono ${
+                activeTab === "videos" ? "bg-primary-100 text-primary-800" : "bg-slate-200 text-slate-700"
               }`}>
                 {videos.length}
               </span>

@@ -10,16 +10,11 @@ import { TactileButton } from "@/components/ui/tactile-button";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   Compass,
-  Heart,
   Award,
-  Users,
   ExternalLink,
   Sparkles,
   BookOpen,
   ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  Globe2,
 } from "lucide-react";
 
 export default function AboutPage() {
@@ -87,7 +82,7 @@ export default function AboutPage() {
     <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-12">
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-12 sm:space-y-16">
         {/* Breadcrumb Navigation & Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
           <Breadcrumb
@@ -103,14 +98,17 @@ export default function AboutPage() {
         {/* ============================================================== */}
         {/* 2. CÂU CHUYỆN KHỞI SỰ (Editorial Narrative Story) */}
         {/* ============================================================== */}
-        <section className="p-8 sm:p-12 bg-white rounded-3xl border border-amber-200/90 shadow-sm space-y-8 text-left animate-fade-up delay-75 reverent-card-hover">
-          <div className="border-b border-amber-100 pb-4">
-            <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
+        <section className="space-y-6 text-left animate-fade-up">
+          <div className="border-b border-amber-200 pb-4">
+            <h1 className="font-scripture text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual(
                 "Một Khát Vọng Được Nuôi Dưỡng Từ Tình Yêu Với Công Việc Chúa",
                 "A Ministerial Journey Rooted in Faithful Kingdom Service"
               )}
-            </h2>
+            </h1>
+            <p className="text-xs font-bold text-primary-700 font-serif uppercase tracking-widest mt-1">
+              {bilingual("Lịch Sử Hình Thành & Tâm Tình Phục Vụ", "Origin & Ministry Heartbeat")}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm sm:text-base text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
@@ -130,19 +128,17 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 3. TẦM NHÌN & SỨ MẠNG (2 Pillars) */}
+        {/* 3. TẦM NHÌN & SỨ MẠNG (Bố Cục Cột Báo Chí - Không Khung AI) */}
         {/* ============================================================== */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-          <div className="p-8 rounded-3xl bg-sacred-card border-2 border-amber-300/80 shadow-xs space-y-4 reverent-card-hover animate-fade-up delay-100">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-200 flex items-center justify-center text-primary-700 shrink-0">
-                <Compass className="w-5 h-5" />
-              </div>
-              <h3 className="font-scripture text-2xl font-bold text-slate-900">
-                {bilingual("Tầm Nhìn Nước Trời (Our Vision)", "Our Kingdom Vision")}
-              </h3>
+        <section className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-amber-200/80 border-y border-amber-200/80 py-10 text-left">
+          <div className="py-6 md:py-0 md:pr-10 space-y-3">
+            <div className="flex items-center gap-2.5 text-primary-700">
+              <Compass className="w-5 h-5 shrink-0" />
+              <h2 className="font-scripture text-2xl font-bold text-slate-900">
+                {bilingual("Tầm Nhìn Nước Trời", "Our Kingdom Vision")}
+              </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans [text-wrap:pretty]">
+            <p className="text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
               {bilingual(
                 "Trở thành trung tâm huấn luyện thuộc linh đáng tin cậy, thắp sáng ngọn lửa phục hưng và đào tạo hàng ngàn người lãnh đạo Cơ Đốc trung kiên, tận hiến và kết quả cho Hội Thánh Đấng Christ.",
                 "To be a trusted global spiritual equipping hub, igniting revival and raising thousands of faithful, fruit-bearing Christian leaders for the Body of Christ."
@@ -150,16 +146,14 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-sacred-card border-2 border-amber-300/80 shadow-xs space-y-4 reverent-card-hover animate-fade-up delay-150">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-200 flex items-center justify-center text-primary-700 shrink-0">
-                <Award className="w-5 h-5" />
-              </div>
-              <h3 className="font-scripture text-2xl font-bold text-slate-900">
-                {bilingual("Sứ Mạng Trang Bị (Our Mission)", "Our Equipping Mission")}
-              </h3>
+          <div className="py-6 md:py-0 md:pl-10 space-y-3">
+            <div className="flex items-center gap-2.5 text-primary-700">
+              <Award className="w-5 h-5 shrink-0" />
+              <h2 className="font-scripture text-2xl font-bold text-slate-900">
+                {bilingual("Sứ Mạng Trang Bị", "Our Equipping Mission")}
+              </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans [text-wrap:pretty]">
+            <p className="text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
               {bilingual(
                 "Trang bị kiến thức Kinh Thánh chuẩn mực, huấn luyện kỹ năng mục vụ thực tế, tạo dựng môi trường thông công nâng đỡ và duy trì thói quen tĩnh nguyện - cầu thay bền bỉ.",
                 "Equipping sound biblical knowledge, training practical ministerial skills, fostering supportive fellowship, and nurturing persistent prayer and devotional habits."
@@ -169,30 +163,30 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 4. GIÁ TRỊ CỐT LÕI (Core Values với số La Mã chạm khắc) */}
+        {/* 4. GIÁ TRỊ CỐT LÕI (Bố Cục Báo Chí Cổ Điển - Không Khung Hộp) */}
         {/* ============================================================== */}
-        <section className="bg-white rounded-3xl border border-amber-200/90 p-8 sm:p-12 shadow-sm space-y-8 text-left reverent-card-hover">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+        <section className="space-y-8 text-left">
+          <div className="border-b border-amber-200 pb-4">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual("Bốn Giá Trị Cốt Lõi Của SAM", "The Four Core Values of SAM")}
             </h2>
+            <p className="text-xs font-semibold text-primary-700 font-serif uppercase tracking-widest mt-1">
+              {bilingual("Nguyên Tắc Nền Tảng Dẫn Dắt Mục Vụ", "Foundational Principles Guiding Our Ministry")}
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 pt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
             {coreValues.map((val, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-sacred-card border border-amber-200/80 space-y-3 shadow-2xs reverent-card-hover"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="font-scripture text-2xl font-black text-primary-700">
+              <div key={idx} className="space-y-2 border-t border-amber-200/70 pt-5">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-scripture text-3xl font-black text-primary-700">
                     {val.roman}.
                   </span>
                   <h3 className="font-scripture font-bold text-slate-900 text-lg">
                     {isEn ? val.titleEn : val.titleVi}
                   </h3>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans pl-8 [text-wrap:pretty]">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans pl-7 [text-wrap:pretty]">
                   {isEn ? val.descEn : val.descVi}
                 </p>
               </div>
@@ -204,20 +198,23 @@ export default function AboutPage() {
         {/* 5. BAN LÃNH ĐẠO & GIẢNG HUẤN THẬT (Human Leadership Showcase) */}
         {/* ============================================================== */}
         <section className="space-y-8 text-left">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <div className="border-b border-amber-200 pb-4">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual("Ban Điều Hành & Giảng Huấn SAM", "Our Leadership & Faculty")}
             </h2>
+            <p className="text-xs font-semibold text-primary-700 font-serif uppercase tracking-widest mt-1">
+              {bilingual("Đội Ngũ Tôi Tớ Chúa Tận Tụy", "Dedicated Servants of the Lord")}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {leadership.map((person, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl border border-amber-200/90 p-6 sm:p-7 shadow-xs reverent-card-hover flex flex-col justify-between space-y-4"
+                className="bg-white rounded-2xl border border-amber-200/90 p-6 sm:p-7 shadow-2xs reverent-card-hover flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-4">
-                  <div className="relative aspect-square w-full rounded-2xl overflow-hidden border-2 border-amber-300 shadow-2xs">
+                  <div className="relative aspect-square w-full rounded-xl overflow-hidden border border-amber-300 shadow-2xs">
                     <Image
                       src={person.image}
                       alt={person.name}
@@ -243,11 +240,11 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 6. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Trang Nhã & Kết Nối) */}
+        {/* 6. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Bố Cục Tự Nhiên Thoáng Đãng) */}
         {/* ============================================================== */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-sacred-card border border-amber-200/90 shadow-sm space-y-6 text-left reverent-card-hover animate-fade-up">
+        <section className="border-t border-amber-200/80 pt-10 space-y-6 text-left animate-fade-up">
           <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-50 text-xs font-semibold text-primary-700 border border-primary-200">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary-700 font-serif">
               <Sparkles className="w-3.5 h-3.5 text-primary-700 shrink-0" />
               <span>{bilingual("Đồng Hành Mục Vụ", "Ministry Fellowship")}</span>
             </div>

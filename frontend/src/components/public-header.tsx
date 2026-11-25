@@ -36,43 +36,44 @@ export function PublicHeader() {
 
   return (
     <header className="sticky top-0 z-40 bg-[#FCFBF8]/95 backdrop-blur-md border-b border-amber-200/70 shadow-xs">
-      <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
-        {/* Left: Logo & Brand */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+        {/* Left: Logo & Brand (Thuần logo, không viền hộp vuông) */}
         <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 xl:w-11 xl:h-11 rounded-xl bg-white border border-amber-300/80 p-1 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
-            <img
-              src={SAM_LOGO_DATA_URL}
-              alt="SAM Logo"
-              className="w-7 h-7 sm:w-8 sm:h-8 xl:w-9 xl:h-9 object-contain"
-            />
-          </div>
+          <img
+            src={SAM_LOGO_DATA_URL}
+            alt="SAM Logo"
+            className="w-8 h-8 sm:w-9 sm:h-9 xl:w-10 xl:h-10 object-contain shrink-0 group-hover:scale-105 transition-transform"
+          />
           <span className="font-serif font-black text-slate-900 text-lg sm:text-xl tracking-tight leading-none">
             SAM
           </span>
         </Link>
 
-        {/* Center: Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 shrink min-w-0">
+        {/* Center: Desktop Nav Links (Thanh lịch, không khung vuông, gạch chân tinh tế khi active) */}
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 shrink min-w-0">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-1.5 xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`relative py-2 text-xs xl:text-sm tracking-wide transition-colors whitespace-nowrap font-serif ${
                   isActive
-                    ? "text-primary-800 bg-primary-50 border border-primary-200"
-                    : "text-slate-700 hover:text-primary-800 hover:bg-primary-50"
+                    ? "text-primary-700 font-bold"
+                    : "text-slate-700 hover:text-primary-700 font-medium"
                 }`}
               >
-                {isEn ? item.labelEn : item.labelVi}
+                <span>{isEn ? item.labelEn : item.labelVi}</span>
+                {isActive && (
+                  <span className="absolute bottom-0 inset-x-0 h-0.5 bg-primary-700 rounded-full" />
+                )}
               </Link>
             );
           })}
         </nav>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Language Selector Dropdown with Country Flags */}
           <LanguageSwitcher size="sm" />
 
@@ -84,29 +85,29 @@ export function PublicHeader() {
             </TactileButton>
           </Link>
 
-          {/* Mobile Hamburger Toggle */}
+          {/* Mobile Hamburger Toggle (Phẳng, không hộp vuông) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="lg:hidden p-2 rounded-xl border border-amber-200/80 bg-white text-slate-700 hover:bg-amber-50 cursor-pointer shadow-2xs shrink-0"
+            className="lg:hidden p-2 text-slate-700 hover:text-primary-700 transition-colors cursor-pointer shrink-0"
           >
             {mobileMenuOpen ? (
-              <X className="w-5 h-5 text-amber-900" />
+              <X className="w-6 h-6 text-slate-900" />
             ) : (
-              <Menu className="w-5 h-5 text-amber-900" />
+              <Menu className="w-6 h-6 text-slate-900" />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu (Bố cục danh sách phân dòng, không khung hộp vuông) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-amber-200/80 p-4 sm:p-5 shadow-lg space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-[#FCFBF8] border-t border-amber-200/80 px-5 py-4 shadow-lg space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="space-y-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#F17F34] font-serif">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-primary-700 font-serif">
               {bilingual("Điều Hướng Mục Vụ", "Ministry Navigation")}
             </span>
-            <div className="grid grid-cols-1 gap-1 pt-1">
+            <div className="divide-y divide-amber-100/80 pt-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href;
@@ -115,21 +116,26 @@ export function PublicHeader() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                    className={`flex items-center justify-between py-3 text-sm font-serif transition-colors ${
                       isActive
-                        ? "bg-[#FEF5EE] text-[#F17F34] border border-[#F17F34]/30"
-                        : "text-slate-800 hover:bg-amber-50"
+                        ? "text-primary-700 font-bold"
+                        : "text-slate-800 hover:text-primary-700 font-medium"
                     }`}
                   >
-                    <Icon className="w-4 h-4 text-amber-800" />
-                    <span>{isEn ? item.labelEn : item.labelVi}</span>
+                    <div className="flex items-center gap-3">
+                      <Icon className={`w-4 h-4 ${isActive ? "text-primary-700" : "text-amber-800/70"}`} />
+                      <span>{isEn ? item.labelEn : item.labelVi}</span>
+                    </div>
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary-700" />
+                    )}
                   </Link>
                 );
               })}
             </div>
           </div>
 
-          <div className="pt-3 border-t border-amber-100 flex items-center justify-between">
+          <div className="pt-3 border-t border-amber-200/70 flex items-center justify-between">
             <span className="text-xs font-serif text-slate-600">
               {bilingual("Ngôn ngữ hiển thị:", "Display Language:")}
             </span>

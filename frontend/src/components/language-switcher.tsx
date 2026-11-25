@@ -77,12 +77,12 @@ export function LanguageSwitcher({
         aria-expanded={isOpen}
         aria-label={isEn ? "Select Language" : "Chọn Ngôn Ngữ"}
         className={cn(
-          "inline-flex items-center justify-between border shadow-2xs font-bold transition-all duration-150 cursor-pointer select-none outline-none focus:ring-2 focus:ring-amber-500/20 active:scale-[0.98]",
+          "inline-flex items-center justify-between border font-bold transition-all duration-150 cursor-pointer select-none outline-none focus:ring-1 focus:ring-primary-700/30",
           isSmall
-            ? "h-8 px-2 rounded-lg gap-1 text-[11px]"
-            : "h-9 px-2.5 rounded-xl gap-1.5 text-xs",
+            ? "h-8 px-2.5 rounded-lg gap-1.5 text-[11px]"
+            : "h-9 px-3 rounded-lg gap-1.5 text-xs",
           variantStyles[variant],
-          isOpen && "border-amber-500 ring-2 ring-amber-500/20 bg-amber-100/60"
+          isOpen && "border-primary-600 bg-amber-100/60"
         )}
       >
         <div className="flex items-center gap-1 shrink-0">
@@ -130,10 +130,10 @@ export function LanguageSwitcher({
                   setIsOpen(false);
                 }}
                 className={cn(
-                  "w-full flex items-center justify-between gap-2 px-2 py-1.5 rounded-lg text-xs transition-colors cursor-pointer text-left select-none",
+                  "w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-md text-xs transition-colors cursor-pointer text-left select-none",
                   isSelected
-                    ? "bg-amber-100/70 text-slate-900 font-bold border border-amber-300/80 shadow-2xs"
-                    : "hover:bg-amber-50/80 text-slate-700 border border-transparent font-medium"
+                    ? "bg-primary-50 text-primary-800 font-bold"
+                    : "hover:bg-amber-50 text-slate-700 font-medium"
                 )}
               >
                 <div className="flex items-center gap-1.5 truncate">

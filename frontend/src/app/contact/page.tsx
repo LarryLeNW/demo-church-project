@@ -156,18 +156,18 @@ export default function ContactPage() {
 
           {/* Right Column: Dynamic Form Tabs */}
           <div className="lg:col-span-2 bg-white rounded-3xl border border-amber-200/90 shadow-md p-6 sm:p-9 space-y-6">
-            {/* Tab Selection */}
-            <div className="flex items-center gap-2 p-1.5 bg-sacred-card rounded-2xl border border-amber-200">
+            {/* Tab Selection (Thanh lịch, không khung hộp AI) */}
+            <div className="flex flex-wrap items-center gap-6 border-b border-amber-200/80 pb-1">
               <button
                 type="button"
                 onClick={() => {
                   setActiveTab("general");
                   setSubmitted(false);
                 }}
-                className={`flex-1 py-3 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer min-h-[44px] ${
+                className={`py-2 text-xs sm:text-sm font-serif transition-colors flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[5px] ${
                   activeTab === "general"
-                    ? "bg-primary-700 text-white shadow-xs"
-                    : "text-slate-700 hover:text-slate-900 hover:bg-white"
+                    ? "border-primary-700 text-primary-700 font-bold"
+                    : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
                 }`}
               >
                 <MessageSquare className="w-4 h-4" />
@@ -180,10 +180,10 @@ export default function ContactPage() {
                   setActiveTab("prayer");
                   setSubmitted(false);
                 }}
-                className={`flex-1 py-3 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer min-h-[44px] ${
+                className={`py-2 text-xs sm:text-sm font-serif transition-colors flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[5px] ${
                   activeTab === "prayer"
-                    ? "bg-primary-700 text-white shadow-xs"
-                    : "text-slate-700 hover:text-slate-900 hover:bg-white"
+                    ? "border-primary-700 text-primary-700 font-bold"
+                    : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
                 }`}
               >
                 <Heart className="w-4 h-4" />
@@ -196,10 +196,10 @@ export default function ContactPage() {
                   setActiveTab("partner");
                   setSubmitted(false);
                 }}
-                className={`flex-1 py-3 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer min-h-[44px] ${
+                className={`py-2 text-xs sm:text-sm font-serif transition-colors flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[5px] ${
                   activeTab === "partner"
-                    ? "bg-primary-700 text-white shadow-xs"
-                    : "text-slate-700 hover:text-slate-900 hover:bg-white"
+                    ? "border-primary-700 text-primary-700 font-bold"
+                    : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
                 }`}
               >
                 <Handshake className="w-4 h-4" />

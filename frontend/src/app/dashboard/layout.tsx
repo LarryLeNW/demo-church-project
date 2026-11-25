@@ -287,13 +287,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="p-4 border-b border-amber-200/70 bg-gradient-to-b from-[#FAF8F3] to-[#FCFBF8]">
             <div className="flex items-center justify-between">
               <Link href="/dashboard" className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-white border border-amber-300/80 p-1 flex items-center justify-center shrink-0 shadow-2xs">
-                  <img
-                    src={SAM_LOGO_DATA_URL}
-                    alt="SAM - Spiritual Advance Ministry"
-                    className="w-7 h-7 object-contain"
-                  />
-                </div>
+                <img
+                  src={SAM_LOGO_DATA_URL}
+                  alt="SAM - Spiritual Advance Ministry"
+                  className="w-8 h-8 object-contain shrink-0"
+                />
                 <div className="flex flex-col">
                   <span className="font-scripture text-base font-bold text-slate-900 tracking-tight leading-none">
                     SAM <span className="text-xs font-serif font-normal text-amber-900">• Admin Console</span>

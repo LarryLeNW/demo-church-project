@@ -274,31 +274,31 @@ export default function CoursesPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 3. LỘ TRÌNH MÔN ĐỒ HÓA 4 BƯỚC (The 4-Stage Discipleship Pathway) */}
+        {/* 3. LỘ TRÌNH MÔN ĐỒ HÓA 4 BƯỚC (Bố Cục Tiến Trình - Không Khung AI) */}
         {/* ============================================================== */}
-        <section className="bg-white rounded-3xl border-2 border-amber-300/80 p-8 sm:p-12 shadow-md space-y-8 text-left">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+        <section className="border-t border-amber-200/80 pt-10 space-y-8 text-left">
+          <div className="border-b border-amber-200 pb-4">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual("Lộ Trình Môn Đồ Hóa 4 Giai Đoạn", "The 4-Stage Discipleship Pathway")}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 font-sans [text-wrap:pretty]">
+            <p className="text-xs font-semibold text-primary-700 font-serif uppercase tracking-widest mt-1">
               {bilingual(
-                "Một lộ trình đào tạo có hệ thống giúp con cái Chúa từ bước đầu tin nhận cho đến khi trở thành người phục sự trung tín và dẫn dắt người khác.",
-                "A structured formation pathway guiding believers from first salvation to faithful servant leadership."
+                "Từ Tân Tín Hữu Đến Người Phục Sự Trung Tín Của Đấng Christ",
+                "From New Believer to Faithful Servant Leader"
               )}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-amber-200/80 border-b border-amber-200/80 pb-8">
             {pathwayStages.map((st, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-sacred-card border border-amber-200/80 shadow-2xs space-y-3 flex flex-col justify-between reverent-card-hover"
+                className="py-6 sm:py-0 sm:px-6 first:pl-0 last:pr-0 space-y-3 flex flex-col justify-between"
               >
-                <div className="space-y-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-200 flex items-center justify-center font-scripture text-xl font-black text-primary-700">
-                    {st.stage}
-                  </div>
+                <div className="space-y-2.5">
+                  <span className="font-scripture text-3xl font-black text-primary-700 block">
+                    0{st.stage}.
+                  </span>
                   <h3 className="font-scripture text-lg font-bold text-slate-900">
                     {isEn ? st.titleEn : st.titleVi}
                   </h3>
@@ -306,8 +306,8 @@ export default function CoursesPage() {
                     {isEn ? st.descEn : st.descVi}
                   </p>
                 </div>
-                <div className="pt-2">
-                  <span className="text-xs font-bold text-primary-800 uppercase font-serif tracking-wider">
+                <div className="pt-2 border-t border-amber-100">
+                  <span className="text-[11px] font-bold text-primary-800 uppercase font-serif tracking-wider">
                     {bilingual(`Giai Đoạn ${st.stage}`, `Stage ${st.stage}`)}
                   </span>
                 </div>
