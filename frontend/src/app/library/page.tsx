@@ -302,11 +302,11 @@ export default function LibraryPage() {
               {filteredBooks.map((book, idx) => (
                 <div
                   key={book.id}
-                  className="rounded-t-[44px] rounded-b-3xl bg-white/92 backdrop-blur-xl border border-white/80 shadow-2xl hover:shadow-primary-900/20 hover:-translate-y-1.5 transition-all duration-300 p-6 sm:p-7 flex flex-col sm:flex-row gap-6 justify-between group"
+                  className="rounded-t-[44px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-1.5 transition-all duration-300 p-6 sm:p-7 flex flex-col sm:flex-row gap-6 justify-between group text-white"
                   style={{ animationDelay: `${(idx + 1) * 75}ms` }}
                 >
                   {/* Cathedral Arched Book Cover */}
-                  <div className="relative aspect-[3/4] w-full sm:w-40 rounded-t-[36px] rounded-b-xl bg-slate-900 border border-amber-200/60 overflow-hidden shrink-0 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <div className="relative aspect-[3/4] w-full sm:w-40 rounded-t-[36px] rounded-b-xl bg-slate-900 border border-white/10 overflow-hidden shrink-0 shadow-lg group-hover:shadow-xl transition-shadow">
                     <Image
                       src={book.cover}
                       alt={book.titleVi}
@@ -326,29 +326,29 @@ export default function LibraryPage() {
                   <div className="flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full bg-primary-50 text-primary-800 border border-primary-200">
+                        <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full bg-white/10 text-amber-300 border border-white/20">
                           {book.category}
                         </span>
-                        <span className="text-xs text-slate-500 font-sans font-medium">
+                        <span className="text-xs text-slate-400 font-sans font-medium">
                           {book.pages} {bilingual("trang", "pages")} • {book.fileSize}
                         </span>
                       </div>
 
-                      <h3 className="font-scripture text-lg sm:text-xl font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug [text-wrap:balance]">
+                      <h3 className="font-scripture text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors leading-snug [text-wrap:balance]">
                         {isEn ? book.titleEn : book.titleVi}
                       </h3>
 
-                      <p className="text-xs text-primary-700 font-serif font-semibold">
+                      <p className="text-xs text-amber-300 font-serif font-semibold">
                         {book.author}
                       </p>
 
-                      <p className="text-xs text-slate-700 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
+                      <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
                         {isEn ? book.descEn : book.descVi}
                       </p>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="pt-3 border-t border-amber-100 flex items-center gap-3">
+                    <div className="pt-3 border-t border-white/10 flex items-center gap-3">
                       <button
                         type="button"
                         onClick={() =>
@@ -374,9 +374,9 @@ export default function LibraryPage() {
                             pages: book.pages,
                           })
                         }
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white hover:bg-amber-50 text-slate-800 text-xs font-semibold border border-amber-300 transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/20 transition-colors cursor-pointer"
                       >
-                        <BookOpen className="w-3.5 h-3.5 text-primary-700" />
+                        <BookOpen className="w-3.5 h-3.5 text-amber-300" />
                         <span>{bilingual("Đọc Thử Mẫu", "Preview Book")}</span>
                       </button>
                     </div>
@@ -402,7 +402,7 @@ export default function LibraryPage() {
               {filteredVideos.map((video, idx) => (
                 <div
                   key={video.id}
-                  className="rounded-t-[44px] rounded-b-3xl bg-white/92 backdrop-blur-xl border border-white/80 shadow-2xl hover:shadow-primary-900/20 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer"
+                  className="rounded-t-[44px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer text-white"
                   style={{ animationDelay: `${(idx + 1) * 75}ms` }}
                   onClick={() =>
                     setPlayingVideo({
@@ -433,26 +433,26 @@ export default function LibraryPage() {
 
                   <div className="p-6 sm:p-7 space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-primary-700 uppercase tracking-wider bg-primary-50 px-3 py-0.5 rounded-full border border-primary-200">
+                      <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider bg-white/10 px-3 py-0.5 rounded-full border border-white/20">
                         {video.category}
                       </span>
                     </div>
 
-                    <h3 className="font-scripture text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug [text-wrap:balance]">
+                    <h3 className="font-scripture text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug [text-wrap:balance]">
                       {isEn ? video.titleEn : video.titleVi}
                     </h3>
 
-                    <p className="text-xs text-primary-700 font-serif font-semibold">
+                    <p className="text-xs text-amber-300 font-serif font-semibold">
                       {video.speaker}
                     </p>
 
-                    <p className="text-xs text-slate-700 line-clamp-3 leading-relaxed font-sans [text-wrap:pretty]">
+                    <p className="text-xs text-slate-300 line-clamp-3 leading-relaxed font-sans [text-wrap:pretty]">
                       {isEn ? video.descEn : video.descVi}
                     </p>
                   </div>
 
                   <div className="p-6 pt-0">
-                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-700 group-hover:underline">
+                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 group-hover:underline">
                       <span>{bilingual("Xem Bài Giảng Trực Tuyến", "Watch Full Sermon")}</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </div>
@@ -525,30 +525,30 @@ export default function LibraryPage() {
         {/* ============================================================== */}
         {readingBook && (
           <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-            <div className="bg-[#FAF8F3] rounded-3xl border-2 border-amber-300 w-full max-w-2xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6 text-left animate-scale-in">
-              <div className="flex items-center justify-between pb-3 border-b border-amber-200">
+            <div className="bg-slate-950/90 backdrop-blur-2xl rounded-3xl border border-white/20 w-full max-w-2xl overflow-hidden shadow-2xl p-6 sm:p-8 space-y-6 text-left animate-scale-in text-white">
+              <div className="flex items-center justify-between pb-3 border-b border-white/15">
                 <div>
-                  <span className="text-xs font-bold text-primary-700 uppercase font-serif tracking-widest block">
+                  <span className="text-xs font-bold text-amber-300 uppercase font-serif tracking-widest block">
                     {bilingual("Trình Đọc Bản Thảo Trực Tuyến", "Online Reader Preview")}
                   </span>
-                  <h3 className="font-scripture font-bold text-xl text-slate-900">
+                  <h3 className="font-scripture font-bold text-xl text-white">
                     {readingBook.title}
                   </h3>
-                  <p className="text-xs text-slate-600 font-serif mt-0.5">
+                  <p className="text-xs text-slate-300 font-serif mt-0.5">
                     {bilingual("Tác giả:", "Author:")} {readingBook.author} • {readingBook.pages} {bilingual("trang", "pages")}
                   </p>
                 </div>
                 <button
                   onClick={() => setReadingBook(null)}
-                  className="p-2 rounded-full bg-white border border-amber-200 hover:bg-amber-100 text-slate-700 cursor-pointer"
+                  className="p-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 text-white cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Book Excerpt Page */}
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-amber-200 shadow-xs space-y-4 font-serif text-slate-800 leading-relaxed text-sm sm:text-base [text-wrap:pretty]">
-                <p className="italic text-primary-700 font-bold border-l-4 border-primary-700 pl-3">
+              <div className="bg-white/10 p-6 sm:p-8 rounded-2xl border border-white/15 shadow-xs space-y-4 font-serif text-slate-200 leading-relaxed text-sm sm:text-base [text-wrap:pretty]">
+                <p className="italic text-amber-300 font-bold border-l-4 border-amber-400 pl-3">
                   {bilingual(
                     "Trích đoạn Lời Mở Đầu: 'Môn đồ hóa không chỉ là một chương trình 10 tuần, mà là hành trình suốt một đời đồng đi với Cứu Chúa.'",
                     "Excerpt from Preface: 'Discipleship is not a ten-week program; it is a lifelong walk in communion with our Savior.'"
@@ -563,14 +563,14 @@ export default function LibraryPage() {
               </div>
 
               <div className="flex items-center justify-between pt-2">
-                <span className="text-xs text-slate-500 font-serif">
+                <span className="text-xs text-slate-400 font-serif">
                   {bilingual("Bản quyền © Spiritual Advance Ministry (SAM)", "Copyright © Spiritual Advance Ministry")}
                 </span>
                 <button
                   onClick={() => setReadingBook(null)}
-                  className="px-6 py-2.5 rounded-full bg-primary-700 text-white text-xs font-bold hover:bg-primary-800 cursor-pointer shadow-md"
+                  className="px-5 py-2 rounded-full bg-primary-700 hover:bg-primary-600 text-xs font-bold text-white cursor-pointer transition-all shadow-sm"
                 >
-                  {bilingual("Hoàn Tất Đọc Thử", "Done Previewing")}
+                  {bilingual("Đóng Cửa Sổ", "Close Preview")}
                 </button>
               </div>
             </div>

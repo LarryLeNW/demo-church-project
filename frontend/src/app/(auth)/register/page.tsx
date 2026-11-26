@@ -10,7 +10,7 @@ import { TactileInput } from "@/components/ui/tactile-input";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { ApiError } from "@/lib/api/client";
 import { FixedWorldMapBackground } from "@/components/fixed-world-map-background";
-import { ArrowLeft, Church, Globe } from "lucide-react";
+import { ArrowLeft, ArrowRight, Church, Globe } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -86,9 +86,9 @@ export default function RegisterPage() {
         </Link>
         <button
           onClick={toggleLang}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-xs border border-white/80 text-xs font-semibold text-slate-700 hover:bg-white shadow-2xs transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-xs font-semibold text-white hover:bg-white/15 shadow-2xs transition-all cursor-pointer"
         >
-          <Globe className="w-3.5 h-3.5 text-amber-700" />
+          <Globe className="w-3.5 h-3.5 text-amber-300" />
           <span>{isEn ? "Tiếng Việt (VI)" : "English (EN)"}</span>
         </button>
       </header>
@@ -96,7 +96,7 @@ export default function RegisterPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center flex flex-col items-center gap-2.5 animate-fade-up">
         <Link
           href="/"
-          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-amber-300/80 text-slate-900 text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
+          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
         >
           <img src={SAM_LOGO_DATA_URL} alt="Spiritual Advance Ministry" className="w-5 h-5 object-contain" />
           <span className="font-serif font-bold">Spiritual Advance Ministry</span>
@@ -115,15 +115,16 @@ export default function RegisterPage() {
       </div>
 
       <div className="mt-6 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-md animate-scale-in delay-75">
-        <div className="bg-white/90 backdrop-blur-md py-6 px-4 sm:py-8 sm:px-10 rounded-3xl border border-white/80 shadow-2xl space-y-5 reverent-card-hover">
+        <div className="bg-slate-950/50 backdrop-blur-xl py-6 px-4 sm:py-8 sm:px-10 rounded-3xl border border-white/20 shadow-2xl space-y-5 text-white">
           {errorMsg && (
-            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs font-medium text-rose-800">
+            <div className="p-3.5 rounded-xl bg-rose-950/60 border border-rose-500/40 text-xs font-medium text-rose-200">
               {errorMsg}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <TactileInput
+              variant="glass"
               label={bilingual("Họ và Tên Thánh Đồ", "Full Legal / Christian Name")}
               type="text"
               placeholder={bilingual(
@@ -136,6 +137,7 @@ export default function RegisterPage() {
             />
 
             <TactileInput
+              variant="glass"
               label={bilingual("Địa chỉ Email", "Email Address")}
               type="email"
               autoComplete="email"
@@ -146,6 +148,7 @@ export default function RegisterPage() {
             />
 
             <TactileInput
+              variant="glass"
               label={bilingual("Số Điện Thoại (Tùy chọn)", "Phone Number (Optional)")}
               type="tel"
               placeholder="(408) 555-0199"
@@ -158,6 +161,7 @@ export default function RegisterPage() {
             />
 
             <TactileInput
+              variant="glass"
               label={bilingual("Mật khẩu", "Password")}
               type="password"
               placeholder={bilingual("Tối thiểu 6 ký tự", "Minimum 6 characters")}
@@ -172,7 +176,7 @@ export default function RegisterPage() {
               size="lg"
               withCross
               disabled={loading}
-              className="w-full mt-2"
+              className="w-full mt-2 rounded-full"
             >
               <span>
                 {loading
@@ -182,14 +186,14 @@ export default function RegisterPage() {
             </TactileButton>
           </form>
 
-          <div className="text-center pt-2 text-xs text-slate-600">
+          <div className="text-center pt-2 text-xs text-slate-300">
             <span>{bilingual("Đã có tài khoản? ", "Already have an account? ")}</span>
             <Link
               href="/login"
-              className="font-bold text-[#F17F34] hover:underline inline-flex items-center gap-1"
+              className="font-bold text-amber-300 hover:text-amber-200 hover:underline inline-flex items-center gap-1"
             >
-              <ArrowLeft className="w-3 h-3" />
-              <span>{bilingual("Quay lại đăng nhập", "Back to sign in")}</span>
+              <span>{bilingual("Đăng nhập ngay", "Sign in here")}</span>
+              <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
         </div>

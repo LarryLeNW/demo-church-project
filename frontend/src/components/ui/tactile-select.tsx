@@ -164,7 +164,7 @@ export const TactileSelect = forwardRef<HTMLSelectElement, TactileSelectProps>(
         className={cn("flex flex-col gap-1.5 w-full relative", containerClassName)}
       >
         {label && (
-          <div className="flex items-center justify-between text-xs font-semibold text-slate-800 tracking-wide font-sans">
+          <div className={cn("flex items-center justify-between text-xs font-semibold tracking-wide font-sans", variant === "dark" ? "text-slate-200" : "text-slate-800")}>
             <div className="flex items-center gap-1.5">
               <label htmlFor={selectId} className="cursor-pointer">
                 {label}

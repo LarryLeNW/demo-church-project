@@ -180,10 +180,10 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* CỘT PHẢI (7 cols): Frosted Light Prayer & Fellowship Sanctuary */}
-          <div className="lg:col-span-7 bg-white/92 backdrop-blur-xl rounded-[40px] border border-white/70 shadow-2xl p-7 sm:p-10 space-y-7 animate-fade-up delay-75">
+          {/* CỘT PHẢI (7 cols): Frosted Dark Prayer & Fellowship Sanctuary */}
+          <div className="lg:col-span-7 bg-slate-950/50 backdrop-blur-xl rounded-[40px] border border-white/20 shadow-2xl p-7 sm:p-10 space-y-7 text-white animate-fade-up delay-75">
             {/* Pill Tab Switcher */}
-            <div className="flex flex-wrap items-center gap-2 p-1.5 bg-[#FAF8F3] rounded-full border border-amber-200">
+            <div className="flex flex-wrap items-center gap-2 p-1.5 bg-slate-900/80 rounded-full border border-white/15">
               <button
                 type="button"
                 onClick={() => {
@@ -193,7 +193,7 @@ export default function ContactPage() {
                 className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeTab === "general"
                     ? "bg-primary-700 text-white shadow-md"
-                    : "text-slate-700 hover:text-slate-900"
+                    : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
                 <MessageSquare className="w-4 h-4" />
@@ -209,7 +209,7 @@ export default function ContactPage() {
                 className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeTab === "prayer"
                     ? "bg-primary-700 text-white shadow-md"
-                    : "text-slate-700 hover:text-slate-900"
+                    : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
                 <Heart className="w-4 h-4" />
@@ -225,7 +225,7 @@ export default function ContactPage() {
                 className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeTab === "partner"
                     ? "bg-primary-700 text-white shadow-md"
-                    : "text-slate-700 hover:text-slate-900"
+                    : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
                 <Handshake className="w-4 h-4" />
@@ -234,14 +234,14 @@ export default function ContactPage() {
             </div>
 
             {submitted ? (
-              <div className="p-8 rounded-3xl bg-primary-50 border border-primary-200 text-center space-y-4 animate-scale-in">
+              <div className="p-8 rounded-3xl bg-slate-900/80 border border-primary-500/40 text-center space-y-4 animate-scale-in text-white">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary-600 to-amber-600 text-white mx-auto flex items-center justify-center shadow-lg">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
-                <h3 className="font-scripture text-2xl font-bold text-slate-900">
+                <h3 className="font-scripture text-2xl font-bold text-white">
                   {bilingual("Cảm Tạ Ơn Chúa, Chúng Tôi Đã Nhận Thông Điệp!", "Message Received! Praise The Lord!")}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-700 max-w-md mx-auto leading-relaxed [text-wrap:pretty]">
+                <p className="text-xs sm:text-sm text-slate-200 max-w-md mx-auto leading-relaxed [text-wrap:pretty]">
                   {activeTab === "prayer"
                     ? bilingual(
                         "Lời cầu thay của quý vị đã được chuyển tới Ban Hiệp Nguyện của SAM để dốc lòng cầu nguyện mỗi buổi sáng.",
@@ -262,6 +262,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <TactileInput
+                    variant="glass"
                     label={bilingual("Họ và tên của bạn", "Your Full Name")}
                     placeholder={bilingual("Nguyễn Văn A", "Full Name")}
                     value={name}
@@ -269,6 +270,7 @@ export default function ContactPage() {
                     required
                   />
                   <TactileInput
+                    variant="glass"
                     label={bilingual("Địa chỉ Email", "Email Address")}
                     type="email"
                     placeholder="email@example.com"
@@ -280,6 +282,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <TactileInput
+                    variant="glass"
                     label={bilingual("Số điện thoại (Nhận tin nhắn / Zalo)", "Phone Number")}
                     type="tel"
                     placeholder="+1 (214) ... hoặc 090..."
@@ -287,6 +290,7 @@ export default function ContactPage() {
                     onChange={(e) => setPhone(e.target.value)}
                   />
                   <TactileInput
+                    variant="glass"
                     label={
                       activeTab === "prayer"
                         ? bilingual("Nan đề / Tiêu đề cầu thay", "Prayer Title / Subject")
@@ -307,7 +311,7 @@ export default function ContactPage() {
 
                 {/* Textarea */}
                 <div className="flex flex-col gap-1.5 w-full">
-                  <label className="text-xs font-semibold text-slate-800 tracking-wide font-serif">
+                  <label className="text-xs font-semibold text-slate-200 tracking-wide font-serif">
                     {activeTab === "prayer"
                       ? bilingual("Chi tiết lời cầu nguyện & mong ước:", "Detailed Prayer Request:")
                       : activeTab === "partner"
@@ -326,18 +330,18 @@ export default function ContactPage() {
                           )
                         : bilingual("Nội dung chi tiết...", "Details...")
                     }
-                    className="w-full px-4 py-3 text-xs bg-[#FAF8F3] text-slate-900 rounded-2xl border border-amber-200 placeholder:text-slate-500 focus:outline-none focus:border-primary-700 focus:ring-1 focus:ring-primary-700 min-h-[120px]"
+                    className="w-full px-4 py-3 text-xs bg-white/10 text-white rounded-2xl border border-white/20 placeholder:text-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 min-h-[120px]"
                     required
                   />
                 </div>
 
                 {activeTab === "prayer" && (
-                  <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-700 pt-1 select-none">
+                  <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300 pt-1 select-none">
                     <input
                       type="checkbox"
                       checked={isConfidential}
                       onChange={(e) => setIsConfidential(e.target.checked)}
-                      className="rounded border-amber-300 text-primary-700 focus:ring-primary-700 w-4 h-4 cursor-pointer"
+                      className="rounded border-white/30 bg-white/10 text-primary-600 focus:ring-amber-400 w-4 h-4 cursor-pointer"
                     />
                     <span>
                       {bilingual(

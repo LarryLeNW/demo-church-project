@@ -249,22 +249,22 @@ export default function GivePage() {
         {/* 2. MAIN 2-COLUMN GIVING SANCTUARY: Form (7 cols) + Certificate/Trust (5 cols) */}
         {/* ============================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* CỘT TRÁI (7 cols): Sanctuary Giving Plaque */}
-          <div className="lg:col-span-7 bg-white/92 backdrop-blur-xl rounded-[40px] border border-white/70 shadow-2xl p-7 sm:p-10 space-y-8 text-left animate-fade-up">
+          {/* CỘT TRÁI (7 cols): Sanctuary Giving Plaque (Dark Frosted Glass) */}
+          <div className="lg:col-span-7 bg-slate-950/50 backdrop-blur-xl rounded-[40px] border border-white/20 shadow-2xl p-7 sm:p-10 space-y-8 text-left text-white animate-fade-up">
             <div>
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-primary-700 font-serif">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-300 font-serif">
                   {bilingual("Cổng Dâng Hiến Thánh Khiết", "Sacred Stewardship Portal")}
                 </span>
-                <span className="text-[11px] font-mono text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-                  <Lock className="w-3 h-3 text-emerald-700" />
+                <span className="text-[11px] font-mono text-emerald-300 bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-1">
+                  <Lock className="w-3 h-3 text-emerald-400" />
                   <span>SSL 256-bit</span>
                 </span>
               </div>
-              <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
+              <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-white mt-1">
                 {bilingual("Tấm Lòng Dâng Cho Chúa", "Online Ministry Offering")}
               </h2>
-              <p className="text-xs text-slate-600 font-sans mt-1">
+              <p className="text-xs text-slate-300 font-sans mt-1">
                 {bilingual(
                   "Bảo mật ngân hàng PCI-DSS Cấp 1 • Xuất biên nhận thuế khấu trừ hợp lệ tại Hoa Kỳ",
                   "Encrypted Transaction • Official US 501(c)(3) Annual Giving Statement"
@@ -273,26 +273,26 @@ export default function GivePage() {
             </div>
 
             {isSuccess ? (
-              <div className="p-8 rounded-3xl bg-primary-50 border border-primary-200 text-center space-y-4 animate-scale-in">
+              <div className="p-8 rounded-3xl bg-slate-900/80 border border-primary-500/40 text-center space-y-4 animate-scale-in text-white">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary-600 to-amber-600 text-white mx-auto flex items-center justify-center shadow-lg">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-xs font-bold text-primary-700 uppercase tracking-widest font-serif">
+                  <span className="text-xs font-bold text-amber-300 uppercase tracking-widest font-serif">
                     {bilingual("Xác Nhận Thành Công", "Transaction Completed")}
                   </span>
-                  <h3 className="font-scripture text-2xl font-bold text-slate-900">
+                  <h3 className="font-scripture text-2xl font-bold text-white">
                     {bilingual("Cảm Tạ Ơn Chúa & Cảm Ơn Quý Vị!", "Praise God & Thank You for Your Offering!")}
                   </h3>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-700 max-w-md mx-auto leading-relaxed [text-wrap:pretty]">
+                <p className="text-xs sm:text-sm text-slate-200 max-w-md mx-auto leading-relaxed [text-wrap:pretty]">
                   {bilingual(
                     `Hệ thống đã tiếp nhận tấm lòng dâng hiến $${currentAmount} USD (${frequency === "monthly" ? "Định kỳ hằng tháng" : "Một lần"}) vào ${fundDetails[fund]?.nameVi || "Quỹ Mục Vụ"}. Biên nhận thuế đã được gửi đến email ${donorEmail || "quý vị"}.`,
                     `We have safely recorded your contribution of $${currentAmount} USD (${frequency === "monthly" ? "Monthly recurring" : "One-time"}) towards the ${fundDetails[fund]?.nameEn || "Ministry Fund"}. An official tax receipt has been dispatched to ${donorEmail || "your email"}.`
                   )}
                 </p>
                 <div className="pt-2">
-                  <TactileButton variant="primary" size="md" onClick={() => setIsSuccess(false)}>
+                  <TactileButton variant="primary" size="md" onClick={() => setIsSuccess(false)} className="rounded-full">
                     <span>{bilingual("Dâng Thêm Khoản Khác", "Make Another Offering")}</span>
                   </TactileButton>
                 </div>
@@ -301,17 +301,17 @@ export default function GivePage() {
               <form onSubmit={handleDonateSubmit} className="space-y-7">
                 {/* 1. Frequency Switcher: Segmented Pill */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-900 uppercase tracking-wider block font-serif">
+                  <label className="text-xs font-bold text-amber-200 uppercase tracking-wider block font-serif">
                     {bilingual("1. Tần suất dâng hiến:", "1. Giving Frequency:")}
                   </label>
-                  <div className="grid grid-cols-2 gap-2 p-1.5 bg-[#FAF8F3] rounded-full border border-amber-200">
+                  <div className="grid grid-cols-2 gap-2 p-1.5 bg-slate-900/80 rounded-full border border-white/15">
                     <button
                       type="button"
                       onClick={() => setFrequency("one_time")}
                       className={`py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all min-h-[42px] cursor-pointer flex items-center justify-center gap-2 ${
                         frequency === "one_time"
                           ? "bg-primary-700 text-white shadow-md"
-                          : "text-slate-700 hover:text-slate-900 hover:bg-white/60"
+                          : "text-slate-300 hover:text-white hover:bg-white/10"
                       }`}
                     >
                       <Sparkles className="w-4 h-4" />
@@ -324,7 +324,7 @@ export default function GivePage() {
                       className={`py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all min-h-[42px] cursor-pointer flex items-center justify-center gap-2 ${
                         frequency === "monthly"
                           ? "bg-primary-700 text-white shadow-md"
-                          : "text-slate-700 hover:text-slate-900 hover:bg-white/60"
+                          : "text-slate-300 hover:text-white hover:bg-white/10"
                       }`}
                     >
                       <Calendar className="w-4 h-4" />
@@ -335,7 +335,7 @@ export default function GivePage() {
 
                 {/* 2. Amount Medallions (Pill Chips) */}
                 <div className="space-y-3">
-                  <label className="text-xs font-bold text-slate-900 uppercase tracking-wider block font-serif">
+                  <label className="text-xs font-bold text-amber-200 uppercase tracking-wider block font-serif">
                     {bilingual("2. Chọn số tiền dâng (USD):", "2. Select Gift Amount (USD):")}
                   </label>
 
@@ -352,8 +352,8 @@ export default function GivePage() {
                           }}
                           className={`px-4 py-2.5 rounded-full text-xs font-serif font-bold transition-all border cursor-pointer flex items-center gap-2 ${
                             isSelected
-                              ? "bg-primary-700 border-primary-700 text-white shadow-md scale-105"
-                              : "bg-[#FAF8F3] border-amber-200/90 text-slate-800 hover:bg-amber-100/60"
+                              ? "bg-primary-700 border-primary-500 text-white shadow-md scale-105"
+                              : "bg-white/10 border-white/20 text-white hover:bg-white/20"
                           }`}
                         >
                           <span className="font-scripture text-sm sm:text-base">${amt.value}</span>
@@ -368,7 +368,7 @@ export default function GivePage() {
                   {/* Custom Amount Input */}
                   <div className="pt-1">
                     <div className="relative flex items-center">
-                      <span className="absolute left-4 font-scripture text-base font-bold text-primary-700 select-none">
+                      <span className="absolute left-4 font-scripture text-base font-bold text-amber-300 select-none">
                         $ USD
                       </span>
                       <input
@@ -380,7 +380,7 @@ export default function GivePage() {
                           setCustomAmount(e.target.value);
                           setSelectedAmount(0);
                         }}
-                        className="w-full pl-20 pr-4 py-3 text-sm font-semibold bg-[#FAF8F3] border border-amber-200 rounded-full text-slate-900 placeholder:text-slate-500 focus:outline-none focus:border-primary-700 focus:ring-1 focus:ring-primary-700 min-h-[46px]"
+                        className="w-full pl-20 pr-4 py-3 text-sm font-semibold bg-white/10 border border-white/20 rounded-full text-white placeholder:text-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 min-h-[46px]"
                       />
                     </div>
                   </div>
@@ -399,22 +399,22 @@ export default function GivePage() {
                     onChange={(e) => setFund(e.target.value)}
                     options={fundSelectOptions}
                     selectSize="lg"
-                    variant="parchment"
+                    variant="dark"
                   />
                 </div>
 
                 {/* 4. Donor Information */}
                 <div className="space-y-4 pt-1">
                   <div className="flex items-center justify-between">
-                    <label className="text-xs font-bold text-slate-900 uppercase tracking-wider font-serif">
+                    <label className="text-xs font-bold text-amber-200 uppercase tracking-wider font-serif">
                       {bilingual("4. Thông tin người dâng hiến:", "4. Donor Details:")}
                     </label>
-                    <label className="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer select-none">
+                    <label className="flex items-center gap-2 text-xs font-medium text-slate-300 cursor-pointer select-none">
                       <input
                         type="checkbox"
                         checked={isAnonymous}
                         onChange={(e) => setIsAnonymous(e.target.checked)}
-                        className="rounded border-amber-300 text-primary-700 focus:ring-primary-700 cursor-pointer"
+                        className="rounded border-white/30 bg-white/10 text-primary-600 focus:ring-amber-400 cursor-pointer"
                       />
                       <span>{bilingual("Dâng ẩn danh", "Give anonymously")}</span>
                     </label>
@@ -423,6 +423,7 @@ export default function GivePage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {!isAnonymous ? (
                       <TactileInput
+                        variant="glass"
                         label={bilingual("Họ và tên người dâng", "Donor Full Name")}
                         placeholder={bilingual("Ví dụ: Mục sư / Chấp sự Nguyễn Văn A", "Full Name")}
                         value={donorName}
@@ -430,12 +431,13 @@ export default function GivePage() {
                         required={!isAnonymous}
                       />
                     ) : (
-                      <div className="p-3.5 rounded-2xl bg-[#FAF8F3] border border-amber-200 text-xs text-slate-600 flex items-center">
+                      <div className="p-3.5 rounded-2xl bg-white/10 border border-white/20 text-xs text-slate-300 flex items-center">
                         {bilingual("Khoản dâng sẽ được bảo mật danh tính.", "Your gift remains anonymous on public records.")}
                       </div>
                     )}
 
                     <TactileInput
+                      variant="glass"
                       label={bilingual("Email nhận biên nhận thuế", "Email for IRS Tax Receipt")}
                       type="email"
                       placeholder="tinhuu@gmail.com"
@@ -446,6 +448,7 @@ export default function GivePage() {
                   </div>
 
                   <TactileInput
+                    variant="glass"
                     label={bilingual("Địa chỉ gửi biên nhận cuối năm (Hoa Kỳ)", "Mailing Address for US Tax Filing")}
                     placeholder="1234 Grace Ave, Dallas, TX 75201"
                     value={donorAddress}
@@ -453,7 +456,7 @@ export default function GivePage() {
                   />
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-200 mb-1">
                       {bilingual("Ghi chú tạ ơn / Lời cầu thay đi kèm (tùy chọn):", "Prayer Request or Dedication Note:")}
                     </label>
                     <textarea
@@ -461,14 +464,14 @@ export default function GivePage() {
                       value={dedicationNote}
                       onChange={(e) => setDedicationNote(e.target.value)}
                       placeholder={bilingual("Dâng tạ ơn Chúa nhân dịp...", "In memory of / With gratitude for...")}
-                      className="w-full px-4 py-2.5 text-xs bg-[#FAF8F3] border border-amber-200 rounded-2xl text-slate-800 placeholder:text-slate-500 focus:outline-none focus:border-primary-700"
+                      className="w-full px-4 py-2.5 text-xs bg-white/10 border border-white/20 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:border-amber-400"
                     />
                   </div>
                 </div>
 
                 {/* 5. Payment Methods Tabs */}
                 <div className="space-y-3 pt-2">
-                  <label className="text-xs font-bold text-slate-900 uppercase tracking-wider block font-serif">
+                  <label className="text-xs font-bold text-amber-200 uppercase tracking-wider block font-serif">
                     {bilingual("5. Phương thức thanh toán an toàn:", "5. Payment Method:")}
                   </label>
 
@@ -478,11 +481,11 @@ export default function GivePage() {
                       onClick={() => setActivePaymentMethod("card")}
                       className={`p-3 rounded-2xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all min-h-[58px] cursor-pointer ${
                         activePaymentMethod === "card"
-                          ? "bg-primary-50 border-2 border-primary-700 text-primary-700 shadow-sm"
-                          : "bg-[#FAF8F3] border border-amber-200 text-slate-700 hover:bg-white"
+                          ? "bg-primary-700/80 border-2 border-primary-500 text-white shadow-sm"
+                          : "bg-white/10 border border-white/20 text-slate-200 hover:bg-white/20 hover:text-white"
                       }`}
                     >
-                      <CreditCard className="w-5 h-5 text-primary-700 shrink-0" />
+                      <CreditCard className="w-5 h-5 text-amber-300 shrink-0" />
                       <span>{bilingual("Thẻ / Stripe", "Card / Stripe")}</span>
                     </button>
 
@@ -491,11 +494,11 @@ export default function GivePage() {
                       onClick={() => setActivePaymentMethod("bank")}
                       className={`p-3 rounded-2xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all min-h-[58px] cursor-pointer ${
                         activePaymentMethod === "bank"
-                          ? "bg-primary-50 border-2 border-primary-700 text-primary-700 shadow-sm"
-                          : "bg-[#FAF8F3] border border-amber-200 text-slate-700 hover:bg-white"
+                          ? "bg-primary-700/80 border-2 border-primary-500 text-white shadow-sm"
+                          : "bg-white/10 border border-white/20 text-slate-200 hover:bg-white/20 hover:text-white"
                       }`}
                     >
-                      <Building className="w-5 h-5 text-amber-800 shrink-0" />
+                      <Building className="w-5 h-5 text-sky-300 shrink-0" />
                       <span>{bilingual("Chase / Zelle", "Bank / Zelle")}</span>
                     </button>
 
@@ -504,52 +507,52 @@ export default function GivePage() {
                       onClick={() => setActivePaymentMethod("qr")}
                       className={`p-3 rounded-2xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all min-h-[58px] cursor-pointer ${
                         activePaymentMethod === "qr"
-                          ? "bg-primary-50 border-2 border-primary-700 text-primary-700 shadow-sm"
-                          : "bg-[#FAF8F3] border border-amber-200 text-slate-700 hover:bg-white"
+                          ? "bg-primary-700/80 border-2 border-primary-500 text-white shadow-sm"
+                          : "bg-white/10 border border-white/20 text-slate-200 hover:bg-white/20 hover:text-white"
                       }`}
                     >
-                      <QrCode className="w-5 h-5 text-emerald-800 shrink-0" />
+                      <QrCode className="w-5 h-5 text-emerald-300 shrink-0" />
                       <span>{bilingual("Mã VietQR", "VietQR Banking")}</span>
                     </button>
                   </div>
 
                   {/* Sub details for payment methods */}
                   {activePaymentMethod === "card" && (
-                    <div className="p-4 rounded-2xl bg-[#FAF8F3] border border-amber-200/90 text-xs space-y-2">
-                      <div className="flex items-center justify-between text-slate-700">
+                    <div className="p-4 rounded-2xl bg-white/10 border border-white/15 text-xs space-y-2">
+                      <div className="flex items-center justify-between text-slate-200">
                         <span className="font-semibold">{bilingual("Hỗ trợ thẻ:", "Accepted Cards:")}</span>
-                        <span className="font-mono text-slate-500 font-bold">Visa • Mastercard • Amex • Discover</span>
+                        <span className="font-mono text-amber-200 font-bold">Visa • Mastercard • Amex • Discover</span>
                       </div>
-                      <div className="flex items-center gap-2 text-emerald-800 font-medium pt-1">
-                        <Lock className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <div className="flex items-center gap-2 text-emerald-300 font-medium pt-1">
+                        <Lock className="w-4 h-4 text-emerald-400 shrink-0" />
                         <span>Mã hóa SSL 256-bit qua Stripe Verified Gateway (PCI-DSS Cấp 1)</span>
                       </div>
                     </div>
                   )}
 
                   {activePaymentMethod === "bank" && (
-                    <div className="p-4 rounded-2xl bg-amber-50 border border-amber-300 text-xs space-y-2 text-left">
-                      <p className="font-bold text-slate-900 font-serif">
+                    <div className="p-4 rounded-2xl bg-white/10 border border-white/15 text-xs space-y-2 text-left">
+                      <p className="font-bold text-amber-300 font-serif">
                         {bilingual("Thông Tin Tài Khoản Zelle / US Bank:", "US Bank & Zelle Transfer:")}
                       </p>
-                      <div className="space-y-1 font-sans text-slate-800">
-                        <p>• Ngân hàng: <span className="font-bold">Chase Bank USA</span></p>
-                        <p>• Tên tài khoản: <span className="font-bold">Spiritual Advance Ministry</span></p>
-                        <p>• Zelle Official: <span className="font-mono font-bold text-primary-700 bg-white px-2 py-0.5 rounded border border-amber-200">give@saministry.org</span></p>
+                      <div className="space-y-1 font-sans text-slate-200">
+                        <p>• Ngân hàng: <span className="font-bold text-white">Chase Bank USA</span></p>
+                        <p>• Tên tài khoản: <span className="font-bold text-white">Spiritual Advance Ministry</span></p>
+                        <p>• Zelle Official: <span className="font-mono font-bold text-amber-300 bg-slate-900 px-2 py-0.5 rounded border border-white/20">give@saministry.org</span></p>
                       </div>
                     </div>
                   )}
 
                   {activePaymentMethod === "qr" && (
-                    <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-xs space-y-2 text-left">
-                      <p className="font-bold text-emerald-950 font-serif">
+                    <div className="p-4 rounded-2xl bg-white/10 border border-white/15 text-xs space-y-2 text-left">
+                      <p className="font-bold text-emerald-300 font-serif">
                         {bilingual("Tài Khoản Đại Diện Mục Vụ Tại Việt Nam:", "Vietnam Banking Representative:")}
                       </p>
-                      <div className="space-y-1 font-sans text-slate-800">
-                        <p>• Ngân hàng: <span className="font-bold">Vietcombank</span></p>
-                        <p>• Chủ tài khoản: <span className="font-bold">BAN DIEU HANH SAM VIETNAM</span></p>
-                        <p>• Số tài khoản: <span className="font-mono font-bold text-emerald-900 bg-white px-2 py-0.5 rounded border border-emerald-200">0071000888SAM</span></p>
-                        <p className="text-[11px] text-slate-600 italic">Cú pháp chuyển khoản: [Họ Tên] + [SDT] + Dang Hien SAM</p>
+                      <div className="space-y-1 font-sans text-slate-200">
+                        <p>• Ngân hàng: <span className="font-bold text-white">Vietcombank</span></p>
+                        <p>• Chủ tài khoản: <span className="font-bold text-white">BAN DIEU HANH SAM VIETNAM</span></p>
+                        <p>• Số tài khoản: <span className="font-mono font-bold text-emerald-300 bg-slate-900 px-2 py-0.5 rounded border border-white/20">0071000888SAM</span></p>
+                        <p className="text-[11px] text-slate-400 italic">Cú pháp chuyển khoản: [Họ Tên] + [SDT] + Dang Hien SAM</p>
                       </div>
                     </div>
                   )}
@@ -583,55 +586,55 @@ export default function GivePage() {
           {/* CỘT PHẢI (5 cols): Khung Tín Thác & Xem Trước Biên Nhận Thuế 501(c)(3) (Sticky scroll) */}
           <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6 text-left animate-fade-up delay-150">
             {/* TẤM BIÊN NHẬN THUẾ MẪU (Cathedral Arch Top Certificate) */}
-            <div className="rounded-t-[48px] rounded-b-3xl bg-white/95 backdrop-blur-xl border-2 border-amber-300/80 p-7 sm:p-8 shadow-2xl space-y-5 relative overflow-hidden">
-              <div className="border-b border-amber-200 pb-3 flex items-start justify-between gap-3">
+            <div className="rounded-t-[48px] rounded-b-3xl bg-slate-950/60 backdrop-blur-xl border-2 border-amber-400/50 p-7 sm:p-8 shadow-2xl space-y-5 relative overflow-hidden text-white">
+              <div className="border-b border-white/15 pb-3 flex items-start justify-between gap-3">
                 <div>
-                  <span className="text-[11px] font-bold text-primary-700 uppercase tracking-widest font-serif block">
+                  <span className="text-[11px] font-bold text-amber-300 uppercase tracking-widest font-serif block">
                     {bilingual("Mẫu Biên Nhận Khấu Trừ Thuế", "Tax-Deductible Receipt Preview")}
                   </span>
-                  <h3 className="font-scripture text-lg font-bold text-slate-900 mt-0.5">
+                  <h3 className="font-scripture text-lg font-bold text-white mt-0.5">
                     Official Contribution Receipt
                   </h3>
                 </div>
                 {/* Circular Gold Seal */}
-                <div className="w-14 h-14 rounded-full border-2 border-amber-400 bg-amber-50 text-amber-800 font-serif font-black text-xs shrink-0 flex flex-col items-center justify-center shadow-md">
-                  <Award className="w-4 h-4 text-amber-600 mb-0.5" />
+                <div className="w-14 h-14 rounded-full border-2 border-amber-400 bg-amber-400/10 text-amber-300 font-serif font-black text-xs shrink-0 flex flex-col items-center justify-center shadow-md">
+                  <Award className="w-4 h-4 text-amber-400 mb-0.5" />
                   <span>501(c)(3)</span>
                 </div>
               </div>
 
               {/* Dotted ledger details */}
-              <div className="space-y-3 text-xs text-slate-700 font-sans">
-                <div className="flex justify-between py-1 border-b border-amber-100">
-                  <span className="text-slate-500">{bilingual("Tổ chức thụ hưởng:", "Organization:")}</span>
-                  <span className="font-bold text-slate-900">Spiritual Advance Ministry</span>
+              <div className="space-y-3 text-xs text-slate-300 font-sans">
+                <div className="flex justify-between py-1 border-b border-white/10">
+                  <span className="text-slate-400">{bilingual("Tổ chức thụ hưởng:", "Organization:")}</span>
+                  <span className="font-bold text-white">Spiritual Advance Ministry</span>
                 </div>
 
-                <div className="flex justify-between py-1 border-b border-amber-100">
-                  <span className="text-slate-500">{bilingual("Mã số thuế IRS (EIN):", "IRS EIN Number:")}</span>
-                  <span className="font-mono font-bold text-slate-800">88-3492810</span>
+                <div className="flex justify-between py-1 border-b border-white/10">
+                  <span className="text-slate-400">{bilingual("Mã số thuế IRS (EIN):", "IRS EIN Number:")}</span>
+                  <span className="font-mono font-bold text-amber-200">88-3492810</span>
                 </div>
 
-                <div className="flex justify-between py-1 border-b border-amber-100">
-                  <span className="text-slate-500">{bilingual("Người dâng hiến:", "Donor Name:")}</span>
-                  <span className="font-bold text-slate-900">
+                <div className="flex justify-between py-1 border-b border-white/10">
+                  <span className="text-slate-400">{bilingual("Người dâng hiến:", "Donor Name:")}</span>
+                  <span className="font-bold text-white">
                     {isAnonymous ? (isEn ? "Anonymous" : "Ẩn Danh") : donorName || (isEn ? "Your Full Name" : "Họ và tên của bạn")}
                   </span>
                 </div>
 
-                <div className="flex justify-between py-1 border-b border-amber-100">
-                  <span className="text-slate-500">{bilingual("Quỹ mục đích:", "Designated Fund:")}</span>
-                  <span className="font-bold text-primary-700">{isEn ? fundDetails[fund]?.nameEn : fundDetails[fund]?.nameVi}</span>
+                <div className="flex justify-between py-1 border-b border-white/10">
+                  <span className="text-slate-400">{bilingual("Quỹ mục đích:", "Designated Fund:")}</span>
+                  <span className="font-bold text-amber-300">{isEn ? fundDetails[fund]?.nameEn : fundDetails[fund]?.nameVi}</span>
                 </div>
 
-                <div className="flex justify-between py-2 bg-primary-50 px-4 rounded-full border border-primary-200">
-                  <span className="font-bold text-slate-900">{bilingual("Số tiền khấu trừ:", "Deductible Gift:")}</span>
-                  <span className="font-scripture text-lg font-bold text-primary-700">${currentAmount} USD</span>
+                <div className="flex justify-between py-2 bg-white/10 px-4 rounded-full border border-white/20">
+                  <span className="font-bold text-slate-200">{bilingual("Số tiền khấu trừ:", "Deductible Gift:")}</span>
+                  <span className="font-scripture text-lg font-bold text-amber-300">${currentAmount} USD</span>
                 </div>
               </div>
 
               {/* IRS statement */}
-              <div className="p-4 rounded-2xl bg-[#FAF8F3] border border-amber-200/80 text-xs text-slate-600 italic font-serif leading-relaxed [text-wrap:pretty]">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-slate-300 italic font-serif leading-relaxed [text-wrap:pretty]">
                 {bilingual(
                   "\"Không có hàng hóa hoặc dịch vụ nào được cung cấp để trao đổi với khoản đóng góp này ngoài các lợi ích tôn giáo thiêng liêng.\" — Quy định IRS Hoa Kỳ",
                   "\"No goods or services were provided in exchange for this contribution other than intangible religious benefits.\" — IRS Requirement"

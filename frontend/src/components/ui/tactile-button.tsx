@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/cn";
 
-export type ReverentButtonVariant = "primary" | "gold" | "olive" | "secondary" | "crimson";
+export type ReverentButtonVariant = "primary" | "gold" | "olive" | "secondary" | "crimson" | "glass";
 
 interface ReverentButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ReverentButtonVariant;
@@ -21,6 +21,8 @@ const variantStyles: Record<ReverentButtonVariant, string> = {
     "bg-white text-slate-900 hover:bg-primary-50 border border-amber-200/90 shadow-sm",
   crimson:
     "bg-rose-900 text-white hover:bg-rose-800 border border-rose-400/30 shadow-md shadow-rose-950/20",
+  glass:
+    "bg-white/10 text-white hover:bg-white/20 border border-white/20 shadow-sm hover:border-amber-400/40",
 };
 
 const sizeStyles = {

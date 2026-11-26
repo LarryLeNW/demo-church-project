@@ -115,35 +115,35 @@ export default function AnnouncementsPage() {
                 {item.numeral}
               </div>
 
-              {/* Scalloped Cathedral Arch Card */}
-              <div className="flex-1 rounded-tr-[44px] rounded-bl-[44px] rounded-tl-2xl rounded-br-2xl bg-white/92 backdrop-blur-xl border border-white/80 p-6 sm:p-9 shadow-2xl hover:shadow-primary-900/20 hover:-translate-y-1 transition-all duration-300 space-y-4">
+              {/* Scalloped Cathedral Arch Card (Transparent Frosted Glass) */}
+              <div className="flex-1 rounded-tr-[44px] rounded-bl-[44px] rounded-tl-2xl rounded-br-2xl bg-slate-950/50 backdrop-blur-xl border border-white/20 p-6 sm:p-9 shadow-2xl hover:border-amber-400/60 hover:-translate-y-1 transition-all duration-300 space-y-4 text-white">
                 <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-primary-50 text-primary-800 border border-primary-200">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full bg-white/10 text-amber-300 border border-amber-400/30">
                     {isEn ? item.categoryEn : item.categoryVi}
                   </span>
-                  <span className="flex items-center gap-1.5 text-slate-500 font-mono text-xs font-semibold">
-                    <Calendar className="w-3.5 h-3.5 text-primary-700" />
+                  <span className="flex items-center gap-1.5 text-slate-300 font-mono text-xs font-semibold">
+                    <Calendar className="w-3.5 h-3.5 text-amber-400" />
                     <span>{item.date}</span>
                   </span>
                 </div>
 
-                <h2 className="font-scripture text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug [text-wrap:balance]">
+                <h2 className="font-scripture text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors leading-snug [text-wrap:balance]">
                   {isEn ? item.titleEn : item.titleVi}
                 </h2>
 
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans [text-wrap:pretty]">
+                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans [text-wrap:pretty]">
                   {isEn ? item.summaryEn : item.summaryVi}
                 </p>
 
-                <div className="pt-3 border-t border-amber-100 flex items-center justify-between text-xs">
-                  <span className="text-amber-900 font-serif italic">
+                <div className="pt-3 border-t border-white/15 flex items-center justify-between text-xs">
+                  <span className="text-amber-200 font-serif italic">
                     {bilingual("Nguồn: ", "Source: ")}
-                    <span className="font-bold">{item.author}</span>
+                    <span className="font-bold text-white">{item.author}</span>
                   </span>
 
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-1 text-primary-700 font-bold hover:underline"
+                    className="inline-flex items-center gap-1 text-amber-300 font-bold hover:underline"
                   >
                     <span>{bilingual("Liên hệ ban mục vụ", "Contact ministry")}</span>
                     <ChevronRight className="w-4 h-4" />

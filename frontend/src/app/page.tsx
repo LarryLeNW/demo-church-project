@@ -190,8 +190,8 @@ export default function HomePage() {
             {/* Cột phải: Khung Vòm Thánh Đường (Cathedral Arch) phá bỏ khuôn khổ chữ nhật */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-up delay-150">
               <div className="relative w-full max-w-sm">
-                <div className="rounded-t-[140px] rounded-b-3xl border-3 border-amber-300/90 bg-white p-3 shadow-2xl overflow-hidden reverent-card-hover">
-                  <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-amber-100">
+                <div className="rounded-t-[140px] rounded-b-3xl border-2 border-amber-300/80 bg-slate-950/40 backdrop-blur-md p-3 shadow-2xl overflow-hidden reverent-card-hover">
+                  <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-slate-900">
                     <Image
                       src="/people/instructor-1.jpg"
                       alt="Chủ tịch Tabitha Nguyen - Spiritual Advance Ministry"
@@ -437,33 +437,33 @@ export default function HomePage() {
             {featuredCourses.map((c, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-white/90 backdrop-blur-md border border-white/80 shadow-2xl hover:-translate-y-2 transition-all duration-300"
+                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-white"
               >
                 <div>
                   {/* Bìa Khung Vòm Thánh Đường bo cong tròn đỉnh */}
-                  <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-amber-50 border-b border-amber-100">
+                  <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
                     <Image
                       src={c.cover}
                       alt={c.titleVi}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full text-[11px] font-bold text-primary-700 border border-amber-200 shadow-xs">
+                    <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-xs px-3 py-1 rounded-full text-[11px] font-bold text-amber-300 border border-white/20 shadow-xs">
                       {isEn ? c.tagEn : c.tagVi}
                     </div>
                   </div>
 
                   <div className="p-6 sm:p-7 space-y-3 text-left">
-                    <div className="flex items-center justify-between text-xs text-slate-500 font-sans">
+                    <div className="flex items-center justify-between text-xs text-slate-400 font-sans">
                       <span>{c.lessons}</span>
-                      <span className="text-primary-700 font-semibold">{isEn ? c.authorEn : c.authorVi}</span>
+                      <span className="text-amber-300 font-semibold">{isEn ? c.authorEn : c.authorVi}</span>
                     </div>
 
-                    <h3 className="font-scripture text-lg sm:text-xl font-bold text-slate-900 group-hover:text-primary-700 transition-colors [text-wrap:balance]">
+                    <h3 className="font-scripture text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors [text-wrap:balance]">
                       {isEn ? c.titleEn : c.titleVi}
                     </h3>
 
-                    <p className="text-xs text-slate-600 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
+                    <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
                       {isEn ? c.descEn : c.descVi}
                     </p>
                   </div>
@@ -472,7 +472,7 @@ export default function HomePage() {
                 <div className="p-6 sm:p-7 pt-0">
                   <Link
                     href="/courses"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-primary-700 hover:text-primary-800 hover:underline min-h-[40px]"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:text-amber-200 hover:underline min-h-[40px]"
                   >
                     <span>{bilingual("Vào Lớp Học Ngay", "Enroll in Course")}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -485,35 +485,35 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. DÂNG HIẾN MỤC VỤ (TẤM PHÙ ĐIÊU GIẤY NGÀ SÁNG VỚI CON DẤU TRÒN IRS)       */}
+      {/* 6. DÂNG HIẾN MỤC VỤ (TẤM PHÙ ĐIÊU KÍNH MỜ THÁNH KHIẾT VỚI CON DẤU TRÒN IRS) */}
       {/* ========================================================================= */}
       <section className="relative w-full py-10 px-4 sm:px-6 md:px-8">
-        <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/80 shadow-2xl text-slate-900">
+        <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 shadow-2xl text-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Cột trái: Sứ mạng & Con dấu tròn vàng kim */}
             <div className="lg:col-span-7 space-y-5 text-left">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-primary-50 border-2 border-primary-500 flex items-center justify-center text-primary-700 shadow-sm shrink-0">
+                <div className="w-12 h-12 rounded-full bg-white/10 border-2 border-amber-400/60 flex items-center justify-center text-amber-300 shadow-sm shrink-0">
                   <Heart className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-primary-700 font-serif block">
+                  <span className="text-xs font-bold uppercase tracking-widest text-amber-300 font-serif block">
                     {bilingual("Sứ Mạng Dâng Hiến & Quản Trị Mục Vụ", "Ministry Stewardship & Giving")}
                   </span>
-                  <span className="text-xs text-slate-500 font-sans">
+                  <span className="text-xs text-slate-400 font-sans">
                     IRS 501(c)(3) Tax-Deductible
                   </span>
                 </div>
               </div>
 
-              <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
+              <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance]">
                 {bilingual(
                   "Đồng Hành Gieo Hạt Giống Nước Trời Cùng Spiritual Advance Ministry",
                   "Partner with Spiritual Advance Ministry to Sow Seeds for Eternity"
                 )}
               </h2>
 
-              <p className="text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
+              <p className="text-sm text-slate-200 leading-relaxed font-serif [text-wrap:pretty]">
                 {bilingual(
                   "Mọi khoản dâng hiến của quý tôi con Chúa đều được sử dụng minh bạch để tài trợ học bổng môn đồ hóa, in ấn tài liệu Kinh Thánh miễn phí và tổ chức các lớp huấn luyện lãnh đạo. Đầy đủ biên nhận khấu trừ thuế theo quy chuẩn IRS 501(c)(3) tại Hoa Kỳ.",
                   "Your generous contributions are transparently dedicated to discipleship scholarships, theological publications, and ministry workshops. Fully tax-deductible under IRS 501(c)(3) regulations."
@@ -527,48 +527,48 @@ export default function HomePage() {
                     <ArrowRight className="w-4 h-4 ml-1.5" />
                   </TactileButton>
                 </Link>
-                <span className="text-xs text-slate-500 font-serif italic">
+                <span className="text-xs text-amber-200/80 font-serif italic">
                   {bilingual("Biên nhận thuế xuất tự động cuối năm", "Automated annual tax receipts")}
                 </span>
               </div>
             </div>
 
             {/* Cột phải: Các Quỹ Mục Đích Rõ Ràng */}
-            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-amber-200/80 lg:pl-10 space-y-4 text-left">
-              <div className="flex items-center justify-between pb-3 border-b border-amber-200/80">
-                <span className="font-bold text-slate-900 uppercase font-serif text-xs tracking-wider">
+            <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-white/15 lg:pl-10 space-y-4 text-left">
+              <div className="flex items-center justify-between pb-3 border-b border-white/15">
+                <span className="font-bold text-white uppercase font-serif text-xs tracking-wider">
                   {bilingual("Các Quỹ Mục Đích Rõ Ràng", "Designated Ministry Funds")}
                 </span>
-                <span className="text-[11px] text-primary-700 font-semibold font-serif px-2.5 py-0.5 rounded-full bg-primary-50 border border-primary-200">
+                <span className="text-[11px] text-amber-300 font-semibold font-serif px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20">
                   100% Khấu Trừ Thuế
                 </span>
               </div>
 
-              <ul className="divide-y divide-amber-200/60 text-sm">
+              <ul className="divide-y divide-white/10 text-sm">
                 <li className="py-3.5 flex items-center justify-between">
                   <div>
-                    <span className="text-slate-900 font-serif block font-medium">Quỹ Đào Tạo Môn Đồ Hóa</span>
-                    <span className="text-xs text-slate-500">Trang bị thế hệ tôi tớ Chúa</span>
+                    <span className="text-white font-serif block font-medium">Quỹ Đào Tạo Môn Đồ Hóa</span>
+                    <span className="text-xs text-slate-400">Trang bị thế hệ tôi tớ Chúa</span>
                   </div>
-                  <span className="text-xs font-mono text-primary-700 font-semibold shrink-0 ml-3">
+                  <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
                     IRS 501(c)(3)
                   </span>
                 </li>
                 <li className="py-3.5 flex items-center justify-between">
                   <div>
-                    <span className="text-slate-900 font-serif block font-medium">Quỹ Học Bổng & Giảng Viên</span>
-                    <span className="text-xs text-slate-500">Hỗ trợ học viên Trường Chúa Nhật</span>
+                    <span className="text-white font-serif block font-medium">Quỹ Học Bổng & Giảng Viên</span>
+                    <span className="text-xs text-slate-400">Hỗ trợ học viên Trường Chúa Nhật</span>
                   </div>
-                  <span className="text-xs font-mono text-primary-700 font-semibold shrink-0 ml-3">
+                  <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
                     IRS 501(c)(3)
                   </span>
                 </li>
                 <li className="py-3.5 flex items-center justify-between">
                   <div>
-                    <span className="text-slate-900 font-serif block font-medium">Quỹ In Ấn & Thư Viện Miễn Phí</span>
-                    <span className="text-xs text-slate-500">Phát hành sách & tài liệu bồi linh</span>
+                    <span className="text-white font-serif block font-medium">Quỹ In Ấn & Thư Viện Miễn Phí</span>
+                    <span className="text-xs text-slate-400">Phát hành sách & tài liệu bồi linh</span>
                   </div>
-                  <span className="text-xs font-mono text-primary-700 font-semibold shrink-0 ml-3">
+                  <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
                     IRS 501(c)(3)
                   </span>
                 </li>
@@ -632,30 +632,30 @@ export default function HomePage() {
       {/* 8. LIÊN HỆ & THĂM VIẾNG MỤC VỤ (DẢI THÔNG TIN DẠNG PILL MỀM MẠI)          */}
       {/* ========================================================================= */}
       <section className="relative w-full py-10 pb-16 px-4 sm:px-6 md:px-8">
-        <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-3xl sm:rounded-full px-8 py-6 sm:px-12 border border-white/80 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-slate-800">
+        <div className="max-w-6xl mx-auto bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-full px-8 py-6 sm:px-12 border border-white/20 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-white">
           <div className="text-left space-y-1">
-            <h3 className="font-scripture text-xl sm:text-2xl font-bold text-slate-900">
+            <h3 className="font-scripture text-xl sm:text-2xl font-bold text-white">
               {bilingual("Bạn Cần Cầu Thay Hoặc Kết Nối Mục Vụ?", "Need Prayer or Ministry Partnership?")}
             </h3>
-            <p className="text-xs text-slate-600 font-serif">
+            <p className="text-xs text-slate-300 font-serif">
               {bilingual("Ban Cầu Thay & Thăm Viếng Luôn Sẵn Sàng Lắng Nghe", "Our Pastoral Team Is Here for You")}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-xs font-sans">
             <div className="flex items-center gap-2.5">
-              <Phone className="w-4 h-4 text-primary-700 shrink-0" />
+              <Phone className="w-4 h-4 text-amber-400 shrink-0" />
               <div>
-                <span className="text-[10px] text-slate-500 block uppercase font-bold">Hotline:</span>
-                <span className="font-bold text-slate-900">+1 (214) 790-2882</span>
+                <span className="text-[10px] text-slate-400 block uppercase font-bold">Hotline:</span>
+                <span className="font-bold text-amber-200">+1 (214) 790-2882</span>
               </div>
             </div>
 
             <div className="flex items-center gap-2.5">
-              <Mail className="w-4 h-4 text-primary-700 shrink-0" />
+              <Mail className="w-4 h-4 text-amber-400 shrink-0" />
               <div>
-                <span className="text-[10px] text-slate-500 block uppercase font-bold">Email:</span>
-                <span className="font-bold text-slate-900">contact@saministry.org</span>
+                <span className="text-[10px] text-slate-400 block uppercase font-bold">Email:</span>
+                <span className="font-bold text-amber-200">contact@saministry.org</span>
               </div>
             </div>
 

@@ -215,11 +215,11 @@ export default function AboutPage() {
             {leadership.map((person, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-white/90 backdrop-blur-md border border-white/80 p-6 sm:p-7 shadow-2xl hover:-translate-y-2 transition-all duration-300"
+                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 p-6 sm:p-7 shadow-2xl hover:-translate-y-2 hover:border-amber-400/60 transition-all duration-300 text-white"
               >
                 <div className="space-y-4">
                   {/* Khung Vòm Thánh Đường bo cong tròn đỉnh */}
-                  <div className="relative aspect-square w-full rounded-t-[40px] rounded-b-2xl overflow-hidden border-2 border-amber-300 shadow-sm">
+                  <div className="relative aspect-square w-full rounded-t-[40px] rounded-b-2xl overflow-hidden border-2 border-amber-400/80 shadow-sm">
                     <Image
                       src={person.image}
                       alt={person.name}
@@ -228,14 +228,14 @@ export default function AboutPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-scripture font-bold text-slate-900 text-xl">
+                    <h3 className="font-scripture font-bold text-white text-xl">
                       {person.name}
                     </h3>
-                    <p className="text-xs font-semibold text-primary-700 font-serif mt-0.5">
+                    <p className="text-xs font-semibold text-amber-300 font-serif mt-0.5">
                       {isEn ? person.roleEn : person.roleVi}
                     </p>
                   </div>
-                  <p className="text-xs text-slate-700 leading-relaxed font-sans [text-wrap:pretty]">
+                  <p className="text-xs text-slate-200 leading-relaxed font-sans [text-wrap:pretty]">
                     {isEn ? person.bioEn : person.bioVi}
                   </p>
                 </div>
@@ -247,19 +247,19 @@ export default function AboutPage() {
         {/* ============================================================== */}
         {/* 5. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Dải Pill Bo Cong Mềm Mại)       */}
         {/* ============================================================== */}
-        <section className="bg-white/90 backdrop-blur-md rounded-3xl sm:rounded-full p-8 sm:p-10 border border-white/80 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-slate-900 text-left">
+        <section className="bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-full p-8 sm:p-10 border border-white/20 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-white text-left">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary-700 font-serif">
-              <Sparkles className="w-3.5 h-3.5 text-primary-700 shrink-0" />
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-amber-300 font-serif">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>{bilingual("Đồng Hành Mục Vụ", "Ministry Fellowship")}</span>
             </div>
-            <h3 className="font-scripture text-2xl font-bold text-slate-900 [text-wrap:balance]">
+            <h3 className="font-scripture text-2xl font-bold text-white [text-wrap:balance]">
               {bilingual(
                 "Đồng Hành Cùng Hành Trình Môn Đồ Hóa Của SAM",
                 "Join the Discipleship & Equipping Journey With SAM"
               )}
             </h3>
-            <p className="text-xs text-slate-600 font-serif [text-wrap:pretty]">
+            <p className="text-xs text-slate-300 font-serif [text-wrap:pretty]">
               {bilingual(
                 "Khám phá các chương trình đào tạo, thư viện bài giảng bồi linh chuẩn mực và kết nối với mạng lưới các tôi tớ Chúa khắp nơi.",
                 "Explore structured training curricula, sound theological resources, and fellowship with faithful servants of Christ globally."
@@ -276,8 +276,8 @@ export default function AboutPage() {
             </Link>
 
             <Link href="/library">
-              <TactileButton variant="secondary" size="sm">
-                <BookOpen className="w-4 h-4 mr-1.5 text-primary-700" />
+              <TactileButton variant="glass" size="sm">
+                <BookOpen className="w-4 h-4 mr-1.5 text-amber-300" />
                 <span>{bilingual("Kho Tư Liệu", "Vault")}</span>
               </TactileButton>
             </Link>
@@ -287,10 +287,10 @@ export default function AboutPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Cộng đồng Facebook SAM (Mở trong tab mới)"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white hover:bg-primary-50 text-slate-800 text-xs font-bold border border-amber-200 transition-all shadow-xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition-all shadow-xs"
             >
               <span>Facebook</span>
-              <ExternalLink className="w-3 h-3 text-slate-400" />
+              <ExternalLink className="w-3 h-3 text-amber-300" />
             </a>
           </div>
         </section>

@@ -185,43 +185,43 @@ export default function CoursesPage() {
             {filteredCourses.map((course, idx) => (
               <div
                 key={course.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-white/90 backdrop-blur-md border border-white/80 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left animate-fade-up"
+                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left text-white animate-fade-up"
                 style={{ animationDelay: `${(idx + 1) * 75}ms` }}
               >
                 <div>
                   {/* Bìa khóa học Khung Vòm Thánh Đường */}
-                  <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-amber-50 border-b border-amber-100">
+                  <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
                     <Image
                       src={course.image}
                       alt={course.titleVi}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-bold text-primary-800 border border-amber-200 shadow-xs">
+                    <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-bold text-amber-300 border border-white/20 shadow-xs">
                       {isEn ? course.badgeEn : course.badgeVi}
                     </div>
                   </div>
 
                   <div className="p-6 sm:p-7 space-y-4">
                     {/* Thời lượng & Cấp độ */}
-                    <div className="flex items-center justify-between text-xs text-slate-500 font-sans">
+                    <div className="flex items-center justify-between text-xs text-slate-400 font-sans">
                       <span className="flex items-center gap-1.5 font-medium">
-                        <Clock className="w-3.5 h-3.5 text-primary-700 shrink-0" />
+                        <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                         <span>{course.duration}</span>
                       </span>
-                      <span className="text-primary-800 font-bold bg-primary-50 px-2.5 py-0.5 rounded-full border border-primary-200">
+                      <span className="text-amber-300 font-bold bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
                         {isEn ? course.levelEn : course.levelVi}
                       </span>
                     </div>
 
                     {/* Tiêu đề khóa học */}
-                    <h2 className="font-scripture text-xl font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug [text-wrap:balance]">
+                    <h2 className="font-scripture text-xl font-bold text-white group-hover:text-amber-300 transition-colors leading-snug [text-wrap:balance]">
                       {isEn ? course.titleEn : course.titleVi}
                     </h2>
 
                     {/* Giảng viên & Chân dung thật dạng huy hiệu tròn */}
-                    <div className="flex items-center gap-3 pt-2 border-t border-amber-100">
-                      <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-amber-300 shrink-0 shadow-xs">
+                    <div className="flex items-center gap-3 pt-2 border-t border-white/10">
+                      <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400/80 shrink-0 shadow-xs">
                         <Image
                           src={course.instructorAvatar}
                           alt={course.instructor}
@@ -230,28 +230,28 @@ export default function CoursesPage() {
                         />
                       </div>
                       <div>
-                        <span className="text-xs font-bold text-slate-900 block font-serif">
+                        <span className="text-xs font-bold text-white block font-serif">
                           {course.instructor}
                         </span>
-                        <span className="text-xs text-slate-500 line-clamp-1">
+                        <span className="text-xs text-slate-300 line-clamp-1">
                           {isEn ? course.instructorRoleEn : course.instructorRoleVi}
                         </span>
                       </div>
                     </div>
 
                     {/* Mô tả tóm lược */}
-                    <p className="text-xs text-slate-600 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
+                    <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
                       {isEn ? course.descEn : course.descVi}
                     </p>
 
                     {/* Điểm nhấn giáo trình */}
                     <div className="space-y-1.5 pt-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500 font-serif block">
+                      <span className="text-xs font-bold uppercase tracking-wider text-amber-300/90 font-serif block">
                         {bilingual("Trọng Tâm Bài Học:", "Key Competencies:")}
                       </span>
                       {(isEn ? course.highlightsEn : course.highlightsVi).map((h, i) => (
-                        <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-primary-700 shrink-0 mt-0.5" />
+                        <div key={i} className="flex items-start gap-2 text-xs text-slate-200">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
                           <span>{h}</span>
                         </div>
                       ))}
@@ -260,9 +260,9 @@ export default function CoursesPage() {
                 </div>
 
                 {/* Nút hành động */}
-                <div className="p-6 sm:p-7 pt-0 border-t border-amber-100/60 mt-4">
+                <div className="p-6 sm:p-7 pt-0 border-t border-white/10 mt-4">
                   <Link href="/dashboard" className="block w-full pt-4">
-                    <TactileButton variant="primary" size="md" withCross className="w-full justify-center">
+                    <TactileButton variant="primary" size="md" withCross className="w-full justify-center rounded-full">
                       <span>{bilingual("Vào Lớp Học Ngay", "Enroll in Course")}</span>
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </TactileButton>

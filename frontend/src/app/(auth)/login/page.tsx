@@ -93,9 +93,9 @@ export default function LoginPage() {
         </Link>
         <button
           onClick={toggleLang}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-xs border border-white/80 text-xs font-semibold text-slate-700 hover:bg-white shadow-2xs transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-xs font-semibold text-white hover:bg-white/15 shadow-2xs transition-all cursor-pointer"
         >
-          <Globe className="w-3.5 h-3.5 text-amber-700" />
+          <Globe className="w-3.5 h-3.5 text-amber-300" />
           <span>{isEn ? "Tiếng Việt (VI)" : "English (EN)"}</span>
         </button>
       </header>
@@ -103,7 +103,7 @@ export default function LoginPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center flex flex-col items-center gap-2.5 animate-fade-up">
         <Link
           href="/"
-          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-amber-300/80 text-slate-900 text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
+          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
         >
           <img src={SAM_LOGO_DATA_URL} alt="Spiritual Advance Ministry" className="w-5 h-5 object-contain" />
           <span className="font-serif font-bold">Spiritual Advance Ministry</span>
@@ -122,15 +122,16 @@ export default function LoginPage() {
       </div>
 
       <div className="mt-6 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-md animate-scale-in delay-75">
-        <div className="bg-white/90 backdrop-blur-md py-6 px-4 sm:py-8 sm:px-10 rounded-3xl border border-white/80 shadow-2xl space-y-5 reverent-card-hover">
+        <div className="bg-slate-950/50 backdrop-blur-xl py-6 px-4 sm:py-8 sm:px-10 rounded-3xl border border-white/20 shadow-2xl space-y-5 text-white">
           {errorMsg && (
-            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs font-medium text-rose-800">
+            <div className="p-3.5 rounded-xl bg-rose-950/60 border border-rose-500/40 text-xs font-medium text-rose-200">
               {errorMsg}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <TactileInput
+              variant="glass"
               label={bilingual("Địa chỉ Email", "Email Address")}
               type="email"
               autoComplete="email"
@@ -144,6 +145,7 @@ export default function LoginPage() {
             />
 
             <TactileInput
+              variant="glass"
               label={bilingual("Mật khẩu", "Password")}
               type="password"
               autoComplete="current-password"
@@ -153,15 +155,15 @@ export default function LoginPage() {
               required
             />
 
-            <div className="flex items-center justify-between text-xs text-slate-600 pt-1">
-              <label className="flex items-center gap-2 cursor-pointer">
+            <div className="flex items-center justify-between text-xs text-slate-300 pt-1">
+              <label className="flex items-center gap-2 cursor-pointer select-none">
                 <input
                   type="checkbox"
-                  className="rounded border-amber-300 text-amber-700 focus:ring-amber-500 w-4 h-4"
+                  className="rounded border-white/30 bg-white/10 text-primary-600 focus:ring-amber-400 w-4 h-4 cursor-pointer"
                 />
                 <span>{bilingual("Ghi nhớ đăng nhập", "Remember me")}</span>
               </label>
-              <a href="#" className="font-medium text-primary-700 hover:text-primary-800 hover:underline">
+              <a href="#" className="font-medium text-amber-300 hover:text-amber-200 hover:underline">
                 {bilingual("Quên mật khẩu?", "Forgot password?")}
               </a>
             </div>
@@ -172,7 +174,7 @@ export default function LoginPage() {
               size="lg"
               withCross
               disabled={loading}
-              className="w-full mt-2"
+              className="w-full mt-2 rounded-full"
             >
               <span>
                 {loading
@@ -183,8 +185,8 @@ export default function LoginPage() {
           </form>
 
           {/* Quick Demo Login */}
-          <div className="pt-4 border-t border-amber-100 space-y-2">
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-600 text-center">
+          <div className="pt-4 border-t border-white/15 space-y-2">
+            <div className="text-xs font-semibold uppercase tracking-wider text-amber-300 text-center font-serif">
               {bilingual("Tài Khoản Quản Trị Demo", "Demo Admin Account")}
             </div>
             <div>
@@ -192,21 +194,21 @@ export default function LoginPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => handleQuickLogin("admin@teacher.local", "AdminTeacher@2026")}
-                className="w-full py-2.5 px-4 text-xs font-semibold rounded-xl bg-primary-50 text-primary-800 border border-primary-200 hover:bg-primary-100 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full py-2.5 px-4 text-xs font-semibold rounded-xl bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <ShieldCheck className="w-4 h-4 text-primary-700 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>Admin (Ban Quản Trị Hệ Thống)</span>
               </button>
             </div>
           </div>
 
-          <div className="text-center pt-2 text-xs text-slate-600">
+          <div className="text-center pt-2 text-xs text-slate-300">
             <span>
               {bilingual("Bạn là tín hữu hoặc khách viếng thăm? ", "Are you a visitor or church member? ")}
             </span>
             <Link
               href="/"
-              className="font-bold text-primary-700 hover:text-primary-800 hover:underline inline-flex items-center gap-1"
+              className="font-bold text-amber-300 hover:text-amber-200 hover:underline inline-flex items-center gap-1"
             >
               <span>{bilingual("Về trang chủ website", "Return to Home")}</span>
               <ArrowRight className="w-3 h-3" />
