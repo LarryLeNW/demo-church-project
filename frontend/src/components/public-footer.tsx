@@ -65,11 +65,6 @@ export function PublicFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/announcements" className="hover:text-primary-700 transition-colors">
-                  {bilingual("Thông Báo & Bản Tin", "News & Bulletins")}
-                </Link>
-              </li>
-              <li>
                 <Link href="/contact" className="hover:text-primary-700 transition-colors">
                   {bilingual("Liên Hệ & Cầu Thay", "Contact & Prayer Requests")}
                 </Link>
