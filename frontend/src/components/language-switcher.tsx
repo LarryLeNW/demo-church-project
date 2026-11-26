@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 
 export interface LanguageSwitcherProps {
   className?: string;
-  variant?: "subtle" | "default" | "parchment";
+  variant?: "subtle" | "default" | "parchment" | "glass";
   align?: "left" | "right";
   size?: "sm" | "md";
 }
@@ -48,6 +48,8 @@ export function LanguageSwitcher({
       "bg-white hover:bg-amber-50/80 text-slate-900 border-amber-200/90 focus:border-primary-600",
     parchment:
       "bg-[#FBF9F5] hover:bg-amber-50/80 text-slate-900 border-amber-200/90 focus:border-primary-600",
+    glass:
+      "bg-white/10 hover:bg-white/20 text-white border-white/20 focus:border-amber-400/80",
   };
 
   const isSmall = size === "sm";
@@ -93,13 +95,14 @@ export function LanguageSwitcher({
               isSmall ? "w-4 h-2.5" : "w-5 h-3.5"
             )}
           />
-          <span className={cn("font-bold tracking-tight leading-none text-slate-800", isSmall ? "text-[11px]" : "text-xs")}>
+          <span className={cn("font-bold tracking-tight leading-none", variant === "glass" ? "text-white" : "text-slate-800", isSmall ? "text-[11px]" : "text-xs")}>
             {lang}
           </span>
         </div>
         <ChevronDown
           className={cn(
-            "text-amber-900/80 shrink-0 transition-transform duration-200",
+            variant === "glass" ? "text-amber-300" : "text-amber-900/80",
+            "shrink-0 transition-transform duration-200",
             isSmall ? "w-3 h-3" : "w-3.5 h-3.5",
             isOpen && "rotate-180"
           )}
@@ -112,7 +115,10 @@ export function LanguageSwitcher({
           role="listbox"
           aria-label="Language selection"
           className={cn(
-            "absolute z-50 mt-1.5 p-1 rounded-xl bg-white/98 backdrop-blur-md shadow-xl border border-amber-200/90 space-y-0.5 animate-in fade-in-0 zoom-in-95 duration-150",
+            "absolute z-50 mt-1.5 p-1 rounded-xl shadow-xl space-y-0.5 animate-in fade-in-0 zoom-in-95 duration-150",
+            variant === "glass"
+              ? "bg-slate-950/95 backdrop-blur-xl border border-white/20 text-white"
+              : "bg-white/98 backdrop-blur-md border border-amber-200/90",
             isSmall ? "min-w-[135px]" : "min-w-[145px]",
             align === "right" ? "right-0" : "left-0"
           )}
@@ -132,19 +138,21 @@ export function LanguageSwitcher({
                 className={cn(
                   "w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-md text-xs transition-colors cursor-pointer text-left select-none",
                   isSelected
-                    ? "bg-primary-50 text-primary-800 font-bold"
+                    ? "bg-primary-700 text-white font-bold"
+                    : variant === "glass"
+                    ? "hover:bg-white/10 text-slate-200 font-medium"
                     : "hover:bg-amber-50 text-slate-700 font-medium"
                 )}
               >
                 <div className="flex items-center gap-1.5 truncate">
                   <CountryFlag country={opt.value} className="w-4 h-2.5 shadow-2xs" />
                   <span className="truncate">{opt.fullLabel}</span>
-                  <span className="text-[10px] text-slate-400 font-sans font-normal">
+                  <span className={cn("text-[10px] font-sans font-normal", variant === "glass" ? "text-slate-400" : "text-slate-400")}>
                     ({opt.label})
                   </span>
                 </div>
                 {isSelected && (
-                  <Check className="w-3.5 h-3.5 text-primary-700 shrink-0 ml-1" />
+                  <Check className={cn("w-3.5 h-3.5 shrink-0 ml-1", variant === "glass" ? "text-amber-300" : "text-primary-700")} />
                 )}
               </button>
             );
