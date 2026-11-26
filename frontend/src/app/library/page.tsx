@@ -22,7 +22,6 @@ import {
   Bookmark,
   Share2,
   ChevronRight,
-  Flame,
 } from "lucide-react";
 
 export default function LibraryPage() {
@@ -183,27 +182,6 @@ export default function LibraryPage() {
             {bilingual("Kho sách, tài liệu & bài giảng bồi linh", "Spiritual books, documents & sermon media")}
           </span>
         </div>
-
-        {/* ============================================================== */}
-        {/* 1. EDITORIAL HEADER DIRECTLY ON MAP (No enclosing box) */}
-        {/* ============================================================== */}
-        <section className="text-center space-y-3 animate-fade-in">
-          <div className="inline-flex items-center gap-2 text-amber-300 font-serif text-xs uppercase tracking-widest">
-            <Flame className="w-4 h-4 text-amber-400" />
-            <span>{bilingual("Kho Tàng Tri Thức Thuộc Linh", "Spiritual Treasury & Vault")}</span>
-          </div>
-
-          <h1 className="font-scripture text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-md [text-wrap:balance]">
-            {bilingual("Thư Viện Tài Liệu & Bài Giảng Bồi Linh", "Spiritual Library & Sermon Vault")}
-          </h1>
-
-          <p className="text-sm sm:text-base text-amber-100/90 font-serif italic max-w-2xl mx-auto drop-shadow-xs">
-            {bilingual(
-              "\"Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi.\" — Thi-thiên 119:105",
-              "\"Your word is a lamp to my feet and a light to my path.\" — Psalm 119:105"
-            )}
-          </p>
-        </section>
 
         {/* ============================================================== */}
         {/* 2. FLOATING PILL RIBBON CONTROLS (Tabs & Search Bar) */}

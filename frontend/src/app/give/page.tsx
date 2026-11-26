@@ -25,7 +25,6 @@ import {
   Calendar,
   Check,
   Compass,
-  Flame,
   Award,
 } from "lucide-react";
 
@@ -223,27 +222,6 @@ export default function GivePage() {
             {bilingual("Khấu trừ thuế theo chuẩn IRS 501(c)(3) tại Hoa Kỳ", "Tax-deductible under US IRS 501(c)(3)")}
           </span>
         </div>
-
-        {/* ============================================================== */}
-        {/* 1. EDITORIAL HEADER DIRECTLY ON MAP (No enclosing box) */}
-        {/* ============================================================== */}
-        <section className="text-center space-y-3 animate-fade-in">
-          <div className="inline-flex items-center gap-2 text-amber-300 font-serif text-xs uppercase tracking-widest">
-            <Flame className="w-4 h-4 text-amber-400" />
-            <span>{bilingual("Quản Trị Tín Thác & Khấu Trừ Thuế IRS 501(c)(3)", "Faithful Stewardship & US IRS 501(c)(3)")}</span>
-          </div>
-
-          <h1 className="font-scripture text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-md [text-wrap:balance]">
-            {bilingual("Dâng Hiến Bằng Tấm Lòng Vui Lòng & Trung Tín", "Cheerful & Faithful Stewardship")}
-          </h1>
-
-          <p className="text-sm sm:text-base text-amber-100/90 font-serif italic max-w-2xl mx-auto drop-shadow-xs">
-            {bilingual(
-              "\"Mỗi người nên quyên giúp tùy theo lòng mình đã định, không phải tiếc rẻ hay vì miễn cưỡng, vì Đức Chúa Trời yêu thương người dâng cách vui lòng.\" — 2 Cô-rinh-tô 9:7",
-              "\"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.\" — 2 Corinthians 9:7"
-            )}
-          </p>
-        </section>
 
         {/* ============================================================== */}
         {/* 2. MAIN 2-COLUMN GIVING SANCTUARY: Form (7 cols) + Certificate/Trust (5 cols) */}

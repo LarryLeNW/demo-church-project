@@ -148,18 +148,9 @@ export default function CoursesPage() {
         </div>
 
         {/* ============================================================== */}
-        {/* 1. TIÊU ĐỀ & BỘ LỌC CHỦ ĐỀ KHÓA HỌC (Pill Buttons)             */}
+        {/* 1. BỘ LỌC CHỦ ĐỀ KHÓA HỌC (Pill Buttons)                       */}
         {/* ============================================================== */}
         <section className="space-y-8 animate-fade-up">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <h1 className="font-scripture text-3xl sm:text-4xl lg:text-5xl font-bold text-white [text-wrap:balance] drop-shadow-md">
-              {bilingual("Các Khóa Học & Giáo Trình Môn Đồ Hóa", "Discipleship Courses & Standardized Curricula")}
-            </h1>
-            <p className="text-xs font-semibold text-amber-300 font-serif uppercase tracking-widest">
-              {bilingual("Giáo Trình Chuẩn Mực • Đào Tạo Tôi Tớ Chúa", "Biblical Equipping • Pastoral Leadership")}
-            </p>
-          </div>
-
           {/* Bộ lọc dạng Pill mềm mại */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {categories.map((cat) => {
