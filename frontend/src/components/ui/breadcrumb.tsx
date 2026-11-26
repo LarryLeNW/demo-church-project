@@ -13,23 +13,29 @@ export interface BreadcrumbItem {
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
   className?: string;
+  variant?: "default" | "sacred" | "dark";
 }
 
-export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
+export function Breadcrumb({ items, className = "", variant = "sacred" }: BreadcrumbProps) {
   const { bilingual } = useLanguage();
+  const isSacred = variant === "sacred" || variant === "dark";
 
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`flex items-center text-xs font-medium text-slate-600 animate-fade-in ${className}`}
+      className={`flex items-center text-xs font-medium animate-fade-in ${
+        isSacred ? "text-amber-100/90" : "text-slate-600"
+      } ${className}`}
     >
       <ol className="flex items-center flex-wrap gap-1.5 sm:gap-2">
         <li className="flex items-center">
           <Link
             href="/"
-            className="flex items-center gap-1.5 text-slate-600 hover:text-primary-700 transition-colors"
+            className={`flex items-center gap-1.5 transition-colors ${
+              isSacred ? "text-amber-200 hover:text-white" : "text-slate-600 hover:text-primary-700"
+            }`}
           >
-            <Home className="w-3.5 h-3.5 text-primary-700" />
+            <Home className={`w-3.5 h-3.5 ${isSacred ? "text-amber-300" : "text-primary-700"}`} />
             <span className="font-serif">{bilingual("Trang Chủ", "Home")}</span>
           </Link>
         </li>
@@ -38,10 +44,16 @@ export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
           const isLast = index === items.length - 1;
           return (
             <li key={index} className="flex items-center gap-1.5 sm:gap-2">
-              <ChevronRight className="w-3.5 h-3.5 text-amber-700/60 shrink-0" />
+              <ChevronRight
+                className={`w-3.5 h-3.5 shrink-0 ${
+                  isSacred ? "text-amber-300/80" : "text-amber-700/60"
+                }`}
+              />
               {isLast || !item.href ? (
                 <span
-                  className="font-bold text-slate-900 font-serif"
+                  className={`font-bold font-serif ${
+                    isSacred ? "text-white drop-shadow-xs" : "text-slate-900"
+                  }`}
                   aria-current={isLast ? "page" : undefined}
                 >
                   {item.label}
@@ -49,7 +61,9 @@ export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
               ) : (
                 <Link
                   href={item.href}
-                  className="text-slate-600 hover:text-primary-700 transition-colors font-serif"
+                  className={`transition-colors font-serif ${
+                    isSacred ? "text-amber-200 hover:text-white" : "text-slate-600 hover:text-primary-700"
+                  }`}
                 >
                   {item.label}
                 </Link>

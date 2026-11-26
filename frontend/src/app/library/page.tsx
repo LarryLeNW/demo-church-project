@@ -172,20 +172,22 @@ export default function LibraryPage() {
       <PublicHeader />
 
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-10 sm:space-y-12">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/20 animate-fade-in text-white">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Thư Viện & Kho Bài Giảng", "Library & Sermon Vault") },
+            ]}
+          />
+          <span className="text-xs text-amber-200/90 font-serif italic hidden sm:inline">
+            {bilingual("Kho sách, tài liệu & bài giảng bồi linh", "Spiritual books, documents & sermon media")}
+          </span>
+        </div>
+
         {/* ============================================================== */}
         {/* 1. EDITORIAL HEADER DIRECTLY ON MAP (No enclosing box) */}
         {/* ============================================================== */}
-        <section className="text-center space-y-4 animate-fade-in">
-          <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/40 backdrop-blur-md border border-white/20 text-xs text-amber-200">
-              <Breadcrumb
-                items={[
-                  { label: bilingual("Thư Viện & Kho Bài Giảng", "Library & Sermon Vault") },
-                ]}
-              />
-            </div>
-          </div>
-
+        <section className="text-center space-y-3 animate-fade-in">
           <div className="inline-flex items-center gap-2 text-amber-300 font-serif text-xs uppercase tracking-widest">
             <Flame className="w-4 h-4 text-amber-400" />
             <span>{bilingual("Kho Tàng Tri Thức Thuộc Linh", "Spiritual Treasury & Vault")}</span>

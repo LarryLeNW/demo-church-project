@@ -64,20 +64,22 @@ export default function AnnouncementsPage() {
       <PublicHeader />
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/20 animate-fade-in text-white">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Bản Tin & Thông Báo", "Ministry Bulletin & Announcements") },
+            ]}
+          />
+          <span className="text-xs text-amber-200/90 font-serif italic hidden sm:inline">
+            {bilingual("Cập nhật hoạt động & lịch hiệp nguyện", "Latest ministry programs & prayer gatherings")}
+          </span>
+        </div>
+
         {/* ============================================================== */}
         {/* 1. EDITORIAL HEADER DIRECTLY ON MAP (No enclosing box) */}
         {/* ============================================================== */}
-        <section className="text-center space-y-4 animate-fade-in">
-          <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/40 backdrop-blur-md border border-white/20 text-xs text-amber-200">
-              <Breadcrumb
-                items={[
-                  { label: bilingual("Bản Tin & Thông Báo", "Ministry Bulletin & Announcements") },
-                ]}
-              />
-            </div>
-          </div>
-
+        <section className="text-center space-y-3 animate-fade-in">
           <div className="inline-flex items-center gap-2 text-amber-300 font-serif text-xs uppercase tracking-widest">
             <Flame className="w-4 h-4 text-amber-400" />
             <span>{bilingual("Tiếng Kèn Thức Tỉnh & Thông Điệp Mục Vụ", "Ministry Bulletin & Holy Herald")}</span>

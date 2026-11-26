@@ -212,20 +212,22 @@ export default function GivePage() {
       <PublicHeader />
 
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/20 animate-fade-in text-white">
+          <Breadcrumb
+            items={[
+              { label: bilingual("Dâng Hiến Trực Tuyến", "Online Ministry Giving") },
+            ]}
+          />
+          <span className="text-xs text-amber-200/90 font-serif italic hidden sm:inline">
+            {bilingual("Khấu trừ thuế theo chuẩn IRS 501(c)(3) tại Hoa Kỳ", "Tax-deductible under US IRS 501(c)(3)")}
+          </span>
+        </div>
+
         {/* ============================================================== */}
         {/* 1. EDITORIAL HEADER DIRECTLY ON MAP (No enclosing box) */}
         {/* ============================================================== */}
-        <section className="text-center space-y-4 animate-fade-in">
-          <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/40 backdrop-blur-md border border-white/20 text-xs text-amber-200">
-              <Breadcrumb
-                items={[
-                  { label: bilingual("Dâng Hiến Trực Tuyến", "Online Ministry Giving") },
-                ]}
-              />
-            </div>
-          </div>
-
+        <section className="text-center space-y-3 animate-fade-in">
           <div className="inline-flex items-center gap-2 text-amber-300 font-serif text-xs uppercase tracking-widest">
             <Flame className="w-4 h-4 text-amber-400" />
             <span>{bilingual("Quản Trị Tín Thác & Khấu Trừ Thuế IRS 501(c)(3)", "Faithful Stewardship & US IRS 501(c)(3)")}</span>

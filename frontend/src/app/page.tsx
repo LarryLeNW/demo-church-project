@@ -236,7 +236,7 @@ export default function HomePage() {
             {partnerLogos.map((p, idx) => (
               <div key={idx} className="flex items-center gap-2.5 group opacity-85 hover:opacity-100 transition-opacity">
                 <div className="relative w-7 h-7 sm:w-8 sm:h-8 shrink-0 drop-shadow-sm">
-                  <Image src={p.src} alt={p.name} fill className="object-contain" />
+                  <Image src={p.src} alt={p.name} fill className="object-contain brightness-0 invert opacity-85 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <span className="text-xs font-semibold text-white/95 font-serif tracking-wide group-hover:text-amber-300 transition-colors drop-shadow-sm">
                   {p.name}
