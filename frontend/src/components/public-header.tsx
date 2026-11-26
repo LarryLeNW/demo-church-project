@@ -5,12 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SAM_LOGO_DATA_URL } from "@/lib/sam-logo";
 import { useLanguage } from "@/lib/i18n/language-context";
-import { TactileButton } from "@/components/ui/tactile-button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import {
   Menu,
   X,
-  ArrowRight,
   BookOpen,
   DollarSign,
   Info,
@@ -74,15 +72,6 @@ export function PublicHeader() {
           {/* Language Selector Dropdown with Country Flags (h-9) */}
           <LanguageSwitcher size="sm" />
 
-          {/* Sign In Link Button */}
-          <Link
-            href="/login"
-            className="hidden sm:inline-flex items-center justify-center gap-1.5 h-9 px-4 rounded-xl bg-primary-700 hover:bg-primary-800 text-white font-bold text-xs sm:text-sm whitespace-nowrap shadow-xs transition-all active:scale-[0.98]"
-          >
-            <span>{isEn ? "Sign In" : "Đăng Nhập"}</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -133,15 +122,6 @@ export function PublicHeader() {
               {bilingual("Ngôn ngữ hiển thị:", "Display Language:")}
             </span>
             <LanguageSwitcher align="right" />
-          </div>
-
-          <div className="pt-1">
-            <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-              <TactileButton variant="primary" size="md" className="w-full justify-center rounded-xl min-h-[46px]">
-                <span>{bilingual("Đăng Nhập Quản Trị", "Sign In to Admin")}</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </TactileButton>
-            </Link>
           </div>
         </div>
       )}
