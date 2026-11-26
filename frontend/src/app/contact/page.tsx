@@ -19,7 +19,6 @@ import {
   CheckCircle2,
   Sparkles,
   ExternalLink,
-  Flame,
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -57,27 +56,6 @@ export default function ContactPage() {
             {bilingual("Dallas Main Campus (Hoa Kỳ) & Văn phòng Việt Nam", "Dallas Main Campus (USA) & Vietnam Office")}
           </span>
         </div>
-
-        {/* ============================================================== */}
-        {/* 1. EDITORIAL HEADER DIRECTLY ON MAP (No enclosing box) */}
-        {/* ============================================================== */}
-        <section className="text-center space-y-3 animate-fade-in">
-          <div className="inline-flex items-center gap-2 text-amber-300 font-serif text-xs uppercase tracking-widest">
-            <Flame className="w-4 h-4 text-amber-400" />
-            <span>{bilingual("Dallas Main Campus (USA) & Mạng Lưới Việt Nam", "Dallas Campus (USA) & Global Fellowship")}</span>
-          </div>
-
-          <h1 className="font-scripture text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-md [text-wrap:balance]">
-            {bilingual("Kết Nối & Hiệp Ý Cầu Thay Trong Ân Điển", "Connect & Corporate Prayer In Grace")}
-          </h1>
-
-          <p className="text-sm sm:text-base text-amber-100/90 font-serif italic max-w-2xl mx-auto drop-shadow-xs">
-            {bilingual(
-              "\"Hãy dốc đổ lòng mình ra như nước ở trước mặt Chúa; hãy giơ tay lên hướng về Ngài.\" — Ca-thương 2:19",
-              "\"Pour out your heart like water before the face of the Lord! Lift up your hands toward Him.\" — Lamentations 2:19"
-            )}
-          </p>
-        </section>
 
         {/* ============================================================== */}
         {/* 2. TWO-COLUMN SANCTUARY: Info Directory (Left) + Prayer Form (Right) */}
