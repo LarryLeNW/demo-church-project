@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
+import { FixedWorldMapBackground } from "@/components/fixed-world-map-background";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -209,7 +210,8 @@ export default function GivePage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-sacred-parchment text-slate-800">
+    <div className="min-h-screen flex flex-col relative text-slate-800 bg-transparent">
+      <FixedWorldMapBackground />
       <PublicHeader />
 
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-8 sm:space-y-12">
@@ -230,7 +232,7 @@ export default function GivePage() {
         {/* ============================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* CỘT TRÁI (7 cols): Form Dâng Hiến */}
-          <div className="lg:col-span-7 bg-white rounded-3xl border border-amber-200/90 shadow-md p-6 sm:p-9 space-y-8 text-left animate-fade-up delay-75">
+          <div className="lg:col-span-7 bg-white/90 backdrop-blur-md rounded-3xl border border-white/80 shadow-2xl p-6 sm:p-9 space-y-8 text-left animate-fade-up delay-75">
             <div>
               <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 [text-wrap:balance]">
                 {bilingual("Tấm Lòng Dâng Cho Chúa", "Online Ministry Offering")}
@@ -557,7 +559,7 @@ export default function GivePage() {
           {/* CỘT PHẢI (5 cols): Khung Tín Thác & Xem Trước Biên Nhận Thuế 501(c)(3) (Sticky scroll) */}
           <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6 text-left animate-fade-up delay-150">
             {/* TẤM BIÊN NHẬN THUẾ MẪU (IRS Tax Statement Preview Card) */}
-            <div className="bg-white rounded-3xl border-2 border-amber-300 p-6 sm:p-7 shadow-lg space-y-5 relative overflow-hidden reverent-card-hover">
+            <div className="bg-white/90 backdrop-blur-md rounded-3xl border-2 border-amber-300 p-6 sm:p-7 shadow-2xl space-y-5 relative overflow-hidden reverent-card-hover">
               <div className="border-b border-amber-200 pb-3 flex items-start justify-between gap-3">
                 <div>
                   <span className="text-[11px] font-bold text-primary-700 uppercase tracking-widest font-serif block">
@@ -612,7 +614,7 @@ export default function GivePage() {
             </div>
 
             {/* Khối Cam Kết Trách Nhiệm Mục Vụ (Stewardship Commitments) */}
-            <div className="bg-sacred-card rounded-3xl border border-amber-200/90 p-6 space-y-4">
+            <div className="bg-white/90 backdrop-blur-md rounded-3xl border border-white/80 p-6 space-y-4 shadow-xl">
               <h3 className="font-scripture text-base font-bold text-slate-900 flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-primary-700 shrink-0" />
                 <span>{bilingual("Cam Kết Minh Bạch Của SAM", "Stewardship Commitments")}</span>
@@ -670,7 +672,7 @@ export default function GivePage() {
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border border-amber-200/90 overflow-hidden shadow-2xs transition-all"
+                  className="bg-white/90 backdrop-blur-md rounded-2xl border border-white/80 overflow-hidden shadow-md transition-all"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}

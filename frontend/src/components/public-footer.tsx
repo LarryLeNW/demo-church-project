@@ -10,7 +10,7 @@ export function PublicFooter() {
   const { isEn, bilingual } = useLanguage();
 
   return (
-    <footer className="bg-[#FAF8F3] border-t border-amber-200/80 pt-10 pb-8 sm:pt-14 sm:pb-12 text-slate-700">
+    <footer className="bg-[#FAF8F3]/90 backdrop-blur-md border-t border-amber-200/80 pt-10 pb-8 sm:pt-14 sm:pb-12 text-slate-700">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1: Brand & Mission */}

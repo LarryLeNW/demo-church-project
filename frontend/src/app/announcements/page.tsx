@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
+import { FixedWorldMapBackground } from "@/components/fixed-world-map-background";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
@@ -55,11 +56,13 @@ export default function AnnouncementsPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FBF9F5]">
+    <div className="min-h-screen flex flex-col relative text-slate-800 bg-transparent">
+      <FixedWorldMapBackground />
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-10 space-y-6 sm:space-y-8">
-        {/* Breadcrumb Navigation & Header */}
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-xl border border-white/60 space-y-6 sm:space-y-8">
+          {/* Breadcrumb Navigation & Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
           <Breadcrumb
             items={[
@@ -114,6 +117,7 @@ export default function AnnouncementsPage() {
             </article>
           ))}
         </section>
+        </div>
       </main>
 
       <PublicFooter />

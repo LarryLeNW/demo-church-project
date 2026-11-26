@@ -9,6 +9,7 @@ import { SAM_LOGO_DATA_URL } from "@/lib/sam-logo";
 import { TactileInput } from "@/components/ui/tactile-input";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { ApiError } from "@/lib/api/client";
+import { FixedWorldMapBackground } from "@/components/fixed-world-map-background";
 import { Church, ShieldCheck, ArrowRight, ArrowLeft, Globe, BookOpen } from "lucide-react";
 
 export default function LoginPage() {
@@ -78,19 +79,21 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] flex flex-col justify-center py-6 sm:py-12 px-3 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent relative flex flex-col justify-center py-6 sm:py-12 px-3 sm:px-6 lg:px-8">
+      <FixedWorldMapBackground />
+
       {/* Mobile-Friendly Top Bar */}
       <header className="w-full max-w-md mx-auto flex items-center justify-between pb-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-indigo-950 p-2 -ml-2 rounded-lg transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white p-2 -ml-2 rounded-lg transition-colors drop-shadow-sm"
         >
-          <ArrowLeft className="w-4 h-4 text-amber-800" />
+          <ArrowLeft className="w-4 h-4 text-amber-300" />
           <span>{bilingual("Trang chủ", "Home")}</span>
         </Link>
         <button
           onClick={toggleLang}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-amber-200 text-xs font-semibold text-slate-700 hover:bg-amber-50 shadow-2xs transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-xs border border-white/80 text-xs font-semibold text-slate-700 hover:bg-white shadow-2xs transition-all cursor-pointer"
         >
           <Globe className="w-3.5 h-3.5 text-amber-700" />
           <span>{isEn ? "Tiếng Việt (VI)" : "English (EN)"}</span>
@@ -100,17 +103,17 @@ export default function LoginPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center flex flex-col items-center gap-2.5 animate-fade-up">
         <Link
           href="/"
-          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-amber-300/80 text-slate-900 text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
+          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-amber-300/80 text-slate-900 text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
         >
           <img src={SAM_LOGO_DATA_URL} alt="Spiritual Advance Ministry" className="w-5 h-5 object-contain" />
           <span className="font-serif font-bold">Spiritual Advance Ministry</span>
         </Link>
 
-        <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-white tracking-tight drop-shadow-md">
           {bilingual("Đăng Nhập Hội Thánh", "Church Member Login")}
         </h2>
 
-        <p className="text-xs text-slate-600 italic font-serif px-2">
+        <p className="text-xs text-amber-200/90 italic font-serif px-2 drop-shadow-sm">
           {bilingual(
             '"Đến gần Đức Chúa Trời, thì Ngài sẽ đến gần anh em." — Gia-cơ 4:8',
             '"Come near to God and he will come near to you." — James 4:8'
@@ -119,7 +122,7 @@ export default function LoginPage() {
       </div>
 
       <div className="mt-6 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-md animate-scale-in delay-75">
-        <div className="bg-white py-6 px-4 sm:py-8 sm:px-10 rounded-2xl border border-amber-200/80 shadow-md shadow-amber-950/5 space-y-5 reverent-card-hover">
+        <div className="bg-white/90 backdrop-blur-md py-6 px-4 sm:py-8 sm:px-10 rounded-3xl border border-white/80 shadow-2xl space-y-5 reverent-card-hover">
           {errorMsg && (
             <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs font-medium text-rose-800">
               {errorMsg}
