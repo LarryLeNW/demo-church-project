@@ -9,7 +9,6 @@ import { FixedWorldMapBackground } from "@/components/fixed-world-map-background
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
 import {
-  BookOpen,
   ArrowRight,
   Sparkles,
   MapPin,
@@ -278,20 +277,6 @@ export default function HomePage() {
               )}
             </p>
           </div>
-
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/courses">
-              <TactileButton variant="primary" size="sm" withCross>
-                <BookOpen className="w-3.5 h-3.5 mr-1.5" />
-                <span>{bilingual("Học Lời Chúa Cùng SAM", "Study God's Word")}</span>
-              </TactileButton>
-            </Link>
-            <Link href="/about">
-              <TactileButton variant="secondary" size="sm">
-                <span>{bilingual("Tìm Hiểu Sứ Mạng SAM", "About Our Mission")}</span>
-              </TactileButton>
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -335,23 +320,14 @@ export default function HomePage() {
               </div>
 
               {/* Chân trang bài luận: Dấu ấn hình tròn (Circular Seal) */}
-              <div className="pt-6 border-t border-white/15 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-amber-300 shadow-md">
-                    <Image src="/people/instructor-3.jpg" alt="SAM Faculty" fill className="object-cover" />
-                  </div>
-                  <div>
-                    <span className="font-serif font-bold text-white text-sm block">Ban Giảng Huấn SAM</span>
-                    <span className="text-xs text-amber-300">Dallas Theological Fellowship</span>
-                  </div>
+              <div className="pt-6 border-t border-white/15 flex items-center gap-3">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-amber-300 shadow-md">
+                  <Image src="/people/instructor-3.jpg" alt="SAM Faculty" fill className="object-cover" />
                 </div>
-
-                <Link href="/about">
-                  <TactileButton variant="secondary" size="sm">
-                    <span>{bilingual("Đọc Lịch Sử SAM", "About Ministry")}</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                  </TactileButton>
-                </Link>
+                <div>
+                  <span className="font-serif font-bold text-white text-sm block">Ban Giảng Huấn SAM</span>
+                  <span className="text-xs text-amber-300">Dallas Theological Fellowship</span>
+                </div>
               </div>
             </div>
 
