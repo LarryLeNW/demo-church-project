@@ -12,8 +12,6 @@ import {
   BookOpen,
   ArrowRight,
   Sparkles,
-  Phone,
-  Mail,
   MapPin,
   Flame,
   ShieldCheck,
@@ -519,18 +517,6 @@ export default function HomePage() {
                   "Your generous contributions are transparently dedicated to discipleship scholarships, theological publications, and ministry workshops. Fully tax-deductible under IRS 501(c)(3) regulations."
                 )}
               </p>
-
-              <div className="pt-2 flex items-center gap-4">
-                <Link href="/give">
-                  <TactileButton variant="primary" size="md">
-                    <span>{bilingual("Dâng Hiến Trực Tuyến", "Give Online Now")}</span>
-                    <ArrowRight className="w-4 h-4 ml-1.5" />
-                  </TactileButton>
-                </Link>
-                <span className="text-xs text-amber-200/80 font-serif italic">
-                  {bilingual("Biên nhận thuế xuất tự động cuối năm", "Automated annual tax receipts")}
-                </span>
-              </div>
             </div>
 
             {/* Cột phải: Các Quỹ Mục Đích Rõ Ràng */}
@@ -582,7 +568,7 @@ export default function HomePage() {
       {/* 7. BÔNG TRÁI THUỘC LINH (HUY HIỆU TRÒN THÔNG CÔNG & LỜI CHỨNG)            */}
       {/* Bố cục mở với ảnh chân dung tròn trang nhã, không khung hộp tù túng       */}
       {/* ========================================================================= */}
-      <section className="relative w-full py-12 px-4 sm:px-6 md:px-8">
+      <section className="relative w-full py-12 pb-16 px-4 sm:px-6 md:px-8">
         <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl space-y-10">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance]">
@@ -624,47 +610,6 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 8. LIÊN HỆ & THĂM VIẾNG MỤC VỤ (DẢI THÔNG TIN DẠNG PILL MỀM MẠI)          */}
-      {/* ========================================================================= */}
-      <section className="relative w-full py-10 pb-16 px-4 sm:px-6 md:px-8">
-        <div className="max-w-6xl mx-auto bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-full px-8 py-6 sm:px-12 border border-white/20 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-white">
-          <div className="text-left space-y-1">
-            <h3 className="font-scripture text-xl sm:text-2xl font-bold text-white">
-              {bilingual("Bạn Cần Cầu Thay Hoặc Kết Nối Mục Vụ?", "Need Prayer or Ministry Partnership?")}
-            </h3>
-            <p className="text-xs text-slate-300 font-serif">
-              {bilingual("Ban Cầu Thay & Thăm Viếng Luôn Sẵn Sàng Lắng Nghe", "Our Pastoral Team Is Here for You")}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-xs font-sans">
-            <div className="flex items-center gap-2.5">
-              <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-              <div>
-                <span className="text-[10px] text-slate-400 block uppercase font-bold">Hotline:</span>
-                <span className="font-bold text-amber-200">+1 (214) 790-2882</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-              <div>
-                <span className="text-[10px] text-slate-400 block uppercase font-bold">Email:</span>
-                <span className="font-bold text-amber-200">contact@saministry.org</span>
-              </div>
-            </div>
-
-            <Link href="/contact" className="shrink-0">
-              <TactileButton variant="primary" size="sm" withCross>
-                <span>{bilingual("Gửi Lời Cầu Thay", "Prayer Request")}</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-              </TactileButton>
-            </Link>
           </div>
         </div>
       </section>
