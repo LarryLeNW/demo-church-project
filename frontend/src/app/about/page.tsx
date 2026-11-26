@@ -84,44 +84,43 @@ export default function AboutPage() {
       <FixedWorldMapBackground />
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
-        <div className="bg-white/85 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-white/60 space-y-12 sm:space-y-16">
-          {/* Breadcrumb Navigation & Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-10 sm:py-16 space-y-16 sm:space-y-20">
+        {/* Breadcrumb Navigation & Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/20 animate-fade-in text-white">
           <Breadcrumb
             items={[
               { label: bilingual("Giới Thiệu Về SAM", "About SAM Ministry") },
             ]}
           />
-          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
+          <span className="text-xs text-amber-200/90 font-serif italic hidden sm:inline">
             {bilingual("Khải tượng, sứ mạng & ban giảng huấn", "Calling, mandate & servant leadership")}
           </span>
         </div>
 
         {/* ============================================================== */}
-        {/* 2. CÂU CHUYỆN KHỞI SỰ (Editorial Narrative Story) */}
+        {/* 1. CÂU CHUYỆN KHỞI SỰ (Editorial Narrative - Không Hộp Chữ Nhật) */}
         {/* ============================================================== */}
         <section className="space-y-6 text-left animate-fade-up">
-          <div className="border-b border-amber-200 pb-4">
-            <h1 className="font-scripture text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 [text-wrap:balance]">
+          <div className="border-b border-white/20 pb-4">
+            <p className="text-xs font-bold text-amber-300 font-serif uppercase tracking-widest">
+              {bilingual("Lịch Sử Hình Thành & Tâm Tình Phục Vụ", "Origin & Ministry Heartbeat")}
+            </p>
+            <h1 className="font-scripture text-3xl sm:text-4xl lg:text-5xl font-bold text-white [text-wrap:balance] drop-shadow-md mt-1">
               {bilingual(
                 "Một Khát Vọng Được Nuôi Dưỡng Từ Tình Yêu Với Công Việc Chúa",
                 "A Ministerial Journey Rooted in Faithful Kingdom Service"
               )}
             </h1>
-            <p className="text-xs font-bold text-primary-700 font-serif uppercase tracking-widest mt-1">
-              {bilingual("Lịch Sử Hình Thành & Tâm Tình Phục Vụ", "Origin & Ministry Heartbeat")}
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm sm:text-base text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
-            <p className="border-l-3 border-primary-700 pl-4 sm:pl-5 italic">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm sm:text-base text-slate-100 leading-relaxed font-serif [text-wrap:pretty]">
+            <p className="border-l-3 border-amber-400 pl-4 sm:pl-5 italic bg-slate-950/25 backdrop-blur-xs py-3 rounded-r-xl border-y border-r border-white/10">
               {bilingual(
                 "Spiritual Advance Ministry (SAM) được thai nghén từ khát vọng thấy các tôi tớ Chúa, tín hữu và lãnh đạo mục vụ tại Hoa Kỳ cũng như cộng đồng người Việt khắp năm châu được tiếp cận nền giáo dục thần học thực tiễn, tài liệu bồi linh vững chắc và công cụ đồng hành đức tin mỗi ngày.",
                 "Spiritual Advance Ministry (SAM) was birthed from the deep desire to see servants of God, disciples, and ministry leaders across the United States and global Vietnamese communities access practical theological education, solid devotional literature, and daily discipleship habits."
               )}
             </p>
-            <p>
+            <p className="text-slate-200">
               {bilingual(
                 "Trụ sở tại Dallas, Texas, SAM phối hợp với các học giả Kinh Thánh và viện thần học quốc tế để xây dựng hệ thống môn đồ hóa toàn diện. Chúng tôi không chỉ cung cấp giáo trình mà còn tạo dựng một môi trường thông công nâng đỡ, giúp con cái Chúa duy trì kỷ luật tĩnh nguyện, ghi nhớ Lời Chúa và nhân rộng thêm nhiều tôi tớ trung tín.",
                 "Headquartered in Dallas, Texas, SAM collaborates with biblical scholars and seminaries to build a comprehensive discipleship ecosystem, fostering persistent spiritual disciplines and multiplying faithful servants of Christ."
@@ -131,65 +130,67 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 3. TẦM NHÌN & SỨ MẠNG (Bố Cục Cột Báo Chí - Không Khung AI) */}
+        {/* 2. TẦM NHÌN & SỨ MẠNG (Tấm Phù Điêu Kính Tối Màu Asymmetrical Plaque) */}
         {/* ============================================================== */}
-        <section className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-amber-200/80 border-y border-amber-200/80 py-10 text-left">
-          <div className="py-6 md:py-0 md:pr-10 space-y-3">
-            <div className="flex items-center gap-2.5 text-primary-700">
-              <Compass className="w-5 h-5 shrink-0" />
-              <h2 className="font-scripture text-2xl font-bold text-slate-900">
-                {bilingual("Tầm Nhìn Nước Trời", "Our Kingdom Vision")}
-              </h2>
+        <section className="bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/20 text-left">
+            <div className="pb-6 md:pb-0 md:pr-10 space-y-3">
+              <div className="flex items-center gap-2.5 text-amber-300">
+                <Compass className="w-5 h-5 shrink-0" />
+                <h2 className="font-scripture text-2xl font-bold text-white">
+                  {bilingual("Tầm Nhìn Nước Trời", "Our Kingdom Vision")}
+                </h2>
+              </div>
+              <p className="text-sm text-slate-200 leading-relaxed font-serif [text-wrap:pretty]">
+                {bilingual(
+                  "Trở thành trung tâm huấn luyện thuộc linh đáng tin cậy, thắp sáng ngọn lửa phục hưng và đào tạo hàng ngàn người lãnh đạo Cơ Đốc trung kiên, tận hiến và kết quả cho Hội Thánh Đấng Christ.",
+                  "To be a trusted global spiritual equipping hub, igniting revival and raising thousands of faithful, fruit-bearing Christian leaders for the Body of Christ."
+                )}
+              </p>
             </div>
-            <p className="text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
-              {bilingual(
-                "Trở thành trung tâm huấn luyện thuộc linh đáng tin cậy, thắp sáng ngọn lửa phục hưng và đào tạo hàng ngàn người lãnh đạo Cơ Đốc trung kiên, tận hiến và kết quả cho Hội Thánh Đấng Christ.",
-                "To be a trusted global spiritual equipping hub, igniting revival and raising thousands of faithful, fruit-bearing Christian leaders for the Body of Christ."
-              )}
-            </p>
-          </div>
 
-          <div className="py-6 md:py-0 md:pl-10 space-y-3">
-            <div className="flex items-center gap-2.5 text-primary-700">
-              <Award className="w-5 h-5 shrink-0" />
-              <h2 className="font-scripture text-2xl font-bold text-slate-900">
-                {bilingual("Sứ Mạng Trang Bị", "Our Equipping Mission")}
-              </h2>
+            <div className="pt-6 md:pt-0 md:pl-10 space-y-3">
+              <div className="flex items-center gap-2.5 text-amber-300">
+                <Award className="w-5 h-5 shrink-0" />
+                <h2 className="font-scripture text-2xl font-bold text-white">
+                  {bilingual("Sứ Mạng Trang Bị", "Our Equipping Mission")}
+                </h2>
+              </div>
+              <p className="text-sm text-slate-200 leading-relaxed font-serif [text-wrap:pretty]">
+                {bilingual(
+                  "Trang bị kiến thức Kinh Thánh chuẩn mực, huấn luyện kỹ năng mục vụ thực tế, tạo dựng môi trường thông công nâng đỡ và duy trì thói quen tĩnh nguyện - cầu thay bền bỉ.",
+                  "Equipping sound biblical knowledge, training practical ministerial skills, fostering supportive fellowship, and nurturing persistent prayer and devotional habits."
+                )}
+              </p>
             </div>
-            <p className="text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
-              {bilingual(
-                "Trang bị kiến thức Kinh Thánh chuẩn mực, huấn luyện kỹ năng mục vụ thực tế, tạo dựng môi trường thông công nâng đỡ và duy trì thói quen tĩnh nguyện - cầu thay bền bỉ.",
-                "Equipping sound biblical knowledge, training practical ministerial skills, fostering supportive fellowship, and nurturing persistent prayer and devotional habits."
-              )}
-            </p>
           </div>
         </section>
 
         {/* ============================================================== */}
-        {/* 4. GIÁ TRỊ CỐT LÕI (Bố Cục Báo Chí Cổ Điển - Không Khung Hộp) */}
+        {/* 3. BỐN GIÁ TRỊ CỐT LÕI (Bố Cục Số La Mã Mở - Không Đóng Hộp)   */}
         {/* ============================================================== */}
         <section className="space-y-8 text-left">
-          <div className="border-b border-amber-200 pb-4">
-            <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
-              {bilingual("Bốn Giá Trị Cốt Lõi Của SAM", "The Four Core Values of SAM")}
-            </h2>
-            <p className="text-xs font-semibold text-primary-700 font-serif uppercase tracking-widest mt-1">
+          <div className="border-b border-white/20 pb-4">
+            <p className="text-xs font-semibold text-amber-300 font-serif uppercase tracking-widest">
               {bilingual("Nguyên Tắc Nền Tảng Dẫn Dắt Mục Vụ", "Foundational Principles Guiding Our Ministry")}
             </p>
+            <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance] drop-shadow-md mt-1">
+              {bilingual("Bốn Giá Trị Cốt Lõi Của SAM", "The Four Core Values of SAM")}
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
             {coreValues.map((val, idx) => (
-              <div key={idx} className="space-y-2 border-t border-amber-200/70 pt-5">
+              <div key={idx} className="space-y-2 border-t border-white/20 pt-5">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-scripture text-3xl font-black text-primary-700">
+                  <span className="font-scripture text-3xl font-black text-amber-400">
                     {val.roman}.
                   </span>
-                  <h3 className="font-scripture font-bold text-slate-900 text-lg">
+                  <h3 className="font-scripture font-bold text-white text-lg">
                     {isEn ? val.titleEn : val.titleVi}
                   </h3>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans pl-7 [text-wrap:pretty]">
+                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans pl-8 [text-wrap:pretty]">
                   {isEn ? val.descEn : val.descVi}
                 </p>
               </div>
@@ -198,31 +199,32 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 5. BAN LÃNH ĐẠO & GIẢNG HUẤN THẬT (Human Leadership Showcase) */}
+        {/* 4. BAN ĐIỀU HÀNH & GIẢNG HUẤN (Khung Vòm Thánh Đường Đỉnh Cong) */}
         {/* ============================================================== */}
         <section className="space-y-8 text-left">
-          <div className="border-b border-amber-200 pb-4">
-            <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-slate-900 [text-wrap:balance]">
-              {bilingual("Ban Điều Hành & Giảng Huấn SAM", "Our Leadership & Faculty")}
-            </h2>
-            <p className="text-xs font-semibold text-primary-700 font-serif uppercase tracking-widest mt-1">
+          <div className="border-b border-white/20 pb-4">
+            <p className="text-xs font-semibold text-amber-300 font-serif uppercase tracking-widest">
               {bilingual("Đội Ngũ Tôi Tớ Chúa Tận Tụy", "Dedicated Servants of the Lord")}
             </p>
+            <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance] drop-shadow-md mt-1">
+              {bilingual("Ban Điều Hành & Giảng Huấn SAM", "Our Leadership & Faculty")}
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {leadership.map((person, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl border border-amber-200/90 p-6 sm:p-7 shadow-2xs reverent-card-hover flex flex-col justify-between space-y-4"
+                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-white/90 backdrop-blur-md border border-white/80 p-6 sm:p-7 shadow-2xl hover:-translate-y-2 transition-all duration-300"
               >
                 <div className="space-y-4">
-                  <div className="relative aspect-square w-full rounded-xl overflow-hidden border border-amber-300 shadow-2xs">
+                  {/* Khung Vòm Thánh Đường bo cong tròn đỉnh */}
+                  <div className="relative aspect-square w-full rounded-t-[40px] rounded-b-2xl overflow-hidden border-2 border-amber-300 shadow-sm">
                     <Image
                       src={person.image}
                       alt={person.name}
                       fill
-                      className="object-cover object-top hover:scale-104 transition-transform duration-500"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div>
@@ -243,21 +245,21 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 6. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Bố Cục Tự Nhiên Thoáng Đãng) */}
+        {/* 5. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Dải Pill Bo Cong Mềm Mại)       */}
         {/* ============================================================== */}
-        <section className="border-t border-amber-200/80 pt-10 space-y-6 text-left animate-fade-up">
-          <div className="max-w-3xl space-y-3">
+        <section className="bg-white/90 backdrop-blur-md rounded-3xl sm:rounded-full p-8 sm:p-10 border border-white/80 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-slate-900 text-left">
+          <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary-700 font-serif">
               <Sparkles className="w-3.5 h-3.5 text-primary-700 shrink-0" />
               <span>{bilingual("Đồng Hành Mục Vụ", "Ministry Fellowship")}</span>
             </div>
-            <h3 className="font-scripture text-2xl sm:text-3xl font-bold text-slate-900 [text-wrap:balance]">
+            <h3 className="font-scripture text-2xl font-bold text-slate-900 [text-wrap:balance]">
               {bilingual(
                 "Đồng Hành Cùng Hành Trình Môn Đồ Hóa Của SAM",
                 "Join the Discipleship & Equipping Journey With SAM"
               )}
             </h3>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-serif [text-wrap:pretty]">
+            <p className="text-xs text-slate-600 font-serif [text-wrap:pretty]">
               {bilingual(
                 "Khám phá các chương trình đào tạo, thư viện bài giảng bồi linh chuẩn mực và kết nối với mạng lưới các tôi tớ Chúa khắp nơi.",
                 "Explore structured training curricula, sound theological resources, and fellowship with faithful servants of Christ globally."
@@ -265,18 +267,18 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link href="/courses">
-              <TactileButton variant="primary" size="md" withCross>
-                <span>{bilingual("Khám Phá Các Khóa Học", "Explore Courses")}</span>
+              <TactileButton variant="primary" size="sm" withCross>
+                <span>{bilingual("Khám Phá Khóa Học", "Courses")}</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </TactileButton>
             </Link>
 
             <Link href="/library">
-              <TactileButton variant="secondary" size="md">
+              <TactileButton variant="secondary" size="sm">
                 <BookOpen className="w-4 h-4 mr-1.5 text-primary-700" />
-                <span>{bilingual("Kho Tư Liệu Bồi Linh", "Resource Vault")}</span>
+                <span>{bilingual("Kho Tư Liệu", "Vault")}</span>
               </TactileButton>
             </Link>
 
@@ -285,14 +287,13 @@ export default function AboutPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Cộng đồng Facebook SAM (Mở trong tab mới)"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-primary-50 text-slate-800 text-xs font-bold border border-amber-200/90 transition-all shadow-2xs min-h-[48px]"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white hover:bg-primary-50 text-slate-800 text-xs font-bold border border-amber-200 transition-all shadow-xs"
             >
-              <span>{bilingual("Cộng Đồng Facebook SAM", "SAM Facebook Page")}</span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
+              <span>Facebook</span>
+              <ExternalLink className="w-3 h-3 text-slate-400" />
             </a>
           </div>
         </section>
-        </div>
       </main>
 
       <PublicFooter />

@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   Sparkles,
   ExternalLink,
+  Flame,
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -44,133 +45,153 @@ export default function ContactPage() {
       <FixedWorldMapBackground />
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
-        <div className="bg-white/85 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-white/60 space-y-8 sm:space-y-10">
-          {/* Breadcrumb Navigation & Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-200/80 animate-fade-in">
-          <Breadcrumb
-            items={[
-              { label: bilingual("Liên Hệ & Gửi Lời Cầu Thay", "Contact & Prayer Requests") },
-            ]}
-          />
-          <span className="text-xs text-slate-500 font-serif italic hidden sm:inline">
-            {bilingual("Dallas Main Campus (Hoa Kỳ) & Văn phòng Việt Nam", "Dallas Main Campus (USA) & Vietnam Office")}
-          </span>
-        </div>
+      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
+        {/* ============================================================== */}
+        {/* 1. EDITORIAL HEADER DIRECTLY ON MAP (No enclosing box) */}
+        {/* ============================================================== */}
+        <section className="text-center space-y-4 animate-fade-in">
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/40 backdrop-blur-md border border-white/20 text-xs text-amber-200">
+              <Breadcrumb
+                items={[
+                  { label: bilingual("Liên Hệ & Cầu Thay", "Contact & Prayer Requests") },
+                ]}
+              />
+            </div>
+          </div>
 
-        {/* 2 Columns: Contact Info & Interactive Forms */}
-        <section className="space-y-6 animate-fade-up delay-75">
-          <h2 className="sr-only">
-            {bilingual("Thông Tin Liên Hệ & Trụ Sở Mục Vụ", "Ministry Contact & Locations")}
-          </h2>
+          <div className="inline-flex items-center gap-2 text-amber-300 font-serif text-xs uppercase tracking-widest">
+            <Flame className="w-4 h-4 text-amber-400" />
+            <span>{bilingual("Dallas Main Campus (USA) & Mạng Lưới Việt Nam", "Dallas Campus (USA) & Global Fellowship")}</span>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
-          {/* Left Column: Official Info & Geolocation */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="p-6 sm:p-7 bg-white rounded-3xl border border-amber-200/90 shadow-sm space-y-5 reverent-card-hover">
-              <h3 className="font-scripture text-xl font-bold text-slate-900 border-b border-amber-100 pb-3">
-                {bilingual("Thông Tin Trực Thuộc", "Official Presence")}
-              </h3>
+          <h1 className="font-scripture text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-md [text-wrap:balance]">
+            {bilingual("Kết Nối & Hiệp Ý Cầu Thay Trong Ân Điển", "Connect & Corporate Prayer In Grace")}
+          </h1>
 
-              <div className="space-y-4 text-xs font-sans">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-primary-50 text-primary-700 border border-primary-200 flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block font-serif">
-                      {bilingual("Trụ sở Dallas (USA):", "Dallas Headquarters:")}
-                    </span>
-                    <span className="text-slate-600">Dallas Main Campus, Texas, United States</span>
-                  </div>
+          <p className="text-sm sm:text-base text-amber-100/90 font-serif italic max-w-2xl mx-auto drop-shadow-xs">
+            {bilingual(
+              "\"Hãy dốc đổ lòng mình ra như nước ở trước mặt Chúa; hãy giơ tay lên hướng về Ngài.\" — Ca-thương 2:19",
+              "\"Pour out your heart like water before the face of the Lord! Lift up your hands toward Him.\" — Lamentations 2:19"
+            )}
+          </p>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 2. TWO-COLUMN SANCTUARY: Info Directory (Left) + Prayer Form (Right) */}
+        {/* ============================================================== */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 text-left items-start">
+          {/* CỘT TRÁI (5 cols): Dark Frosted Glass Directory */}
+          <div className="lg:col-span-5 rounded-[40px] bg-slate-950/60 backdrop-blur-xl border border-white/20 p-7 sm:p-8 text-white space-y-7 shadow-2xl animate-fade-up">
+            <div className="border-b border-white/15 pb-4">
+              <span className="text-xs font-bold text-amber-300 uppercase tracking-widest font-serif block">
+                {bilingual("Trụ Sở & Kênh Liên Lạc", "Official Presence & Contact")}
+              </span>
+              <h2 className="font-scripture text-2xl font-bold text-white mt-1">
+                {bilingual("Thông Tin Trực Thuộc", "Ministry Offices")}
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-xs font-sans">
+              {/* Dallas Campus */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 text-amber-300 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5" />
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-800 border border-amber-300 flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block font-serif">
-                      {bilingual("Văn phòng kết nối Việt Nam:", "Vietnam Office:")}
-                    </span>
-                    <span className="text-slate-600">TP. Hồ Chí Minh & mạng lưới mục vụ toàn quốc</span>
-                  </div>
+                <div>
+                  <span className="font-bold text-white block font-serif text-sm">
+                    {bilingual("Trụ sở Dallas (USA):", "Dallas Headquarters:")}
+                  </span>
+                  <span className="text-slate-300">Dallas Main Campus, Texas, United States</span>
                 </div>
+              </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center justify-center shrink-0">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block font-serif">Hotline Tư Vấn:</span>
-                    <span className="text-slate-700 font-mono">+1 (214) 555-SAM1 / +84 (028) 3888-SAM</span>
-                  </div>
+              {/* Vietnam Office */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 text-amber-300 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5" />
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-800 border border-indigo-300 flex items-center justify-center shrink-0">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block font-serif">Email:</span>
-                    <a href="mailto:contact@saministry.org" className="text-primary-700 font-semibold hover:underline">
-                      contact@saministry.org
-                    </a>
-                  </div>
+                <div>
+                  <span className="font-bold text-white block font-serif text-sm">
+                    {bilingual("Văn phòng kết nối Việt Nam:", "Vietnam Office:")}
+                  </span>
+                  <span className="text-slate-300">TP. Hồ Chí Minh & mạng lưới mục vụ toàn quốc</span>
                 </div>
+              </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-rose-50 text-rose-800 border border-rose-300 flex items-center justify-center shrink-0">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-900 block font-serif">
-                      {bilingual("Giờ làm việc & Tương giao:", "Ministry Hours:")}
-                    </span>
-                    <span className="text-slate-600">Thứ Hai – Thứ Bảy: 8:00 AM – 6:00 PM (CST)</span>
-                  </div>
+              {/* Hotline */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="font-bold text-white block font-serif text-sm">
+                    {bilingual("Hotline Mục Vụ:", "Pastoral Care Hotline:")}
+                  </span>
+                  <span className="text-amber-200 font-mono font-bold">+1 (214) 555-SAM1 / +84 (028) 3888-SAM</span>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 text-sky-400 flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="font-bold text-white block font-serif text-sm">Email:</span>
+                  <a href="mailto:contact@saministry.org" className="text-amber-300 font-semibold hover:underline">
+                    contact@saministry.org
+                  </a>
+                </div>
+              </div>
+
+              {/* Office Hours */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 text-rose-400 flex items-center justify-center shrink-0">
+                  <Clock className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="font-bold text-white block font-serif text-sm">
+                    {bilingual("Giờ làm việc & Tương giao:", "Ministry Hours:")}
+                  </span>
+                  <span className="text-slate-300">Thứ Hai – Thứ Bảy: 8:00 AM – 6:00 PM (CST)</span>
                 </div>
               </div>
             </div>
 
-            {/* Embedded Map Representation */}
-            <div className="p-5 bg-white rounded-3xl border border-amber-200/90 overflow-hidden shadow-2xs space-y-3">
-              <span className="text-xs font-bold text-slate-900 font-serif block">
-                {bilingual("Địa Điểm Thờ Phượng & Kết Nối", "Sanctuary Geolocation")}
-              </span>
-              <div className="relative aspect-video rounded-2xl bg-sacred-card border border-amber-200 overflow-hidden flex items-center justify-center text-center p-4">
-                <div className="space-y-1">
-                  <MapPin className="w-6 h-6 text-primary-700 mx-auto" />
-                  <span className="text-xs font-bold text-slate-900 block font-serif">Spiritual Advance Ministry</span>
-                  <span className="text-xs text-slate-500 block">Dallas, TX 75201, United States</span>
-                  <a
-                    href="https://maps.google.com/?q=Dallas,Texas"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-primary-800 font-bold pt-1 hover:underline"
-                  >
-                    <span>{bilingual("Xem trên Google Maps", "Open in Google Maps")}</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
+            {/* Cathedral Arched Map Frame */}
+            <div className="pt-2">
+              <div className="rounded-t-[32px] rounded-b-2xl bg-slate-900 border border-white/20 overflow-hidden shadow-lg p-5 text-center space-y-2">
+                <MapPin className="w-6 h-6 text-amber-400 mx-auto" />
+                <span className="text-xs font-bold text-white block font-serif">Spiritual Advance Ministry</span>
+                <span className="text-xs text-slate-400 block">Dallas, TX 75201, United States</span>
+                <a
+                  href="https://maps.google.com/?q=Dallas,Texas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs text-amber-300 font-bold pt-1 hover:underline"
+                >
+                  <span>{bilingual("Xem trên Google Maps", "Open in Google Maps")}</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Dynamic Form Tabs */}
-          <div className="lg:col-span-2 bg-white rounded-3xl border border-amber-200/90 shadow-md p-6 sm:p-9 space-y-6">
-            {/* Tab Selection (Thanh lịch, không khung hộp AI) */}
-            <div className="flex flex-wrap items-center gap-6 border-b border-amber-200/80 pb-1">
+          {/* CỘT PHẢI (7 cols): Frosted Light Prayer & Fellowship Sanctuary */}
+          <div className="lg:col-span-7 bg-white/92 backdrop-blur-xl rounded-[40px] border border-white/70 shadow-2xl p-7 sm:p-10 space-y-7 animate-fade-up delay-75">
+            {/* Pill Tab Switcher */}
+            <div className="flex flex-wrap items-center gap-2 p-1.5 bg-[#FAF8F3] rounded-full border border-amber-200">
               <button
                 type="button"
                 onClick={() => {
                   setActiveTab("general");
                   setSubmitted(false);
                 }}
-                className={`py-2 text-xs sm:text-sm font-serif transition-colors flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[5px] ${
+                className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeTab === "general"
-                    ? "border-primary-700 text-primary-700 font-bold"
-                    : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
+                    ? "bg-primary-700 text-white shadow-md"
+                    : "text-slate-700 hover:text-slate-900"
                 }`}
               >
                 <MessageSquare className="w-4 h-4" />
@@ -183,10 +204,10 @@ export default function ContactPage() {
                   setActiveTab("prayer");
                   setSubmitted(false);
                 }}
-                className={`py-2 text-xs sm:text-sm font-serif transition-colors flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[5px] ${
+                className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeTab === "prayer"
-                    ? "border-primary-700 text-primary-700 font-bold"
-                    : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
+                    ? "bg-primary-700 text-white shadow-md"
+                    : "text-slate-700 hover:text-slate-900"
                 }`}
               >
                 <Heart className="w-4 h-4" />
@@ -199,10 +220,10 @@ export default function ContactPage() {
                   setActiveTab("partner");
                   setSubmitted(false);
                 }}
-                className={`py-2 text-xs sm:text-sm font-serif transition-colors flex items-center gap-1.5 cursor-pointer border-b-2 -mb-[5px] ${
+                className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                   activeTab === "partner"
-                    ? "border-primary-700 text-primary-700 font-bold"
-                    : "border-transparent text-slate-600 hover:text-slate-900 font-medium"
+                    ? "bg-primary-700 text-white shadow-md"
+                    : "text-slate-700 hover:text-slate-900"
                 }`}
               >
                 <Handshake className="w-4 h-4" />
@@ -211,8 +232,8 @@ export default function ContactPage() {
             </div>
 
             {submitted ? (
-              <div className="p-8 rounded-2xl bg-primary-50 border border-primary-200 text-center space-y-4 animate-in fade-in">
-                <div className="w-16 h-16 rounded-full bg-primary-700 text-white mx-auto flex items-center justify-center shadow-md">
+              <div className="p-8 rounded-3xl bg-primary-50 border border-primary-200 text-center space-y-4 animate-scale-in">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary-600 to-amber-600 text-white mx-auto flex items-center justify-center shadow-lg">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
                 <h3 className="font-scripture text-2xl font-bold text-slate-900">
@@ -230,7 +251,7 @@ export default function ContactPage() {
                       )}
                 </p>
                 <div className="pt-2">
-                  <TactileButton variant="primary" size="md" onClick={() => setSubmitted(false)}>
+                  <TactileButton variant="primary" size="md" onClick={() => setSubmitted(false)} className="rounded-full">
                     <span>{bilingual("Gửi Tin Nhắn Khác", "Send Another Message")}</span>
                   </TactileButton>
                 </div>
@@ -303,7 +324,7 @@ export default function ContactPage() {
                           )
                         : bilingual("Nội dung chi tiết...", "Details...")
                     }
-                    className="w-full px-4 py-3 text-xs bg-sacred-card text-slate-900 rounded-xl border border-amber-200 placeholder:text-slate-500 focus:outline-none focus:border-primary-700 focus:ring-1 focus:ring-primary-700 min-h-[120px]"
+                    className="w-full px-4 py-3 text-xs bg-[#FAF8F3] text-slate-900 rounded-2xl border border-amber-200 placeholder:text-slate-500 focus:outline-none focus:border-primary-700 focus:ring-1 focus:ring-primary-700 min-h-[120px]"
                     required
                   />
                 </div>
@@ -326,7 +347,7 @@ export default function ContactPage() {
                 )}
 
                 <div className="pt-2">
-                  <TactileButton variant="primary" size="lg" type="submit" withCross className="w-full">
+                  <TactileButton variant="primary" size="lg" type="submit" withCross className="w-full rounded-full min-h-[50px] shadow-lg">
                     <span>
                       {activeTab === "prayer"
                         ? bilingual("Gửi Yêu Cầu Cầu Thay", "Submit Prayer Request")
@@ -339,9 +360,7 @@ export default function ContactPage() {
               </form>
             )}
           </div>
-        </div>
         </section>
-        </div>
       </main>
 
       <PublicFooter />
