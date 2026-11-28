@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SAM_LOGO_DATA_URL } from "@/lib/sam-logo";
 import { useLanguage } from "@/lib/i18n/language-context";
+import { useAuth } from "@/lib/auth-context";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import {
   Menu,
@@ -15,10 +16,13 @@ import {
   PhoneCall,
   Home,
   GraduationCap,
+  LogIn,
+  LayoutDashboard,
 } from "lucide-react";
 
 export function PublicHeader() {
   const { isEn, bilingual } = useLanguage();
+  const { user } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -88,6 +92,24 @@ export function PublicHeader() {
           {/* Language Selector Dropdown with Country Flags (h-9) */}
           <LanguageSwitcher size="sm" variant="glass" />
 
+          {/* Desktop Login / Dashboard button */}
+          <Link
+            href={user ? "/dashboard" : "/login"}
+            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-serif font-semibold tracking-wide transition-all cursor-pointer shadow-xs"
+          >
+            {user ? (
+              <>
+                <LayoutDashboard className="w-3.5 h-3.5 text-amber-300" />
+                <span>{bilingual("Quản Trị", "Dashboard")}</span>
+              </>
+            ) : (
+              <>
+                <LogIn className="w-3.5 h-3.5 text-amber-300" />
+                <span>{bilingual("Đăng Nhập", "Login")}</span>
+              </>
+            )}
+          </Link>
+
           {/* Mobile Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -133,11 +155,25 @@ export function PublicHeader() {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-white/10 flex items-center justify-between">
-            <span className="text-xs font-serif text-slate-300">
-              {bilingual("Ngôn ngữ hiển thị:", "Display Language:")}
-            </span>
-            <LanguageSwitcher align="right" variant="glass" />
+          {/* Mobile Login Button (thay thế chỗ chọn ngôn ngữ vì bên ngoài header đã có) */}
+          <div className="pt-3 border-t border-white/10">
+            <Link
+              href={user ? "/dashboard" : "/login"}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-amber-600 hover:from-primary-500 hover:to-amber-500 text-white font-serif font-bold text-sm shadow-md transition-all cursor-pointer min-h-[44px]"
+            >
+              {user ? (
+                <>
+                  <LayoutDashboard className="w-4 h-4 text-amber-200" />
+                  <span>{bilingual("Vào Bảng Quản Trị", "Go to Dashboard")}</span>
+                </>
+              ) : (
+                <>
+                  <LogIn className="w-4 h-4 text-amber-200" />
+                  <span>{bilingual("Đăng Nhập Thành Viên", "Member Login")}</span>
+                </>
+              )}
+            </Link>
           </div>
         </div>
       )}
