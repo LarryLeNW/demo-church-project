@@ -14,9 +14,6 @@ import {
   Sparkles,
   MapPin,
   Flame,
-  ShieldCheck,
-  GraduationCap,
-  Users,
   Heart,
   Quote,
 } from "lucide-react";
@@ -173,24 +170,6 @@ export default function HomePage() {
                   <span className="text-xs text-amber-200/90 font-sans block font-medium">
                     {bilingual("Dallas, Texas • Phục sự cộng đồng Cơ Đốc", "Dallas, Texas • Serving Christian Ministries")}
                   </span>
-                </div>
-              </ScrollReveal>
-
-              {/* Dấu ấn tín nhiệm & bảo trợ */}
-              <ScrollReveal variant="slide-up" delay={360}>
-                <div className="pt-4 border-t border-white/25 flex flex-wrap items-center gap-6 text-xs text-slate-200 font-sans drop-shadow-sm">
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-primary-400 shrink-0" />
-                    <span className="font-semibold text-white">IRS 501(c)(3) Phê Chuẩn</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <GraduationCap className="w-4 h-4 text-primary-400 shrink-0" />
-                    <span>Giáo trình song ngữ Anh - Việt</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-primary-400 shrink-0" />
-                    <span>Hơn 1,200 môn đồ đã được trang bị</span>
-                  </div>
                 </div>
               </ScrollReveal>
             </div>
