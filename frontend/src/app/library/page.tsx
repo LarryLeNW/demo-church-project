@@ -22,6 +22,7 @@ import {
   Bookmark,
   Share2,
   ChevronRight,
+  RotateCcw,
 } from "lucide-react";
 
 export default function LibraryPage() {
@@ -170,7 +171,7 @@ export default function LibraryPage() {
       <FixedWorldMapBackground />
       <PublicHeader />
 
-      <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-10 sm:space-y-12">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-10 sm:space-y-12">
         {/* Breadcrumb Navigation & Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/20 animate-fade-in text-white">
           <Breadcrumb
@@ -379,8 +380,32 @@ export default function LibraryPage() {
             </div>
 
             {filteredBooks.length === 0 && (
-              <div className="p-12 text-center rounded-3xl bg-slate-950/60 backdrop-blur-xl border border-white/20 text-white text-sm">
-                {bilingual("Không tìm thấy tài liệu phù hợp với từ khóa.", "No literature found matching your search.")}
+              <div className="w-full min-h-[260px] flex flex-col items-center justify-center p-8 sm:p-12 text-center rounded-2xl sm:rounded-3xl bg-slate-950/60 backdrop-blur-xl border border-white/15 text-white shadow-2xl space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-300">
+                  <BookOpen className="w-6 h-6" />
+                </div>
+                <h4 className="font-serif text-base sm:text-lg font-bold text-white">
+                  {bilingual("Không tìm thấy tài liệu phù hợp", "No study books found matching your criteria")}
+                </h4>
+                <p className="text-xs text-slate-400 max-w-md">
+                  {bilingual(
+                    "Thử tìm kiếm với từ khóa khác hoặc xóa bộ lọc chủ đề để xem tất cả tài liệu.",
+                    "Try adjusting your search terms or reset the topic filter to browse the full library."
+                  )}
+                </p>
+                {(searchTerm !== "" || selectedCategory !== "all") && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchTerm("");
+                      setSelectedCategory("all");
+                    }}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 mt-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-amber-300 border border-white/20 transition-all cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>{bilingual("Xóa Bộ Lọc & Tìm Kiếm", "Reset All Filters")}</span>
+                  </button>
+                )}
               </div>
             )}
           </section>
@@ -455,8 +480,32 @@ export default function LibraryPage() {
             </div>
 
             {filteredVideos.length === 0 && (
-              <div className="p-12 text-center rounded-3xl bg-slate-950/60 backdrop-blur-xl border border-white/20 text-white text-sm">
-                {bilingual("Không tìm thấy video bài giảng phù hợp.", "No video sermons found matching your search.")}
+              <div className="w-full min-h-[260px] flex flex-col items-center justify-center p-8 sm:p-12 text-center rounded-2xl sm:rounded-3xl bg-slate-950/60 backdrop-blur-xl border border-white/15 text-white shadow-2xl space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-300">
+                  <Video className="w-6 h-6" />
+                </div>
+                <h4 className="font-serif text-base sm:text-lg font-bold text-white">
+                  {bilingual("Không tìm thấy video bài giảng phù hợp", "No video sermons found matching your criteria")}
+                </h4>
+                <p className="text-xs text-slate-400 max-w-md">
+                  {bilingual(
+                    "Thử tìm kiếm với từ khóa khác hoặc xóa bộ lọc chủ đề để xem tất cả bài giảng.",
+                    "Try adjusting your search terms or reset the topic filter to browse all sermon vault media."
+                  )}
+                </p>
+                {(searchTerm !== "" || selectedCategory !== "all") && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchTerm("");
+                      setSelectedCategory("all");
+                    }}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 mt-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-amber-300 border border-white/20 transition-all cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>{bilingual("Xóa Bộ Lọc & Tìm Kiếm", "Reset All Filters")}</span>
+                  </button>
+                )}
               </div>
             )}
           </section>

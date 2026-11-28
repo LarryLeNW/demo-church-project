@@ -63,7 +63,7 @@ export default function AnnouncementsPage() {
       <FixedWorldMapBackground />
       <PublicHeader />
 
-      <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
+      <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-14 space-y-12 sm:space-y-16">
         {/* Breadcrumb Navigation & Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/20 animate-fade-in text-white">
           <Breadcrumb
