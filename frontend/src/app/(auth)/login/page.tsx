@@ -103,10 +103,15 @@ export default function LoginPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center flex flex-col items-center animate-fade-up">
         <Link
           href="/"
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-semibold shadow-2xs hover:scale-105 transition-transform"
+          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-950/90 border border-white/20 hover:border-amber-400/50 text-white text-xs sm:text-sm font-semibold shadow-xl hover:scale-105 transition-all group"
         >
-          <img src={SAM_LOGO_DATA_URL} alt="Spiritual Advance Ministry" className="w-5 h-5 object-contain" />
-          <span className="font-serif font-bold">Spiritual Advance Ministry</span>
+          {/* Huy hiệu tròn nền sáng bảo vệ logo đỏ SAM luôn rực rỡ, không bị chìm hay phản bóng nền */}
+          <div className="w-6 h-6 rounded-full bg-white shadow-xs flex items-center justify-center p-0.5 shrink-0">
+            <img src={SAM_LOGO_DATA_URL} alt="Spiritual Advance Ministry" className="w-full h-full object-contain" />
+          </div>
+          <span className="font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
+            Spiritual Advance Ministry
+          </span>
         </Link>
       </div>
 
@@ -160,15 +165,14 @@ export default function LoginPage() {
             <TactileButton
               type="submit"
               variant="primary"
-              size="lg"
-              withCross
+              size="md"
               disabled={loading}
-              className="w-full mt-2 rounded-full"
+              className="w-full mt-2 rounded-xl py-2.5 text-sm font-semibold shadow-md cursor-pointer"
             >
               <span>
                 {loading
-                  ? bilingual("Đang xác thực...", "Authenticating...")
-                  : bilingual("Đăng Nhập Vào Hệ Thống", "Sign In to Platform")}
+                  ? bilingual("Đang đăng nhập...", "Signing in...")
+                  : bilingual("Đăng Nhập", "Sign In")}
               </span>
             </TactileButton>
           </form>

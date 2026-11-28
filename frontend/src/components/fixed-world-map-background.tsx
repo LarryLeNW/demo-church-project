@@ -32,7 +32,7 @@ export function FixedWorldMapBackground({
       <div
         className={`absolute inset-0 transition-all duration-700 ${
           isVivid
-            ? "bg-gradient-to-b from-[#002a50]/45 via-[#003566]/40 to-[#001428]/65"
+            ? "bg-gradient-to-b from-[#002244]/65 via-[#003366]/45 to-[#001428]/70"
             : "bg-gradient-to-b from-[#003366]/85 via-[#004780]/80 to-[#001c3d]/95"
         }`}
       />
