@@ -249,7 +249,7 @@ export default function GivePage() {
         {/* ============================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           {/* CỘT TRÁI (7 cols): Sanctuary Giving Plaque (Dark Frosted Glass) */}
-          <div className="lg:col-span-7 bg-slate-950/60 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-5 sm:p-6 space-y-4 text-left text-white animate-fade-up">
+          <div className="lg:col-span-7 bg-slate-950/60 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-4 sm:p-6 space-y-4 text-left text-white animate-fade-up">
             <div className="border-b border-white/15 pb-3">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 font-serif flex items-center gap-1.5">

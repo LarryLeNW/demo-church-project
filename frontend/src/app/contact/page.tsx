@@ -62,7 +62,7 @@ export default function ContactPage() {
         {/* ============================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 text-left items-start">
           {/* CỘT TRÁI (5 cols): Dark Frosted Glass Directory */}
-          <div className="lg:col-span-5 rounded-[40px] bg-slate-950/60 backdrop-blur-xl border border-white/20 p-7 sm:p-8 text-white space-y-7 shadow-2xl animate-fade-up">
+          <div className="lg:col-span-5 rounded-3xl sm:rounded-[40px] bg-slate-950/60 backdrop-blur-xl border border-white/20 p-5 sm:p-8 text-white space-y-6 sm:space-y-7 shadow-2xl animate-fade-up">
             <div className="border-b border-white/15 pb-4">
               <span className="text-xs font-bold text-amber-300 uppercase tracking-widest font-serif block">
                 {bilingual("Trụ Sở & Kênh Liên Lạc", "Official Presence & Contact")}
@@ -159,7 +159,7 @@ export default function ContactPage() {
           </div>
 
           {/* CỘT PHẢI (7 cols): Frosted Dark Prayer & Fellowship Sanctuary */}
-          <div className="lg:col-span-7 bg-slate-950/50 backdrop-blur-xl rounded-[40px] border border-white/20 shadow-2xl p-7 sm:p-10 space-y-7 text-white animate-fade-up delay-75 min-h-[580px]">
+          <div className="lg:col-span-7 bg-slate-950/50 backdrop-blur-xl rounded-3xl sm:rounded-[40px] border border-white/20 shadow-2xl p-5 sm:p-10 space-y-6 sm:space-y-7 text-white animate-fade-up delay-75 min-h-[580px]">
             {/* Pill Tab Switcher: Rock-solid 3-column grid with stable geometry and 0 width jitter */}
             <div className="grid grid-cols-3 gap-1 sm:gap-1.5 p-1.5 bg-slate-900/80 rounded-full border border-white/15 w-full">
               <button
@@ -175,7 +175,8 @@ export default function ContactPage() {
                 }`}
               >
                 <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                <span className="truncate">{bilingual("Liên Hệ Chung", "General Inquiry")}</span>
+                <span className="truncate hidden sm:inline">{bilingual("Liên Hệ Chung", "General Inquiry")}</span>
+                <span className="truncate sm:hidden">{bilingual("Liên Hệ", "General")}</span>
               </button>
 
               <button
@@ -191,7 +192,8 @@ export default function ContactPage() {
                 }`}
               >
                 <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                <span className="truncate">{bilingual("Gửi Lời Cầu Thay", "Prayer Request")}</span>
+                <span className="truncate hidden sm:inline">{bilingual("Gửi Lời Cầu Thay", "Prayer Request")}</span>
+                <span className="truncate sm:hidden">{bilingual("Cầu Thay", "Prayer")}</span>
               </button>
 
               <button
@@ -207,7 +209,8 @@ export default function ContactPage() {
                 }`}
               >
                 <Handshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                <span className="truncate">{bilingual("Đề Xuất Hợp Tác", "Partnership")}</span>
+                <span className="truncate hidden sm:inline">{bilingual("Đề Xuất Hợp Tác", "Partnership")}</span>
+                <span className="truncate sm:hidden">{bilingual("Hợp Tác", "Partner")}</span>
               </button>
             </div>
 

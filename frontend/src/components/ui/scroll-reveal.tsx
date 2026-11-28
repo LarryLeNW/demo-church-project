@@ -72,13 +72,13 @@ export function ScrollReveal({
   const getInitialClass = () => {
     switch (variant) {
       case "slide-up":
-        return "translate-y-12 opacity-0";
+        return "translate-y-8 sm:translate-y-12 opacity-0";
       case "slide-down":
-        return "-translate-y-12 opacity-0";
+        return "-translate-y-8 sm:-translate-y-12 opacity-0";
       case "slide-left":
-        return "translate-x-14 opacity-0";
+        return "translate-y-8 sm:translate-y-0 sm:translate-x-14 opacity-0";
       case "slide-right":
-        return "-translate-x-14 opacity-0";
+        return "translate-y-8 sm:translate-y-0 sm:-translate-x-14 opacity-0";
       case "reveal-text":
         return "opacity-0 [clip-path:inset(0_100%_0_0)] -translate-x-4";
       case "reveal-scale":

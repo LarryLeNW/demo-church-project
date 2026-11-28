@@ -186,7 +186,7 @@ export default function LibraryPage() {
         {/* ============================================================== */}
         {/* 2. FLOATING PILL RIBBON CONTROLS (Tabs & Search Bar) */}
         {/* ============================================================== */}
-        <section className="bg-slate-950/60 backdrop-blur-xl rounded-full border border-white/20 p-2 sm:px-6 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 animate-fade-up">
+        <section className="bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-full border border-white/20 p-2.5 sm:px-6 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 animate-fade-up">
           {/* Tab Switcher */}
           <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
             <button
@@ -280,11 +280,11 @@ export default function LibraryPage() {
               {filteredBooks.map((book, idx) => (
                 <div
                   key={book.id}
-                  className="rounded-t-[44px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-1.5 transition-all duration-300 p-6 sm:p-7 flex flex-col sm:flex-row gap-6 justify-between group text-white"
+                  className="rounded-t-[36px] sm:rounded-t-[44px] rounded-b-2xl sm:rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-1.5 transition-all duration-300 p-5 sm:p-7 flex flex-col sm:flex-row gap-6 justify-between group text-white"
                   style={{ animationDelay: `${(idx + 1) * 75}ms` }}
                 >
                   {/* Cathedral Arched Book Cover */}
-                  <div className="relative aspect-[3/4] w-full sm:w-40 rounded-t-[36px] rounded-b-xl bg-slate-900 border border-white/10 overflow-hidden shrink-0 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <div className="relative aspect-[3/4] w-full sm:w-40 rounded-t-[30px] sm:rounded-t-[36px] rounded-b-xl bg-slate-900 border border-white/10 overflow-hidden shrink-0 shadow-lg group-hover:shadow-xl transition-shadow">
                     <Image
                       src={book.cover}
                       alt={book.titleVi}

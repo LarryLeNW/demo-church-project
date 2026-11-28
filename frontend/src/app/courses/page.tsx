@@ -175,12 +175,12 @@ export default function CoursesPage() {
             {filteredCourses.map((course, idx) => (
               <div
                 key={course.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left text-white animate-fade-up"
+                className="group flex flex-col justify-between overflow-hidden rounded-t-[36px] sm:rounded-t-[48px] rounded-b-2xl sm:rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left text-white animate-fade-up"
                 style={{ animationDelay: `${(idx + 1) * 75}ms` }}
               >
                 <div>
                   {/* Bìa khóa học Khung Vòm Thánh Đường */}
-                  <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
+                  <div className="relative aspect-[16/10] w-full rounded-t-[32px] sm:rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
                     <Image
                       src={course.image}
                       alt={course.titleVi}
@@ -192,7 +192,7 @@ export default function CoursesPage() {
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-7 space-y-4">
+                  <div className="p-5 sm:p-7 space-y-4">
                     {/* Thời lượng & Cấp độ */}
                     <div className="flex items-center justify-between text-xs text-slate-400 font-sans">
                       <span className="flex items-center gap-1.5 font-medium">
@@ -237,7 +237,7 @@ export default function CoursesPage() {
                 </div>
 
                 {/* Nút hành động */}
-                <div className="p-6 sm:p-7 pt-0 border-t border-white/10 mt-4">
+                <div className="p-5 sm:p-7 pt-0 border-t border-white/10 mt-4">
                   <Link href="/dashboard" className="block w-full pt-4">
                     <TactileButton variant="primary" size="md" withCross className="w-full justify-center rounded-full">
                       <span>{bilingual("Vào Lớp Học Ngay", "Enroll in Course")}</span>
@@ -253,7 +253,7 @@ export default function CoursesPage() {
         {/* ============================================================== */}
         {/* 2. LỘ TRÌNH MÔN ĐỒ HÓA 4 BƯỚC (TẤM PHÙ ĐIÊU KÍNH TỐI MÀU)        */}
         {/* ============================================================== */}
-        <section className="bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl space-y-8 text-left">
+        <section className="bg-slate-950/50 backdrop-blur-xl rounded-3xl sm:rounded-[48px] p-5 sm:p-10 lg:p-14 border border-white/20 text-white shadow-2xl space-y-8 text-left">
           <div className="border-b border-white/20 pb-4">
             <p className="text-xs font-semibold text-amber-300 font-serif uppercase tracking-widest">
               {bilingual(

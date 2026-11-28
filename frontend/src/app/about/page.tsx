@@ -131,7 +131,7 @@ export default function AboutPage() {
         {/* ============================================================== */}
         {/* 2. TẦM NHÌN & SỨ MẠNG (Tấm Phù Điêu Kính Tối Màu Asymmetrical Plaque) */}
         {/* ============================================================== */}
-        <section className="bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl">
+        <section className="bg-slate-950/50 backdrop-blur-xl rounded-3xl sm:rounded-[48px] p-5 sm:p-10 lg:p-14 border border-white/20 text-white shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/20 text-left">
             <div className="pb-6 md:pb-0 md:pr-10 space-y-3">
               <div className="flex items-center gap-2.5 text-amber-300">
@@ -246,7 +246,7 @@ export default function AboutPage() {
         {/* ============================================================== */}
         {/* 5. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Khối Phù Điêu Thánh Đường)        */}
         {/* ============================================================== */}
-        <section className="relative overflow-hidden bg-slate-950/60 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border border-amber-400/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-white text-left">
+        <section className="relative overflow-hidden bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-[40px] p-5 sm:p-10 border border-amber-400/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 text-white text-left">
           {/* Subtle Ambient Background Light */}
           <div className="absolute -right-24 -bottom-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none select-none" />
           <div className="absolute -left-24 -top-24 w-80 h-80 bg-primary-600/10 rounded-full blur-3xl pointer-events-none select-none" />
@@ -270,23 +270,23 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="relative z-10 flex flex-wrap items-center gap-3 shrink-0">
+          <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto shrink-0">
             <Link href="/courses">
-              <TactileButton variant="primary" size="md" withCross className="rounded-xl shadow-md">
+              <TactileButton variant="primary" size="md" withCross className="rounded-xl shadow-md w-full sm:w-auto justify-center">
                 <span>{bilingual("Khám Phá Khóa Học", "Explore Courses")}</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </TactileButton>
             </Link>
 
             <Link href="/library">
-              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-white hover:bg-white/15">
+              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-white hover:bg-white/15 w-full sm:w-auto justify-center">
                 <BookOpen className="w-4 h-4 mr-1.5 text-amber-300" />
                 <span>{bilingual("Kho Tư Liệu", "Library Vault")}</span>
               </TactileButton>
             </Link>
 
             <Link href="/contact">
-              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-slate-200 hover:text-white hover:bg-white/15">
+              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-slate-200 hover:text-white hover:bg-white/15 w-full sm:w-auto justify-center">
                 <span>{bilingual("Liên Hệ Mục Vụ", "Contact Ministry")}</span>
               </TactileButton>
             </Link>

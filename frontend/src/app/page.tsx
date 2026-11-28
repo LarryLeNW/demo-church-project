@@ -147,7 +147,7 @@ export default function HomePage() {
 
               <div className="space-y-4">
                 <ScrollReveal variant="slide-up" delay={120}>
-                  <h1 className="font-scripture text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] [text-wrap:balance] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                  <h1 className="font-scripture text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] [text-wrap:balance] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                     {bilingual(
                       "Vun Trồng Tôi Tớ Chúa & Nâng Tầm Môn Đồ Hóa",
                       "Cultivating Servants & Elevating Discipleship"
@@ -197,7 +197,7 @@ export default function HomePage() {
 
             {/* Cột phải: Khung Vòm Thánh Đường (Cathedral Arch) - Đứng yên tĩnh tại trang nghiêm, không di chuyển */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-sm">
+              <div className="relative w-full max-w-[280px] xs:max-w-xs sm:max-w-sm">
                 <div className="rounded-t-[140px] rounded-b-3xl border-2 border-amber-300/80 bg-slate-950/40 backdrop-blur-md p-3 shadow-2xl overflow-hidden">
                   <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-slate-900">
                     <Image
@@ -240,7 +240,7 @@ export default function HomePage() {
               "Partnering with Christian Ministries & Seminaries"
             )}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-14">
             {partnerLogos.map((p, idx) => (
               <div key={idx} className="flex items-center gap-2.5 group opacity-85 hover:opacity-100 transition-opacity">
                 <div className="relative w-7 h-7 sm:w-8 sm:h-8 shrink-0 drop-shadow-sm">
@@ -273,7 +273,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal variant="slide-up" delay={150}>
-            <blockquote className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-normal leading-relaxed italic [text-wrap:balance] drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] max-w-3xl mx-auto">
+            <blockquote className="font-serif text-2xl sm:text-4xl lg:text-5xl text-white font-normal leading-relaxed italic [text-wrap:balance] drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] max-w-3xl mx-auto">
               {bilingual(
                 "“Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con Một của Ngài, hầu cho hễ ai tin Con ấy không bị hư mất mà được sự sống đời đời.”",
                 "“For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.”"
@@ -300,7 +300,7 @@ export default function HomePage() {
       {/* Bố cục bất đối xứng, số La Mã I, II, III cổ điển, tương phản sang trọng    */}
       {/* ========================================================================= */}
       <section className="relative w-full py-10 px-4 sm:px-6 md:px-8">
-        <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl">
+        <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-3xl sm:rounded-[48px] p-5 sm:p-10 lg:p-14 border border-white/20 text-white shadow-2xl">
           <ScrollReveal variant="slide-up" delay={50} className="border-b border-white/20 pb-6 text-left">
             <p className="text-xs font-bold text-amber-300 font-serif uppercase tracking-widest">
               {bilingual("Khải Tượng Mục Vụ & Đào Tạo Môn Đồ", "Vision, Mandate & Discipleship")}
@@ -431,11 +431,11 @@ export default function HomePage() {
                 className="h-full"
               >
                 <div
-                  className="group flex flex-col justify-between h-full overflow-hidden rounded-t-[48px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-white"
+                  className="group flex flex-col justify-between h-full overflow-hidden rounded-t-[36px] sm:rounded-t-[48px] rounded-b-2xl sm:rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-white"
                 >
                   <div>
                     {/* Bìa Khung Vòm Thánh Đường bo cong tròn đỉnh */}
-                    <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
+                    <div className="relative aspect-[16/10] w-full rounded-t-[32px] sm:rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
                       <Image
                         src={c.cover}
                         alt={c.titleVi}
@@ -447,7 +447,7 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <div className="p-6 sm:p-7 space-y-3 text-left">
+                    <div className="p-5 sm:p-7 space-y-3 text-left">
                       <div className="flex items-center justify-between text-xs text-slate-400 font-sans">
                         <span>{c.lessons}</span>
                         <span className="text-amber-300 font-semibold">{isEn ? c.authorEn : c.authorVi}</span>
@@ -463,7 +463,7 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-7 pt-0">
+                  <div className="p-5 sm:p-7 pt-0">
                     <Link
                       href="/courses"
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:text-amber-200 hover:underline min-h-[40px]"
@@ -483,7 +483,7 @@ export default function HomePage() {
       {/* 6. DÂNG HIẾN MỤC VỤ (TẤM PHÙ ĐIÊU KÍNH MỜ THÁNH KHIẾT VỚI CON DẤU TRÒN IRS) */}
       {/* ========================================================================= */}
       <section className="relative w-full py-10 px-4 sm:px-6 md:px-8">
-        <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 shadow-2xl text-white">
+        <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-3xl sm:rounded-[48px] p-5 sm:p-10 lg:p-14 border border-white/20 shadow-2xl text-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Cột trái: Sứ mạng & Con dấu tròn vàng kim */}
             <div className="lg:col-span-7 space-y-5 text-left">
@@ -570,7 +570,7 @@ export default function HomePage() {
       {/* Bố cục mở với ảnh chân dung tròn trang nhã, không khung hộp tù túng       */}
       {/* ========================================================================= */}
       <section className="relative w-full py-12 pb-16 px-4 sm:px-6 md:px-8">
-        <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl space-y-10">
+        <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-3xl sm:rounded-[48px] p-5 sm:p-10 lg:p-14 border border-white/20 text-white shadow-2xl space-y-10">
           <ScrollReveal variant="slide-up" delay={50} className="text-center space-y-2 max-w-2xl mx-auto">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance]">
               {bilingual("Bông Trái Thuộc Linh & Lời Chứng", "Spiritual Fruits & Testimonies")}
