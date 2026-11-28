@@ -184,91 +184,106 @@ export default function LibraryPage() {
         </div>
 
         {/* ============================================================== */}
-        {/* 2. FLOATING PILL RIBBON CONTROLS (Tabs & Search Bar) */}
+        {/* 2. THƯ VIỆN ĐIỀU HƯỚNG & TÌM KIẾM (THEOLOGICAL DIRECTORY BAR)    */}
+        {/* Thiết kế thanh lịch, trang nghiêm, loại bỏ hoàn toàn dáng AI    */}
         {/* ============================================================== */}
-        <section className="bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-full border border-white/20 p-2.5 sm:px-6 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 animate-fade-up">
-          {/* Tab Switcher */}
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
-            <button
-              onClick={() => setActiveTab("books")}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-serif transition-all cursor-pointer ${
-                activeTab === "books"
-                  ? "bg-gradient-to-r from-primary-600 to-amber-600 text-white font-bold shadow-md shadow-primary-900/40"
-                  : "text-slate-300 hover:text-white hover:bg-white/10 font-medium"
-              }`}
-            >
-              <FileText className="w-4 h-4" />
-              <span>{bilingual("Sách Bồi Linh", "Study Books")}</span>
-              <span className={`text-[11px] px-2 py-0.5 rounded-full font-mono font-bold ${
-                activeTab === "books" ? "bg-white/25 text-white" : "bg-white/10 text-slate-300"
-              }`}>
-                {books.length}
-              </span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab("videos")}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-serif transition-all cursor-pointer ${
-                activeTab === "videos"
-                  ? "bg-gradient-to-r from-primary-600 to-amber-600 text-white font-bold shadow-md shadow-primary-900/40"
-                  : "text-slate-300 hover:text-white hover:bg-white/10 font-medium"
-              }`}
-            >
-              <Video className="w-4 h-4" />
-              <span>{bilingual("Video Bài Giảng", "Video Sermons")}</span>
-              <span className={`text-[11px] px-2 py-0.5 rounded-full font-mono font-bold ${
-                activeTab === "videos" ? "bg-white/25 text-white" : "bg-white/10 text-slate-300"
-              }`}>
-                {videos.length}
-              </span>
-            </button>
-          </div>
-
-          {/* Search Box in Glass */}
-          <div className="relative w-full sm:w-72">
-            <Search className="w-4 h-4 text-amber-300 absolute left-4 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder={bilingual("Tìm kiếm tài liệu, diễn giả...", "Search books, topics, speakers...")}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white placeholder:text-slate-300 focus:outline-none focus:border-amber-300 focus:ring-1 focus:ring-amber-300 min-h-[40px]"
-            />
-            {searchTerm && (
+        <section className="bg-slate-950/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/15 p-4 sm:p-5 shadow-2xl space-y-4 animate-fade-up text-white">
+          {/* Hàng 1: Tabs Điều Hướng & Ô Tìm Kiếm */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-white/10">
+            {/* Tabs Thánh Đường: Đường Kẻ Vàng Kim Cổ Điển */}
+            <div className="flex items-center gap-6 sm:gap-8">
               <button
-                onClick={() => setSearchTerm("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-        </section>
-
-        {/* ============================================================== */}
-        {/* 3. CATEGORY PILL CHIPS (Clean circular filters, no box) */}
-        {/* ============================================================== */}
-        <section className="flex flex-wrap items-center justify-center gap-2 text-center animate-fade-up delay-75">
-          <span className="text-xs font-bold text-amber-200 flex items-center gap-1.5 mr-2 font-serif drop-shadow-xs">
-            <Filter className="w-3.5 h-3.5 text-amber-300" />
-            <span>{bilingual("Chủ Đề:", "Topics:")}</span>
-          </span>
-          {categories.map((cat) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs font-serif transition-all cursor-pointer min-h-[36px] ${
-                  isSelected
-                    ? "bg-amber-400 text-slate-950 font-bold shadow-md shadow-amber-400/30 scale-105"
-                    : "bg-white/15 backdrop-blur-md border border-white/25 text-white hover:bg-white/25"
+                type="button"
+                onClick={() => setActiveTab("books")}
+                className={`pb-2.5 text-sm sm:text-base font-serif flex items-center gap-2 transition-all relative cursor-pointer ${
+                  activeTab === "books"
+                    ? "text-amber-300 font-bold border-b-2 border-amber-400 -mb-[13px]"
+                    : "text-slate-300 hover:text-white font-medium"
                 }`}
               >
-                {isEn ? cat.labelEn : cat.labelVi}
+                <FileText className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>{bilingual("Sách Bồi Linh", "Study Books")}</span>
+                <span
+                  className={`text-[11px] px-2 py-0.5 rounded-md font-mono font-bold ${
+                    activeTab === "books"
+                      ? "bg-amber-400/25 text-amber-300 border border-amber-400/40"
+                      : "bg-white/10 text-slate-400"
+                  }`}
+                >
+                  {books.length}
+                </span>
               </button>
-            );
-          })}
+
+              <button
+                type="button"
+                onClick={() => setActiveTab("videos")}
+                className={`pb-2.5 text-sm sm:text-base font-serif flex items-center gap-2 transition-all relative cursor-pointer ${
+                  activeTab === "videos"
+                    ? "text-amber-300 font-bold border-b-2 border-amber-400 -mb-[13px]"
+                    : "text-slate-300 hover:text-white font-medium"
+                }`}
+              >
+                <Video className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>{bilingual("Video Bài Giảng", "Video Sermons")}</span>
+                <span
+                  className={`text-[11px] px-2 py-0.5 rounded-md font-mono font-bold ${
+                    activeTab === "videos"
+                      ? "bg-amber-400/25 text-amber-300 border border-amber-400/40"
+                      : "bg-white/10 text-slate-400"
+                  }`}
+                >
+                  {videos.length}
+                </span>
+              </button>
+            </div>
+
+            {/* Ô Tìm Kiếm Kính Tối Thanh Nhã */}
+            <div className="relative w-full sm:w-72">
+              <Search className="w-4 h-4 text-amber-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                placeholder={bilingual("Tìm kiếm tài liệu, diễn giả...", "Search books, topics, speakers...")}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm bg-slate-900/80 border border-white/15 rounded-xl text-white placeholder:text-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all min-h-[38px]"
+              />
+              {searchTerm && (
+                <button
+                  type="button"
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Hàng 2: Bộ Lọc Chủ Đề Tinh Tế (Không Dùng Kẹo Tròn Màu Vàng Chói) */}
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1 text-left">
+            <span className="text-xs font-semibold text-amber-300/90 flex items-center gap-1.5 mr-1 font-serif">
+              <Filter className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>{bilingual("Chủ đề:", "Topics:")}</span>
+            </span>
+
+            {categories.map((cat) => {
+              const isSelected = selectedCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-serif transition-all cursor-pointer border ${
+                    isSelected
+                      ? "bg-amber-400/20 border-amber-400 text-amber-300 font-bold shadow-xs"
+                      : "bg-white/5 border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  {isEn ? cat.labelEn : cat.labelVi}
+                </button>
+              );
+            })}
+          </div>
         </section>
 
         {/* ============================================================== */}
