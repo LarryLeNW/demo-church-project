@@ -10,7 +10,7 @@ import { TactileInput } from "@/components/ui/tactile-input";
 import { TactileButton } from "@/components/ui/tactile-button";
 import { ApiError } from "@/lib/api/client";
 import { FixedWorldMapBackground } from "@/components/fixed-world-map-background";
-import { Church, ShieldCheck, ArrowRight, ArrowLeft, Globe, BookOpen } from "lucide-react";
+import { ShieldCheck, ArrowLeft, Globe } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -100,25 +100,14 @@ export default function LoginPage() {
         </button>
       </header>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center flex flex-col items-center gap-2.5 animate-fade-up">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center flex flex-col items-center animate-fade-up">
         <Link
           href="/"
-          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-white text-xs font-semibold shadow-2xs hover:scale-105 transition-transform"
+          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-semibold shadow-2xs hover:scale-105 transition-transform"
         >
           <img src={SAM_LOGO_DATA_URL} alt="Spiritual Advance Ministry" className="w-5 h-5 object-contain" />
           <span className="font-serif font-bold">Spiritual Advance Ministry</span>
         </Link>
-
-        <h2 className="font-scripture text-2xl sm:text-3xl font-bold text-white tracking-tight drop-shadow-md">
-          {bilingual("Đăng Nhập Hội Thánh", "Church Member Login")}
-        </h2>
-
-        <p className="text-xs text-amber-200/90 italic font-serif px-2 drop-shadow-sm">
-          {bilingual(
-            '"Đến gần Đức Chúa Trời, thì Ngài sẽ đến gần anh em." — Gia-cơ 4:8',
-            '"Come near to God and he will come near to you." — James 4:8'
-          )}
-        </p>
       </div>
 
       <div className="mt-6 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-md animate-scale-in delay-75">
@@ -200,19 +189,6 @@ export default function LoginPage() {
                 <span>Admin (Ban Quản Trị Hệ Thống)</span>
               </button>
             </div>
-          </div>
-
-          <div className="text-center pt-2 text-xs text-slate-300">
-            <span>
-              {bilingual("Bạn là tín hữu hoặc khách viếng thăm? ", "Are you a visitor or church member? ")}
-            </span>
-            <Link
-              href="/"
-              className="font-bold text-amber-300 hover:text-amber-200 hover:underline inline-flex items-center gap-1"
-            >
-              <span>{bilingual("Về trang chủ website", "Return to Home")}</span>
-              <ArrowRight className="w-3 h-3" />
-            </Link>
           </div>
         </div>
       </div>
