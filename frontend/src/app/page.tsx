@@ -8,6 +8,7 @@ import { PublicFooter } from "@/components/public-footer";
 import { FixedWorldMapBackground } from "@/components/fixed-world-map-background";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { TactileButton } from "@/components/ui/tactile-button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import {
   ArrowRight,
   Sparkles,
@@ -136,83 +137,95 @@ export default function HomePage() {
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Cột trái: Tuyên ngôn sứ mạng */}
-            <div className="lg:col-span-7 space-y-6 text-left animate-fade-up">
-              <p className="text-xs font-bold uppercase tracking-widest text-amber-300 font-serif flex items-center gap-2 drop-shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-primary-400 shrink-0" />
-                <span>{bilingual("Tận Hiến Trang Bị Môn Đồ Chúa", "Equipping Servants of Christ")}</span>
-              </p>
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <ScrollReveal variant="reveal-text" delay={50}>
+                <p className="text-xs font-bold uppercase tracking-widest text-amber-300 font-serif flex items-center gap-2 drop-shadow-sm">
+                  <Sparkles className="w-3.5 h-3.5 text-primary-400 shrink-0" />
+                  <span>{bilingual("Tận Hiến Trang Bị Môn Đồ Chúa", "Equipping Servants of Christ")}</span>
+                </p>
+              </ScrollReveal>
 
               <div className="space-y-4">
-                <h1 className="font-scripture text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] [text-wrap:balance] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-                  {bilingual(
-                    "Vun Trồng Tôi Tớ Chúa & Nâng Tầm Môn Đồ Hóa",
-                    "Cultivating Servants & Elevating Discipleship"
-                  )}
-                </h1>
-                <p className="font-serif text-lg sm:text-xl font-bold text-amber-300 tracking-wide drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
-                  Spiritual Advance Ministry (SAM)
-                </p>
+                <ScrollReveal variant="slide-up" delay={120}>
+                  <h1 className="font-scripture text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] [text-wrap:balance] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                    {bilingual(
+                      "Vun Trồng Tôi Tớ Chúa & Nâng Tầm Môn Đồ Hóa",
+                      "Cultivating Servants & Elevating Discipleship"
+                    )}
+                  </h1>
+                </ScrollReveal>
+                <ScrollReveal variant="slide-up" delay={200}>
+                  <p className="font-serif text-lg sm:text-xl font-bold text-amber-300 tracking-wide drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
+                    Spiritual Advance Ministry (SAM)
+                  </p>
+                </ScrollReveal>
               </div>
 
               {/* Tuyên ngôn sứ mạng với viền kẻ thanh */}
-              <div className="border-l-3 border-primary-500 bg-slate-950/35 backdrop-blur-[2px] p-4 sm:p-5 rounded-r-xl border-y border-r border-white/10 space-y-2">
-                <p className="text-sm sm:text-base text-slate-100 leading-relaxed font-serif italic [text-wrap:pretty] drop-shadow-sm">
-                  {bilingual(
-                    '"Chúng tôi hiện diện để vun trồng, nâng tầm và trang bị cho các tôi tớ Chúa nhằm đem mọi người đến gần Đức Chúa Trời và trở nên những người phục sự trung tín của Ngài."',
-                    '"We exist to cultivate, elevate, and equip the servants of God to bring people closer to God and to be His faithful servants."'
-                  )}
-                </p>
-                <span className="text-xs text-amber-200/90 font-sans block font-medium">
-                  {bilingual("Dallas, Texas • Phục sự cộng đồng Cơ Đốc", "Dallas, Texas • Serving Christian Ministries")}
-                </span>
-              </div>
+              <ScrollReveal variant="slide-right" delay={280}>
+                <div className="border-l-3 border-primary-500 bg-slate-950/35 backdrop-blur-[2px] p-4 sm:p-5 rounded-r-xl border-y border-r border-white/10 space-y-2">
+                  <p className="text-sm sm:text-base text-slate-100 leading-relaxed font-serif italic [text-wrap:pretty] drop-shadow-sm">
+                    {bilingual(
+                      '"Chúng tôi hiện diện để vun trồng, nâng tầm và trang bị cho các tôi tớ Chúa nhằm đem mọi người đến gần Đức Chúa Trời và trở nên những người phục sự trung tín của Ngài."',
+                      '"We exist to cultivate, elevate, and equip the servants of God to bring people closer to God and to be His faithful servants."'
+                    )}
+                  </p>
+                  <span className="text-xs text-amber-200/90 font-sans block font-medium">
+                    {bilingual("Dallas, Texas • Phục sự cộng đồng Cơ Đốc", "Dallas, Texas • Serving Christian Ministries")}
+                  </span>
+                </div>
+              </ScrollReveal>
 
               {/* Dấu ấn tín nhiệm & bảo trợ */}
-              <div className="pt-4 border-t border-white/25 flex flex-wrap items-center gap-6 text-xs text-slate-200 font-sans drop-shadow-sm">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-primary-400 shrink-0" />
-                  <span className="font-semibold text-white">IRS 501(c)(3) Phê Chuẩn</span>
+              <ScrollReveal variant="slide-up" delay={360}>
+                <div className="pt-4 border-t border-white/25 flex flex-wrap items-center gap-6 text-xs text-slate-200 font-sans drop-shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-primary-400 shrink-0" />
+                    <span className="font-semibold text-white">IRS 501(c)(3) Phê Chuẩn</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4 text-primary-400 shrink-0" />
+                    <span>Giáo trình song ngữ Anh - Việt</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-primary-400 shrink-0" />
+                    <span>Hơn 1,200 môn đồ đã được trang bị</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-primary-400 shrink-0" />
-                  <span>Giáo trình song ngữ Anh - Việt</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-primary-400 shrink-0" />
-                  <span>Hơn 1,200 môn đồ đã được trang bị</span>
-                </div>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* Cột phải: Khung Vòm Thánh Đường (Cathedral Arch) phá bỏ khuôn khổ chữ nhật */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-up delay-150">
-              <div className="relative w-full max-w-sm">
-                <div className="rounded-t-[140px] rounded-b-3xl border-2 border-amber-300/80 bg-slate-950/40 backdrop-blur-md p-3 shadow-2xl overflow-hidden reverent-card-hover">
-                  <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-slate-900">
-                    <Image
-                      src="/people/instructor-1.jpg"
-                      alt="Chủ tịch Tabitha Nguyen - Spiritual Advance Ministry"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 400px"
-                      priority
-                      className="object-cover object-top hover:scale-103 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <ScrollReveal variant="slide-left" delay={200} className="w-full max-w-sm">
+                <div className="relative w-full">
+                  <div className="rounded-t-[140px] rounded-b-3xl border-2 border-amber-300/80 bg-slate-950/40 backdrop-blur-md p-3 shadow-2xl overflow-hidden reverent-card-hover">
+                    <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-slate-900">
+                      <Image
+                        src="/people/instructor-1.jpg"
+                        alt="Chủ tịch Tabitha Nguyen - Spiritual Advance Ministry"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 400px"
+                        priority
+                        className="object-cover object-top hover:scale-103 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
 
-                    <div className="absolute bottom-0 inset-x-0 p-5 pb-6 text-white space-y-1 text-left bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent">
-                      <span className="text-xs font-bold uppercase tracking-wider text-amber-300 block font-serif">
-                        {bilingual("Chủ Tịch Sáng Lập", "Founding President")}
-                      </span>
-                      <h2 className="font-scripture text-xl sm:text-2xl font-bold leading-tight text-white">
-                        Tabitha Nguyen
-                      </h2>
-                      <p className="text-xs text-slate-200 font-serif">
-                        Spiritual Advance Ministry • Dallas, Texas
-                      </p>
+                      <div className="absolute bottom-0 inset-x-0 p-5 pb-6 text-white space-y-1 text-left bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent">
+                        <span className="text-xs font-bold uppercase tracking-wider text-amber-300 block font-serif">
+                          {bilingual("Chủ Tịch Sáng Lập", "Founding President")}
+                        </span>
+                        <h2 className="font-scripture text-xl sm:text-2xl font-bold leading-tight text-white">
+                          Tabitha Nguyen
+                        </h2>
+                        <p className="text-xs text-slate-200 font-serif">
+                          Spiritual Advance Ministry • Dallas, Texas
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -221,8 +234,8 @@ export default function HomePage() {
       {/* ========================================================================= */}
       {/* 2. DẢI ĐỐI TÁC MỤC VỤ (SEAMLESS RIBBON - KHÔNG ĐÓNG KHUNG HỘP)             */}
       {/* ========================================================================= */}
-      <section className="relative w-full border-y border-white/20 py-8 text-center animate-fade-in backdrop-blur-xs">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-4">
+      <section className="relative w-full border-y border-white/20 py-8 text-center backdrop-blur-xs">
+        <ScrollReveal variant="slide-up" delay={50} className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 space-y-4">
           <p className="text-xs font-bold uppercase tracking-widest text-amber-200/90 font-serif drop-shadow-sm">
             {bilingual(
               "Đồng Hành Cùng Các Đối Tác Mục Vụ & Học Viện Thần Học",
@@ -241,32 +254,36 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* ========================================================================= */}
       {/* 3. GÓC TĨNH NGUYỆN HÔM NAY (TUYÊN NGÔN THÁNH KHIẾT - KHÔNG HỘP CHỮ NHẬT)  */}
       {/* ========================================================================= */}
-      <section className="relative w-full py-16 sm:py-24 text-center px-4 sm:px-6 md:px-8">
-        <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
+      <section className="relative w-full py-16 sm:py-24 text-center px-4 sm:px-6 md:px-8 overflow-hidden">
+        <div className="max-w-4xl mx-auto space-y-8">
           {/* Họa tiết Thánh: Cánh Vàng Kim & Ngọn Lửa Tĩnh Nguyện */}
-          <div className="flex items-center justify-center gap-4 text-amber-300">
-            <span className="h-px w-16 sm:w-24 bg-gradient-to-r from-transparent to-amber-300/80" />
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest font-serif drop-shadow-sm">
-              <Flame className="w-5 h-5 text-amber-400 animate-holy-breathe" />
-              <span>{bilingual("Lời Chúa Hôm Nay • Góc Tĩnh Nguyện", "Daily Scripture Sanctuary")}</span>
+          <ScrollReveal variant="slide-down" delay={50}>
+            <div className="flex items-center justify-center gap-4 text-amber-300">
+              <span className="h-px w-16 sm:w-24 bg-gradient-to-r from-transparent to-amber-300/80" />
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest font-serif drop-shadow-sm">
+                <Flame className="w-5 h-5 text-amber-400 animate-holy-breathe" />
+                <span>{bilingual("Lời Chúa Hôm Nay • Góc Tĩnh Nguyện", "Daily Scripture Sanctuary")}</span>
+              </div>
+              <span className="h-px w-16 sm:w-24 bg-gradient-to-l from-transparent to-amber-300/80" />
             </div>
-            <span className="h-px w-16 sm:w-24 bg-gradient-to-l from-transparent to-amber-300/80" />
-          </div>
+          </ScrollReveal>
 
-          <blockquote className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-normal leading-relaxed italic [text-wrap:balance] drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] max-w-3xl mx-auto">
-            {bilingual(
-              "“Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con Một của Ngài, hầu cho hễ ai tin Con ấy không bị hư mất mà được sự sống đời đời.”",
-              "“For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.”"
-            )}
-          </blockquote>
+          <ScrollReveal variant="slide-up" delay={150}>
+            <blockquote className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-normal leading-relaxed italic [text-wrap:balance] drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] max-w-3xl mx-auto">
+              {bilingual(
+                "“Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con Một của Ngài, hầu cho hễ ai tin Con ấy không bị hư mất mà được sự sống đời đời.”",
+                "“For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.”"
+              )}
+            </blockquote>
+          </ScrollReveal>
 
-          <div className="space-y-1">
+          <ScrollReveal variant="slide-up" delay={250} className="space-y-1">
             <p className="text-xs sm:text-sm font-bold text-amber-300 font-serif tracking-widest uppercase drop-shadow-sm">
               {bilingual("Phúc Âm Giăng 3:16 • Bản Truyền Thống Hiệu Đính", "The Gospel of John 3:16 • ESV")}
             </p>
@@ -276,7 +293,7 @@ export default function HomePage() {
                 "The eternal promise of redeeming grace and unconditional love for every seeking heart."
               )}
             </p>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -286,7 +303,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       <section className="relative w-full py-10 px-4 sm:px-6 md:px-8">
         <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl">
-          <div className="border-b border-white/20 pb-6 text-left">
+          <ScrollReveal variant="slide-up" delay={50} className="border-b border-white/20 pb-6 text-left">
             <p className="text-xs font-bold text-amber-300 font-serif uppercase tracking-widest">
               {bilingual("Khải Tượng Mục Vụ & Đào Tạo Môn Đồ", "Vision, Mandate & Discipleship")}
             </p>
@@ -296,12 +313,12 @@ export default function HomePage() {
                 "The Three Pillars of Spiritual Advance Ministry"
               )}
             </h2>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start pt-8">
             {/* Cột trái (7 cols): Bài luận & Dấu ấn giảng viên */}
             <div className="lg:col-span-7 flex flex-col justify-between space-y-6 text-left pr-0 lg:pr-6">
-              <div className="space-y-4">
+              <ScrollReveal variant="slide-right" delay={120} className="space-y-4">
                 <span className="text-xs font-bold text-amber-200/80 font-serif tracking-widest uppercase block">
                   {bilingual("Tuyên Ngôn Mục Vụ", "Ministry Statement")}
                 </span>
@@ -317,10 +334,10 @@ export default function HomePage() {
                     "Founded in Dallas, Texas, Spiritual Advance Ministry addresses the urgent need for structured discipleship curriculum and leadership training for Vietnamese congregations globally, delivering rigorous biblical interpretation and hands-on pastoral guidance."
                   )}
                 </p>
-              </div>
+              </ScrollReveal>
 
               {/* Chân trang bài luận: Dấu ấn hình tròn (Circular Seal) */}
-              <div className="pt-6 border-t border-white/15 flex items-center gap-3">
+              <ScrollReveal variant="slide-up" delay={220} className="pt-6 border-t border-white/15 flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-amber-300 shadow-md">
                   <Image src="/people/instructor-3.jpg" alt="SAM Faculty" fill className="object-cover" />
                 </div>
@@ -328,12 +345,12 @@ export default function HomePage() {
                   <span className="font-serif font-bold text-white text-sm block">Ban Giảng Huấn SAM</span>
                   <span className="text-xs text-amber-300">Dallas Theological Fellowship</span>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* Cột phải (5 cols): 3 Trụ Cột số La Mã I, II, III phân cách đường kẻ mảnh */}
             <div className="lg:col-span-5 divide-y divide-white/15 border-t lg:border-t-0 lg:border-l border-white/15 lg:pl-10 text-left">
-              <div className="pb-6 space-y-2">
+              <ScrollReveal variant="slide-left" delay={150} className="pb-6 space-y-2">
                 <div className="flex items-baseline gap-3">
                   <span className="font-scripture text-4xl font-black text-amber-400">I.</span>
                   <h3 className="font-scripture font-bold text-white text-lg">
@@ -346,9 +363,9 @@ export default function HomePage() {
                     "Igniting persistent spiritual revival and establishing a trusted discipleship hub for local congregations."
                   )}
                 </p>
-              </div>
+              </ScrollReveal>
 
-              <div className="py-6 space-y-2">
+              <ScrollReveal variant="slide-left" delay={280} className="py-6 space-y-2">
                 <div className="flex items-baseline gap-3">
                   <span className="font-scripture text-4xl font-black text-amber-400">II.</span>
                   <h3 className="font-scripture font-bold text-white text-lg">
@@ -361,9 +378,9 @@ export default function HomePage() {
                     "Sound biblical curriculum preserving theological integrity without secular compromise."
                   )}
                 </p>
-              </div>
+              </ScrollReveal>
 
-              <div className="pt-6 space-y-2">
+              <ScrollReveal variant="slide-left" delay={400} className="pt-6 space-y-2">
                 <div className="flex items-baseline gap-3">
                   <span className="font-scripture text-4xl font-black text-amber-400">III.</span>
                   <h3 className="font-scripture font-bold text-white text-lg">
@@ -376,7 +393,7 @@ export default function HomePage() {
                     "Dedicated mentorship supporting pastors, deacons, and families in raising faithful spiritual successors."
                   )}
                 </p>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -388,7 +405,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       <section className="relative w-full py-16 px-4 sm:px-6 md:px-8">
         <div className="max-w-6xl mx-auto space-y-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/20 pb-4">
+          <ScrollReveal variant="slide-up" delay={50} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/20 pb-4">
             <div>
               <p className="text-xs font-bold text-amber-300 font-serif uppercase tracking-widest">
                 {bilingual("Tài Liệu Bồi Linh Đầy Đủ Bìa & Đề Cương", "Standardized Curricula & Study Guides")}
@@ -404,55 +421,61 @@ export default function HomePage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </Link>
-          </div>
+          </ScrollReveal>
 
           {/* 3 Thẻ Sách Khung Vòm (Cathedral Arch Book Cards) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredCourses.map((c, idx) => (
-              <div
+              <ScrollReveal
                 key={idx}
-                className="group flex flex-col justify-between overflow-hidden rounded-t-[48px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-white"
+                variant="slide-up"
+                delay={idx * 150}
+                className="h-full"
               >
-                <div>
-                  {/* Bìa Khung Vòm Thánh Đường bo cong tròn đỉnh */}
-                  <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
-                    <Image
-                      src={c.cover}
-                      alt={c.titleVi}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-xs px-3 py-1 rounded-full text-[11px] font-bold text-amber-300 border border-white/20 shadow-xs">
-                      {isEn ? c.tagEn : c.tagVi}
+                <div
+                  className="group flex flex-col justify-between h-full overflow-hidden rounded-t-[48px] rounded-b-3xl bg-slate-950/50 backdrop-blur-xl border border-white/20 hover:border-amber-400/50 shadow-2xl hover:-translate-y-2 transition-all duration-300 text-white"
+                >
+                  <div>
+                    {/* Bìa Khung Vòm Thánh Đường bo cong tròn đỉnh */}
+                    <div className="relative aspect-[16/10] w-full rounded-t-[44px] overflow-hidden bg-slate-900 border-b border-white/10">
+                      <Image
+                        src={c.cover}
+                        alt={c.titleVi}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-xs px-3 py-1 rounded-full text-[11px] font-bold text-amber-300 border border-white/20 shadow-xs">
+                        {isEn ? c.tagEn : c.tagVi}
+                      </div>
+                    </div>
+
+                    <div className="p-6 sm:p-7 space-y-3 text-left">
+                      <div className="flex items-center justify-between text-xs text-slate-400 font-sans">
+                        <span>{c.lessons}</span>
+                        <span className="text-amber-300 font-semibold">{isEn ? c.authorEn : c.authorVi}</span>
+                      </div>
+
+                      <h3 className="font-scripture text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors [text-wrap:balance]">
+                        {isEn ? c.titleEn : c.titleVi}
+                      </h3>
+
+                      <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
+                        {isEn ? c.descEn : c.descVi}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-7 space-y-3 text-left">
-                    <div className="flex items-center justify-between text-xs text-slate-400 font-sans">
-                      <span>{c.lessons}</span>
-                      <span className="text-amber-300 font-semibold">{isEn ? c.authorEn : c.authorVi}</span>
-                    </div>
-
-                    <h3 className="font-scripture text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition-colors [text-wrap:balance]">
-                      {isEn ? c.titleEn : c.titleVi}
-                    </h3>
-
-                    <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
-                      {isEn ? c.descEn : c.descVi}
-                    </p>
+                  <div className="p-6 sm:p-7 pt-0">
+                    <Link
+                      href="/courses"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:text-amber-200 hover:underline min-h-[40px]"
+                    >
+                      <span>{bilingual("Vào Lớp Học Ngay", "Enroll in Course")}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </div>
-
-                <div className="p-6 sm:p-7 pt-0">
-                  <Link
-                    href="/courses"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:text-amber-200 hover:underline min-h-[40px]"
-                  >
-                    <span>{bilingual("Vào Lớp Học Ngay", "Enroll in Course")}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -466,75 +489,79 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Cột trái: Sứ mạng & Con dấu tròn vàng kim */}
             <div className="lg:col-span-7 space-y-5 text-left">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-white/10 border-2 border-amber-400/60 flex items-center justify-center text-amber-300 shadow-sm shrink-0">
-                  <Heart className="w-6 h-6" />
+              <ScrollReveal variant="slide-right" delay={50} className="space-y-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-white/10 border-2 border-amber-400/60 flex items-center justify-center text-amber-300 shadow-sm shrink-0">
+                    <Heart className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-widest text-amber-300 font-serif block">
+                      {bilingual("Sứ Mạng Dâng Hiến & Quản Trị Mục Vụ", "Ministry Stewardship & Giving")}
+                    </span>
+                    <span className="text-xs text-slate-400 font-sans">
+                      IRS 501(c)(3) Tax-Deductible
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-amber-300 font-serif block">
-                    {bilingual("Sứ Mạng Dâng Hiến & Quản Trị Mục Vụ", "Ministry Stewardship & Giving")}
-                  </span>
-                  <span className="text-xs text-slate-400 font-sans">
-                    IRS 501(c)(3) Tax-Deductible
-                  </span>
-                </div>
-              </div>
 
-              <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance]">
-                {bilingual(
-                  "Đồng Hành Gieo Hạt Giống Nước Trời Cùng Spiritual Advance Ministry",
-                  "Partner with Spiritual Advance Ministry to Sow Seeds for Eternity"
-                )}
-              </h2>
+                <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance]">
+                  {bilingual(
+                    "Đồng Hành Gieo Hạt Giống Nước Trời Cùng Spiritual Advance Ministry",
+                    "Partner with Spiritual Advance Ministry to Sow Seeds for Eternity"
+                  )}
+                </h2>
 
-              <p className="text-sm text-slate-200 leading-relaxed font-serif [text-wrap:pretty]">
-                {bilingual(
-                  "Mọi khoản dâng hiến của quý tôi con Chúa đều được sử dụng minh bạch để tài trợ học bổng môn đồ hóa, in ấn tài liệu Kinh Thánh miễn phí và tổ chức các lớp huấn luyện lãnh đạo. Đầy đủ biên nhận khấu trừ thuế theo quy chuẩn IRS 501(c)(3) tại Hoa Kỳ.",
-                  "Your generous contributions are transparently dedicated to discipleship scholarships, theological publications, and ministry workshops. Fully tax-deductible under IRS 501(c)(3) regulations."
-                )}
-              </p>
+                <p className="text-sm text-slate-200 leading-relaxed font-serif [text-wrap:pretty]">
+                  {bilingual(
+                    "Mọi khoản dâng hiến của quý tôi con Chúa đều được sử dụng minh bạch để tài trợ học bổng môn đồ hóa, in ấn tài liệu Kinh Thánh miễn phí và tổ chức các lớp huấn luyện lãnh đạo. Đầy đủ biên nhận khấu trừ thuế theo quy chuẩn IRS 501(c)(3) tại Hoa Kỳ.",
+                    "Your generous contributions are transparently dedicated to discipleship scholarships, theological publications, and ministry workshops. Fully tax-deductible under IRS 501(c)(3) regulations."
+                  )}
+                </p>
+              </ScrollReveal>
             </div>
 
             {/* Cột phải: Các Quỹ Mục Đích Rõ Ràng */}
             <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-white/15 lg:pl-10 space-y-4 text-left">
-              <div className="flex items-center justify-between pb-3 border-b border-white/15">
-                <span className="font-bold text-white uppercase font-serif text-xs tracking-wider">
-                  {bilingual("Các Quỹ Mục Đích Rõ Ràng", "Designated Ministry Funds")}
-                </span>
-                <span className="text-[11px] text-amber-300 font-semibold font-serif px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20">
-                  100% Khấu Trừ Thuế
-                </span>
-              </div>
+              <ScrollReveal variant="slide-left" delay={150}>
+                <div className="flex items-center justify-between pb-3 border-b border-white/15">
+                  <span className="font-bold text-white uppercase font-serif text-xs tracking-wider">
+                    {bilingual("Các Quỹ Mục Đích Rõ Ràng", "Designated Ministry Funds")}
+                  </span>
+                  <span className="text-[11px] text-amber-300 font-semibold font-serif px-2.5 py-0.5 rounded-full bg-white/10 border border-white/20">
+                    100% Khấu Trừ Thuế
+                  </span>
+                </div>
 
-              <ul className="divide-y divide-white/10 text-sm">
-                <li className="py-3.5 flex items-center justify-between">
-                  <div>
-                    <span className="text-white font-serif block font-medium">Quỹ Đào Tạo Môn Đồ Hóa</span>
-                    <span className="text-xs text-slate-400">Trang bị thế hệ tôi tớ Chúa</span>
-                  </div>
-                  <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
-                    IRS 501(c)(3)
-                  </span>
-                </li>
-                <li className="py-3.5 flex items-center justify-between">
-                  <div>
-                    <span className="text-white font-serif block font-medium">Quỹ Học Bổng & Giảng Viên</span>
-                    <span className="text-xs text-slate-400">Hỗ trợ học viên Trường Chúa Nhật</span>
-                  </div>
-                  <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
-                    IRS 501(c)(3)
-                  </span>
-                </li>
-                <li className="py-3.5 flex items-center justify-between">
-                  <div>
-                    <span className="text-white font-serif block font-medium">Quỹ In Ấn & Thư Viện Miễn Phí</span>
-                    <span className="text-xs text-slate-400">Phát hành sách & tài liệu bồi linh</span>
-                  </div>
-                  <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
-                    IRS 501(c)(3)
-                  </span>
-                </li>
-              </ul>
+                <ul className="divide-y divide-white/10 text-sm">
+                  <li className="py-3.5 flex items-center justify-between">
+                    <div>
+                      <span className="text-white font-serif block font-medium">Quỹ Đào Tạo Môn Đồ Hóa</span>
+                      <span className="text-xs text-slate-400">Trang bị thế hệ tôi tớ Chúa</span>
+                    </div>
+                    <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
+                      IRS 501(c)(3)
+                    </span>
+                  </li>
+                  <li className="py-3.5 flex items-center justify-between">
+                    <div>
+                      <span className="text-white font-serif block font-medium">Quỹ Học Bổng & Giảng Viên</span>
+                      <span className="text-xs text-slate-400">Hỗ trợ học viên Trường Chúa Nhật</span>
+                    </div>
+                    <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
+                      IRS 501(c)(3)
+                    </span>
+                  </li>
+                  <li className="py-3.5 flex items-center justify-between">
+                    <div>
+                      <span className="text-white font-serif block font-medium">Quỹ In Ấn & Thư Viện Miễn Phí</span>
+                      <span className="text-xs text-slate-400">Phát hành sách & tài liệu bồi linh</span>
+                    </div>
+                    <span className="text-xs font-mono text-amber-300 font-semibold shrink-0 ml-3">
+                      IRS 501(c)(3)
+                    </span>
+                  </li>
+                </ul>
+              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -546,7 +573,7 @@ export default function HomePage() {
       {/* ========================================================================= */}
       <section className="relative w-full py-12 pb-16 px-4 sm:px-6 md:px-8">
         <div className="max-w-6xl mx-auto bg-slate-950/50 backdrop-blur-xl rounded-[36px] sm:rounded-[48px] p-8 sm:p-14 border border-white/20 text-white shadow-2xl space-y-10">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <ScrollReveal variant="slide-up" delay={50} className="text-center space-y-2 max-w-2xl mx-auto">
             <h2 className="font-scripture text-3xl sm:text-4xl font-bold text-white [text-wrap:balance]">
               {bilingual("Bông Trái Thuộc Linh & Lời Chứng", "Spiritual Fruits & Testimonies")}
             </h2>
@@ -556,12 +583,14 @@ export default function HomePage() {
                 "Matthew 7:16 • 'By their fruit you will recognize them'"
               )}
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/15 border-y border-white/15 py-8 text-left">
             {testimonies.map((t, idx) => (
-              <div
+              <ScrollReveal
                 key={idx}
+                variant="slide-up"
+                delay={idx * 150}
                 className="px-0 md:px-8 py-6 md:py-0 flex flex-col justify-between space-y-6 first:pl-0 last:pr-0"
               >
                 <div className="space-y-3">
@@ -584,7 +613,7 @@ export default function HomePage() {
                     <p className="text-xs text-amber-300 font-serif">{isEn ? t.roleEn : t.roleVi}</p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

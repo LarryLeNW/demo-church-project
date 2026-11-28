@@ -209,6 +209,69 @@ button, input, select, textarea, .font-sans {
   animation: reverentScaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Prescott Potter's House Inspired Reveal & Slide-out Keyframes */
+@keyframes motionRevealIn {
+  0% {
+    opacity: 0;
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transform: translateX(0);
+  }
+}
+
+@keyframes motionSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motionSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes motionSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-motion-reveal {
+  animation: motionRevealIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-motion-slide-up {
+  animation: motionSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-motion-slide-right {
+  animation: motionSlideRight 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-motion-slide-left {
+  animation: motionSlideLeft 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .animate-holy-breathe {
   animation: holyBreathe 3.5s ease-in-out infinite;
 }
