@@ -12,7 +12,6 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   Compass,
   Award,
-  ExternalLink,
   Sparkles,
   BookOpen,
   ArrowRight,
@@ -245,53 +244,52 @@ export default function AboutPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 5. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Dải Pill Bo Cong Mềm Mại)       */}
+        {/* 5. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Khối Phù Điêu Thánh Đường)        */}
         {/* ============================================================== */}
-        <section className="bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-full p-8 sm:p-10 border border-white/20 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-white text-left">
-          <div className="space-y-2 max-w-2xl">
+        <section className="relative overflow-hidden bg-slate-950/60 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border border-amber-400/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 text-white text-left">
+          {/* Subtle Ambient Background Light */}
+          <div className="absolute -right-24 -bottom-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none select-none" />
+          <div className="absolute -left-24 -top-24 w-80 h-80 bg-primary-600/10 rounded-full blur-3xl pointer-events-none select-none" />
+
+          <div className="relative z-10 space-y-2.5 max-w-2xl">
             <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-amber-300 font-serif">
               <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>{bilingual("Đồng Hành Mục Vụ", "Ministry Fellowship")}</span>
+              <span>{bilingual("Đồng Hành Cùng Mục Vụ", "Ministry Fellowship")}</span>
             </div>
-            <h3 className="font-scripture text-2xl font-bold text-white [text-wrap:balance]">
+            <h3 className="font-scripture text-2xl sm:text-3xl font-bold text-white [text-wrap:balance]">
               {bilingual(
-                "Đồng Hành Cùng Hành Trình Môn Đồ Hóa Của SAM",
-                "Join the Discipleship & Equipping Journey With SAM"
+                "Bắt Đầu Hành Trình Môn Đồ Hóa Cùng SAM",
+                "Begin Your Discipleship Journey with SAM"
               )}
             </h3>
-            <p className="text-xs text-slate-300 font-serif [text-wrap:pretty]">
+            <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed [text-wrap:pretty]">
               {bilingual(
-                "Khám phá các chương trình đào tạo, thư viện bài giảng bồi linh chuẩn mực và kết nối với mạng lưới các tôi tớ Chúa khắp nơi.",
+                "Khám phá các chương trình đào tạo môn đồ, kho bài giảng bồi linh chuẩn mực và kết nối với cộng đồng tôi tớ Chúa khắp nơi.",
                 "Explore structured training curricula, sound theological resources, and fellowship with faithful servants of Christ globally."
               )}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <div className="relative z-10 flex flex-wrap items-center gap-3 shrink-0">
             <Link href="/courses">
-              <TactileButton variant="primary" size="sm" withCross>
-                <span>{bilingual("Khám Phá Khóa Học", "Courses")}</span>
+              <TactileButton variant="primary" size="md" withCross className="rounded-xl shadow-md">
+                <span>{bilingual("Khám Phá Khóa Học", "Explore Courses")}</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </TactileButton>
             </Link>
 
             <Link href="/library">
-              <TactileButton variant="glass" size="sm">
+              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-white hover:bg-white/15">
                 <BookOpen className="w-4 h-4 mr-1.5 text-amber-300" />
-                <span>{bilingual("Kho Tư Liệu", "Vault")}</span>
+                <span>{bilingual("Kho Tư Liệu", "Library Vault")}</span>
               </TactileButton>
             </Link>
 
-            <a
-              href="https://www.facebook.com/saministry.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Cộng đồng Facebook SAM (Mở trong tab mới)"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition-all shadow-xs"
-            >
-              <span>Facebook</span>
-              <ExternalLink className="w-3 h-3 text-amber-300" />
-            </a>
+            <Link href="/contact">
+              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-slate-200 hover:text-white hover:bg-white/15">
+                <span>{bilingual("Liên Hệ Mục Vụ", "Contact Ministry")}</span>
+              </TactileButton>
+            </Link>
           </div>
         </section>
       </main>
