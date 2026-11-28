@@ -80,7 +80,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-transparent relative flex flex-col justify-center py-6 sm:py-12 px-3 sm:px-6 lg:px-8">
-      <FixedWorldMapBackground />
+      <FixedWorldMapBackground variant="vivid" />
 
       {/* Mobile-Friendly Top Bar */}
       <header className="w-full max-w-md mx-auto flex items-center justify-between pb-4">
