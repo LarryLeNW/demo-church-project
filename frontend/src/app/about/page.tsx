@@ -7,15 +7,8 @@ import { PublicHeader } from "@/components/public-header";
 import { PublicFooter } from "@/components/public-footer";
 import { FixedWorldMapBackground } from "@/components/fixed-world-map-background";
 import { useLanguage } from "@/lib/i18n/language-context";
-import { TactileButton } from "@/components/ui/tactile-button";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import {
-  Compass,
-  Award,
-  Sparkles,
-  BookOpen,
-  ArrowRight,
-} from "lucide-react";
+import { Compass, Award } from "lucide-react";
 
 export default function AboutPage() {
   const { isEn, bilingual } = useLanguage();
@@ -240,56 +233,6 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* ============================================================== */}
-        {/* 5. ĐỒNG HÀNH CÙNG SỨ MẠNG SAM (Khối Phù Điêu Thánh Đường)        */}
-        {/* ============================================================== */}
-        <section className="relative overflow-hidden bg-slate-950/60 backdrop-blur-xl rounded-3xl sm:rounded-[40px] p-5 sm:p-10 border border-amber-400/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 text-white text-left">
-          {/* Subtle Ambient Background Light */}
-          <div className="absolute -right-24 -bottom-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none select-none" />
-          <div className="absolute -left-24 -top-24 w-80 h-80 bg-primary-600/10 rounded-full blur-3xl pointer-events-none select-none" />
-
-          <div className="relative z-10 space-y-2.5 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-amber-300 font-serif">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>{bilingual("Đồng Hành Cùng Mục Vụ", "Ministry Fellowship")}</span>
-            </div>
-            <h3 className="font-scripture text-2xl sm:text-3xl font-bold text-white [text-wrap:balance]">
-              {bilingual(
-                "Bắt Đầu Hành Trình Môn Đồ Hóa Cùng SAM",
-                "Begin Your Discipleship Journey with SAM"
-              )}
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed [text-wrap:pretty]">
-              {bilingual(
-                "Khám phá các chương trình đào tạo môn đồ, kho bài giảng bồi linh chuẩn mực và kết nối với cộng đồng tôi tớ Chúa khắp nơi.",
-                "Explore structured training curricula, sound theological resources, and fellowship with faithful servants of Christ globally."
-              )}
-            </p>
-          </div>
-
-          <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto shrink-0">
-            <Link href="/courses">
-              <TactileButton variant="primary" size="md" withCross className="rounded-xl shadow-md w-full sm:w-auto justify-center">
-                <span>{bilingual("Khám Phá Khóa Học", "Explore Courses")}</span>
-                <ArrowRight className="w-4 h-4 ml-1.5" />
-              </TactileButton>
-            </Link>
-
-            <Link href="/library">
-              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-white hover:bg-white/15 w-full sm:w-auto justify-center">
-                <BookOpen className="w-4 h-4 mr-1.5 text-amber-300" />
-                <span>{bilingual("Kho Tư Liệu", "Library Vault")}</span>
-              </TactileButton>
-            </Link>
-
-            <Link href="/contact">
-              <TactileButton variant="glass" size="md" className="rounded-xl border border-white/20 text-slate-200 hover:text-white hover:bg-white/15 w-full sm:w-auto justify-center">
-                <span>{bilingual("Liên Hệ Mục Vụ", "Contact Ministry")}</span>
-              </TactileButton>
-            </Link>
           </div>
         </section>
       </main>
