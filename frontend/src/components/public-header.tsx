@@ -125,9 +125,18 @@ export function PublicHeader() {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Backdrop Overlay (Tap outside to close, does not push content) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/95 backdrop-blur-2xl border-t border-white/15 px-5 py-4 shadow-2xl space-y-4 animate-in fade-in slide-in-from-top-2 duration-200 text-white">
+        <div
+          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 top-16 sm:top-18 bg-black/60 backdrop-blur-xs z-40 lg:hidden animate-in fade-in-0 duration-300"
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Floating Drawer Menu (Absolute floating, 0 push on page content) */}
+      {mobileMenuOpen && (
+        <div className="absolute top-full inset-x-0 w-full lg:hidden bg-slate-950/95 backdrop-blur-2xl border-b border-white/20 px-5 py-5 shadow-2xl space-y-4 text-white z-50 animate-in fade-in-0 slide-in-from-top-3 duration-300 rounded-b-3xl">
           <div className="space-y-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 font-serif">
               {bilingual("Điều Hướng Mục Vụ", "Ministry Navigation")}
@@ -156,11 +165,11 @@ export function PublicHeader() {
           </div>
 
           {/* Mobile Login Button (thay thế chỗ chọn ngôn ngữ vì bên ngoài header đã có) */}
-          <div className="pt-3 border-t border-white/10">
+          <div className="pt-2 border-t border-white/10">
             <Link
               href={user ? "/dashboard" : "/login"}
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-amber-600 hover:from-primary-500 hover:to-amber-500 text-white font-serif font-bold text-sm shadow-md transition-all cursor-pointer min-h-[44px]"
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-amber-600 hover:from-primary-500 hover:to-amber-500 text-white font-serif font-bold text-sm shadow-lg transition-all cursor-pointer min-h-[44px]"
             >
               {user ? (
                 <>
