@@ -326,7 +326,7 @@ export default function LibraryPage() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="pt-3 border-t border-white/10 flex items-center gap-3">
+                    <div className="pt-2.5 border-t border-white/10 flex flex-wrap items-center gap-2">
                       <button
                         type="button"
                         onClick={() =>
@@ -337,9 +337,9 @@ export default function LibraryPage() {
                             )
                           )
                         }
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-primary-700 hover:bg-primary-800 text-white text-xs font-bold transition-all shadow-md cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-700 hover:bg-primary-800 text-white text-xs font-semibold whitespace-nowrap transition-all shadow-sm cursor-pointer"
                       >
-                        <Download className="w-3.5 h-3.5" />
+                        <Download className="w-3 h-3" />
                         <span>{bilingual("Tải PDF Miễn Phí", "Download PDF")}</span>
                       </button>
 
@@ -352,9 +352,9 @@ export default function LibraryPage() {
                             pages: book.pages,
                           })
                         }
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/20 transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium border border-white/20 whitespace-nowrap transition-colors cursor-pointer"
                       >
-                        <BookOpen className="w-3.5 h-3.5 text-amber-300" />
+                        <BookOpen className="w-3 h-3 text-amber-300" />
                         <span>{bilingual("Đọc Thử Mẫu", "Preview Book")}</span>
                       </button>
                     </div>
