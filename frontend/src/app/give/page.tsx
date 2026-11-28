@@ -564,7 +564,7 @@ export default function GivePage() {
           {/* CỘT PHẢI (5 cols): Khung Tín Thác & Xem Trước Biên Nhận Thuế 501(c)(3) (Sticky scroll) */}
           <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-3.5 text-left animate-fade-up delay-150">
             {/* TẤM BIÊN NHẬN THUẾ MẪU (Cathedral Arch Top Certificate) */}
-            <div className="rounded-2xl bg-slate-950/60 backdrop-blur-xl border border-amber-400/40 p-5 shadow-2xl space-y-3 relative overflow-hidden text-white">
+            <div className="rounded-2xl bg-slate-950/60 backdrop-blur-xl border border-amber-400/40 p-4 sm:p-5 shadow-2xl space-y-3 relative overflow-hidden text-white">
               <div className="border-b border-white/15 pb-2.5 flex items-start justify-between gap-3">
                 <div>
                   <span className="text-[10px] font-bold text-amber-300 uppercase tracking-widest font-serif block">

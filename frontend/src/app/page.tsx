@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
             {/* Cột trái: Tuyên ngôn sứ mạng */}
             <div className="lg:col-span-7 space-y-6 text-left">
               <ScrollReveal variant="reveal-text" delay={50}>
