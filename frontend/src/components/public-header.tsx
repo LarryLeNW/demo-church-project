@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SAM_LOGO_DATA_URL } from "@/lib/sam-logo";
@@ -20,7 +20,17 @@ import {
 export function PublicHeader() {
   const { isEn, bilingual } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Đã bỏ màn hình Thông Báo (/announcements) theo yêu cầu người dùng
   const navItems = [
@@ -33,7 +43,13 @@ export function PublicHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-950/75 backdrop-blur-xl border-b border-white/15 shadow-md">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-slate-950/90 backdrop-blur-2xl border-b border-white/20 shadow-2xl shadow-black/40"
+          : "bg-slate-950/75 backdrop-blur-xl border-b border-white/15 shadow-md"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-4 sm:gap-6">
         {/* Left: Logo & Brand */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
