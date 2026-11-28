@@ -159,23 +159,23 @@ export default function ContactPage() {
           </div>
 
           {/* CỘT PHẢI (7 cols): Frosted Dark Prayer & Fellowship Sanctuary */}
-          <div className="lg:col-span-7 bg-slate-950/50 backdrop-blur-xl rounded-[40px] border border-white/20 shadow-2xl p-7 sm:p-10 space-y-7 text-white animate-fade-up delay-75">
-            {/* Pill Tab Switcher */}
-            <div className="flex flex-wrap items-center gap-2 p-1.5 bg-slate-900/80 rounded-full border border-white/15">
+          <div className="lg:col-span-7 bg-slate-950/50 backdrop-blur-xl rounded-[40px] border border-white/20 shadow-2xl p-7 sm:p-10 space-y-7 text-white animate-fade-up delay-75 min-h-[580px]">
+            {/* Pill Tab Switcher: Rock-solid 3-column grid with stable geometry and 0 width jitter */}
+            <div className="grid grid-cols-3 gap-1 sm:gap-1.5 p-1.5 bg-slate-900/80 rounded-full border border-white/15 w-full">
               <button
                 type="button"
                 onClick={() => {
                   setActiveTab("general");
                   setSubmitted(false);
                 }}
-                className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                className={`w-full py-2.5 px-1.5 sm:px-3 rounded-full text-[11px] sm:text-xs font-serif font-bold transition-colors duration-200 flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer select-none text-center ${
                   activeTab === "general"
                     ? "bg-primary-700 text-white shadow-md"
                     : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
-                <MessageSquare className="w-4 h-4" />
-                <span>{bilingual("Liên Hệ Chung", "General Inquiry")}</span>
+                <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <span className="truncate">{bilingual("Liên Hệ Chung", "General Inquiry")}</span>
               </button>
 
               <button
@@ -184,14 +184,14 @@ export default function ContactPage() {
                   setActiveTab("prayer");
                   setSubmitted(false);
                 }}
-                className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                className={`w-full py-2.5 px-1.5 sm:px-3 rounded-full text-[11px] sm:text-xs font-serif font-bold transition-colors duration-200 flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer select-none text-center ${
                   activeTab === "prayer"
                     ? "bg-primary-700 text-white shadow-md"
                     : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
-                <Heart className="w-4 h-4" />
-                <span>{bilingual("Gửi Lời Cầu Thay", "Prayer Request")}</span>
+                <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <span className="truncate">{bilingual("Gửi Lời Cầu Thay", "Prayer Request")}</span>
               </button>
 
               <button
@@ -200,14 +200,14 @@ export default function ContactPage() {
                   setActiveTab("partner");
                   setSubmitted(false);
                 }}
-                className={`flex-1 py-2.5 px-4 rounded-full text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                className={`w-full py-2.5 px-1.5 sm:px-3 rounded-full text-[11px] sm:text-xs font-serif font-bold transition-colors duration-200 flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer select-none text-center ${
                   activeTab === "partner"
                     ? "bg-primary-700 text-white shadow-md"
                     : "text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
-                <Handshake className="w-4 h-4" />
-                <span>{bilingual("Đề Xuất Hợp Tác", "Partnership")}</span>
+                <Handshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <span className="truncate">{bilingual("Đề Xuất Hợp Tác", "Partnership")}</span>
               </button>
             </div>
 
@@ -313,22 +313,37 @@ export default function ContactPage() {
                   />
                 </div>
 
-                {activeTab === "prayer" && (
-                  <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300 pt-1 select-none">
-                    <input
-                      type="checkbox"
-                      checked={isConfidential}
-                      onChange={(e) => setIsConfidential(e.target.checked)}
-                      className="rounded border-white/30 bg-white/10 text-primary-600 focus:ring-amber-400 w-4 h-4 cursor-pointer"
-                    />
-                    <span>
-                      {bilingual(
-                        "Giữ kín nhiệm (Chỉ chia sẻ riêng với Mục Sư & Ban Cầu Thay, không hiện lên tường công khai)",
-                        "Keep confidential (Only visible to Pastor and Prayer team, not public)"
-                      )}
-                    </span>
-                  </label>
-                )}
+                {/* Microcopy & Confidential Option with stable geometry */}
+                <div className="min-h-[28px] flex items-center">
+                  {activeTab === "prayer" ? (
+                    <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300 select-none">
+                      <input
+                        type="checkbox"
+                        checked={isConfidential}
+                        onChange={(e) => setIsConfidential(e.target.checked)}
+                        className="rounded border-white/30 bg-white/10 text-primary-600 focus:ring-amber-400 w-4 h-4 cursor-pointer shrink-0"
+                      />
+                      <span className="leading-snug">
+                        {bilingual(
+                          "Giữ kín nhiệm (Chỉ gửi riêng Mục Sư & Ban Cầu Thay, không hiện công khai)",
+                          "Keep confidential (Only visible to Pastoral Prayer Team, not public)"
+                        )}
+                      </span>
+                    </label>
+                  ) : (
+                    <div className="text-[11px] text-slate-400 italic">
+                      {activeTab === "partner"
+                        ? bilingual(
+                            "Đồng hành cùng phát triển và lan tỏa Phúc Âm cho cộng đồng.",
+                            "Partnering together to spread the Gospel across communities."
+                          )
+                        : bilingual(
+                            "Mọi thông tin liên hệ được bảo mật theo tiêu chuẩn an toàn SAM.",
+                            "All communication is kept secure and confidential by SAM."
+                          )}
+                    </div>
+                  )}
+                </div>
 
                 <div className="pt-2">
                   <TactileButton variant="primary" size="lg" type="submit" withCross className="w-full rounded-full min-h-[50px] shadow-lg">
