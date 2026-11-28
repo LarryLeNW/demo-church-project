@@ -227,7 +227,7 @@ export default function GivePage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative text-slate-800 bg-transparent">
+    <div className="min-h-screen flex flex-col relative text-slate-800 bg-transparent overflow-x-hidden max-w-[100vw]">
       <FixedWorldMapBackground />
       <PublicHeader />
 

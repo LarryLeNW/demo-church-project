@@ -262,8 +262,10 @@ export const TactileSelect = forwardRef<HTMLSelectElement, TactileSelectProps>(
                     options.some((o) => o.description)
                       ? "left-0 p-1.5 rounded-2xl max-h-80 space-y-1 w-full"
                       : "min-w-full sm:min-w-[105px] p-1 rounded-xl max-h-60 space-y-0.5",
-                    "bg-white/98 backdrop-blur-md shadow-2xl",
-                    "border border-amber-200/90 overflow-y-auto no-scrollbar",
+                    variant === "dark"
+                      ? "bg-slate-950/95 border border-white/20 text-white shadow-2xl backdrop-blur-xl"
+                      : "bg-white/98 border border-amber-200/90 text-slate-900 shadow-2xl backdrop-blur-md",
+                    "overflow-y-auto no-scrollbar",
                     "animate-in fade-in-0 zoom-in-95 duration-150"
                   )}
                 >
@@ -271,7 +273,7 @@ export const TactileSelect = forwardRef<HTMLSelectElement, TactileSelectProps>(
                     const isSelected = opt.value === internalValue;
                     const hasDesc = Boolean(opt.description);
 
-                    const optionContent = (
+                    return (
                       <div
                         key={opt.value}
                         role="option"
@@ -281,9 +283,13 @@ export const TactileSelect = forwardRef<HTMLSelectElement, TactileSelectProps>(
                           "group/opt relative cursor-pointer transition-all duration-150 flex select-none",
                           hasDesc ? "p-2.5 rounded-xl items-start gap-2.5" : "p-2 rounded-lg items-center gap-2",
                           opt.disabled && "opacity-50 cursor-not-allowed",
-                          isSelected
-                            ? "bg-amber-100/70 border border-amber-300/80 shadow-2xs text-slate-900"
-                            : "hover:bg-amber-50/80 border border-transparent text-slate-800"
+                          variant === "dark"
+                            ? isSelected
+                              ? "bg-primary-600/30 border border-amber-400/60 shadow-xs text-white"
+                              : "hover:bg-white/10 border border-transparent text-slate-200"
+                            : isSelected
+                              ? "bg-amber-100/70 border border-amber-300/80 shadow-2xs text-slate-900"
+                              : "hover:bg-amber-50/80 border border-transparent text-slate-800"
                         )}
                       >
                         {opt.icon && (
@@ -291,9 +297,13 @@ export const TactileSelect = forwardRef<HTMLSelectElement, TactileSelectProps>(
                             <div
                               className={cn(
                                 "w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors",
-                                isSelected
-                                  ? "bg-primary-600 text-white"
-                                  : "bg-amber-100 text-amber-800 group-hover/opt:bg-amber-200/80"
+                                variant === "dark"
+                                  ? isSelected
+                                    ? "bg-primary-600 text-white"
+                                    : "bg-white/10 text-amber-300 group-hover/opt:bg-white/20"
+                                  : isSelected
+                                    ? "bg-primary-600 text-white"
+                                    : "bg-amber-100 text-amber-800 group-hover/opt:bg-amber-200/80"
                               )}
                             >
                               {opt.icon}
@@ -310,47 +320,50 @@ export const TactileSelect = forwardRef<HTMLSelectElement, TactileSelectProps>(
                             <span
                               className={cn(
                                 "text-xs font-semibold tracking-tight",
-                                isSelected ? "text-primary-950 font-bold" : "text-slate-900"
+                                variant === "dark"
+                                  ? isSelected ? "text-amber-300 font-bold" : "text-white"
+                                  : isSelected ? "text-primary-950 font-bold" : "text-slate-900"
                               )}
                             >
                               {opt.label}
                             </span>
                             <div className="flex items-center gap-1.5 shrink-0">
                               {opt.badge && (
-                                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-md bg-amber-100/90 text-amber-900 border border-amber-300/80">
+                                <span
+                                  className={cn(
+                                    "text-[10px] font-semibold px-1.5 py-0.5 rounded-md",
+                                    variant === "dark"
+                                      ? "bg-amber-500/20 text-amber-300 border border-amber-400/30"
+                                      : "bg-amber-100/90 text-amber-900 border border-amber-300/80"
+                                  )}
+                                >
                                   {opt.badge}
                                 </span>
                               )}
                               {isSelected && (
-                                <Check className="w-3.5 h-3.5 text-primary-700" />
+                                <Check
+                                  className={cn(
+                                    "w-3.5 h-3.5",
+                                    variant === "dark" ? "text-amber-400" : "text-primary-700"
+                                  )}
+                                />
                               )}
                             </div>
                           </div>
 
                           {opt.description && (
-                            <p className="text-xs text-slate-600 font-sans mt-0.5 leading-snug line-clamp-2">
+                            <p
+                              className={cn(
+                                "text-xs font-sans mt-0.5 leading-snug line-clamp-2",
+                                variant === "dark" ? "text-slate-300" : "text-slate-600"
+                              )}
+                            >
                               {opt.description}
                             </p>
                           )}
                         </div>
                       </div>
                     );
-
-                    // If option has an explicit tooltip, wrap it with ModernTooltip
-                    if (opt.tooltip) {
-                      return (
-                        <ModernTooltip
-                          key={opt.value}
-                          content={opt.tooltip}
-                          side="right"
-                          className="w-64"
-                        >
-                          {optionContent}
-                        </ModernTooltip>
-                      );
-                    }
-
-                    return optionContent;
                   })}
                 </div>
               )}

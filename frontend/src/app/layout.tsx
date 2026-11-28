@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth" className="overflow-x-hidden">
       <head>
         <link rel="icon" href="/cropped-logo-192.png" type="image/png" sizes="192x192" />
         <link rel="icon" href="/cropped-logo-32.png" type="image/png" sizes="32x32" />
@@ -31,7 +31,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-[#FBF9F5] text-slate-900 antialiased selection:bg-amber-600 selection:text-white">
+      <body className="min-h-screen bg-[#FBF9F5] text-slate-900 antialiased selection:bg-amber-600 selection:text-white overflow-x-hidden max-w-full">
         <Providers>{children}</Providers>
       </body>
     </html>
