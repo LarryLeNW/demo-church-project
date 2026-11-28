@@ -81,15 +81,15 @@ export function PublicHeader() {
           : "bg-slate-950/75 backdrop-blur-xl border-b border-white/15 shadow-md"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-4 sm:gap-6">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-2 sm:gap-6">
         {/* Left: Logo & Brand */}
-        <Link href="/" className="flex items-center gap-2.5 group shrink-0 min-w-0">
+        <Link href="/" className="flex items-center gap-2 group shrink min-w-0">
           <img
             src={SAM_LOGO_DATA_URL}
             alt="Spiritual Advance Ministry"
             className="w-7 h-7 sm:w-8 sm:h-8 object-contain shrink-0 group-hover:scale-105 transition-transform"
           />
-          <span className="font-serif font-bold text-white text-sm sm:text-[15px] xl:text-base tracking-tight leading-none truncate max-w-[155px] xs:max-w-[210px] sm:max-w-none">
+          <span className="font-serif font-bold text-white text-[12.5px] xs:text-sm sm:text-[15px] xl:text-base tracking-tight leading-none whitespace-nowrap">
             Spiritual Advance Ministry
           </span>
         </Link>

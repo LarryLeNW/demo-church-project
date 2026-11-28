@@ -174,8 +174,8 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Cột phải: Khung Vòm Thánh Đường (Cathedral Arch) - Đứng yên tĩnh tại trang nghiêm, không di chuyển */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            {/* Cột phải: Khung Vòm Thánh Đường (Cathedral Arch) - Ẩn trên mobile theo yêu cầu, chỉ hiện trên màn hình lớn */}
+            <div className="hidden lg:flex lg:col-span-5 justify-center lg:justify-end">
               <div className="relative w-full max-w-[280px] xs:max-w-xs sm:max-w-sm">
                 <div className="rounded-t-[140px] rounded-b-3xl border-2 border-amber-300/80 bg-slate-950/40 backdrop-blur-md p-3 shadow-2xl overflow-hidden">
                   <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-slate-900">
