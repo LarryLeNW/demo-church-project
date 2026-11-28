@@ -195,37 +195,35 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Cột phải: Khung Vòm Thánh Đường (Cathedral Arch) phá bỏ khuôn khổ chữ nhật */}
+            {/* Cột phải: Khung Vòm Thánh Đường (Cathedral Arch) - Đứng yên tĩnh tại trang nghiêm, không di chuyển */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <ScrollReveal variant="slide-left" delay={200} className="w-full max-w-sm">
-                <div className="relative w-full">
-                  <div className="rounded-t-[140px] rounded-b-3xl border-2 border-amber-300/80 bg-slate-950/40 backdrop-blur-md p-3 shadow-2xl overflow-hidden reverent-card-hover">
-                    <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-slate-900">
-                      <Image
-                        src="/people/instructor-1.jpg"
-                        alt="Chủ tịch Tabitha Nguyen - Spiritual Advance Ministry"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 400px"
-                        priority
-                        className="object-cover object-top hover:scale-103 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+              <div className="relative w-full max-w-sm">
+                <div className="rounded-t-[140px] rounded-b-3xl border-2 border-amber-300/80 bg-slate-950/40 backdrop-blur-md p-3 shadow-2xl overflow-hidden">
+                  <div className="relative aspect-[3/4] w-full rounded-t-[128px] rounded-b-2xl overflow-hidden bg-slate-900">
+                    <Image
+                      src="/people/instructor-1.jpg"
+                      alt="Chủ tịch Tabitha Nguyen - Spiritual Advance Ministry"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      priority
+                      className="object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
 
-                      <div className="absolute bottom-0 inset-x-0 p-5 pb-6 text-white space-y-1 text-left bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent">
-                        <span className="text-xs font-bold uppercase tracking-wider text-amber-300 block font-serif">
-                          {bilingual("Chủ Tịch Sáng Lập", "Founding President")}
-                        </span>
-                        <h2 className="font-scripture text-xl sm:text-2xl font-bold leading-tight text-white">
-                          Tabitha Nguyen
-                        </h2>
-                        <p className="text-xs text-slate-200 font-serif">
-                          Spiritual Advance Ministry • Dallas, Texas
-                        </p>
-                      </div>
+                    <div className="absolute bottom-0 inset-x-0 p-5 pb-6 text-white space-y-1 text-left bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent">
+                      <span className="text-xs font-bold uppercase tracking-wider text-amber-300 block font-serif">
+                        {bilingual("Chủ Tịch Sáng Lập", "Founding President")}
+                      </span>
+                      <h2 className="font-scripture text-xl sm:text-2xl font-bold leading-tight text-white">
+                        Tabitha Nguyen
+                      </h2>
+                      <p className="text-xs text-slate-200 font-serif">
+                        Spiritual Advance Ministry • Dallas, Texas
+                      </p>
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
+              </div>
             </div>
           </div>
         </div>
