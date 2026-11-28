@@ -13,7 +13,6 @@ import {
   BookOpen,
   Clock,
   ArrowRight,
-  CheckCircle2,
 } from "lucide-react";
 
 export default function CoursesPage() {
@@ -231,22 +230,9 @@ export default function CoursesPage() {
                     </div>
 
                     {/* Mô tả tóm lược */}
-                    <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-3 [text-wrap:pretty]">
+                    <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-2 [text-wrap:pretty]">
                       {isEn ? course.descEn : course.descVi}
                     </p>
-
-                    {/* Điểm nhấn giáo trình */}
-                    <div className="space-y-1.5 pt-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-amber-300/90 font-serif block">
-                        {bilingual("Trọng Tâm Bài Học:", "Key Competencies:")}
-                      </span>
-                      {(isEn ? course.highlightsEn : course.highlightsVi).map((h, i) => (
-                        <div key={i} className="flex items-start gap-2 text-xs text-slate-200">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                          <span>{h}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </div>
 
