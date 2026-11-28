@@ -20,7 +20,6 @@ import {
   ChevronUp,
   Sparkles,
   CheckCircle2,
-  Lock,
   ArrowRight,
   Calendar,
   Check,
@@ -111,21 +110,13 @@ export default function GivePage() {
       value: "tithes",
       label: bilingual("Dâng Phần Mười (Tithes - 10%)", "General Ministry Tithes (10%)"),
       description: isEn ? fundDetails.tithes.descEn : fundDetails.tithes.descVi,
-      tooltip: bilingual(
-        "Theo Ma-la-chi 3:10: Đem hết thảy phần mười vào kho đền thánh để có lương thực trong nhà Chúa. Khấu trừ thuế theo IRS 501(c)(3).",
-        "Based on Malachi 3:10. Tax-deductible under US IRS 501(c)(3) standards."
-      ),
-      badge: "IRS 501(c)(3)",
+      badge: isEn ? "Tithes" : "Phần Mười",
       icon: <Heart className="w-4 h-4 text-primary-700" />,
     },
     {
       value: "missions",
       label: bilingual("Quỹ Truyền Giáo & Học Bổng Môn Đồ", "Missions & Discipleship Scholarships"),
       description: isEn ? fundDetails.missions.descEn : fundDetails.missions.descVi,
-      tooltip: bilingual(
-        "Tài trợ 100% học bổng môn đồ hóa, in ấn Kinh Thánh và công tác mở mang Hội Thánh địa phương.",
-        "100% sponsors discipleship scholarships, scripture resources, and cross-cultural church planting."
-      ),
       badge: isEn ? "Global Outreach" : "Truyền Giáo",
       icon: <Compass className="w-4 h-4 text-primary-700" />,
     },
@@ -133,10 +124,6 @@ export default function GivePage() {
       value: "building",
       label: bilingual("Quỹ Thư Viện Bản Thảo & Cơ Sở", "Library Vault & Facilities Fund"),
       description: isEn ? fundDetails.building.descEn : fundDetails.building.descVi,
-      tooltip: bilingual(
-        "Bảo tồn kho tư liệu lịch sử, máy chủ số hóa bản thảo và phòng thu bài giảng thánh ca trực tuyến.",
-        "Preserving ancient theological vaults, digital media studios, and physical classroom facilities."
-      ),
       badge: isEn ? "Capital & Vault" : "Cơ Sở & Kho Sách",
       icon: <Building className="w-4 h-4 text-primary-700" />,
     },
@@ -144,10 +131,6 @@ export default function GivePage() {
       value: "benevolence",
       label: bilingual("Quỹ Bác Ái & Cứu Trợ Xã Hội", "Benevolence & Community Relief"),
       description: isEn ? fundDetails.benevolence.descEn : fundDetails.benevolence.descVi,
-      tooltip: bilingual(
-        "Hỗ trợ khẩn cấp cho tín hữu đau ốm, người cao niên neo đơn, góa phụ và cứu trợ thiên tai.",
-        "Emergency hospital aid, widows, elderly care, and humanitarian disaster relief."
-      ),
       badge: isEn ? "Relief Care" : "Bác Ái Yêu Thương",
       icon: <Sparkles className="w-4 h-4 text-primary-700" />,
     },
@@ -155,10 +138,6 @@ export default function GivePage() {
       value: "general",
       label: bilingual("Quỹ Hoạt Động Mục Vụ Chung", "General Ministerial Operations"),
       description: isEn ? fundDetails.general.descEn : fundDetails.general.descVi,
-      tooltip: bilingual(
-        "Chi phí điện nước, truyền thông kỹ thuật số, hệ thống bảo mật và vận hành hàng ngày của chức vụ.",
-        "Covers administrative utilities, software licensing, and general church operations."
-      ),
       badge: isEn ? "Operations" : "Vận Hành Chung",
       icon: <ShieldCheck className="w-4 h-4 text-primary-700" />,
     },
@@ -239,9 +218,6 @@ export default function GivePage() {
               { label: bilingual("Dâng Hiến Trực Tuyến", "Online Ministry Giving") },
             ]}
           />
-          <span className="text-xs text-amber-200/90 font-serif italic hidden sm:inline">
-            {bilingual("Khấu trừ thuế theo chuẩn IRS 501(c)(3) tại Hoa Kỳ", "Tax-deductible under US IRS 501(c)(3)")}
-          </span>
         </div>
 
         {/* ============================================================== */}
@@ -251,25 +227,9 @@ export default function GivePage() {
           {/* CỘT TRÁI (7 cols): Sanctuary Giving Plaque (Dark Frosted Glass) */}
           <div className="lg:col-span-7 bg-slate-950/60 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-4 sm:p-6 space-y-4 text-left text-white animate-fade-up">
             <div className="border-b border-white/15 pb-3">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 font-serif flex items-center gap-1.5">
-                  <Heart className="w-3.5 h-3.5 text-amber-400 fill-amber-400/20" />
-                  {bilingual("Cổng Dâng Hiến Thánh Khiết", "Sacred Stewardship Portal")}
-                </span>
-                <span className="text-[10px] font-mono text-emerald-300 bg-emerald-950/70 px-2.5 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-1">
-                  <Lock className="w-2.5 h-2.5 text-emerald-400" />
-                  <span>SSL 256-bit</span>
-                </span>
-              </div>
-              <h2 className="font-scripture text-xl sm:text-2xl font-bold text-white mt-1">
+              <h2 className="font-scripture text-xl sm:text-2xl font-bold text-white">
                 {bilingual("Tấm Lòng Dâng Cho Chúa", "Online Ministry Offering")}
               </h2>
-              <p className="text-[11px] text-slate-300 font-sans mt-0.5">
-                {bilingual(
-                  "Bảo mật ngân hàng PCI-DSS Cấp 1 • Biên nhận khấu trừ thuế hợp lệ theo IRS 501(c)(3) tại Hoa Kỳ",
-                  "Encrypted PCI-DSS Level 1 • Official US 501(c)(3) Tax-Deductible Annual Statement"
-                )}
-              </p>
             </div>
 
             {isSuccess ? (
@@ -392,10 +352,6 @@ export default function GivePage() {
                 <div className="space-y-1">
                   <TactileSelect
                     label={bilingual("Chỉ định Quỹ Mục Vụ:", "Designate Ministry Fund:")}
-                    tooltip={bilingual(
-                      "Mọi khoản dâng đều được cấp biên nhận khấu trừ thuế cuối năm theo quy chế IRS 501(c)(3)",
-                      "All contributions receive an annual deductible tax statement under IRS 501(c)(3) guidelines"
-                    )}
                     value={fund}
                     onValueChange={(val) => setFund(val)}
                     onChange={(e) => setFund(e.target.value)}
@@ -548,10 +504,7 @@ export default function GivePage() {
                   {/* Compact payment method info */}
                   {activePaymentMethod === "card" && (
                     <div className="p-2 rounded-xl bg-white/10 border border-white/15 text-[11px] flex items-center justify-between text-slate-300">
-                      <span className="flex items-center gap-1 text-emerald-300">
-                        <Lock className="w-3 h-3 text-emerald-400" />
-                        <span>SSL 256-bit • Stripe PCI-DSS Level 1</span>
-                      </span>
+                      <span>{bilingual("Cổng thanh toán thẻ Stripe", "Stripe payment gateway")}</span>
                       <span className="font-mono text-amber-200 font-semibold">Visa • MC • Amex</span>
                     </div>
                   )}
@@ -655,52 +608,6 @@ export default function GivePage() {
                 <div className="flex justify-between py-1 bg-white/10 px-3 rounded-xl border border-white/20 mt-1">
                   <span className="font-bold text-slate-200">{bilingual("Số tiền khấu trừ:", "Deductible Gift:")}</span>
                   <span className="font-scripture text-base font-bold text-amber-300">${currentAmount} USD</span>
-                </div>
-              </div>
-
-              {/* IRS statement */}
-              <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-[10px] text-slate-300 italic font-serif leading-relaxed [text-wrap:pretty]">
-                {bilingual(
-                  "\"Không có hàng hóa hoặc dịch vụ nào được cung cấp để trao đổi với khoản đóng góp này ngoài các lợi ích tôn giáo thiêng liêng.\" — Quy định IRS Hoa Kỳ",
-                  "\"No goods or services were provided in exchange for this contribution other than intangible religious benefits.\" — IRS Requirement"
-                )}
-              </div>
-            </div>
-
-            {/* Khối Cam Kết Trách Nhiệm Mục Vụ (Dark Frosted Glass Plaque with Roman Numerals) */}
-            <div className="rounded-2xl bg-slate-950/60 backdrop-blur-xl border border-white/20 p-4 space-y-2.5 shadow-2xl text-white">
-              <h3 className="font-scripture text-sm font-bold text-amber-300 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>{bilingual("Cam Kết Minh Bạch Của SAM", "Stewardship Commitments")}</span>
-              </h3>
-
-              <div className="space-y-2 text-xs text-slate-300 divide-y divide-white/10">
-                <div className="pt-1.5 flex items-start gap-2.5">
-                  <span className="font-scripture text-amber-400 font-bold text-xs shrink-0">I.</span>
-                  <span className="text-[11px] leading-relaxed">
-                    {bilingual(
-                      "100% các khoản dâng chỉ định được sử dụng đúng mục đích cho công tác môn đồ hóa và đào tạo tôi tớ Chúa.",
-                      "100% of designated gifts are strictly routed to discipleship coaching and literature distribution."
-                    )}
-                  </span>
-                </div>
-                <div className="pt-1.5 flex items-start gap-2.5">
-                  <span className="font-scripture text-amber-400 font-bold text-xs shrink-0">II.</span>
-                  <span className="text-[11px] leading-relaxed">
-                    {bilingual(
-                      "Tự động xuất file PDF báo cáo tài chính hằng năm lưu trữ trong tài khoản cá nhân.",
-                      "Automated PDF annual tax summaries permanently archived in your member dashboard."
-                    )}
-                  </span>
-                </div>
-                <div className="pt-1.5 flex items-start gap-2.5">
-                  <span className="font-scripture text-amber-400 font-bold text-xs shrink-0">III.</span>
-                  <span className="text-[11px] leading-relaxed">
-                    {bilingual(
-                      "Đội ngũ hỗ trợ ban thủ quỹ luôn sẵn sàng tư vấn trực tiếp qua hotline và email.",
-                      "Our pastoral treasurer team is always reachable for giving inquiries and assistance."
-                    )}
-                  </span>
                 </div>
               </div>
             </div>
